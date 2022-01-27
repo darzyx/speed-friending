@@ -1,15 +1,32 @@
 import React from "react";
-import logo from "./vibecamp-banner.jpeg";
-import "./App.css";
 
-function App() {
+import getGame from "./getGame";
+
+const App = () => {
+  const game = getGame(9);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
+    <div>
+      {Object.values(game).map((round, index) => {
+        console.log(`round ${index}`);
+        console.log(round.top);
+        console.log(round.btm);
+
+        return (
+          <div>
+            <h3>{`Round ${index}`}</h3>
+            {round.top.map((n) => (
+              <span>{`[${n}]`}</span>
+            ))}
+            <br />
+            {round.btm.map((n) => (
+              <span>{`[${n}]`}</span>
+            ))}
+          </div>
+        );
+      })}
     </div>
   );
-}
+};
 
 export default App;
