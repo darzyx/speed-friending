@@ -14,10 +14,10 @@ const getGame = (N: number) => {
   if (N % 2 !== 0) participants.unshift(0);
   const nTemp: number = participants.length;
   const nRounds = nTemp - 1;
-  for (let x = 1; x <= nRounds; x++) {
+  for (let roundNum = 0; roundNum < nRounds; roundNum++) {
     const top: Array<number> = participants.slice(0, nTemp / 2);
     const btm: Array<number> = participants.slice(nTemp / 2, nTemp).reverse();
-    game[x] = { top, btm };
+    game[roundNum] = { top, btm };
     participants.splice(1, 0, participants[nTemp - 1]);
     participants.pop();
   }

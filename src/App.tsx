@@ -8,13 +8,9 @@ const App = () => {
   return (
     <div>
       {Object.values(game).map((round, index) => {
-        console.log(`round ${index}`);
-        console.log(round.top);
-        console.log(round.btm);
-
         return (
           <div>
-            <h3>{`Round ${index}`}</h3>
+            <h3>{`Round ${index + 1}`}</h3>
             {round.top.map((n) => (
               <span>{`[${n}]`}</span>
             ))}
