@@ -31,7 +31,7 @@ const getColor = (n: number) => {
 };
 
 const App = () => {
-  const game = getGame(4, 10);
+  const game = getGame(11, 10);
 
   return (
     <div>
