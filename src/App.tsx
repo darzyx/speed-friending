@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import getGame from "./getGame";
 
@@ -55,8 +55,14 @@ const Item = ({ n, top }: ItemType) => (
 );
 
 const App = () => {
-  const nParticipants = 17;
-  const maxRounds = 10;
+  const [
+    nParticipants,
+    // setNParticipants
+  ] = useState(21);
+  const [
+    maxRounds,
+    // setMaxRounds
+  ] = useState(10);
   const game = getGame(nParticipants, maxRounds);
 
   return (
@@ -73,6 +79,18 @@ const App = () => {
         <h3 style={{ marginTop: "0", color: "#a9a9a9" }}>
           {`${nParticipants} participants`}
         </h3>
+        <button
+          style={{
+            padding: "8px 12px",
+            fontWeight: "bold",
+            borderRadius: "8px",
+            textTransform: "uppercase",
+            backgroundColor: "#a9a9a9",
+            cursor: "pointer",
+          }}
+        >
+          Click to Enter Number
+        </button>
       </div>
       {Object.values(game).map((round, index) => {
         return (
