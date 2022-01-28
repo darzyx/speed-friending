@@ -6,7 +6,7 @@ const getColor = (n: number) => {
   if (n === 0) {
     return "#a9a9a9"; // Grey
   } else if (n % 10 === 0) {
-    return "#ffffff"; // Black
+    return "#ffffff"; // White
   } else if (n % 10 === 9) {
     return "#f032e6"; // Magenta
   } else if (n % 10 === 8) {
@@ -46,7 +46,7 @@ const Item = ({ n, top }: ItemType) => (
       fontSize: "24px",
       backgroundColor: getColor(n),
       border: "2px solid black",
-      borderRadius: top ? "6px 6px 0 0" : "0 0 6px 6px",
+      borderRadius: top ? "8px 8px 0 0" : "0 0 8px 8px",
       boxSizing: "border-box",
     }}
   >
@@ -55,7 +55,9 @@ const Item = ({ n, top }: ItemType) => (
 );
 
 const App = () => {
-  const game = getGame(13, 10);
+  const nParticipants = 17;
+  const maxRounds = 10;
+  const game = getGame(nParticipants, maxRounds);
 
   return (
     <div>
@@ -67,7 +69,10 @@ const App = () => {
           alignItems: "center",
         }}
       >
-        <h1>Session A</h1>
+        <h1 style={{ marginBottom: "0" }}>Session A</h1>
+        <h3 style={{ marginTop: "0", color: "#a9a9a9" }}>
+          {`${nParticipants} participants`}
+        </h3>
       </div>
       {Object.values(game).map((round, index) => {
         return (
