@@ -30,8 +30,13 @@ const getColor = (n: number) => {
   }
 };
 
-type ItemType = { n: number; top?: boolean };
-const Item = ({ n, top }: ItemType) => (
+type ItemType = {
+  n: number;
+  round: number;
+  activeRound: number;
+  top?: boolean;
+};
+const Item = ({ n, round, activeRound, top }: ItemType) => (
   <div
     style={{
       display: "flex",
@@ -44,7 +49,7 @@ const Item = ({ n, top }: ItemType) => (
       color: "black",
       fontWeight: "bold",
       fontSize: "20px",
-      backgroundColor: getColor(n),
+      backgroundColor: round === activeRound ? getColor(n) : "#222",
       border: "2px solid black",
       borderRadius: top ? "8px 8px 0 0" : "0 0 8px 8px",
       boxSizing: "border-box",
@@ -63,6 +68,7 @@ const App = () => {
     maxRounds,
     // setMaxRounds
   ] = useState(10);
+  const [activeRound, setActiveRound] = useState(1);
   const game = getGame(nParticipants, maxRounds);
 
   return (
@@ -94,16 +100,31 @@ const App = () => {
       </div>
       {Object.values(game).map((round, index) => {
         return (
-          <div style={{ margin: "20px" }} key={index}>
+          <div
+            style={{ margin: "20px" }}
+            key={index}
+            onClick={() => setActiveRound(index + 1)}
+          >
             <h2 style={{ marginBottom: "5px" }}>{`Round ${index + 1}`}</h2>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               {round.top.map((n, topIdx) => (
-                <Item key={topIdx} n={n} top />
+                <Item
+                  key={topIdx}
+                  n={n}
+                  round={index + 1}
+                  activeRound={activeRound}
+                  top
+                />
               ))}
             </div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               {round.btm.map((n, btmIdx) => (
-                <Item key={btmIdx} n={n} />
+                <Item
+                  key={btmIdx}
+                  round={index + 1}
+                  activeRound={activeRound}
+                  n={n}
+                />
               ))}
             </div>
           </div>
