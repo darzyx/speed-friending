@@ -43,7 +43,7 @@ const Item = ({ n, top }: ItemType) => (
       width: "100%",
       color: "black",
       fontWeight: "bold",
-      fontSize: "24px",
+      fontSize: "20px",
       backgroundColor: getColor(n),
       border: "2px solid black",
       borderRadius: top ? "8px 8px 0 0" : "0 0 8px 8px",
@@ -58,7 +58,7 @@ const App = () => {
   const [
     nParticipants,
     // setNParticipants
-  ] = useState(21);
+  ] = useState(15);
   const [
     maxRounds,
     // setMaxRounds
