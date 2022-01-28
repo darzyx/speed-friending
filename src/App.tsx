@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactChildren } from "react";
 
 import getGame from "./getGame";
 
@@ -30,64 +30,46 @@ const getColor = (n: number) => {
   }
 };
 
+const Item = ({ n, top }: { n: number; top?: boolean }) => (
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100%",
+      minHeight: "50px",
+      width: "100%",
+      color: "black",
+      fontWeight: "bold",
+      fontSize: "24px",
+      backgroundColor: getColor(n),
+      border: "2px solid black",
+      borderRadius: top ? "6px 6px 0 0" : "0 0 6px 6px",
+      boxSizing: "border-box",
+    }}
+  >
+    {n}
+  </div>
+);
+
 const App = () => {
-  const game = getGame(11, 10);
+  const game = getGame(13, 10);
 
   return (
     <div>
       {Object.values(game).map((round, index) => {
         return (
           <div style={{ margin: "20px" }} key={index}>
-            <h3>{`Round ${index + 1}`}</h3>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: `repeat(${round.top.length}, 1fr)`,
-                alignItems: "center",
-                justifyItems: "center",
-              }}
-            >
+            <h2 style={{ marginBottom: "5px" }}>{`Round ${index + 1}`}</h2>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
               {round.top.map((n, topIdx) => (
-                <div
-                  key={topIdx}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "60px",
-                    width: "60px",
-                    color: "black",
-                    fontWeight: "bold",
-                    fontSize: "24px",
-                    backgroundColor: getColor(n),
-                    border: "2px solid black",
-                    boxSizing: "border-box",
-                  }}
-                >
-                  {n}
-                </div>
+                <Item key={topIdx} n={n} top />
               ))}
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
               {round.btm.map((n, btmIdx) => (
-                <div
-                  key={btmIdx}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "60px",
-                    width: "60px",
-                    color: "black",
-                    fontWeight: "bold",
-                    fontSize: "24px",
-                    backgroundColor: getColor(n),
-                    border: "2px solid black",
-                    boxSizing: "border-box",
-                  }}
-                >
-                  {n}
-                </div>
+                <Item key={btmIdx} n={n} />
               ))}
             </div>
           </div>
