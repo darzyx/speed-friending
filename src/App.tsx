@@ -1,4 +1,4 @@
-import React, { ReactChildren } from "react";
+import React from "react";
 
 import getGame from "./getGame";
 
@@ -7,30 +7,31 @@ const getColor = (n: number) => {
     return "#a9a9a9"; // Grey
   } else if (n % 10 === 0) {
     return "#ffffff"; // Black
-  } else if (n % 9 === 0) {
+  } else if (n % 10 === 9) {
     return "#f032e6"; // Magenta
-  } else if (n % 8 === 0) {
+  } else if (n % 10 === 8) {
     return "#911eb4"; // Purple
-  } else if (n % 7 === 0) {
+  } else if (n % 10 === 7) {
     return "#4363d8"; // Blue
-  } else if (n % 6 === 0) {
+  } else if (n % 10 === 6) {
     return "#42d4f4"; // Cyan
-  } else if (n % 5 === 0) {
+  } else if (n % 10 === 5) {
     return "#3cb44b"; // Green
-  } else if (n % 4 === 0) {
+  } else if (n % 10 === 4) {
     return "#bfef45"; // Lime
-  } else if (n % 3 === 0) {
+  } else if (n % 10 === 3) {
     return "#ffe119"; // Yellow
-  } else if (n % 2 === 0) {
+  } else if (n % 10 === 2) {
     return "#f58231"; // Orange
-  } else if (n % 1 === 0) {
+  } else if (n % 10 === 1) {
     return "#e6194B"; // Red
   } else {
     return "#a9a9a9"; // Grey
   }
 };
 
-const Item = ({ n, top }: { n: number; top?: boolean }) => (
+type ItemType = { n: number; top?: boolean };
+const Item = ({ n, top }: ItemType) => (
   <div
     style={{
       display: "flex",
@@ -58,6 +59,16 @@ const App = () => {
 
   return (
     <div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h1>Session A</h1>
+      </div>
       {Object.values(game).map((round, index) => {
         return (
           <div style={{ margin: "20px" }} key={index}>
