@@ -1,11 +1,11 @@
 import React from "react";
 
-import Session from "./pages/session/Session";
+import Home from "./pages/Home";
 
 const App = () => {
   return (
-    <div>
-      <Session />
+    <div className="App">
+      <Home />
     </div>
   );
 };
