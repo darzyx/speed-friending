@@ -12,19 +12,19 @@ const getColor = (n: number) => {
   } else if (n % 10 === 8) {
     return "#911eb4"; // Purple
   } else if (n % 10 === 7) {
-    return "#4363d8"; // Blue
+    return "#bfef45"; // Lime
   } else if (n % 10 === 6) {
     return "#42d4f4"; // Cyan
   } else if (n % 10 === 5) {
-    return "#3cb44b"; // Green
+    return "#e6194B"; // Red
   } else if (n % 10 === 4) {
-    return "#bfef45"; // Lime
-  } else if (n % 10 === 3) {
     return "#ffe119"; // Yellow
+  } else if (n % 10 === 3) {
+    return "#4363d8"; // Blue
   } else if (n % 10 === 2) {
     return "#f58231"; // Orange
   } else if (n % 10 === 1) {
-    return "#e6194B"; // Red
+    return "#3cb44b"; // Green
   } else {
     return "#a9a9a9"; // Grey
   }
