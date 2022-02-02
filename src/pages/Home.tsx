@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Button, Icon } from "semantic-ui-react";
 
 const HomeContainer = styled.div`
   display: flex;
@@ -13,8 +15,13 @@ const Home = () => {
   return (
     <HomeContainer>
       <h1>Speed Vibing</h1>
-      <h2>Create New Session</h2>
-      <h2>Ongoing Sessions</h2>
+      <Button>
+        Create New Session <Icon name="plus" style={{ marginLeft: "5px" }} />
+      </Button>
+      <h3>Ongoing Sessions</h3>
+      <Link to="/session">Session A</Link>
+      <Link to="/session">Session B</Link>
+      <Link to="/session">Session C</Link>
     </HomeContainer>
   );
 };

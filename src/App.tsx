@@ -2,17 +2,17 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
+import Session from "./pages/session/Session";
 
 const App = () => {
   return (
     <div className="App">
-      <h6>Navbar</h6>
       <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
+          <Route path="session" element={<Session />} />
         </Routes>
       </BrowserRouter>
-      <h6>Footer</h6>
     </div>
   );
 };
