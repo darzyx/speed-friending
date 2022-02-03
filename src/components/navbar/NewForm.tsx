@@ -32,7 +32,7 @@ const NewForm = () => {
 
   return (
     <div>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} inverted>
         <Form.Input
           name="name"
           placeholder="Session Name"
@@ -50,12 +50,10 @@ const NewForm = () => {
         <Form.Button content="Submit" />
       </Form>
       <Divider hidden />
-      <div style={{ color: "black" }}>
-        <strong>onChange:</strong>
-        <pre>{JSON.stringify({ name, number }, null, 2)}</pre>
-        <strong>onSubmit:</strong>
-        <pre>{JSON.stringify({ submittedName, submittedNumber }, null, 2)}</pre>
-      </div>
+      <strong>onChange:</strong>
+      <pre>{JSON.stringify({ name, number }, null, 2)}</pre>
+      <strong>onSubmit:</strong>
+      <pre>{JSON.stringify({ submittedName, submittedNumber }, null, 2)}</pre>
     </div>
   );
 };

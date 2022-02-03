@@ -17,8 +17,20 @@ const NewModal = ({ openNewModal, setOpenNewModal }: NewModalPropsType) => (
       </Button>
     }
   >
-    <Modal.Header>Create New Group Session</Modal.Header>
-    <Modal.Content image>
+    <Modal.Header
+      style={{
+        backgroundColor: "#1b1c1d",
+        color: "rgba(255, 255, 255, 0.9)",
+      }}
+    >
+      Create New Group Session
+    </Modal.Header>
+    <Modal.Content
+      style={{
+        backgroundColor: "#1b1c1d",
+        color: "rgba(255, 255, 255, 0.9)",
+      }}
+    >
       <NewForm />
     </Modal.Content>
   </Modal>
