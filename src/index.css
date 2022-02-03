@@ -4,13 +4,8 @@ body,
 .App {
   height: 100%;
   margin: 0;
-  box-sizing: border-box;
-}
-
-html,
-body,
-#root {
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -27,7 +22,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.App {
+.Main {
   padding: 20px;
 }
 
