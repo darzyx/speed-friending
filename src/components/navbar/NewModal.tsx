@@ -12,8 +12,9 @@ const NewModal = ({ openNewModal, setOpenNewModal }: NewModalPropsType) => (
     onOpen={() => setOpenNewModal(true)}
     open={openNewModal}
     trigger={
-      <Button inverted>
-        New <Icon name="plus" style={{ marginLeft: "5px" }} />
+      <Button icon floated="right" labelPosition="right" primary>
+        Create
+        <Icon name="plus" />
       </Button>
     }
   >
@@ -31,7 +32,7 @@ const NewModal = ({ openNewModal, setOpenNewModal }: NewModalPropsType) => (
         color: "rgba(255, 255, 255, 0.9)",
       }}
     >
-      <NewForm />
+      <NewForm setOpenNewModal={setOpenNewModal} />
     </Modal.Content>
   </Modal>
 );
