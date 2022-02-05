@@ -38,7 +38,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route index element={<Home sessions={sessions} />} />
-            <Route path="session" element={<Session />} />
+            <Route path="session/:id" element={<Session />} />
           </Routes>
         </BrowserRouter>
       </div>

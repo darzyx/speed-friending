@@ -1,37 +1,13 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 
-import { getGame, getColor } from "./utils";
-
-type ItemType = {
-  n: number;
-  round: number;
-  activeRound: number;
-  top?: boolean;
-};
-const Item = ({ n, round, activeRound, top }: ItemType) => (
-  <div
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      height: "100%",
-      minHeight: "50px",
-      width: "100%",
-      color: "black",
-      fontWeight: "bold",
-      fontSize: "20px",
-      backgroundColor: round === activeRound ? getColor(n) : "#222",
-      border: "2px solid black",
-      borderRadius: top ? "8px 8px 0 0" : "0 0 8px 8px",
-      boxSizing: "border-box",
-    }}
-  >
-    {n}
-  </div>
-);
+import ParticipantPosition from "./ParticipantPosition";
+import { getGame } from "./utils";
 
 const Session = () => {
+  const { id } = useParams();
+  console.log({ id });
+
   const [
     nParticipants,
     // setNParticipants
@@ -80,7 +56,7 @@ const Session = () => {
             <h2 style={{ marginBottom: "5px" }}>{`Round ${index + 1}`}</h2>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               {round.top.map((n, topIdx) => (
-                <Item
+                <ParticipantPosition
                   key={topIdx}
                   n={n}
                   round={index + 1}
@@ -91,7 +67,7 @@ const Session = () => {
             </div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               {round.btm.map((n, btmIdx) => (
-                <Item
+                <ParticipantPosition
                   key={btmIdx}
                   round={index + 1}
                   activeRound={activeRound}
