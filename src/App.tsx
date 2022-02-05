@@ -8,11 +8,18 @@ import { db } from "./firebase";
 import Home from "./pages/Home";
 import Session from "./pages/session/Session";
 
-type SessionsStateType = [DocumentData[], (arg: DocumentData[]) => void];
-const App = () => {
-  const [sessions, setSessions]: SessionsStateType = useState([{}]);
-  console.log({ sessions });
+// type SessionType = {
+//   id: string;
+//   name: string;
+//   total_participants: number;
+//   current_round: number;
+//   total_rounds: number;
+// };
 
+type SessionsUseStateType = [DocumentData[], (arg: DocumentData[]) => void];
+
+const App = () => {
+  const [sessions, setSessions]: SessionsUseStateType = useState([{}]);
   // Returns onSnapshot because return its value terminates listener
   useEffect(
     () =>
