@@ -5,6 +5,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,9 +23,9 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-console.log({ analytics });
+export const app = initializeApp(firebaseConfig);
+export const db = getFirestore();
+export const analytics = getAnalytics(app);
 
 ReactDOM.render(
   <React.StrictMode>
