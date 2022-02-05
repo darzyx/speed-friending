@@ -1,3 +1,4 @@
+import { DocumentData } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -10,14 +11,25 @@ const HomeContainer = styled.div`
   padding: 0;
 `;
 
-const Home = () => {
+const Home = ({ sessions }: { sessions: DocumentData[] }) => {
+  const hasSessions =
+    Array.isArray(sessions) &&
+    sessions.length > 0 &&
+    sessions[0].name &&
+    typeof sessions[0].name === "string";
   return (
     <HomeContainer>
       <h1>Speed Vibing</h1>
       <h3>Ongoing Sessions</h3>
-      <Link to="/session">Session A</Link>
-      <Link to="/session">Session B</Link>
-      <Link to="/session">Session C</Link>
+      {hasSessions ? (
+        sessions.map((session, index) => (
+          <Link to={`/session/${session.name}`} key={index}>
+            {session.name}
+          </Link>
+        ))
+      ) : (
+        <p>Loading...</p>
+      )}
     </HomeContainer>
   );
 };
