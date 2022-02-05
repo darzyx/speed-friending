@@ -1,4 +1,4 @@
-import { onSnapshot, collection, DocumentData } from "firebase/firestore";
+import { onSnapshot, collection, DocumentData, doc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
@@ -17,7 +17,9 @@ const App = () => {
   useEffect(
     () =>
       onSnapshot(collection(db, "sessions"), (snapshot) => {
-        setSessions(snapshot.docs.map((doc) => doc.data()));
+        setSessions(
+          snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+        );
       }),
     []
   );

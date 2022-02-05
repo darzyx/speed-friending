@@ -23,7 +23,7 @@ const Home = ({ sessions }: { sessions: DocumentData[] }) => {
       <h3>Ongoing Sessions</h3>
       {hasSessions ? (
         sessions.map((session, index) => (
-          <Link to={`/session/${session.name}`} key={index}>
+          <Link to={`/session/${session.id}`} key={index}>
             {session.name}
           </Link>
         ))
