@@ -1,4 +1,4 @@
-import { onSnapshot, collection, DocumentData, doc } from "firebase/firestore";
+import { onSnapshot, collection, DocumentData } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";

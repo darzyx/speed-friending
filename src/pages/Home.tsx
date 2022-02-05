@@ -22,8 +22,8 @@ const Home = ({ sessions }: { sessions: DocumentData[] }) => {
       <h1>Speed Vibing</h1>
       <h3>Ongoing Sessions</h3>
       {hasSessions ? (
-        sessions.map((session, index) => (
-          <Link to={`/session/${session.id}`} key={index}>
+        sessions.map((session) => (
+          <Link to={`/session/${session.id}`} key={session.id}>
             {session.name}
           </Link>
         ))
