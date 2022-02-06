@@ -1,4 +1,4 @@
-import { Button, Modal, Icon } from "semantic-ui-react";
+import { Button, Modal, Icon, Divider } from "semantic-ui-react";
 
 import NewForm from "./NewForm";
 
@@ -33,6 +33,7 @@ const NewModal = ({ openNewModal, setOpenNewModal }: NewModalPropsType) => (
       }}
     >
       <NewForm setOpenNewModal={setOpenNewModal} />
+      <Divider clearing hidden fitted />
     </Modal.Content>
   </Modal>
 );

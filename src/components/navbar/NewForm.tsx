@@ -1,12 +1,15 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { Form, Button, Icon, InputOnChangeData } from "semantic-ui-react";
+import { useNavigate } from "react-router-dom";
 
 import { db } from "../../firebase";
 import { SessionType } from "../../types/session";
 
 type NewFormPropsType = { setOpenNewModal: (openNewModal: boolean) => void };
 const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const handleChangeName = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -57,10 +60,11 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
       total_rounds: Number(totalRounds),
     };
 
-    await addDoc(collectionRef, payload);
+    const docRef = await addDoc(collectionRef, payload);
+    navigate(`/session/${docRef.id}`);
 
     setOpenNewModal(false);
-  }, [name, totalParticipants, totalRounds, setOpenNewModal]);
+  }, [name, totalParticipants, totalRounds, setOpenNewModal, navigate]);
   useEffect(() => {
     if (isSubmitting) handleSubmit();
   }, [isSubmitting, handleSubmit]);
