@@ -15,6 +15,10 @@ const StyledPagination = styled(Pagination)`
       color: white !important;
       background-color: black !important;
     }
+    .active.item {
+      color: black !important;
+      background-color: white !important;
+    }
   }
 `;
 
