@@ -17,7 +17,7 @@ const StyledPagination = styled(Pagination)`
     }
     .active.item {
       color: black !important;
-      background-color: white !important;
+      background-color: #222 !important;
     }
   }
 `;
@@ -79,7 +79,7 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
   if (isGettingSessions || !hasSession) {
     return (
       <Dimmer active>
-        <Loader size="big">Loading</Loader>
+        <Loader size="big">Loading...</Loader>
       </Dimmer>
     );
   }
@@ -122,7 +122,11 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
         </button>
       </div>
       <div style={{ margin: "20px" }}>
-        <h2 style={{ marginBottom: "5px" }}>{`Round ${selectedPage}`}</h2>
+        <h2 style={{ marginBottom: "5px" }}>
+          {`Round ${selectedPage} (${
+            selectedRoundIsActive ? "active" : "inactive"
+          })`}
+        </h2>
         <ParticipantPositionRow
           row={selectedRound.top.slice(0, selectedRound.top.length / 2)}
           selectedRoundIsActive={selectedRoundIsActive}
