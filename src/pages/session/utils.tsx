@@ -1,3 +1,13 @@
+export const getMaxRounds = (participant_count: number) => {
+  if (participant_count === 0 || participant_count === 1) {
+    return 0;
+  } else if (participant_count % 2 === 0) {
+    return participant_count - 1;
+  } else {
+    return participant_count;
+  }
+};
+
 type GameType = { [x: number]: { top: Array<number>; btm: Array<number> } };
 export const getGame = (nParticipants: number, maxRounds: number = 0) => {
   const game: GameType = {};

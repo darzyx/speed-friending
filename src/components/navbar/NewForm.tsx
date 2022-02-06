@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import { db } from "../../firebase";
 import { SessionType } from "../../types/session";
+import { getMaxRounds } from "../../pages/session/utils";
 
 type NewFormPropsType = { setOpenNewModal: (openNewModal: boolean) => void };
 const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
@@ -34,6 +35,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
     }
   };
 
+  const maxRounds = getMaxRounds(Number(participantCount));
   const [totalRounds, setTotalRounds] = useState("");
   const handleChangeTotalRounds = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -42,7 +44,8 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
     const numberValue = Number(value);
     if (
       typeof value === "string" &&
-      (!Number.isNaN(numberValue) || value === "")
+      (!Number.isNaN(numberValue) || value === "") &&
+      numberValue <= maxRounds
     ) {
       setTotalRounds(value);
     }
@@ -88,20 +91,23 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
             label="Session Name"
             value={name}
             onChange={handleChangeName}
+            required
           />
           <Form.Input
             name="participant_count"
-            placeholder="Number of Participants"
-            label="Number of Participants"
+            placeholder="Participant Count"
+            label="Participant Count"
             value={participantCount}
             onChange={handleChangeParticipantCount}
+            required
           />
           <Form.Input
             name="total_rounds"
-            placeholder="Number of Rounds"
-            label="Number of Rounds"
+            placeholder="Total Rounds"
+            label={`Total Rounds (Max ${maxRounds})`}
             value={totalRounds}
             onChange={handleChangeTotalRounds}
+            required
           />
           <Form.Input
             name="password"
@@ -109,6 +115,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
             label="Admin Password"
             value={password}
             onChange={handleChangePassword}
+            required
           />
         </Form.Group>
         <div>
