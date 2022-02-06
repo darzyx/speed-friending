@@ -14,8 +14,42 @@ import { SessionType } from "../../types/session";
 type NewFormPropsType = { setOpenNewModal: (openNewModal: boolean) => void };
 const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
   const [name, setName] = useState("");
+  const handleChangeName = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    { value }: InputOnChangeData
+  ) => {
+    if (typeof value === "string") {
+      setName(value);
+    }
+  };
+
   const [totalParticipants, setTotalParticipants] = useState("");
+  const handleChangeTotalParticipants = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    { value }: InputOnChangeData
+  ) => {
+    const numberValue = Number(value);
+    if (
+      typeof value === "string" &&
+      (!Number.isNaN(numberValue) || value === "")
+    ) {
+      setTotalParticipants(value);
+    }
+  };
+
   const [totalRounds, setTotalRounds] = useState("");
+  const handleChangeTotalRounds = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    { value }: InputOnChangeData
+  ) => {
+    const numberValue = Number(value);
+    if (
+      typeof value === "string" &&
+      (!Number.isNaN(numberValue) || value === "")
+    ) {
+      setTotalRounds(value);
+    }
+  };
 
   const handleSubmit = async () => {
     const id = "KSDHJS7S210SDCQ";
@@ -35,41 +69,6 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
     // Reset values
     setName("");
     setTotalParticipants("");
-  };
-
-  const handleChangeName = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    { value }: InputOnChangeData
-  ) => {
-    if (typeof value === "string") {
-      setName(value);
-    }
-  };
-
-  const handleChangeTotalParticipants = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    { value }: InputOnChangeData
-  ) => {
-    const numberValue = Number(value);
-    if (
-      typeof value === "string" &&
-      (!Number.isNaN(numberValue) || value === "")
-    ) {
-      setTotalParticipants(value);
-    }
-  };
-
-  const handleChangeTotalRounds = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    { value }: InputOnChangeData
-  ) => {
-    const numberValue = Number(value);
-    if (
-      typeof value === "string" &&
-      (!Number.isNaN(numberValue) || value === "")
-    ) {
-      setTotalRounds(value);
-    }
   };
 
   return (
