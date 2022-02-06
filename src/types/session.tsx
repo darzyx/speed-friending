@@ -1,7 +1,7 @@
 export type SessionType = {
   name: string;
   participant_count: number;
-  current_round: number;
+  active_round: number;
   total_rounds: number;
 };
 

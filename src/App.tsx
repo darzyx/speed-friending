@@ -13,7 +13,7 @@ export const initSession = {
   id: "",
   name: "",
   participant_count: 0,
-  current_round: 0,
+  active_round: 0,
   total_rounds: 0,
 };
 

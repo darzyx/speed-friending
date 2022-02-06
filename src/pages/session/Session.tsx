@@ -33,7 +33,7 @@ const ParticipantPositionRow = ({
         key={rowIndex}
         n={n}
         round={Number(selectedPage)}
-        currentRound={session.current_round}
+        activeRound={session.active_round}
         top={top}
       />
     ))}
