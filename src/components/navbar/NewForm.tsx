@@ -14,25 +14,27 @@ import { SessionType } from "../../types/session";
 type NewFormPropsType = { setOpenNewModal: (openNewModal: boolean) => void };
 const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
   const [name, setName] = useState("");
-  const [totalParticipants, setTotalParticipants] = useState(0);
-  const [totalRounds, setTotalRounds] = useState(0);
+  const [totalParticipants, setTotalParticipants] = useState("");
+  const [totalRounds, setTotalRounds] = useState("");
 
   const handleSubmit = async () => {
     const id = "KSDHJS7S210SDCQ";
     const docRef = doc(db, "sessions", id);
+
+    // TODO: validate types before submitting
     const payload: SessionType = {
       id,
       name,
-      total_participants: totalParticipants,
+      total_participants: Number(totalParticipants),
       current_round: 0,
-      total_rounds: totalRounds,
+      total_rounds: Number(totalRounds),
     };
 
     await setDoc(docRef, payload);
 
     // Reset values
     setName("");
-    setTotalParticipants(0);
+    setTotalParticipants("");
   };
 
   const handleChangeName = (
@@ -48,7 +50,11 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
     e: React.ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
   ) => {
-    if (typeof value === "number") {
+    const numberValue = Number(value);
+    if (
+      typeof value === "string" &&
+      (!Number.isNaN(numberValue) || value === "")
+    ) {
       setTotalParticipants(value);
     }
   };
@@ -57,7 +63,11 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
     e: React.ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
   ) => {
-    if (typeof value === "number") {
+    const numberValue = Number(value);
+    if (
+      typeof value === "string" &&
+      (!Number.isNaN(numberValue) || value === "")
+    ) {
       setTotalRounds(value);
     }
   };
@@ -79,8 +89,6 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
             label="Number of Participants"
             value={totalParticipants}
             onChange={handleChangeTotalParticipants}
-            type="number"
-            max={500}
           />
           <Form.Input
             name="total_rounds"
@@ -88,8 +96,6 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
             label="Number of Rounds"
             value={totalRounds}
             onChange={handleChangeTotalRounds}
-            type="number"
-            max={50}
           />
         </Form.Group>
         <div>
