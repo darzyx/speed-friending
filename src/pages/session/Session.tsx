@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Divider, Pagination } from "semantic-ui-react";
+import styled from "styled-components";
 
 import ParticipantPosition from "./ParticipantPosition";
 import { getGame } from "./utils";
 import { SessionWithIdType } from "../../types/session";
 import { initSession } from "../../App";
-import { Divider } from "semantic-ui-react";
+
+const StyledPagination = styled(Pagination)`
+  &&&& {
+    * {
+      color: white !important;
+    }
+  }
+`;
 
 const ParticipantPositionRow = ({
   row,
@@ -36,6 +45,7 @@ const Session = ({ sessions }: SessionPropsType) => {
   const { id } = useParams();
 
   const [session, setSession] = useState(initSession);
+  const hasSession = session?.name?.length > 0;
   useEffect(() => {
     const foundSession = sessions.find((s) => s.id === id);
     if (foundSession) {
@@ -43,13 +53,21 @@ const Session = ({ sessions }: SessionPropsType) => {
     }
   }, [id, sessions]);
 
-  const hasSession = session?.name?.length > 0;
-
-  const game = getGame(session.participant_count, session.total_rounds);
+  const [currentPage, setCurrentPage] = useState(
+    session.current_round.toString()
+  );
+  const handlePageChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    { activePage }: { activePage: string }
+  ) => {
+    setCurrentPage(activePage);
+  };
 
   if (!hasSession) {
     return <p>Loading...</p>;
   }
+
+  const game = getGame(session.participant_count, session.total_rounds);
 
   return (
     <div>
@@ -114,6 +132,21 @@ const Session = ({ sessions }: SessionPropsType) => {
           </div>
         );
       })}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <StyledPagination
+          activePage={currentPage}
+          onPageChange={handlePageChange}
+          totalPages={session.total_rounds}
+          pointing
+          secondary
+        />
+      </div>
     </div>
   );
 };
