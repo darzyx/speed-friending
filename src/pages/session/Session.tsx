@@ -107,18 +107,6 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
         <h3 style={{ marginTop: "0", color: "#a9a9a9" }}>
           {`active round: ${session.active_round}`}
         </h3>
-        <button
-          style={{
-            padding: "8px 12px",
-            fontWeight: "bold",
-            borderRadius: "8px",
-            textTransform: "uppercase",
-            backgroundColor: "#a9a9a9",
-            cursor: "pointer",
-          }}
-        >
-          Click to Enter Number
-        </button>
       </div>
       <div style={{ margin: "20px" }}>
         <h2 style={{ marginBottom: "5px" }}>
