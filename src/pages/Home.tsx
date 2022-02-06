@@ -16,7 +16,7 @@ const Home = ({ sessions }: HomePropsType) => {
   const hasSessions = Array.isArray(sessions) && sessions[0]?.name?.length > 0;
   return (
     <HomeContainer>
-      <h1>Speed Vibing</h1>
+      <h1>Speed Friending</h1>
       <h3>Ongoing Sessions</h3>
       {hasSessions ? (
         sessions.map((session) => (
