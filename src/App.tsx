@@ -6,9 +6,12 @@ import Navbar from "./components/navbar/Navbar";
 import { db } from "./firebase";
 import Home from "./pages/Home";
 import Session from "./pages/session/Session";
-import { SessionType } from "./types/session";
+import { SessionWithIdType } from "./types/session";
 
-type SessionsUseStateType = [SessionType[], (arg: SessionType[]) => void];
+type SessionsUseStateType = [
+  SessionWithIdType[],
+  (arg: SessionWithIdType[]) => void
+];
 
 export const initSession = {
   id: "",
@@ -27,7 +30,7 @@ const App = () => {
         const returnedSessions = snapshot.docs.map((doc) => ({
           ...doc.data(),
           id: doc.id,
-        })) as SessionType[]; // Assumes fetched data is good
+        })) as SessionWithIdType[]; // Assumes fetched data is good
         setSessions(returnedSessions);
       }),
     []

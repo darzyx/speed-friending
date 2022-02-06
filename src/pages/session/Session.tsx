@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 
 import ParticipantPosition from "./ParticipantPosition";
 import { getGame } from "./utils";
-import { SessionType } from "../../types/session";
+import { SessionWithIdType } from "../../types/session";
 import { initSession } from "../../App";
 
-type SessionPropsType = { sessions: SessionType[] };
+type SessionPropsType = { sessions: SessionWithIdType[] };
 
 const Session = ({ sessions }: SessionPropsType) => {
   const { id } = useParams();

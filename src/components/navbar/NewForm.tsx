@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { doc, setDoc } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import {
   Form,
   Button,
@@ -52,19 +52,17 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
   };
 
   const handleSubmit = async () => {
-    const id = "KSDHJS7S210SDCQ";
-    const docRef = doc(db, "sessions", id);
+    const collectionRef = collection(db, "sessions");
 
     // TODO: validate types before submitting
     const payload: SessionType = {
-      id,
       name,
       total_participants: Number(totalParticipants),
       current_round: 0,
       total_rounds: Number(totalRounds),
     };
 
-    await setDoc(docRef, payload);
+    await addDoc(collectionRef, payload);
 
     // Reset values
     setName("");
