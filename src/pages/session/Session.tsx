@@ -19,12 +19,12 @@ const StyledPagination = styled(Pagination)`
 const ParticipantPositionRow = ({
   row,
   session,
-  index,
+  selectedPage,
   top,
 }: {
   row: number[];
   session: SessionWithIdType;
-  index: number;
+  selectedPage: string;
   top: boolean;
 }) => (
   <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -32,7 +32,7 @@ const ParticipantPositionRow = ({
       <ParticipantPosition
         key={rowIndex}
         n={n}
-        round={index + 1}
+        round={Number(selectedPage)}
         currentRound={session.current_round}
         top={top}
       />
@@ -53,14 +53,12 @@ const Session = ({ sessions }: SessionPropsType) => {
     }
   }, [id, sessions]);
 
-  const [currentPage, setCurrentPage] = useState(
-    session.current_round.toString()
-  );
+  const [selectedPage, setSelectedPage] = useState("1");
   const handlePageChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     { activePage }: { activePage: string }
   ) => {
-    setCurrentPage(activePage);
+    setSelectedPage(activePage);
   };
 
   if (!hasSession) {
@@ -68,6 +66,7 @@ const Session = ({ sessions }: SessionPropsType) => {
   }
 
   const game = getGame(session.participant_count, session.total_rounds);
+  const selectedRound = Object.values(game)[Number(selectedPage) - 1];
 
   return (
     <div>
@@ -99,39 +98,41 @@ const Session = ({ sessions }: SessionPropsType) => {
           Click to Enter Number
         </button>
       </div>
-      {Object.values(game).map((round, index) => {
-        return (
-          <div style={{ margin: "20px" }} key={index}>
-            <h2 style={{ marginBottom: "5px" }}>{`Round ${index + 1}`}</h2>
-            <ParticipantPositionRow
-              row={round.top.slice(0, round.top.length / 2)}
-              session={session}
-              index={index}
-              top={true}
-            />
-            <ParticipantPositionRow
-              row={round.btm.slice(0, round.top.length / 2)}
-              session={session}
-              index={index}
-              top={false}
-            />
-            <Divider hidden />
-            <ParticipantPositionRow
-              row={round.top.slice(round.top.length / 2, round.top.length)}
-              session={session}
-              index={index}
-              top={true}
-            />
-            <ParticipantPositionRow
-              row={round.btm.slice(round.btm.length / 2, round.btm.length)}
-              session={session}
-              index={index}
-              top={false}
-            />
-            <Divider hidden />
-          </div>
-        );
-      })}
+      <div style={{ margin: "20px" }}>
+        <h2 style={{ marginBottom: "5px" }}>{`Round ${selectedPage}`}</h2>
+        <ParticipantPositionRow
+          row={selectedRound.top.slice(0, selectedRound.top.length / 2)}
+          session={session}
+          selectedPage={selectedPage}
+          top={true}
+        />
+        <ParticipantPositionRow
+          row={selectedRound.btm.slice(0, selectedRound.top.length / 2)}
+          session={session}
+          selectedPage={selectedPage}
+          top={false}
+        />
+        <Divider hidden />
+        <ParticipantPositionRow
+          row={selectedRound.top.slice(
+            selectedRound.top.length / 2,
+            selectedRound.top.length
+          )}
+          session={session}
+          selectedPage={selectedPage}
+          top={true}
+        />
+        <ParticipantPositionRow
+          row={selectedRound.btm.slice(
+            selectedRound.btm.length / 2,
+            selectedRound.btm.length
+          )}
+          session={session}
+          selectedPage={selectedPage}
+          top={false}
+        />
+        <Divider hidden />
+      </div>
       <div
         style={{
           display: "flex",
@@ -140,7 +141,7 @@ const Session = ({ sessions }: SessionPropsType) => {
         }}
       >
         <StyledPagination
-          activePage={currentPage}
+          activePage={selectedPage}
           onPageChange={handlePageChange}
           totalPages={session.total_rounds}
           pointing
