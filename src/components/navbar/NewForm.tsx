@@ -48,6 +48,16 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
     }
   };
 
+  const [password, setPassword] = useState("");
+  const handleChangePassword = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    { value }: InputOnChangeData
+  ) => {
+    if (typeof value === "string") {
+      setPassword(value);
+    }
+  };
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const handleSubmit = async () => {
     setIsSubmitting(true);
@@ -92,6 +102,13 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
             label="Number of Rounds"
             value={totalRounds}
             onChange={handleChangeTotalRounds}
+          />
+          <Form.Input
+            name="password"
+            placeholder="Admin Password"
+            label="Admin Password"
+            value={password}
+            onChange={handleChangePassword}
           />
         </Form.Group>
         <div>
