@@ -1,5 +1,5 @@
 import { Location } from "react-router-dom";
-import { Modal, Divider, Icon, Button } from "semantic-ui-react";
+import { Modal, Divider } from "semantic-ui-react";
 
 import NewForm from "./NewForm";
 
@@ -17,11 +17,6 @@ const NewModal = ({
     onClose={() => setOpenNewModal(false)}
     onOpen={() => setOpenNewModal(true)}
     open={openNewModal}
-    trigger={
-      <Button icon labelPosition="right" primary>
-        Create <Icon name="plus" />
-      </Button>
-    }
   >
     <Modal.Header
       style={{

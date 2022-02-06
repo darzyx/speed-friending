@@ -1,4 +1,4 @@
-import { Button, Icon, Menu } from "semantic-ui-react";
+import { Icon, Menu } from "semantic-ui-react";
 import { Link, Location, useLocation } from "react-router-dom";
 
 import NewModal from "./NewModal";
@@ -12,16 +12,15 @@ const Navbar = ({ openNewModal, setOpenNewModal }: NavbarPropsType) => {
 
   return (
     <Menu inverted secondary>
-      <Button
+      <Menu.Item
         as={Link}
         to="/"
-        icon
-        labelPosition="left"
+        name="home"
         active={location.pathname === "/"}
-        color="grey"
       >
         <Icon name="home" /> Home
-      </Button>
+      </Menu.Item>
+
       <Menu.Menu position="right">
         <NewModal
           openNewModal={openNewModal}
