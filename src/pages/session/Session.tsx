@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Dimmer, Divider, Loader, Pagination } from "semantic-ui-react";
+import { Dimmer, Divider, Icon, Loader, Pagination } from "semantic-ui-react";
 import styled from "styled-components";
 
 import ParticipantPosition from "./ParticipantPosition";
@@ -16,6 +16,15 @@ const StyledPagination = styled(Pagination)`
       background-color: black !important;
     }
   }
+`;
+
+const LinkButton = styled.button`
+  background: none;
+  border: none;
+  margin-top: 10px;
+  padding: 0;
+  color: #00aaff;
+  cursor: pointer;
 `;
 
 const ParticipantPositionRow = ({
@@ -148,6 +157,7 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
       <div
         style={{
           display: "flex",
+          flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
         }}
@@ -162,6 +172,18 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
           lastItem={null}
           siblingRange={1}
         />
+        <LinkButton
+          onClick={() => setSelectedPage(session.active_round.toString())}
+        >
+          Go to Active Round{" "}
+          <Icon
+            name={
+              session.active_round === Number(selectedPage)
+                ? "check circle outline"
+                : "arrow alternate circle right outline"
+            }
+          />
+        </LinkButton>
       </div>
     </div>
   );
