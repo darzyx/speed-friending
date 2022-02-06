@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { doc, setDoc } from "firebase/firestore";
 import {
   Form,
   Button,
@@ -6,34 +7,59 @@ import {
   InputOnChangeData,
   Divider,
 } from "semantic-ui-react";
+
+import { db } from "../../firebase";
+import { SessionType } from "../../types/session";
+
 type NewFormPropsType = { setOpenNewModal: (openNewModal: boolean) => void };
 const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
   const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
-  const [submittedName, setSubmittedName] = useState("");
-  const [submittedNumber, setSubmittedNumber] = useState("");
+  const [totalParticipants, setTotalParticipants] = useState(0);
+  const [totalRounds, setTotalRounds] = useState(0);
 
-  const handleSubmit = () => {
-    setSubmittedName(name);
-    setSubmittedNumber(number);
+  const handleSubmit = async () => {
+    const id = "KSDHJS7S210SDCQ";
+    const docRef = doc(db, "sessions", id);
+    const payload: SessionType = {
+      id,
+      name,
+      total_participants: totalParticipants,
+      current_round: 0,
+      total_rounds: totalRounds,
+    };
+
+    await setDoc(docRef, payload);
 
     // Reset values
     setName("");
-    setNumber("");
+    setTotalParticipants(0);
   };
 
   const handleChangeName = (
     e: React.ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
   ) => {
-    setName(value);
+    if (typeof value === "string") {
+      setName(value);
+    }
   };
 
-  const handleChangeNumber = (
+  const handleChangeTotalParticipants = (
     e: React.ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
   ) => {
-    setNumber(value);
+    if (typeof value === "number") {
+      setTotalParticipants(value);
+    }
+  };
+
+  const handleChangeTotalRounds = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    { value }: InputOnChangeData
+  ) => {
+    if (typeof value === "number") {
+      setTotalRounds(value);
+    }
   };
 
   return (
@@ -48,11 +74,22 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
             onChange={handleChangeName}
           />
           <Form.Input
-            name="number"
+            name="total_participants"
             placeholder="Number of Participants"
             label="Number of Participants"
-            value={number}
-            onChange={handleChangeNumber}
+            value={totalParticipants}
+            onChange={handleChangeTotalParticipants}
+            type="number"
+            max={500}
+          />
+          <Form.Input
+            name="total_rounds"
+            placeholder="Number of Rounds"
+            label="Number of Rounds"
+            value={totalRounds}
+            onChange={handleChangeTotalRounds}
+            type="number"
+            max={50}
           />
         </Form.Group>
         <div>
@@ -71,9 +108,9 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
       </Form>
       <Divider clearing hidden />
       <strong>onChange:</strong>
-      <pre>{JSON.stringify({ name, number }, null, 2)}</pre>
-      <strong>onSubmit:</strong>
-      <pre>{JSON.stringify({ submittedName, submittedNumber }, null, 2)}</pre>
+      <pre>
+        {JSON.stringify({ name, totalParticipants, totalRounds }, null, 2)}
+      </pre>
     </div>
   );
 };
