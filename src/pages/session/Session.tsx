@@ -4,16 +4,9 @@ import { useParams } from "react-router-dom";
 import ParticipantPosition from "./ParticipantPosition";
 import { getGame } from "./utils";
 import { SessionType } from "../../types/session";
+import { initSession } from "../../App";
 
 type SessionPropsType = { sessions: SessionType[] };
-
-const initSession = {
-  id: "",
-  name: "",
-  total_participants: 0,
-  current_round: 0,
-  total_rounds: 0,
-};
 
 const Session = ({ sessions }: SessionPropsType) => {
   const { id } = useParams();

@@ -1,23 +1,33 @@
 import { useState } from "react";
 import { Menu } from "semantic-ui-react";
+import { Link, useLocation } from "react-router-dom";
 
+import { SessionType } from "../../types/session";
 import NewModal from "./NewModal";
 
-const Navbar = () => {
+type NavbarPropsType = { userSession: SessionType };
+const Navbar = ({ userSession }: NavbarPropsType) => {
+  const location = useLocation();
   const [openNewModal, setOpenNewModal] = useState(false);
+
+  const hasUserSession = userSession?.id?.length > 0;
 
   return (
     <Menu secondary inverted>
       <Menu.Item
+        as={Link}
         name="home"
-        active={false}
-        onClick={() => console.log("clicked")}
+        to="/"
+        active={location.pathname === "/"}
       />
-      <Menu.Item
-        name="my session"
-        active={false}
-        onClick={() => console.log("clicked")}
-      />
+      {hasUserSession && (
+        <Menu.Item
+          as={Link}
+          name="my session"
+          to="/"
+          active={location.pathname === "/"}
+        />
+      )}
       <Menu.Menu position="right">
         <Menu.Item>
           <NewModal

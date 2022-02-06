@@ -10,7 +10,7 @@ import { SessionType } from "./types/session";
 
 type SessionsUseStateType = [SessionType[], (arg: SessionType[]) => void];
 
-const initSession = {
+export const initSession = {
   id: "",
   name: "",
   total_participants: 0,
@@ -33,11 +33,16 @@ const App = () => {
     []
   );
 
+  const [
+    userSession,
+    // setUserSession
+  ] = useState(initSession);
+
   return (
     <div className="App">
       <div className="Main">
-        <Navbar />
         <BrowserRouter>
+          <Navbar userSession={userSession} />
           <Routes>
             <Route index element={<Home sessions={sessions} />} />
             <Route
