@@ -7,6 +7,8 @@ import { db } from "../../firebase";
 import { SessionType } from "../../types/session";
 import { getMaxRounds } from "../../pages/session/utils";
 
+const maxParticipants = 30;
+
 type NewFormPropsType = { setOpenNewModal: (openNewModal: boolean) => void };
 const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
   const navigate = useNavigate();
@@ -29,7 +31,8 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
     const numberValue = Number(value);
     if (
       typeof value === "string" &&
-      (!Number.isNaN(numberValue) || value === "")
+      (!Number.isNaN(numberValue) || value === "") &&
+      numberValue <= maxParticipants
     ) {
       setParticipantCount(value);
     }
@@ -96,7 +99,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
           <Form.Input
             name="participant_count"
             placeholder="Participant Count"
-            label="Participant Count"
+            label={`Participant Count (max ${maxParticipants})`}
             value={participantCount}
             onChange={handleChangeParticipantCount}
             required
@@ -104,7 +107,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
           <Form.Input
             name="total_rounds"
             placeholder="Total Rounds"
-            label={`Total Rounds (Max ${maxRounds})`}
+            label={`Total Rounds (max ${maxRounds})`}
             value={totalRounds}
             onChange={handleChangeTotalRounds}
             required
