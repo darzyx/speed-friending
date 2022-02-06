@@ -98,6 +98,7 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          textAlign: "center",
         }}
       >
         <h1 style={{ marginBottom: "0" }}>{session.name}</h1>
@@ -118,6 +119,7 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            textAlign: "center",
           }}
         >
           <h2 style={{ marginBottom: "5px" }}>
