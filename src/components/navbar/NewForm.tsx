@@ -7,6 +7,7 @@ import { db } from "../../firebase";
 import { SessionType } from "../../types/session";
 import { getMaxRounds } from "../../pages/session/utils";
 
+const maxNameLength = 30;
 const maxParticipants = 30;
 
 type NewFormPropsType = { setOpenNewModal: (openNewModal: boolean) => void };
@@ -18,7 +19,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
     e: React.ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
   ) => {
-    if (typeof value === "string") {
+    if (typeof value === "string" && value.length <= maxNameLength) {
       setName(value);
     }
   };
@@ -91,7 +92,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
           <Form.Input
             name="name"
             placeholder="Session Name"
-            label="Session Name"
+            label={`Session Name (max ${maxNameLength})`}
             value={name}
             onChange={handleChangeName}
             required
