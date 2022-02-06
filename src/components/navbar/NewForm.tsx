@@ -1,12 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
-import {
-  Form,
-  Button,
-  Icon,
-  InputOnChangeData,
-  Divider,
-} from "semantic-ui-react";
+import { Form, Button, Icon, InputOnChangeData } from "semantic-ui-react";
 
 import { db } from "../../firebase";
 import { SessionType } from "../../types/session";
@@ -119,11 +113,6 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
           </Button>
         </div>
       </Form>
-      <Divider clearing hidden />
-      <strong>onChange:</strong>
-      <pre>
-        {JSON.stringify({ name, totalParticipants, totalRounds }, null, 2)}
-      </pre>
     </div>
   );
 };
