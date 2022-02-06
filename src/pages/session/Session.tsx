@@ -1,12 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import ParticipantPosition from "./ParticipantPosition";
 import { getGame } from "./utils";
+import { SessionType } from "../../types/session";
 
-const Session = () => {
+type SessionPropsType = { sessions: SessionType[] };
+
+const initSession = {
+  id: "",
+  name: "",
+  total_participants: 0,
+  current_round: 0,
+  total_rounds: 0,
+};
+
+const Session = ({ sessions }: SessionPropsType) => {
   const { id } = useParams();
-  console.log({ id });
+
+  const [session, setSession] = useState(initSession);
+  useEffect(() => {
+    const foundSession = sessions.find((s) => s.id === id);
+    if (foundSession) {
+      setSession(foundSession);
+    }
+  }, [id, sessions]);
+
+  const hasSession = session?.name?.length > 0;
+
+  if (hasSession) console.log({ session });
 
   const [
     nParticipants,

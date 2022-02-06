@@ -11,12 +11,9 @@ const HomeContainer = styled.div`
   padding: 0;
 `;
 
-const Home = ({ sessions }: { sessions: DocumentData[] }) => {
-  const hasSessions =
-    Array.isArray(sessions) &&
-    sessions.length > 0 &&
-    sessions[0].name &&
-    typeof sessions[0].name === "string";
+type HomePropsType = { sessions: DocumentData[] };
+const Home = ({ sessions }: HomePropsType) => {
+  const hasSessions = Array.isArray(sessions) && sessions[0]?.name?.length > 0;
   return (
     <HomeContainer>
       <h1>Speed Vibing</h1>
