@@ -25,10 +25,12 @@ const StyledPagination = styled(Pagination)`
 const LinkButton = styled.button`
   background: none;
   border: none;
-  margin-top: 10px;
+  margin-top: 20px;
   padding: 0;
   color: #00aaff;
   cursor: pointer;
+  font-size: 16px;
+  outline: none;
 `;
 
 const ParticipantPositionRow = ({
