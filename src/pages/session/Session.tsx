@@ -11,10 +11,12 @@ const ParticipantPositionRow = ({
   row,
   session,
   index,
+  top,
 }: {
   row: number[];
   session: SessionWithIdType;
   index: number;
+  top: boolean;
 }) => (
   <div style={{ display: "flex", justifyContent: "space-between" }}>
     {row.map((n, rowIndex) => (
@@ -23,7 +25,7 @@ const ParticipantPositionRow = ({
         n={n}
         round={index + 1}
         currentRound={session.current_round}
-        top
+        top={top}
       />
     ))}
   </div>
@@ -84,22 +86,26 @@ const Session = ({ sessions }: SessionPropsType) => {
               row={round.top.slice(0, round.top.length / 2)}
               session={session}
               index={index}
+              top={true}
             />
             <ParticipantPositionRow
               row={round.btm.slice(0, round.top.length / 2)}
               session={session}
               index={index}
+              top={false}
             />
             <Divider hidden />
             <ParticipantPositionRow
               row={round.top.slice(round.top.length / 2, round.top.length)}
               session={session}
               index={index}
+              top={true}
             />
             <ParticipantPositionRow
               row={round.btm.slice(round.btm.length / 2, round.btm.length)}
               session={session}
               index={index}
+              top={false}
             />
             <Divider hidden />
           </div>
