@@ -16,7 +16,6 @@ const StyledPagination = styled(Pagination)`
       background-color: black !important;
     }
     .active.item {
-      color: black !important;
       background-color: #222 !important;
     }
   }
