@@ -4,15 +4,12 @@ import { getColor } from "./utils";
 
 type ParticipantPositionPropsType = {
   n: number;
-  round: number;
-  activeRound: number;
+  selectedRoundIsActive: boolean;
   top?: boolean;
 };
-
 const ParticipantPosition = ({
   n,
-  round,
-  activeRound,
+  selectedRoundIsActive,
   top,
 }: ParticipantPositionPropsType) => (
   <div
@@ -24,10 +21,10 @@ const ParticipantPosition = ({
       height: "100%",
       minHeight: "50px",
       width: "100%",
-      color: "black",
+      color: selectedRoundIsActive ? "black" : "white",
       fontWeight: "bold",
       fontSize: "20px",
-      backgroundColor: round === activeRound ? getColor(n) : "#222",
+      backgroundColor: selectedRoundIsActive ? getColor(n) : "#222",
       border: "2px solid black",
       borderRadius: top ? "8px 8px 0 0" : "0 0 8px 8px",
       boxSizing: "border-box",

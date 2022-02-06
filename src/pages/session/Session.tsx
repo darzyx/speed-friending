@@ -33,13 +33,11 @@ const LinkButton = styled.button`
 
 const ParticipantPositionRow = ({
   row,
-  session,
-  selectedPage,
+  selectedRoundIsActive,
   top,
 }: {
   row: number[];
-  session: SessionWithIdType;
-  selectedPage: string;
+  selectedRoundIsActive: boolean;
   top: boolean;
 }) => (
   <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -47,8 +45,7 @@ const ParticipantPositionRow = ({
       <ParticipantPosition
         key={rowIndex}
         n={n}
-        round={Number(selectedPage)}
-        activeRound={session.active_round}
+        selectedRoundIsActive={selectedRoundIsActive}
         top={top}
       />
     ))}
@@ -89,6 +86,7 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
 
   const game = getGame(session.participant_count, session.total_rounds);
   const selectedRound = Object.values(game)[Number(selectedPage) - 1];
+  const selectedRoundIsActive = session?.active_round === Number(selectedPage);
 
   return (
     <div>
@@ -127,14 +125,12 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
         <h2 style={{ marginBottom: "5px" }}>{`Round ${selectedPage}`}</h2>
         <ParticipantPositionRow
           row={selectedRound.top.slice(0, selectedRound.top.length / 2)}
-          session={session}
-          selectedPage={selectedPage}
+          selectedRoundIsActive={selectedRoundIsActive}
           top={true}
         />
         <ParticipantPositionRow
           row={selectedRound.btm.slice(0, selectedRound.top.length / 2)}
-          session={session}
-          selectedPage={selectedPage}
+          selectedRoundIsActive={selectedRoundIsActive}
           top={false}
         />
         <Divider hidden />
@@ -143,8 +139,7 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
             selectedRound.top.length / 2,
             selectedRound.top.length
           )}
-          session={session}
-          selectedPage={selectedPage}
+          selectedRoundIsActive={selectedRoundIsActive}
           top={true}
         />
         <ParticipantPositionRow
@@ -152,8 +147,7 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
             selectedRound.btm.length / 2,
             selectedRound.btm.length
           )}
-          session={session}
-          selectedPage={selectedPage}
+          selectedRoundIsActive={selectedRoundIsActive}
           top={false}
         />
         <Divider hidden />
@@ -182,7 +176,7 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
           Go to Active Round{" "}
           <Icon
             name={
-              session.active_round === Number(selectedPage)
+              selectedRoundIsActive
                 ? "check circle outline"
                 : "arrow alternate circle right outline"
             }
