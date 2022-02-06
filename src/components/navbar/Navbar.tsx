@@ -1,46 +1,33 @@
-import { Menu } from "semantic-ui-react";
-import { Link, useLocation } from "react-router-dom";
+import { Button, Icon, Menu } from "semantic-ui-react";
+import { Link, Location, useLocation } from "react-router-dom";
 
-import { SessionWithIdType } from "../../types/session";
 import NewModal from "./NewModal";
 
 type NavbarPropsType = {
-  userSession: SessionWithIdType;
   openNewModal: boolean;
   setOpenNewModal: (arg: boolean) => void;
 };
-const Navbar = ({
-  userSession,
-  openNewModal,
-  setOpenNewModal,
-}: NavbarPropsType) => {
-  const location = useLocation();
-
-  const hasUserSession = userSession?.id?.length > 0;
+const Navbar = ({ openNewModal, setOpenNewModal }: NavbarPropsType) => {
+  const location: Location = useLocation();
 
   return (
-    <Menu secondary inverted>
-      <Menu.Item
+    <Menu inverted secondary>
+      <Button
         as={Link}
-        name="home"
         to="/"
+        icon
+        labelPosition="left"
         active={location.pathname === "/"}
-      />
-      {hasUserSession && (
-        <Menu.Item
-          as={Link}
-          name="my session"
-          to="/"
-          active={location.pathname === "/"}
-        />
-      )}
+        color="grey"
+      >
+        <Icon name="home" /> Home
+      </Button>
       <Menu.Menu position="right">
-        <Menu.Item>
-          <NewModal
-            openNewModal={openNewModal}
-            setOpenNewModal={setOpenNewModal}
-          />
-        </Menu.Item>
+        <NewModal
+          openNewModal={openNewModal}
+          setOpenNewModal={setOpenNewModal}
+          location={location}
+        />
       </Menu.Menu>
     </Menu>
   );

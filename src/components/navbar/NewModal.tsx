@@ -1,20 +1,25 @@
-import { Button, Modal, Icon, Divider } from "semantic-ui-react";
+import { Location } from "react-router-dom";
+import { Modal, Divider, Icon, Button } from "semantic-ui-react";
 
 import NewForm from "./NewForm";
 
 type NewModalPropsType = {
+  location: Location;
   openNewModal: boolean;
   setOpenNewModal: (openNewModal: boolean) => void;
 };
-const NewModal = ({ openNewModal, setOpenNewModal }: NewModalPropsType) => (
+const NewModal = ({
+  location,
+  openNewModal,
+  setOpenNewModal,
+}: NewModalPropsType) => (
   <Modal
     onClose={() => setOpenNewModal(false)}
     onOpen={() => setOpenNewModal(true)}
     open={openNewModal}
     trigger={
-      <Button icon floated="right" labelPosition="right" primary>
-        Create
-        <Icon name="plus" />
+      <Button icon labelPosition="right" primary>
+        Create <Icon name="plus" />
       </Button>
     }
   >

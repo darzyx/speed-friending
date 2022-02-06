@@ -43,11 +43,6 @@ const App = () => {
     []
   );
 
-  const [
-    userSession,
-    // setUserSession
-  ] = useState(initSession);
-
   const [openNewModal, setOpenNewModal] = useState(false);
 
   return (
@@ -55,7 +50,6 @@ const App = () => {
       <div className="Main">
         <BrowserRouter>
           <Navbar
-            userSession={userSession}
             openNewModal={openNewModal}
             setOpenNewModal={setOpenNewModal}
           />
