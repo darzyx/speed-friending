@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Divider, Pagination } from "semantic-ui-react";
+import { Dimmer, Divider, Loader, Pagination } from "semantic-ui-react";
 import styled from "styled-components";
 
 import ParticipantPosition from "./ParticipantPosition";
@@ -40,8 +40,11 @@ const ParticipantPositionRow = ({
   </div>
 );
 
-type SessionPropsType = { sessions: SessionWithIdType[] };
-const Session = ({ sessions }: SessionPropsType) => {
+type SessionPropsType = {
+  sessions: SessionWithIdType[];
+  isGettingSessions: boolean;
+};
+const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
   const { id } = useParams();
 
   const [session, setSession] = useState(initSession);
@@ -61,8 +64,12 @@ const Session = ({ sessions }: SessionPropsType) => {
     setSelectedPage(activePage);
   };
 
-  if (!hasSession) {
-    return <p>Loading...</p>;
+  if (isGettingSessions || !hasSession) {
+    return (
+      <Dimmer active>
+        <Loader size="big">Loading</Loader>
+      </Dimmer>
+    );
   }
 
   const game = getGame(session.participant_count, session.total_rounds);

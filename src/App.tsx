@@ -68,7 +68,12 @@ const App = () => {
             />
             <Route
               path="session/:id"
-              element={<Session sessions={sessions} />}
+              element={
+                <Session
+                  sessions={sessions}
+                  isGettingSessions={isGettingSessions}
+                />
+              }
             />
           </Routes>
           <Divider hidden />

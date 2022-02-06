@@ -1,7 +1,7 @@
 import { DocumentData } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Icon, Segment } from "semantic-ui-react";
+import { Icon, Loader, Segment } from "semantic-ui-react";
 
 const HomeContainer = styled.div`
   display: flex;
@@ -51,7 +51,7 @@ const Home = ({
         disabled={isGettingSessions}
       >
         {isGettingSessions ? (
-          <Icon name="circle notch" loading />
+          <Loader active inline="centered" size="tiny" />
         ) : (
           <>
             <Icon name="plus" />
