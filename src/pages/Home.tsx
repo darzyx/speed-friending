@@ -28,40 +28,36 @@ const Home = ({
     <HomeContainer>
       <h1>✨ Speed Friending 🏕️</h1>
       <h3>Ongoing Sessions</h3>
-      {isGettingSessions ? (
-        <p>Loading...</p>
-      ) : (
-        <div>
-          {hasAnySessions ? (
-            sessions.map((session) => (
-              <Segment
-                inverted
-                raised
-                as={Link}
-                to={`/session/${session.id}`}
-                key={session.id}
-                style={{ width: "100%", maxWidth: "600px" }}
-                textAlign="center"
-              >
-                {session.name}
-              </Segment>
-            ))
-          ) : (
-            <p>No active sessions.</p>
-          )}
-        </div>
-      )}
-      {!isGettingSessions && (
-        <Segment
-          inverted
-          raised
-          style={{ width: "100%", maxWidth: "600px", cursor: "pointer" }}
-          textAlign="center"
-          onClick={() => setOpenNewModal(true)}
-        >
-          <Icon name="plus" />
-        </Segment>
-      )}
+      {hasAnySessions &&
+        sessions.map((session) => (
+          <Segment
+            inverted
+            raised
+            as={Link}
+            to={`/session/${session.id}`}
+            key={session.id}
+            style={{ width: "100%", maxWidth: "600px" }}
+            textAlign="center"
+          >
+            {session.name}
+          </Segment>
+        ))}
+      <Segment
+        inverted
+        raised
+        style={{ width: "100%", maxWidth: "600px", cursor: "pointer" }}
+        textAlign="center"
+        onClick={isGettingSessions ? null : () => setOpenNewModal(true)}
+        disabled={isGettingSessions}
+      >
+        {isGettingSessions ? (
+          <Icon name="circle notch" loading />
+        ) : (
+          <>
+            <Icon name="plus" />
+          </>
+        )}
+      </Segment>
     </HomeContainer>
   );
 };
