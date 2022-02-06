@@ -112,11 +112,20 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
         </h3>
       </div>
       <div style={{ margin: "20px" }}>
-        <h2 style={{ marginBottom: "5px" }}>
-          {`Round ${selectedPage} (${
-            selectedRoundIsActive ? "active" : "inactive"
-          })`}
-        </h2>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <h2 style={{ marginBottom: "5px" }}>
+            {`Round ${selectedPage} (${
+              selectedRoundIsActive ? "active" : "inactive"
+            })`}
+          </h2>
+        </div>
         <ParticipantPositionRow
           row={selectedRound.top.slice(0, selectedRound.top.length / 2)}
           selectedRoundIsActive={selectedRoundIsActive}
