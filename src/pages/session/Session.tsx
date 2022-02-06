@@ -10,8 +10,10 @@ import { initSession } from "../../App";
 
 const StyledPagination = styled(Pagination)`
   &&&& {
+    max-width: 100%;
     * {
       color: white !important;
+      background-color: black !important;
     }
   }
 `;
@@ -87,10 +89,13 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
       >
         <h1 style={{ marginBottom: "0" }}>{session.name}</h1>
         <h3 style={{ marginTop: "0", marginBottom: "0", color: "#a9a9a9" }}>
-          {`${session.participant_count} participants`}
+          {`participants: ${session.participant_count}`}
+        </h3>
+        <h3 style={{ marginTop: "0", marginBottom: "0", color: "#a9a9a9" }}>
+          {`total rounds: ${session.total_rounds}`}
         </h3>
         <h3 style={{ marginTop: "0", color: "#a9a9a9" }}>
-          {`${session.total_rounds} rounds`}
+          {`active round: ${session.active_round}`}
         </h3>
         <button
           style={{
@@ -151,8 +156,11 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
           activePage={selectedPage}
           onPageChange={handlePageChange}
           totalPages={session.total_rounds}
-          pointing
-          secondary
+          boundaryRange={0}
+          ellipsisItem={null}
+          firstItem={null}
+          lastItem={null}
+          siblingRange={1}
         />
       </div>
     </div>
