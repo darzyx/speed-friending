@@ -28,18 +28,11 @@ const Session = ({ sessions }: SessionPropsType) => {
 
   const hasSession = session?.name?.length > 0;
 
-  if (hasSession) console.log({ session });
+  const game = getGame(session.total_participants, session.total_rounds);
 
-  const [
-    nParticipants,
-    // setNParticipants
-  ] = useState(15);
-  const [
-    maxRounds,
-    // setMaxRounds
-  ] = useState(10);
-  const [activeRound, setActiveRound] = useState(1);
-  const game = getGame(nParticipants, maxRounds);
+  if (!hasSession) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div>
@@ -53,7 +46,7 @@ const Session = ({ sessions }: SessionPropsType) => {
       >
         <h1 style={{ marginBottom: "0" }}>Session A</h1>
         <h3 style={{ marginTop: "0", color: "#a9a9a9" }}>
-          {`${nParticipants} participants`}
+          {`${session.total_participants} participants`}
         </h3>
         <button
           style={{
@@ -70,11 +63,7 @@ const Session = ({ sessions }: SessionPropsType) => {
       </div>
       {Object.values(game).map((round, index) => {
         return (
-          <div
-            style={{ margin: "20px" }}
-            key={index}
-            onClick={() => setActiveRound(index + 1)}
-          >
+          <div style={{ margin: "20px" }} key={index}>
             <h2 style={{ marginBottom: "5px" }}>{`Round ${index + 1}`}</h2>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               {round.top.map((n, topIdx) => (
@@ -82,7 +71,7 @@ const Session = ({ sessions }: SessionPropsType) => {
                   key={topIdx}
                   n={n}
                   round={index + 1}
-                  activeRound={activeRound}
+                  currentRound={session.current_round}
                   top
                 />
               ))}
@@ -92,7 +81,7 @@ const Session = ({ sessions }: SessionPropsType) => {
                 <ParticipantPosition
                   key={btmIdx}
                   round={index + 1}
-                  activeRound={activeRound}
+                  currentRound={session.current_round}
                   n={n}
                 />
               ))}
