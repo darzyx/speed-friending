@@ -58,7 +58,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
     const payload: SessionType = {
       name,
       participant_count: Number(participantCount),
-      current_round: 0,
+      current_round: 1,
       total_rounds: Number(totalRounds),
     };
 
