@@ -45,7 +45,7 @@ const Session = ({ sessions }: SessionPropsType) => {
 
   const hasSession = session?.name?.length > 0;
 
-  const game = getGame(session.total_participants, session.total_rounds);
+  const game = getGame(session.participant_count, session.total_rounds);
 
   if (!hasSession) {
     return <p>Loading...</p>;
@@ -63,7 +63,7 @@ const Session = ({ sessions }: SessionPropsType) => {
       >
         <h1 style={{ marginBottom: "0" }}>{session.name}</h1>
         <h3 style={{ marginTop: "0", color: "#a9a9a9" }}>
-          {`${session.total_participants} participants`}
+          {`${session.participant_count} participants`}
         </h3>
         <button
           style={{

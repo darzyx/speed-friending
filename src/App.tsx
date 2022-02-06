@@ -12,7 +12,7 @@ import { SessionWithIdType } from "./types/session";
 export const initSession = {
   id: "",
   name: "",
-  total_participants: 0,
+  participant_count: 0,
   current_round: 0,
   total_rounds: 0,
 };

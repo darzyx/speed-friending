@@ -20,8 +20,8 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
     }
   };
 
-  const [totalParticipants, setTotalParticipants] = useState("");
-  const handleChangeTotalParticipants = (
+  const [participantCount, setParticipantCount] = useState("");
+  const handleChangeParticipantCount = (
     e: React.ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
   ) => {
@@ -30,7 +30,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
       typeof value === "string" &&
       (!Number.isNaN(numberValue) || value === "")
     ) {
-      setTotalParticipants(value);
+      setParticipantCount(value);
     }
   };
 
@@ -57,7 +57,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
     // TODO: validate types before submitting
     const payload: SessionType = {
       name,
-      total_participants: Number(totalParticipants),
+      participant_count: Number(participantCount),
       current_round: 0,
       total_rounds: Number(totalRounds),
     };
@@ -80,11 +80,11 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
             onChange={handleChangeName}
           />
           <Form.Input
-            name="total_participants"
+            name="participant_count"
             placeholder="Number of Participants"
             label="Number of Participants"
-            value={totalParticipants}
-            onChange={handleChangeTotalParticipants}
+            value={participantCount}
+            onChange={handleChangeParticipantCount}
           />
           <Form.Input
             name="total_rounds"
