@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { Form, Button, Icon, InputOnChangeData } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
@@ -49,7 +49,9 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
   };
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const handleSubmit = useCallback(async () => {
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+
     const collectionRef = collection(db, "sessions");
 
     // TODO: validate types before submitting
@@ -64,10 +66,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
     navigate(`/session/${docRef.id}`);
 
     setOpenNewModal(false);
-  }, [name, totalParticipants, totalRounds, setOpenNewModal, navigate]);
-  useEffect(() => {
-    if (isSubmitting) handleSubmit();
-  }, [isSubmitting, handleSubmit]);
+  };
 
   return (
     <div>
@@ -106,11 +105,11 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
           <Button
             disabled={isSubmitting}
             loading={isSubmitting}
-            onClick={() => setIsSubmitting(true)}
             icon
             floated="right"
             labelPosition="right"
             primary
+            type="submit"
           >
             Create
             <Icon name="plus" />
