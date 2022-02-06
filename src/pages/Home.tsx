@@ -1,7 +1,7 @@
 import { DocumentData } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Segment } from "semantic-ui-react";
+import { Icon, Segment } from "semantic-ui-react";
 
 const HomeContainer = styled.div`
   display: flex;
@@ -12,8 +12,11 @@ const HomeContainer = styled.div`
   padding: 0;
 `;
 
-type HomePropsType = { sessions: DocumentData[] };
-const Home = ({ sessions }: HomePropsType) => {
+type HomePropsType = {
+  sessions: DocumentData[];
+  setOpenNewModal: (arg: boolean) => void;
+};
+const Home = ({ sessions, setOpenNewModal }: HomePropsType) => {
   const hasSessions = Array.isArray(sessions) && sessions[0]?.name?.length > 0;
   return (
     <HomeContainer>
@@ -35,6 +38,17 @@ const Home = ({ sessions }: HomePropsType) => {
         ))
       ) : (
         <p>Loading...</p>
+      )}
+      {hasSessions && (
+        <Segment
+          inverted
+          raised
+          style={{ width: "100%", maxWidth: "600px", cursor: "pointer" }}
+          textAlign="center"
+          onClick={() => setOpenNewModal(true)}
+        >
+          <Icon name="plus" />
+        </Segment>
       )}
     </HomeContainer>
   );

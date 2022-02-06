@@ -41,13 +41,24 @@ const App = () => {
     // setUserSession
   ] = useState(initSession);
 
+  const [openNewModal, setOpenNewModal] = useState(false);
+
   return (
     <div className="App">
       <div className="Main">
         <BrowserRouter>
-          <Navbar userSession={userSession} />
+          <Navbar
+            userSession={userSession}
+            openNewModal={openNewModal}
+            setOpenNewModal={setOpenNewModal}
+          />
           <Routes>
-            <Route index element={<Home sessions={sessions} />} />
+            <Route
+              index
+              element={
+                <Home sessions={sessions} setOpenNewModal={setOpenNewModal} />
+              }
+            />
             <Route
               path="session/:id"
               element={<Session sessions={sessions} />}

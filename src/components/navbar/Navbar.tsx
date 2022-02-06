@@ -1,14 +1,20 @@
-import { useState } from "react";
 import { Menu } from "semantic-ui-react";
 import { Link, useLocation } from "react-router-dom";
 
 import { SessionWithIdType } from "../../types/session";
 import NewModal from "./NewModal";
 
-type NavbarPropsType = { userSession: SessionWithIdType };
-const Navbar = ({ userSession }: NavbarPropsType) => {
+type NavbarPropsType = {
+  userSession: SessionWithIdType;
+  openNewModal: boolean;
+  setOpenNewModal: (arg: boolean) => void;
+};
+const Navbar = ({
+  userSession,
+  openNewModal,
+  setOpenNewModal,
+}: NavbarPropsType) => {
   const location = useLocation();
-  const [openNewModal, setOpenNewModal] = useState(false);
 
   const hasUserSession = userSession?.id?.length > 0;
 
