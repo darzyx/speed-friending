@@ -62,8 +62,11 @@ const Session = ({ sessions }: SessionPropsType) => {
         }}
       >
         <h1 style={{ marginBottom: "0" }}>{session.name}</h1>
-        <h3 style={{ marginTop: "0", color: "#a9a9a9" }}>
+        <h3 style={{ marginTop: "0", marginBottom: "0", color: "#a9a9a9" }}>
           {`${session.participant_count} participants`}
+        </h3>
+        <h3 style={{ marginTop: "0", color: "#a9a9a9" }}>
+          {`${session.total_rounds} rounds`}
         </h3>
         <button
           style={{
