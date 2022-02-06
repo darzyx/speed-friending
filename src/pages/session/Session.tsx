@@ -37,7 +37,7 @@ const Session = ({ sessions }: SessionPropsType) => {
           alignItems: "center",
         }}
       >
-        <h1 style={{ marginBottom: "0" }}>Session A</h1>
+        <h1 style={{ marginBottom: "0" }}>{session.name}</h1>
         <h3 style={{ marginTop: "0", color: "#a9a9a9" }}>
           {`${session.total_participants} participants`}
         </h3>
