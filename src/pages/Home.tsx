@@ -13,33 +13,45 @@ const HomeContainer = styled.div`
 `;
 
 type HomePropsType = {
+  isGettingSessions: boolean;
+  hasAnySessions: boolean;
   sessions: DocumentData[];
   setOpenNewModal: (arg: boolean) => void;
 };
-const Home = ({ sessions, setOpenNewModal }: HomePropsType) => {
-  const hasSessions = Array.isArray(sessions) && sessions[0]?.name?.length > 0;
+const Home = ({
+  isGettingSessions,
+  hasAnySessions,
+  sessions,
+  setOpenNewModal,
+}: HomePropsType) => {
   return (
     <HomeContainer>
       <h1>✨ Speed Friending 🏕️</h1>
       <h3>Ongoing Sessions</h3>
-      {hasSessions ? (
-        sessions.map((session) => (
-          <Segment
-            inverted
-            raised
-            as={Link}
-            to={`/session/${session.id}`}
-            key={session.id}
-            style={{ width: "100%", maxWidth: "600px" }}
-            textAlign="center"
-          >
-            {session.name}
-          </Segment>
-        ))
-      ) : (
+      {isGettingSessions ? (
         <p>Loading...</p>
+      ) : (
+        <div>
+          {hasAnySessions ? (
+            sessions.map((session) => (
+              <Segment
+                inverted
+                raised
+                as={Link}
+                to={`/session/${session.id}`}
+                key={session.id}
+                style={{ width: "100%", maxWidth: "600px" }}
+                textAlign="center"
+              >
+                {session.name}
+              </Segment>
+            ))
+          ) : (
+            <p>No active sessions.</p>
+          )}
+        </div>
       )}
-      {hasSessions && (
+      {!isGettingSessions && (
         <Segment
           inverted
           raised

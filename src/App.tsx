@@ -9,11 +9,6 @@ import Home from "./pages/Home";
 import Session from "./pages/session/Session";
 import { SessionWithIdType } from "./types/session";
 
-type SessionsUseStateType = [
-  SessionWithIdType[],
-  (arg: SessionWithIdType[]) => void
-];
-
 export const initSession = {
   id: "",
   name: "",
@@ -22,17 +17,28 @@ export const initSession = {
   total_rounds: 0,
 };
 
+type SessionsUseStateType = [
+  SessionWithIdType[],
+  (arg: SessionWithIdType[]) => void
+];
+
 const App = () => {
+  const [hasAnySessions, setHasAnySessions] = useState(false);
+  const [isGettingSessions, setIsGettingSessions] = useState(true);
   const [sessions, setSessions]: SessionsUseStateType = useState([initSession]);
   // Returns onSnapshot because its return value terminates the listener
   useEffect(
     () =>
       onSnapshot(collection(db, "sessions"), (snapshot) => {
-        const returnedSessions = snapshot.docs.map((doc) => ({
+        const resultSessions = snapshot.docs.map((doc) => ({
           ...doc.data(),
           id: doc.id,
-        })) as SessionWithIdType[]; // Assumes fetched data is good
-        setSessions(returnedSessions);
+        })) as SessionWithIdType[]; // Assumes fetched data is good!
+        const resultHasAnySessions =
+          Array.isArray(resultSessions) && resultSessions[0]?.name?.length > 0;
+        setSessions(resultSessions);
+        setIsGettingSessions(false);
+        setHasAnySessions(resultHasAnySessions);
       }),
     []
   );
@@ -58,7 +64,12 @@ const App = () => {
             <Route
               index
               element={
-                <Home sessions={sessions} setOpenNewModal={setOpenNewModal} />
+                <Home
+                  isGettingSessions={isGettingSessions}
+                  hasAnySessions={hasAnySessions}
+                  sessions={sessions}
+                  setOpenNewModal={setOpenNewModal}
+                />
               }
             />
             <Route
