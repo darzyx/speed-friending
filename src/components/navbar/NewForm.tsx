@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import {
   Form,
@@ -51,7 +51,8 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
     }
   };
 
-  const handleSubmit = async () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const handleSubmit = useCallback(async () => {
     const collectionRef = collection(db, "sessions");
 
     // TODO: validate types before submitting
@@ -64,10 +65,11 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
 
     await addDoc(collectionRef, payload);
 
-    // Reset values
-    setName("");
-    setTotalParticipants("");
-  };
+    setOpenNewModal(false);
+  }, [name, totalParticipants, totalRounds, setOpenNewModal]);
+  useEffect(() => {
+    if (isSubmitting) handleSubmit();
+  }, [isSubmitting, handleSubmit]);
 
   return (
     <div>
@@ -103,7 +105,15 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
             basic
             inverted
           />
-          <Button icon floated="right" labelPosition="right" primary>
+          <Button
+            disabled={isSubmitting}
+            loading={isSubmitting}
+            onClick={() => setIsSubmitting(true)}
+            icon
+            floated="right"
+            labelPosition="right"
+            primary
+          >
             Create
             <Icon name="plus" />
           </Button>
