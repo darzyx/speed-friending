@@ -5,9 +5,31 @@ import ParticipantPosition from "./ParticipantPosition";
 import { getGame } from "./utils";
 import { SessionWithIdType } from "../../types/session";
 import { initSession } from "../../App";
+import { Divider } from "semantic-ui-react";
+
+const ParticipantPositionRow = ({
+  row,
+  session,
+  index,
+}: {
+  row: number[];
+  session: SessionWithIdType;
+  index: number;
+}) => (
+  <div style={{ display: "flex", justifyContent: "space-between" }}>
+    {row.map((n, rowIndex) => (
+      <ParticipantPosition
+        key={rowIndex}
+        n={n}
+        round={index + 1}
+        currentRound={session.current_round}
+        top
+      />
+    ))}
+  </div>
+);
 
 type SessionPropsType = { sessions: SessionWithIdType[] };
-
 const Session = ({ sessions }: SessionPropsType) => {
   const { id } = useParams();
 
@@ -58,27 +80,28 @@ const Session = ({ sessions }: SessionPropsType) => {
         return (
           <div style={{ margin: "20px" }} key={index}>
             <h2 style={{ marginBottom: "5px" }}>{`Round ${index + 1}`}</h2>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              {round.top.map((n, topIdx) => (
-                <ParticipantPosition
-                  key={topIdx}
-                  n={n}
-                  round={index + 1}
-                  currentRound={session.current_round}
-                  top
-                />
-              ))}
-            </div>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              {round.btm.map((n, btmIdx) => (
-                <ParticipantPosition
-                  key={btmIdx}
-                  round={index + 1}
-                  currentRound={session.current_round}
-                  n={n}
-                />
-              ))}
-            </div>
+            <ParticipantPositionRow
+              row={round.top.slice(0, round.top.length / 2)}
+              session={session}
+              index={index}
+            />
+            <ParticipantPositionRow
+              row={round.btm.slice(0, round.top.length / 2)}
+              session={session}
+              index={index}
+            />
+            <Divider hidden />
+            <ParticipantPositionRow
+              row={round.top.slice(round.top.length / 2, round.top.length)}
+              session={session}
+              index={index}
+            />
+            <ParticipantPositionRow
+              row={round.btm.slice(round.btm.length / 2, round.btm.length)}
+              session={session}
+              index={index}
+            />
+            <Divider hidden />
           </div>
         );
       })}
