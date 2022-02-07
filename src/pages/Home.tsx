@@ -1,7 +1,7 @@
 import { DocumentData } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Icon, Loader, Segment } from "semantic-ui-react";
+import { Button, Icon, Loader } from "semantic-ui-react";
 
 const maxSessions = 50;
 
@@ -32,26 +32,32 @@ const Home = ({
       <h1>✨ Speed Friending 🏕️</h1>
       <h3>Ongoing Sessions</h3>
       {hasAnySessions &&
-        sessions.map((session) => (
-          <Segment
-            inverted
-            raised
+        sessions.map((session, index) => (
+          <Button
             as={Link}
             to={`/session/${session.id}`}
             key={session.id}
-            style={{ width: "100%", maxWidth: "600px" }}
-            textAlign="center"
+            style={{
+              width: "100%",
+              maxWidth: "600px",
+              marginTop: index === 0 ? "0" : "10px",
+            }}
+            size="large"
+            secondary
           >
             {session.name}
-          </Segment>
+          </Button>
         ))}
-      <Segment
-        inverted
-        raised
-        style={{ width: "100%", maxWidth: "600px", cursor: "pointer" }}
-        textAlign="center"
-        onClick={disableNewSession ? null : () => setOpenNewModal(true)}
+      <Button
+        style={{
+          width: "100%",
+          maxWidth: "600px",
+          marginTop: hasAnySessions ? "10px" : "0",
+        }}
+        onClick={disableNewSession ? () => {} : () => setOpenNewModal(true)}
         disabled={disableNewSession}
+        size="large"
+        secondary
       >
         {isGettingSessions ? (
           <Loader active inline="centered" size="tiny" />
@@ -64,7 +70,7 @@ const Home = ({
             )}
           </>
         )}
-      </Segment>
+      </Button>
     </HomeContainer>
   );
 };
