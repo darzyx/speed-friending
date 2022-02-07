@@ -17,14 +17,19 @@ const NewModal = ({
     onClose={() => setOpenNewModal(false)}
     onOpen={() => setOpenNewModal(true)}
     open={openNewModal}
+    style={{
+      backgroundColor: "#1b1c1d",
+      color: "rgba(255, 255, 255, 0.9)",
+    }}
   >
     <Modal.Header
       style={{
         backgroundColor: "#1b1c1d",
         color: "rgba(255, 255, 255, 0.9)",
+        textAlign: "center",
       }}
     >
-      Create New Group Session
+      Create New Session
     </Modal.Header>
     <Modal.Content
       style={{

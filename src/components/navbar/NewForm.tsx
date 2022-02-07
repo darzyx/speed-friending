@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { Form, Button, Icon, InputOnChangeData } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 import { db } from "../../firebase";
 import { SessionType } from "../../types/session";
@@ -9,6 +10,16 @@ import { getMaxRounds } from "../../pages/session/utils";
 
 const maxNameLength = 30;
 const maxParticipants = 30;
+
+const StyledFormInput = styled(Form.Input)`
+  &&&& {
+    margin-bottom: 10px;
+    input {
+      background-color: black;
+      color: white;
+    }
+  }
+`;
 
 type NewFormPropsType = { setOpenNewModal: (openNewModal: boolean) => void };
 const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
@@ -88,38 +99,44 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
   return (
     <div>
       <Form onSubmit={handleSubmit} inverted autoComplete="off">
-        <Form.Group widths="equal">
-          <Form.Input
+        <Form.Group>
+          <StyledFormInput
             name="name"
             placeholder="Session Name"
             label={`Session Name (max ${maxNameLength})`}
             value={name}
             onChange={handleChangeName}
             required
+            width={10}
           />
-          <Form.Input
+          <StyledFormInput
             name="participant_count"
             placeholder="Participant Count"
             label={`Participant Count (max ${maxParticipants})`}
             value={participantCount}
             onChange={handleChangeParticipantCount}
             required
+            width={6}
           />
-          <Form.Input
+        </Form.Group>
+        <Form.Group>
+          <StyledFormInput
             name="total_rounds"
             placeholder="Total Rounds"
             label={`Total Rounds (max ${maxRounds})`}
             value={totalRounds}
             onChange={handleChangeTotalRounds}
             required
+            width={6}
           />
-          <Form.Input
+          <StyledFormInput
             name="password"
             placeholder="Admin Password"
             label="Admin Password"
             value={password}
             onChange={handleChangePassword}
             required
+            width={10}
           />
         </Form.Group>
         <div>
