@@ -1,7 +1,7 @@
 import { DocumentData } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Button, Icon, Loader } from "semantic-ui-react";
+import { Button, Icon, Label, Loader } from "semantic-ui-react";
 
 const maxSessions = 50;
 
@@ -43,9 +43,19 @@ const Home = ({
               marginTop: index === 0 ? "0" : "10px",
             }}
             size="large"
-            secondary
+            labelPosition="right"
           >
-            {session.name}
+            <Button
+              secondary
+              style={{
+                width: "100%",
+                maxWidth: "600px",
+                textAlign: "left",
+              }}
+            >
+              {session.name}
+            </Button>
+            <Label color="green">5:00</Label>
           </Button>
         ))}
       <Button
