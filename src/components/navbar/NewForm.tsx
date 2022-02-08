@@ -83,13 +83,12 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
     const collectionRef = collection(db, "sessions");
 
     // TODO: validate all types before submitting
-    let now: Date = new Date();
     const payload: SessionType = {
       name,
       participant_count: Number(participantCount),
       active_round: 1,
       total_rounds: Number(totalRounds),
-      start_time: Timestamp.fromDate(now),
+      start_time: Timestamp.now(),
     };
 
     const docRef = await addDoc(collectionRef, payload);

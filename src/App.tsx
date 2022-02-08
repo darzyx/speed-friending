@@ -9,14 +9,13 @@ import Home from "./pages/Home";
 import Session from "./pages/session/Session";
 import { SessionWithIdType } from "./types/session";
 
-let now: Date = new Date();
 export const initSession = {
   id: "",
   name: "",
   participant_count: 0,
   active_round: 0,
   total_rounds: 0,
-  start_time: Timestamp.fromDate(now),
+  start_time: Timestamp.now(),
 };
 
 type SessionsUseStateType = [
