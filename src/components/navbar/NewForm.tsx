@@ -15,7 +15,7 @@ const StyledFormInput = styled(Form.Input)`
   &&&& {
     margin-bottom: 10px;
     input {
-      background-color: black;
+      background-color: #27292a;
       color: white;
     }
   }

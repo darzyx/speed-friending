@@ -24,7 +24,7 @@ const ParticipantPosition = ({
       color: selectedRoundIsActive ? "black" : "white",
       fontWeight: "bold",
       fontSize: "22px",
-      backgroundColor: selectedRoundIsActive ? getColor(n) : "#222",
+      backgroundColor: selectedRoundIsActive ? getColor(n) : "#1b1c1d",
       border: "2px solid black",
       borderRadius: top ? "8px 8px 0 0" : "0 0 8px 8px",
       boxSizing: "border-box",
