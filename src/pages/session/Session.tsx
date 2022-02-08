@@ -11,13 +11,16 @@ import { initSession } from "../../App";
 const StyledPagination = styled(Pagination)`
   &&&& {
     max-width: 100%;
+    &,
     * {
       color: white !important;
-      background-color: black !important;
-      outline: none !important;
+      background-color: #1b1c1d;
+      outline: none;
+      border: none;
     }
-    .active.item {
-      background-color: #222 !important;
+    .active.item,
+    &:hover {
+      background-color: #27292a;
     }
   }
 `;
