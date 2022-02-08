@@ -56,7 +56,7 @@ const Home = ({
               {session.name}
             </Button>
             <Label color="green">
-              {(currentTimeInSeconds - session.start_time.seconds) % 100}
+              {(currentTimeInSeconds - session.start_time.seconds) % 60}
             </Label>
           </Button>
         ))}
