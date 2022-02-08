@@ -18,7 +18,6 @@ const ParticipantPosition = ({
       height: "100%",
       minHeight: "50px",
       width: "100%",
-      maxWidth: "100px",
       color: "white",
       fontWeight: "bold",
       fontSize: "22px",
