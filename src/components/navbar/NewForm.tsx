@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { Form, Button, Icon, InputOnChangeData } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -82,12 +82,14 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
 
     const collectionRef = collection(db, "sessions");
 
-    // TODO: validate types before submitting
+    // TODO: validate all types before submitting
+    let now: Date = new Date();
     const payload: SessionType = {
       name,
       participant_count: Number(participantCount),
       active_round: 1,
       total_rounds: Number(totalRounds),
+      start_time: Timestamp.fromDate(now),
     };
 
     const docRef = await addDoc(collectionRef, payload);

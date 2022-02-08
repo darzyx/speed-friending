@@ -1,4 +1,4 @@
-import { onSnapshot, collection } from "firebase/firestore";
+import { onSnapshot, collection, Timestamp } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Divider } from "semantic-ui-react";
@@ -9,12 +9,14 @@ import Home from "./pages/Home";
 import Session from "./pages/session/Session";
 import { SessionWithIdType } from "./types/session";
 
+let now: Date = new Date();
 export const initSession = {
   id: "",
   name: "",
   participant_count: 0,
   active_round: 0,
   total_rounds: 0,
+  start_time: Timestamp.fromDate(now),
 };
 
 type SessionsUseStateType = [
@@ -44,6 +46,12 @@ const App = () => {
   );
 
   const [openNewModal, setOpenNewModal] = useState(false);
+
+  if (hasAnySessions && !isGettingSessions) {
+    for (let i = 0; i < sessions.length; i++) {
+      console.log(sessions[i].start_time);
+    }
+  }
 
   return (
     <div className="App">
