@@ -44,6 +44,19 @@ const App = () => {
     []
   );
 
+  const [currentTimeInSeconds, setCurrentTimeInSeconds] = useState(
+    Math.floor(Date.now() / 1000)
+  );
+  const startTime = () => {
+    // Unix timestamp in seconds
+    setCurrentTimeInSeconds(Math.floor(Date.now() / 1000));
+    console.log(currentTimeInSeconds);
+    setTimeout(startTime, 1000);
+  };
+  useEffect(() => {
+    startTime();
+  }, []);
+
   const [openNewModal, setOpenNewModal] = useState(false);
 
   if (hasAnySessions && !isGettingSessions) {
@@ -70,6 +83,7 @@ const App = () => {
                   hasAnySessions={hasAnySessions}
                   sessions={sessions}
                   setOpenNewModal={setOpenNewModal}
+                  currentTimeInSeconds={currentTimeInSeconds}
                 />
               }
             />

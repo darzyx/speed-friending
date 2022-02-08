@@ -17,12 +17,14 @@ type HomePropsType = {
   hasAnySessions: boolean;
   sessions: DocumentData[];
   setOpenNewModal: (arg: boolean) => void;
+  currentTimeInSeconds: number;
 };
 const Home = ({
   isGettingSessions,
   hasAnySessions,
   sessions,
   setOpenNewModal,
+  currentTimeInSeconds,
 }: HomePropsType) => {
   const disableNewSession = isGettingSessions || sessions.length >= maxSessions;
   return (
@@ -53,7 +55,9 @@ const Home = ({
             >
               {session.name}
             </Button>
-            <Label color="green">5:00</Label>
+            <Label color="green">
+              {(currentTimeInSeconds - session.start_time.seconds) % 100}
+            </Label>
           </Button>
         ))}
       <Button
