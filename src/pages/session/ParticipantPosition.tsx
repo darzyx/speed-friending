@@ -23,7 +23,7 @@ const ParticipantPosition = ({
       width: "100%",
       color: selectedRoundIsActive ? "black" : "white",
       fontWeight: "bold",
-      fontSize: "20px",
+      fontSize: "22px",
       backgroundColor: selectedRoundIsActive ? getColor(n) : "#222",
       border: "2px solid black",
       borderRadius: top ? "8px 8px 0 0" : "0 0 8px 8px",
