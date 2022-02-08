@@ -18,13 +18,13 @@ const NewModal = ({
     onOpen={() => setOpenNewModal(true)}
     open={openNewModal}
     style={{
-      backgroundColor: "#1b1c1d",
+      backgroundColor: "#27292a",
       color: "rgba(255, 255, 255, 0.9)",
     }}
   >
     <Modal.Header
       style={{
-        backgroundColor: "#1b1c1d",
+        backgroundColor: "#27292a",
         color: "rgba(255, 255, 255, 0.9)",
         textAlign: "center",
       }}
@@ -33,7 +33,7 @@ const NewModal = ({
     </Modal.Header>
     <Modal.Content
       style={{
-        backgroundColor: "#1b1c1d",
+        backgroundColor: "#27292a",
         color: "rgba(255, 255, 255, 0.9)",
       }}
     >
