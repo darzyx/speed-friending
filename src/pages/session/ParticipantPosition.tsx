@@ -1,4 +1,5 @@
 import React from "react";
+import CenterMiddle from "../../components/blocks/CenterMiddle";
 
 import { getColor } from "./utils";
 
@@ -12,12 +13,8 @@ const ParticipantPosition = ({
   selectedRoundIsActive,
   top,
 }: ParticipantPositionPropsType) => (
-  <div
+  <CenterMiddle
     style={{
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
       height: "100%",
       minHeight: "50px",
       width: "100%",
@@ -36,7 +33,7 @@ const ParticipantPosition = ({
     }}
   >
     {n}
-  </div>
+  </CenterMiddle>
 );
 
 export default ParticipantPosition;

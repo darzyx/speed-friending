@@ -2,14 +2,12 @@ import { DocumentData } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Button, Icon, Label, Loader } from "semantic-ui-react";
+import { centerMiddleCSS } from "../components/blocks/CenterMiddle";
 
 const maxSessions = 50;
 
 const HomeContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  ${centerMiddleCSS}
   margin: 0;
   padding: 0;
 `;

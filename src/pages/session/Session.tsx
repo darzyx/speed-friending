@@ -7,6 +7,7 @@ import ParticipantPosition from "./ParticipantPosition";
 import { getGame } from "./utils";
 import { SessionWithIdType } from "../../types/session";
 import { initSession } from "../../App";
+import CenterMiddle from "../../components/blocks/CenterMiddle";
 
 const StyledPagination = styled(Pagination)`
   &&&& {
@@ -95,15 +96,7 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
 
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-        }}
-      >
+      <CenterMiddle textAlign="center">
         <h1 style={{ marginBottom: "0" }}>{session.name}</h1>
         <h3 style={{ marginTop: "0", marginBottom: "0", color: "#a9a9a9" }}>
           {`participants: ${session.participant_count}`}
@@ -114,23 +107,15 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
         <h3 style={{ marginTop: "0", color: "#a9a9a9" }}>
           {`active round: ${session.active_round}`}
         </h3>
-      </div>
+      </CenterMiddle>
       <div style={{ margin: "20px" }}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            textAlign: "center",
-          }}
-        >
+        <CenterMiddle textAlign="center">
           <h2 style={{ marginBottom: "5px" }}>
             {`Round ${selectedPage} (${
               selectedRoundIsActive ? "active" : "inactive"
             })`}
           </h2>
-        </div>
+        </CenterMiddle>
         <ParticipantPositionRow
           row={selectedRound.top.slice(0, selectedRound.top.length / 2)}
           selectedRoundIsActive={selectedRoundIsActive}
@@ -160,14 +145,7 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
         />
         <Divider hidden />
       </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <CenterMiddle>
         <StyledPagination
           activePage={selectedPage}
           onPageChange={handlePageChange}
@@ -190,7 +168,7 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
             }
           />
         </LinkButton>
-      </div>
+      </CenterMiddle>
     </div>
   );
 };
