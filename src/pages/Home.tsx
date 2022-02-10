@@ -1,7 +1,7 @@
 import { DocumentData } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Button, Icon, Label, Loader } from "semantic-ui-react";
+import { Button, Icon, Label, Loader, SemanticCOLORS } from "semantic-ui-react";
 import { centerMiddleCSS } from "../components/blocks/CenterMiddle";
 
 const maxSessions = 50;
@@ -11,6 +11,22 @@ const HomeContainer = styled.div`
   margin: 0;
   padding: 0;
 `;
+
+type TimeLabelPropsType = {
+  session: DocumentData;
+  currentTimeInSeconds: number;
+};
+const TimeLabel = ({ session, currentTimeInSeconds }: TimeLabelPropsType) => {
+  let color: SemanticCOLORS = "green";
+  let remainingTime = session.end_time - currentTimeInSeconds;
+  if (remainingTime <= 0) {
+    color = "red";
+    remainingTime = 0;
+  } else if (remainingTime <= 60) {
+    color = "yellow";
+  }
+  return <Label color={color}>{remainingTime}</Label>;
+};
 
 type HomePropsType = {
   isGettingSessions: boolean;
@@ -55,9 +71,10 @@ const Home = ({
             >
               {session.name}
             </Button>
-            <Label color="green">
-              {session.end_time - currentTimeInSeconds}
-            </Label>
+            <TimeLabel
+              session={session}
+              currentTimeInSeconds={currentTimeInSeconds}
+            />
           </Button>
         ))}
       <Button
