@@ -5,7 +5,7 @@ import { Divider } from "semantic-ui-react";
 import Navbar from "./components/navbar/Navbar";
 
 import { db } from "./firebase";
-import Home from "./pages/Home";
+import Home from "./pages/home/Home";
 import Session from "./pages/session/Session";
 import { SessionWithIdType } from "./types/session";
 
