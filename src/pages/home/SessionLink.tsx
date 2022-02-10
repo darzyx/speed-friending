@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button, Label } from "semantic-ui-react";
 import { getTimeValues } from "../session/utils";
 import { SessionType, SessionWithIdType } from "../../types/session";
-import TimeModal from "./TimeModal";
+import TimeModal from "../../components/time-modal/TimeModal";
 import { useState } from "react";
 
 type TimeLabelPropsType = {

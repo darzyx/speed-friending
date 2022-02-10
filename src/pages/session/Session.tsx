@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  Dimmer,
-  Divider,
-  Icon,
-  Loader,
-  Pagination,
-  Segment,
-} from "semantic-ui-react";
+import { Dimmer, Divider, Icon, Loader, Pagination } from "semantic-ui-react";
 import styled from "styled-components";
 
 import ParticipantPosition from "./ParticipantPosition";
-import { getGame, getTimeValues } from "./utils";
+import { getGame } from "./utils";
 import { SessionWithIdType } from "../../types/session";
 import { initSession } from "../../App";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
+import SessionHeading from "./SessionHeading";
 
 const StyledPagination = styled(Pagination)`
   &&&& {
@@ -106,25 +100,12 @@ const Session = ({
   const selectedRound = Object.values(game)[Number(selectedPage) - 1];
   const selectedRoundIsActive = session?.active_round === Number(selectedPage);
 
-  const timeValues = getTimeValues({ session, currentTimeInSeconds });
-
   return (
     <div>
-      <CenterMiddle textAlign="center">
-        <h1 style={{ marginBottom: "0" }}>{session.name}</h1>
-        <Segment color={timeValues.color} inverted compact>
-          {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
-        </Segment>
-        <h4 style={{ marginTop: "0", marginBottom: "0", color: "#a9a9a9" }}>
-          {`participants: ${session.participant_count}`}
-        </h4>
-        <h4 style={{ marginTop: "0", marginBottom: "0", color: "#a9a9a9" }}>
-          {`total rounds: ${session.total_rounds}`}
-        </h4>
-        <h4 style={{ marginTop: "0", color: "#a9a9a9" }}>
-          {`active round: ${session.active_round}`}
-        </h4>
-      </CenterMiddle>
+      <SessionHeading
+        session={session}
+        currentTimeInSeconds={currentTimeInSeconds}
+      />
       <div style={{ margin: "20px" }}>
         <CenterMiddle textAlign="center">
           <h3 style={{ marginBottom: "5px" }}>
