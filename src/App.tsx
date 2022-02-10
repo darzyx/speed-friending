@@ -15,7 +15,7 @@ export const initSession = {
   participant_count: 0,
   active_round: 0,
   total_rounds: 0,
-  start_time: Timestamp.now(),
+  end_time: Timestamp.now().seconds + 60 * 5,
 };
 
 type SessionsUseStateType = [
@@ -61,7 +61,7 @@ const App = () => {
 
   if (hasAnySessions && !isGettingSessions) {
     for (let i = 0; i < sessions.length; i++) {
-      console.log(sessions[i].start_time);
+      console.log(sessions[i].end_time);
     }
   }
 
