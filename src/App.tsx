@@ -16,6 +16,7 @@ export const initSession = {
   active_round: 0,
   total_rounds: 0,
   end_time: Timestamp.now().seconds + 60 * 5,
+  paused_seconds: 0,
 };
 
 type SessionsUseStateType = [

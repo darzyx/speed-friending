@@ -18,7 +18,9 @@ type TimeLabelPropsType = {
 };
 const TimeLabel = ({ session, currentTimeInSeconds }: TimeLabelPropsType) => {
   let color: SemanticCOLORS = "green";
-  let remainingTime = session.end_time - currentTimeInSeconds;
+  let remainingTime = session.paused_seconds
+    ? session.paused_seconds
+    : session.end_time - currentTimeInSeconds;
   if (remainingTime <= 0) {
     color = "red";
     remainingTime = 0;

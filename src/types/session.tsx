@@ -4,6 +4,7 @@ export type SessionType = {
   active_round: number;
   total_rounds: number;
   end_time: number;
+  paused_seconds: number;
 };
 
 export type SessionWithIdType = SessionType & { id: string };
