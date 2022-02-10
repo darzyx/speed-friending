@@ -31,7 +31,7 @@ export const getGame = (nParticipants: number, maxRounds: number = 0) => {
   return game;
 };
 
-export const getColor = (n: number) => {
+export const getParticipantColor = (n: number) => {
   if (n === 0) {
     return "#a9a9a9"; // Grey
   } else if (n % 10 === 0) {

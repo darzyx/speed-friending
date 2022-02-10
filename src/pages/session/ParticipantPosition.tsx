@@ -1,7 +1,7 @@
 import React from "react";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
 
-import { getColor } from "./utils";
+import { getParticipantColor } from "./utils";
 
 type ParticipantPositionPropsType = {
   n: number;
@@ -26,7 +26,7 @@ const ParticipantPosition = ({
       borderRadius: top ? "8px 8px 0 0" : "0 0 8px 8px",
       boxSizing: "border-box",
       ...(selectedRoundIsActive && {
-        backgroundColor: getColor(n),
+        backgroundColor: getParticipantColor(n),
         color: "black",
       }),
     }}
