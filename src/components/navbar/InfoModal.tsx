@@ -5,13 +5,20 @@ const InfoList = () => (
     <List.Item>
       <List.Content>
         <List.Header>1. FIND YOUR SESSION NAME</List.Header>
-        <p>You can find your session name on the list on the home page</p>
+        <p>
+          You can find your session name in the "Ongoing Sessions" list on the
+          home page. Click on your session name to go to your session page
+        </p>
       </List.Content>
     </List.Item>
     <List.Item>
       <List.Content>
-        <List.Header>2. FIND YOUR ACTIVE SESSION ROUND</List.Header>
-        <p>Your session active round will be highlighted in color</p>
+        <List.Header>2. FIND YOUR ACTIVE ROUND</List.Header>
+        <p>
+          Your active round will be highlighted in color on your session page.
+          If you don't see the colorful numbers, find the "Go to Active Round"
+          button and click it
+        </p>
       </List.Content>
     </List.Item>
     <List.Item>
