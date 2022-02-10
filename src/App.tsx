@@ -57,8 +57,6 @@ const App = () => {
 
   const [openNewModal, setOpenNewModal] = useState(false);
 
-  console.log({ currentTimeInSeconds });
-
   return (
     <div className="App">
       <div className="Main">
