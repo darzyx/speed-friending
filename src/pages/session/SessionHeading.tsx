@@ -30,6 +30,7 @@ const SessionHeading = ({
         {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
       </Segment>
       <TimeModal
+        session={session}
         openTimeModal={openTimeModal}
         setOpenTimeModal={setOpenTimeModal}
       />

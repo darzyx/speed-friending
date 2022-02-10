@@ -1,10 +1,16 @@
 import { Modal } from "semantic-ui-react";
+import { SessionType } from "../../types/session";
 
 type TimeModalPropsType = {
+  session: SessionType;
   openTimeModal: boolean;
   setOpenTimeModal: (openTimeModal: boolean) => void;
 };
-const TimeModal = ({ openTimeModal, setOpenTimeModal }: TimeModalPropsType) => (
+const TimeModal = ({
+  session,
+  openTimeModal,
+  setOpenTimeModal,
+}: TimeModalPropsType) => (
   <Modal
     onClose={() => setOpenTimeModal(false)}
     onOpen={() => setOpenTimeModal(true)}
@@ -21,7 +27,8 @@ const TimeModal = ({ openTimeModal, setOpenTimeModal }: TimeModalPropsType) => (
         textAlign: "center",
       }}
     >
-      Manage Time
+      Manage time for <br />
+      {session.name}
     </Modal.Header>
     <Modal.Content
       style={{

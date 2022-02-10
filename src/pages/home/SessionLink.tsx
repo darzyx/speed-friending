@@ -60,6 +60,7 @@ const SessionLink = ({
         setOpenTimeModal={setOpenTimeModal}
       />
       <TimeModal
+        session={session}
         openTimeModal={openTimeModal}
         setOpenTimeModal={setOpenTimeModal}
       />
