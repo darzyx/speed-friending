@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Button, Icon, Label } from "semantic-ui-react";
+import { Button, Label } from "semantic-ui-react";
 import { getTimeValues } from "../session/utils";
 import { SessionType, SessionWithIdType } from "../../types/session";
 import TimeModal from "../../components/time-modal/TimeModal";
@@ -53,7 +53,7 @@ const SessionLink = ({
         secondary
         fluid
       >
-        {session.name} <Icon name="arrow right" />
+        {session.name}
       </Button>
       <TimeLabel
         session={session}
