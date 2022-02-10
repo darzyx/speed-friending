@@ -20,8 +20,15 @@ const Navbar = ({ openNewModal, setOpenNewModal }: NavbarPropsType) => {
       >
         <Icon name="home" /> Home
       </Menu.Item>
-
       <Menu.Menu position="right">
+        <Menu.Item
+          as={Link}
+          to="/about"
+          name="about"
+          active={location.pathname === "/about"}
+        >
+          <Icon name="info circle" /> Info
+        </Menu.Item>
         <NewModal
           openNewModal={openNewModal}
           setOpenNewModal={setOpenNewModal}
