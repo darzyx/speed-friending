@@ -39,12 +39,13 @@ const Home = ({
         />
       ))}
     {!hasAnySessions && isGettingSessions && <LoadingSessionLink />}
-    <CreateSessionLink
-      sessions={sessions}
-      hasAnySessions={hasAnySessions}
-      setOpenNewModal={setOpenNewModal}
-      isGettingSessions={isGettingSessions}
-    />
+    {!isGettingSessions && (
+      <CreateSessionLink
+        sessions={sessions}
+        hasAnySessions={hasAnySessions}
+        setOpenNewModal={setOpenNewModal}
+      />
+    )}
   </HomeContainer>
 );
 

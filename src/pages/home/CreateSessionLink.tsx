@@ -4,25 +4,25 @@ import { SessionWithIdType } from "../../types/session";
 const maxSessions = 50;
 
 type CreateSessionLinkPropsType = {
-  isGettingSessions: boolean;
   hasAnySessions: boolean;
   sessions: SessionWithIdType[];
   setOpenNewModal: (arg: boolean) => void;
 };
 
 const CreateSessionLink = ({
-  isGettingSessions,
   hasAnySessions,
   sessions,
   setOpenNewModal,
 }: CreateSessionLinkPropsType) => {
-  const disableNewSession = isGettingSessions || sessions.length >= maxSessions;
+  const disableNewSession = sessions.length >= maxSessions;
   return (
     <Button
       style={{
         width: "100%",
         maxWidth: "600px",
         marginTop: hasAnySessions ? "10px" : "0",
+        paddingTop: "15px",
+        paddingBottom: "15px",
       }}
       onClick={disableNewSession ? () => {} : () => setOpenNewModal(true)}
       disabled={disableNewSession}
