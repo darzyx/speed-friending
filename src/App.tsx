@@ -50,20 +50,14 @@ const App = () => {
   const startTime = () => {
     // Unix timestamp in seconds
     setCurrentTimeInSeconds(Math.floor(Date.now() / 1000));
-    console.log(currentTimeInSeconds);
     setTimeout(startTime, 1000);
   };
-  useEffect(() => {
-    startTime();
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(startTime, []);
 
   const [openNewModal, setOpenNewModal] = useState(false);
 
-  if (hasAnySessions && !isGettingSessions) {
-    for (let i = 0; i < sessions.length; i++) {
-      console.log(sessions[i].end_time);
-    }
-  }
+  console.log({ currentTimeInSeconds });
 
   return (
     <div className="App">
