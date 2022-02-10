@@ -32,6 +32,7 @@ const Home = ({
     {hasAnySessions &&
       sessions.map((session, index) => (
         <SessionLink
+          key={session.id}
           index={index}
           session={session}
           currentTimeInSeconds={currentTimeInSeconds}

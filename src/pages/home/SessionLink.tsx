@@ -27,9 +27,7 @@ const SessionLink = ({
   currentTimeInSeconds,
 }: SessionLinkPropsType) => (
   <Button
-    as={Link}
-    to={`/session/${session.id}`}
-    key={session.id}
+    as="div"
     style={{
       width: "100%",
       maxWidth: "600px",
@@ -39,12 +37,10 @@ const SessionLink = ({
     labelPosition="right"
   >
     <Button
+      as={Link}
+      to={`/session/${session.id}`}
       secondary
-      style={{
-        width: "100%",
-        maxWidth: "600px",
-        textAlign: "left",
-      }}
+      style={{ width: "100%", maxWidth: "600px", textAlign: "left" }}
     >
       {session.name}
     </Button>
