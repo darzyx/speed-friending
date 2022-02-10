@@ -87,6 +87,7 @@ const App = () => {
                 <Session
                   sessions={sessions}
                   isGettingSessions={isGettingSessions}
+                  currentTimeInSeconds={currentTimeInSeconds}
                 />
               }
             />

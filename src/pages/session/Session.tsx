@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Dimmer, Divider, Icon, Loader, Pagination } from "semantic-ui-react";
+import {
+  Dimmer,
+  Divider,
+  Icon,
+  Loader,
+  Pagination,
+  Segment,
+} from "semantic-ui-react";
 import styled from "styled-components";
 
 import ParticipantPosition from "./ParticipantPosition";
-import { getGame } from "./utils";
+import { getGame, getTimeValues } from "./utils";
 import { SessionWithIdType } from "../../types/session";
 import { initSession } from "../../App";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
@@ -61,8 +68,13 @@ const ParticipantPositionRow = ({
 type SessionPropsType = {
   sessions: SessionWithIdType[];
   isGettingSessions: boolean;
+  currentTimeInSeconds: number;
 };
-const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
+const Session = ({
+  sessions,
+  isGettingSessions,
+  currentTimeInSeconds,
+}: SessionPropsType) => {
   const { id } = useParams();
 
   const [session, setSession] = useState(initSession);
@@ -94,27 +106,32 @@ const Session = ({ sessions, isGettingSessions }: SessionPropsType) => {
   const selectedRound = Object.values(game)[Number(selectedPage) - 1];
   const selectedRoundIsActive = session?.active_round === Number(selectedPage);
 
+  const timeValues = getTimeValues({ session, currentTimeInSeconds });
+
   return (
     <div>
       <CenterMiddle textAlign="center">
         <h1 style={{ marginBottom: "0" }}>{session.name}</h1>
-        <h3 style={{ marginTop: "0", marginBottom: "0", color: "#a9a9a9" }}>
+        <Segment color={timeValues.color} inverted compact>
+          {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
+        </Segment>
+        <h4 style={{ marginTop: "0", marginBottom: "0", color: "#a9a9a9" }}>
           {`participants: ${session.participant_count}`}
-        </h3>
-        <h3 style={{ marginTop: "0", marginBottom: "0", color: "#a9a9a9" }}>
+        </h4>
+        <h4 style={{ marginTop: "0", marginBottom: "0", color: "#a9a9a9" }}>
           {`total rounds: ${session.total_rounds}`}
-        </h3>
-        <h3 style={{ marginTop: "0", color: "#a9a9a9" }}>
+        </h4>
+        <h4 style={{ marginTop: "0", color: "#a9a9a9" }}>
           {`active round: ${session.active_round}`}
-        </h3>
+        </h4>
       </CenterMiddle>
       <div style={{ margin: "20px" }}>
         <CenterMiddle textAlign="center">
-          <h2 style={{ marginBottom: "5px" }}>
+          <h3 style={{ marginBottom: "5px" }}>
             {`Round ${selectedPage} (${
               selectedRoundIsActive ? "active" : "inactive"
             })`}
-          </h2>
+          </h3>
         </CenterMiddle>
         <ParticipantPositionRow
           row={selectedRound.top.slice(0, selectedRound.top.length / 2)}
