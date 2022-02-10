@@ -57,16 +57,11 @@ const App = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(startTime, []);
 
-  const [openNewModal, setOpenNewModal] = useState(false);
-
   return (
     <div className="App">
       <div className="Main">
         <BrowserRouter>
-          <Navbar
-            openNewModal={openNewModal}
-            setOpenNewModal={setOpenNewModal}
-          />
+          <Navbar />
           <Divider hidden />
           <Routes>
             <Route
@@ -76,7 +71,6 @@ const App = () => {
                   isGettingSessions={isGettingSessions}
                   hasAnySessions={hasAnySessions}
                   sessions={sessions}
-                  setOpenNewModal={setOpenNewModal}
                   currentTimeInSeconds={currentTimeInSeconds}
                 />
               }

@@ -1,17 +1,10 @@
 import { useState } from "react";
 import { Icon, Menu } from "semantic-ui-react";
-import { Link, Location, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import NewModal from "./NewModal";
 import InfoModal from "./InfoModal";
 
-type NavbarPropsType = {
-  openNewModal: boolean;
-  setOpenNewModal: (arg: boolean) => void;
-};
-const Navbar = ({ openNewModal, setOpenNewModal }: NavbarPropsType) => {
-  const location: Location = useLocation();
-
+const Navbar = () => {
   const [openInfoModal, setOpenInfoModal] = useState(false);
 
   return (
@@ -27,11 +20,6 @@ const Navbar = ({ openNewModal, setOpenNewModal }: NavbarPropsType) => {
             setOpenInfoModal={setOpenInfoModal}
           />
         </Menu.Item>
-        <NewModal
-          openNewModal={openNewModal}
-          setOpenNewModal={setOpenNewModal}
-          location={location}
-        />
       </Menu.Menu>
     </Menu>
   );
