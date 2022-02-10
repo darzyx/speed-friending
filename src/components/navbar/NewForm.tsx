@@ -88,7 +88,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
       participant_count: Number(participantCount),
       active_round: 1,
       total_rounds: Number(totalRounds),
-      end_time: Timestamp.now().seconds + 60 * 30,
+      end_time: Timestamp.now().seconds + 60 * 5,
     };
 
     const docRef = await addDoc(collectionRef, payload);
