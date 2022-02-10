@@ -25,7 +25,19 @@ const TimeLabel = ({ session, currentTimeInSeconds }: TimeLabelPropsType) => {
   } else if (remainingTime <= 60) {
     color = "yellow";
   }
-  return <Label color={color}>{remainingTime}</Label>;
+
+  const remainingSeconds = remainingTime % 60;
+  const remainingMinutes = (remainingTime - remainingSeconds) / 60;
+
+  return (
+    <Label color={color}>
+      {`${remainingMinutes}:${
+        remainingSeconds < 10
+          ? "0" + remainingSeconds.toString()
+          : remainingSeconds
+      }`}
+    </Label>
+  );
 };
 
 type HomePropsType = {
