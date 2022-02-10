@@ -1,3 +1,6 @@
+import { SemanticCOLORS } from "semantic-ui-react";
+import { SessionType } from "../../types/session";
+
 export const getMaxRounds = (participant_count: number) => {
   if (participant_count === 0 || participant_count === 1) {
     return 0;
@@ -57,4 +60,33 @@ export const getParticipantColor = (n: number) => {
   } else {
     return "#a9a9a9"; // Grey
   }
+};
+
+export const getTimeValues = ({
+  session,
+  currentTimeInSeconds,
+}: {
+  session: SessionType;
+  currentTimeInSeconds: number;
+}) => {
+  let color: SemanticCOLORS = "green";
+  let remainingTime = session.is_paused
+    ? session.paused_remaining_time
+    : session.end_time - currentTimeInSeconds;
+  if (remainingTime <= 0) {
+    color = "red";
+    remainingTime = 0;
+  } else if (remainingTime <= 60) {
+    color = "yellow";
+  }
+  const remainingSeconds = remainingTime % 60;
+  const remainingMinutes = (remainingTime - remainingSeconds) / 60;
+  return {
+    color,
+    remainingMinutes: remainingMinutes.toString(),
+    remainingSeconds:
+      remainingSeconds < 10
+        ? "0" + remainingSeconds.toString()
+        : remainingSeconds.toString(),
+  };
 };

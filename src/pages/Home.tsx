@@ -1,8 +1,9 @@
-import { DocumentData } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Button, Icon, Label, Loader, SemanticCOLORS } from "semantic-ui-react";
+import { Button, Icon, Label, Loader } from "semantic-ui-react";
 import { centerMiddleCSS } from "../components/blocks/CenterMiddle";
+import { getTimeValues } from "./session/utils";
+import { SessionType, SessionWithIdType } from "../types/session";
 
 const maxSessions = 50;
 
@@ -13,31 +14,14 @@ const HomeContainer = styled.div`
 `;
 
 type TimeLabelPropsType = {
-  session: DocumentData;
+  session: SessionType;
   currentTimeInSeconds: number;
 };
 const TimeLabel = ({ session, currentTimeInSeconds }: TimeLabelPropsType) => {
-  let color: SemanticCOLORS = "green";
-  let remainingTime = session.is_paused
-    ? session.paused_remaining_time
-    : session.end_time - currentTimeInSeconds;
-  if (remainingTime <= 0) {
-    color = "red";
-    remainingTime = 0;
-  } else if (remainingTime <= 60) {
-    color = "yellow";
-  }
-
-  const remainingSeconds = remainingTime % 60;
-  const remainingMinutes = (remainingTime - remainingSeconds) / 60;
-
+  const timeValues = getTimeValues({ session, currentTimeInSeconds });
   return (
-    <Label color={color}>
-      {`${remainingMinutes}:${
-        remainingSeconds < 10
-          ? "0" + remainingSeconds.toString()
-          : remainingSeconds
-      }`}
+    <Label color={timeValues.color}>
+      {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
     </Label>
   );
 };
@@ -45,7 +29,7 @@ const TimeLabel = ({ session, currentTimeInSeconds }: TimeLabelPropsType) => {
 type HomePropsType = {
   isGettingSessions: boolean;
   hasAnySessions: boolean;
-  sessions: DocumentData[];
+  sessions: SessionWithIdType[];
   setOpenNewModal: (arg: boolean) => void;
   currentTimeInSeconds: number;
 };
