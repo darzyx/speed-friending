@@ -35,6 +35,7 @@ const SessionHeading = ({
         setOpenTimeModal={setOpenTimeModal}
       />
       <Header as="h1" inverted>
+        <Header.Subheader>Session</Header.Subheader>
         {session.name}
         <Header.Subheader>
           {`participants: ${session.participant_count}`}

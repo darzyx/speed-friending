@@ -34,8 +34,8 @@ const Home = ({
 
   return (
     <HomeContainer>
-      <Header as="h1" inverted>
-        ✨ Speed Friending 🏕️
+      <Header as="h1" inverted textAlign="center">
+        <Header.Subheader>Home</Header.Subheader> ✨ Speed Friending 🏕️
       </Header>
       <Header as="h3" inverted>
         Ongoing Sessions
