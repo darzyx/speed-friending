@@ -53,7 +53,7 @@ const Home = ({
           />
         ))}
       {!hasAnySessions && isGettingSessions && <LoadingSessionLink />}
-      {!isGettingSessions && (
+      {userIsAdmin && !isGettingSessions && (
         <CreateSessionLink
           sessions={sessions}
           hasAnySessions={hasAnySessions}
