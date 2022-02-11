@@ -1,4 +1,5 @@
 import { Modal } from "semantic-ui-react";
+import modalColors from "../../styles/modalColors";
 import { SessionType } from "../../types/session";
 
 type TimeModalPropsType = {
@@ -15,29 +16,13 @@ const TimeModal = ({
     onClose={() => setOpenTimeModal(false)}
     onOpen={() => setOpenTimeModal(true)}
     open={openTimeModal}
-    style={{
-      backgroundColor: "#27292a",
-      color: "rgba(255, 255, 255, 0.9)",
-    }}
+    style={modalColors}
   >
-    <Modal.Header
-      style={{
-        backgroundColor: "#27292a",
-        color: "rgba(255, 255, 255, 0.9)",
-        textAlign: "center",
-      }}
-    >
+    <Modal.Header style={{ ...modalColors, textAlign: "center" }}>
       Manage time for <br />
       {session.name}
     </Modal.Header>
-    <Modal.Content
-      style={{
-        backgroundColor: "#27292a",
-        color: "rgba(255, 255, 255, 0.9)",
-      }}
-    >
-      Hello, world!
-    </Modal.Content>
+    <Modal.Content style={modalColors}>Hello, world!</Modal.Content>
   </Modal>
 );
 

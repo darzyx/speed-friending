@@ -1,4 +1,5 @@
 import { List, Modal } from "semantic-ui-react";
+import modalColors from "../../styles/modalColors";
 
 const InfoList = () => (
   <List divided inverted relaxed>
@@ -52,26 +53,12 @@ const InfoModal = ({ openInfoModal, setOpenInfoModal }: InfoModalPropsType) => (
     onClose={() => setOpenInfoModal(false)}
     onOpen={() => setOpenInfoModal(true)}
     open={openInfoModal}
-    style={{
-      backgroundColor: "#27292a",
-      color: "rgba(255, 255, 255, 0.9)",
-    }}
+    style={modalColors}
   >
-    <Modal.Header
-      style={{
-        backgroundColor: "#27292a",
-        color: "rgba(255, 255, 255, 0.9)",
-        textAlign: "center",
-      }}
-    >
+    <Modal.Header style={{ ...modalColors, textAlign: "center" }}>
       How This Works
     </Modal.Header>
-    <Modal.Content
-      style={{
-        backgroundColor: "#27292a",
-        color: "rgba(255, 255, 255, 0.9)",
-      }}
-    >
+    <Modal.Content style={modalColors}>
       <InfoList />
     </Modal.Content>
   </Modal>

@@ -2,6 +2,7 @@ import { Location } from "react-router-dom";
 import { Modal, Divider } from "semantic-ui-react";
 
 import NewForm from "../../components/navbar/NewForm";
+import modalColors from "../../styles/modalColors";
 
 type NewModalPropsType = {
   location: Location;
@@ -17,26 +18,12 @@ const NewModal = ({
     onClose={() => setOpenNewModal(false)}
     onOpen={() => setOpenNewModal(true)}
     open={openNewModal}
-    style={{
-      backgroundColor: "#27292a",
-      color: "rgba(255, 255, 255, 0.9)",
-    }}
+    style={modalColors}
   >
-    <Modal.Header
-      style={{
-        backgroundColor: "#27292a",
-        color: "rgba(255, 255, 255, 0.9)",
-        textAlign: "center",
-      }}
-    >
+    <Modal.Header style={{ ...modalColors, textAlign: "center" }}>
       Create New Session
     </Modal.Header>
-    <Modal.Content
-      style={{
-        backgroundColor: "#27292a",
-        color: "rgba(255, 255, 255, 0.9)",
-      }}
-    >
+    <Modal.Content style={modalColors}>
       <NewForm setOpenNewModal={setOpenNewModal} />
       <Divider clearing hidden fitted />
     </Modal.Content>
