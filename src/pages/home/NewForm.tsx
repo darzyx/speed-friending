@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import { db } from "../../firebase";
 import { SessionType } from "../../types/session";
-import { getMaxRounds } from "../../pages/session/utils";
+import { getMaxRounds } from "../session/utils";
 
 const maxNameLength = 30;
 const maxParticipants = 30;

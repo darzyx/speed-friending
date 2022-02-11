@@ -1,7 +1,7 @@
 import { Location } from "react-router-dom";
 import { Modal, Divider } from "semantic-ui-react";
 
-import NewForm from "../../components/navbar/NewForm";
+import NewForm from "./NewForm";
 import modalColors from "../../styles/modalColors";
 
 type NewModalPropsType = {
