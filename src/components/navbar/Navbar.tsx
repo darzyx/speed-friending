@@ -1,20 +1,26 @@
 import { useState } from "react";
-import { Icon, Menu } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Button, Icon, Menu } from "semantic-ui-react";
+import { useNavigate } from "react-router-dom";
 
 import InfoModal from "./InfoModal";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   const [openInfoModal, setOpenInfoModal] = useState(false);
 
   return (
     <Menu inverted secondary>
-      <Menu.Item as={Link} to="/" name="home" active>
-        <Icon name="home" /> Home
+      <Menu.Item>
+        <Button onClick={() => navigate("/")} secondary>
+          <Icon name="home" /> Home
+        </Button>
       </Menu.Item>
       <Menu.Menu position="right">
-        <Menu.Item name="info" onClick={() => setOpenInfoModal(true)} active>
-          <Icon name="info circle" /> Info
+        <Menu.Item>
+          <Button onClick={() => setOpenInfoModal(true)} secondary>
+            <Icon name="info circle" /> Info
+          </Button>
           <InfoModal
             openInfoModal={openInfoModal}
             setOpenInfoModal={setOpenInfoModal}
