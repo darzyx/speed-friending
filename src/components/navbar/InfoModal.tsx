@@ -36,8 +36,9 @@ const InfoList = () => (
       <List.Content>
         <List.Header>4. CHAT IT UP</List.Header>
         <p>
-          Please put your phone away while chatting! We will let you know when
-          you should come back to the app to find your next round partner
+          Please put your phone away while chatting to maximize your experience.
+          We will let you know when you should come back to the app to find your
+          next round partner
         </p>
       </List.Content>
     </List.Item>
