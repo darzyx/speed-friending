@@ -17,12 +17,14 @@ const HomeContainer = styled.div`
 `;
 
 type HomePropsType = {
+  userIsAdmin: boolean;
   isGettingSessions: boolean;
   hasAnySessions: boolean;
   sessions: SessionWithIdType[];
   currentTimeInSeconds: number;
 };
 const Home = ({
+  userIsAdmin,
   isGettingSessions,
   hasAnySessions,
   sessions,
@@ -43,10 +45,11 @@ const Home = ({
       {hasAnySessions &&
         sessions.map((session, index) => (
           <SessionLink
+            userIsAdmin={userIsAdmin}
+            currentTimeInSeconds={currentTimeInSeconds}
+            session={session}
             key={session.id}
             index={index}
-            session={session}
-            currentTimeInSeconds={currentTimeInSeconds}
           />
         ))}
       {!hasAnySessions && isGettingSessions && <LoadingSessionLink />}

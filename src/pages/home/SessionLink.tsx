@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, Label } from "semantic-ui-react";
 import { getTimeValues } from "../session/utils";
 import { SessionType, SessionWithIdType } from "../../types/session";
@@ -9,20 +9,21 @@ import modalColors from "../../styles/modalColors";
 type TimeLabelPropsType = {
   session: SessionType;
   currentTimeInSeconds: number;
-  setOpenTimeModal: (openTimeModal: boolean) => void;
+  onClickTimeLabel: (openTimeModal: boolean) => void;
+  userIsAdmin: boolean;
 };
 const TimeLabel = ({
   session,
   currentTimeInSeconds,
-  setOpenTimeModal,
+  onClickTimeLabel,
+  userIsAdmin,
 }: TimeLabelPropsType) => {
   const timeValues = getTimeValues({ session, currentTimeInSeconds });
 
   return (
     <Label
-      // color={timeValues.color}
-      onClick={() => setOpenTimeModal(true)}
-      style={{ ...modalColors, backgroundColor: "#1b1c1d" }}
+      onClick={() => onClickTimeLabel(true)}
+      {...(userIsAdmin ? { color: timeValues.color } : { style: modalColors })}
     >
       {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
     </Label>
@@ -33,13 +34,25 @@ type SessionLinkPropsType = {
   index: number;
   session: SessionWithIdType;
   currentTimeInSeconds: number;
+  userIsAdmin: boolean;
 };
 const SessionLink = ({
   index,
   session,
   currentTimeInSeconds,
+  userIsAdmin,
 }: SessionLinkPropsType) => {
+  const navigate = useNavigate();
+
   const [openTimeModal, setOpenTimeModal] = useState(false);
+
+  const handleClickTimeLabel = (newOpenTimeLabel: boolean) => {
+    if (userIsAdmin) {
+      setOpenTimeModal(newOpenTimeLabel);
+    } else {
+      navigate(`/session/${session.id}`);
+    }
+  };
 
   return (
     <Button
@@ -65,7 +78,8 @@ const SessionLink = ({
       <TimeLabel
         session={session}
         currentTimeInSeconds={currentTimeInSeconds}
-        setOpenTimeModal={setOpenTimeModal}
+        onClickTimeLabel={handleClickTimeLabel}
+        userIsAdmin={userIsAdmin}
       />
       <TimeModal
         session={session}

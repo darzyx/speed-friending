@@ -26,6 +26,12 @@ type SessionsUseStateType = [
 ];
 
 const App = () => {
+  const [userIsAdmin, setUserIsAdmin] = useState(false);
+  useEffect(() => {
+    // TODO: Logic for setting user as admin
+    setUserIsAdmin(false);
+  }, []);
+
   const [hasAnySessions, setHasAnySessions] = useState(false);
   const [isGettingSessions, setIsGettingSessions] = useState(true);
   const [sessions, setSessions]: SessionsUseStateType = useState([initSession]);
@@ -68,6 +74,7 @@ const App = () => {
               index
               element={
                 <Home
+                  userIsAdmin={userIsAdmin}
                   isGettingSessions={isGettingSessions}
                   hasAnySessions={hasAnySessions}
                   sessions={sessions}
