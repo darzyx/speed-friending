@@ -18,16 +18,21 @@ const ParticipantPosition = ({
       height: "100%",
       minHeight: "50px",
       width: "100%",
+      margin: "0 5px 5px 5px",
       color: "white",
       fontWeight: "bold",
       fontSize: "22px",
       backgroundColor: "#1b1c1d",
-      border: "2px solid black",
-      borderRadius: top ? "8px 8px 0 0" : "0 0 8px 8px",
+      boxShadow: "2px 2px 6px 0px  rgba(0,0,0,0.3)",
+      borderRadius: "0 0 5px 5px",
       boxSizing: "border-box",
       ...(selectedRoundIsActive && {
         backgroundColor: getParticipantColor(n),
         color: "black",
+      }),
+      ...(top && {
+        borderRadius: "5px 5px 0 0",
+        margin: "5px 5px 0 5px",
       }),
     }}
   >
