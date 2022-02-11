@@ -64,7 +64,7 @@ const InfoModal = ({ openInfoModal, setOpenInfoModal }: InfoModalPropsType) => (
         textAlign: "center",
       }}
     >
-      How It Works
+      How This Works
     </Modal.Header>
     <Modal.Content
       style={{
