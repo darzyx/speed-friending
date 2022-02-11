@@ -44,7 +44,7 @@ const SessionHeading = ({
         </Breadcrumb.Section>
         <Breadcrumb.Divider style={{ color: "white" }} />
         <Breadcrumb.Section>
-          {`${session.total_rounds} total rounds`}
+          {`${session.total_rounds} rounds`}
         </Breadcrumb.Section>
         <Breadcrumb.Divider style={{ color: "white" }} />
         <Breadcrumb.Section>
