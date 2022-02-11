@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
-import { Form, Button, Icon, InputOnChangeData } from "semantic-ui-react";
+import {
+  Form,
+  Button,
+  Icon,
+  InputOnChangeData,
+  Divider,
+} from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -142,13 +148,12 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
             width={10}
           />
         </Form.Group>
+        <Divider hidden />
         <div>
           <Button
             content="Cancel"
             onClick={() => setOpenNewModal(false)}
             floated="left"
-            basic
-            inverted
           />
           <Button
             disabled={isSubmitting}
