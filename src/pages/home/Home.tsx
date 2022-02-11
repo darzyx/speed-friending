@@ -7,7 +7,7 @@ import LoadingSessionLink from "./LoadingSessionLink";
 import CreateSessionLink from "./CreateSessionLink";
 import { centerMiddleCSS } from "../../components/blocks/CenterMiddle";
 import { SessionWithIdType } from "../../types/session";
-import NewModal from "../../components/navbar/NewModal";
+import NewModal from "./NewModal";
 
 const HomeContainer = styled.div`
   ${centerMiddleCSS}
