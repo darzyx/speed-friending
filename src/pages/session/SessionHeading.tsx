@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Header, Segment } from "semantic-ui-react";
+import { Breadcrumb, Header, Segment } from "semantic-ui-react";
 
 import CenterMiddle from "../../components/blocks/CenterMiddle";
 import TimeModal from "../../components/time-modal/TimeModal";
@@ -37,14 +37,20 @@ const SessionHeading = ({
       <Header as="h1" inverted>
         <Header.Subheader>Session</Header.Subheader>
         {session.name}
-        <Header.Subheader>
-          {`participants: ${session.participant_count}`}
-          <br />
-          {`total rounds: ${session.total_rounds}`}
-          <br />
-          {`active round: ${session.active_round}`}
-        </Header.Subheader>
       </Header>
+      <Breadcrumb>
+        <Breadcrumb.Section>
+          {`${session.participant_count} participants`}
+        </Breadcrumb.Section>
+        <Breadcrumb.Divider style={{ color: "white" }} />
+        <Breadcrumb.Section>
+          {`${session.total_rounds} total rounds`}
+        </Breadcrumb.Section>
+        <Breadcrumb.Divider style={{ color: "white" }} />
+        <Breadcrumb.Section>
+          {`active round: ${session.active_round}`}
+        </Breadcrumb.Section>
+      </Breadcrumb>
     </CenterMiddle>
   );
 };
