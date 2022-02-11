@@ -37,7 +37,7 @@ const Home = ({
       <Header as="h1" inverted textAlign="center">
         <Header.Subheader>Home</Header.Subheader> ✨ Speed Friending 🏕️
       </Header>
-      <Header as="h3" inverted>
+      <Header as="h3" inverted textAlign="center">
         Ongoing Sessions
       </Header>
       {hasAnySessions &&
