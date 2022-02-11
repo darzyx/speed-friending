@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Segment } from "semantic-ui-react";
+import { Header, Segment } from "semantic-ui-react";
 
 import CenterMiddle from "../../components/blocks/CenterMiddle";
 import TimeModal from "../../components/time-modal/TimeModal";
@@ -34,16 +34,16 @@ const SessionHeading = ({
         openTimeModal={openTimeModal}
         setOpenTimeModal={setOpenTimeModal}
       />
-      <h1 style={{ marginBottom: "0" }}>{session.name}</h1>
-      <h4 style={{ marginTop: "0", marginBottom: "0", color: "#a9a9a9" }}>
-        {`participants: ${session.participant_count}`}
-      </h4>
-      <h4 style={{ marginTop: "0", marginBottom: "0", color: "#a9a9a9" }}>
-        {`total rounds: ${session.total_rounds}`}
-      </h4>
-      <h4 style={{ marginTop: "0", color: "#a9a9a9" }}>
-        {`active round: ${session.active_round}`}
-      </h4>
+      <Header as="h1" inverted>
+        {session.name}
+        <Header.Subheader>
+          {`participants: ${session.participant_count}`}
+          <br />
+          {`total rounds: ${session.total_rounds}`}
+          <br />
+          {`active round: ${session.active_round}`}
+        </Header.Subheader>
+      </Header>
     </CenterMiddle>
   );
 };

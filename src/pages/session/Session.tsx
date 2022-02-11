@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Dimmer, Divider, Icon, Loader, Pagination } from "semantic-ui-react";
+import {
+  Dimmer,
+  Divider,
+  Header,
+  Icon,
+  Loader,
+  Pagination,
+} from "semantic-ui-react";
 import styled from "styled-components";
 
 import ParticipantPosition from "./ParticipantPosition";
@@ -106,43 +113,39 @@ const Session = ({
         session={session}
         currentTimeInSeconds={currentTimeInSeconds}
       />
-      <div style={{ margin: "20px" }}>
-        <CenterMiddle textAlign="center">
-          <h3 style={{ marginBottom: "5px" }}>
-            {`Round ${selectedPage} (${
-              selectedRoundIsActive ? "active" : "inactive"
-            })`}
-          </h3>
-        </CenterMiddle>
-        <ParticipantPositionRow
-          row={selectedRound.top.slice(0, selectedRound.top.length / 2)}
-          selectedRoundIsActive={selectedRoundIsActive}
-          top={true}
-        />
-        <ParticipantPositionRow
-          row={selectedRound.btm.slice(0, selectedRound.top.length / 2)}
-          selectedRoundIsActive={selectedRoundIsActive}
-          top={false}
-        />
-        <Divider hidden />
-        <ParticipantPositionRow
-          row={selectedRound.top.slice(
-            selectedRound.top.length / 2,
-            selectedRound.top.length
-          )}
-          selectedRoundIsActive={selectedRoundIsActive}
-          top={true}
-        />
-        <ParticipantPositionRow
-          row={selectedRound.btm.slice(
-            selectedRound.btm.length / 2,
-            selectedRound.btm.length
-          )}
-          selectedRoundIsActive={selectedRoundIsActive}
-          top={false}
-        />
-        <Divider hidden />
-      </div>
+      <Header as="h3" inverted>
+        {`Round ${selectedPage} (${
+          selectedRoundIsActive ? "active" : "inactive"
+        })`}
+      </Header>
+      <ParticipantPositionRow
+        row={selectedRound.top.slice(0, selectedRound.top.length / 2)}
+        selectedRoundIsActive={selectedRoundIsActive}
+        top={true}
+      />
+      <ParticipantPositionRow
+        row={selectedRound.btm.slice(0, selectedRound.top.length / 2)}
+        selectedRoundIsActive={selectedRoundIsActive}
+        top={false}
+      />
+      <Divider hidden />
+      <ParticipantPositionRow
+        row={selectedRound.top.slice(
+          selectedRound.top.length / 2,
+          selectedRound.top.length
+        )}
+        selectedRoundIsActive={selectedRoundIsActive}
+        top={true}
+      />
+      <ParticipantPositionRow
+        row={selectedRound.btm.slice(
+          selectedRound.btm.length / 2,
+          selectedRound.btm.length
+        )}
+        selectedRoundIsActive={selectedRoundIsActive}
+        top={false}
+      />
+      <Divider hidden />
       <CenterMiddle>
         <StyledPagination
           activePage={selectedPage}

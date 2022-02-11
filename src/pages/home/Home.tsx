@@ -8,6 +8,7 @@ import CreateSessionLink from "./CreateSessionLink";
 import { centerMiddleCSS } from "../../components/blocks/CenterMiddle";
 import { SessionWithIdType } from "../../types/session";
 import NewModal from "./NewModal";
+import { Header } from "semantic-ui-react";
 
 const HomeContainer = styled.div`
   ${centerMiddleCSS}
@@ -33,8 +34,12 @@ const Home = ({
 
   return (
     <HomeContainer>
-      <h1>✨ Speed Friending 🏕️</h1>
-      <h3>Ongoing Sessions</h3>
+      <Header as="h1" inverted>
+        ✨ Speed Friending 🏕️
+      </Header>
+      <Header as="h3" inverted>
+        Ongoing Sessions
+      </Header>
       {hasAnySessions &&
         sessions.map((session, index) => (
           <SessionLink
