@@ -1,4 +1,4 @@
-import { Modal } from "semantic-ui-react";
+import { CustomModal, CustomHeader } from "../blocks/StyledSemanticComponents";
 import modalColors from "../../styles/modalColors";
 import { SessionType } from "../../types/session";
 
@@ -12,18 +12,19 @@ const TimeModal = ({
   openTimeModal,
   setOpenTimeModal,
 }: TimeModalPropsType) => (
-  <Modal
+  <CustomModal
     onClose={() => setOpenTimeModal(false)}
     onOpen={() => setOpenTimeModal(true)}
     open={openTimeModal}
     style={modalColors}
+    closeIcon
   >
-    <Modal.Header style={{ ...modalColors, textAlign: "center" }}>
+    <CustomHeader>
       Manage time for <br />
       {session.name}
-    </Modal.Header>
-    <Modal.Content style={modalColors}>Hello, world!</Modal.Content>
-  </Modal>
+    </CustomHeader>
+    <CustomModal.Content style={modalColors}>Hello, world!</CustomModal.Content>
+  </CustomModal>
 );
 
 export default TimeModal;

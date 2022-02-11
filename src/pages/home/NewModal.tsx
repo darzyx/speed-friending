@@ -1,8 +1,12 @@
 import { Location } from "react-router-dom";
-import { Modal, Divider } from "semantic-ui-react";
+import { Divider } from "semantic-ui-react";
 
 import NewForm from "./NewForm";
 import modalColors from "../../styles/modalColors";
+import {
+  CustomModal,
+  CustomHeader,
+} from "../../components/blocks/StyledSemanticComponents";
 
 type NewModalPropsType = {
   location: Location;
@@ -14,20 +18,19 @@ const NewModal = ({
   openNewModal,
   setOpenNewModal,
 }: NewModalPropsType) => (
-  <Modal
+  <CustomModal
     onClose={() => setOpenNewModal(false)}
     onOpen={() => setOpenNewModal(true)}
     open={openNewModal}
     style={modalColors}
+    closeIcon
   >
-    <Modal.Header style={{ ...modalColors, textAlign: "center" }}>
-      Create New Session
-    </Modal.Header>
-    <Modal.Content style={modalColors}>
+    <CustomHeader>Create New Session</CustomHeader>
+    <CustomModal.Content style={modalColors}>
       <NewForm setOpenNewModal={setOpenNewModal} />
       <Divider clearing hidden fitted />
-    </Modal.Content>
-  </Modal>
+    </CustomModal.Content>
+  </CustomModal>
 );
 
 export default NewModal;

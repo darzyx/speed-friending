@@ -1,5 +1,5 @@
-import { Header, Modal } from "semantic-ui-react";
 import modalColors from "../../styles/modalColors";
+import { CustomModal, CustomHeader } from "../blocks/StyledSemanticComponents";
 import InfoList from "./InfoList";
 
 type InfoModalPropsType = {
@@ -7,22 +7,23 @@ type InfoModalPropsType = {
   setOpenInfoModal: (openInfoModal: boolean) => void;
 };
 const InfoModal = ({ openInfoModal, setOpenInfoModal }: InfoModalPropsType) => (
-  <Modal
+  <CustomModal
     onClose={() => setOpenInfoModal(false)}
     onOpen={() => setOpenInfoModal(true)}
     open={openInfoModal}
     style={modalColors}
+    closeIcon
   >
-    <Header style={{ ...modalColors, textAlign: "center" }}>
-      <Header.Subheader style={{ color: "rgba(255, 255, 255, 0.8)" }}>
+    <CustomHeader>
+      <CustomHeader.Subheader style={{ color: "rgba(255, 255, 255, 0.8)" }}>
         Info
-      </Header.Subheader>
+      </CustomHeader.Subheader>
       How This Works
-    </Header>
-    <Modal.Content style={modalColors}>
+    </CustomHeader>
+    <CustomModal.Content style={modalColors}>
       <InfoList />
-    </Modal.Content>
-  </Modal>
+    </CustomModal.Content>
+  </CustomModal>
 );
 
 export default InfoModal;
