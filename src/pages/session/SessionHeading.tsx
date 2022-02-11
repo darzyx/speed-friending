@@ -20,20 +20,6 @@ const SessionHeading = ({
 
   return (
     <CenterMiddle textAlign="center">
-      <Segment
-        color={timeValues.color}
-        inverted
-        compact
-        onClick={() => setOpenTimeModal(true)}
-        style={{ cursor: "pointer" }}
-      >
-        {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
-      </Segment>
-      <TimeModal
-        session={session}
-        openTimeModal={openTimeModal}
-        setOpenTimeModal={setOpenTimeModal}
-      />
       <Header as="h1" inverted>
         <Header.Subheader>Session</Header.Subheader>
         {session.name}
@@ -51,6 +37,20 @@ const SessionHeading = ({
           {`active round: ${session.active_round}`}
         </Breadcrumb.Section>
       </Breadcrumb>
+      <Segment
+        color={timeValues.color}
+        inverted
+        compact
+        onClick={() => setOpenTimeModal(true)}
+        style={{ cursor: "pointer" }}
+      >
+        {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
+      </Segment>
+      <TimeModal
+        session={session}
+        openTimeModal={openTimeModal}
+        setOpenTimeModal={setOpenTimeModal}
+      />
     </CenterMiddle>
   );
 };
