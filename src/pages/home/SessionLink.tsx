@@ -22,7 +22,7 @@ const TimeLabel = ({
     <Label
       // color={timeValues.color}
       onClick={() => setOpenTimeModal(true)}
-      style={modalColors}
+      style={{ ...modalColors, backgroundColor: "#1b1c1d" }}
     >
       {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
     </Label>
@@ -57,6 +57,7 @@ const SessionLink = ({
         to={`/session/${session.id}`}
         style={{ textAlign: "left", paddingTop: "15px", paddingBottom: "15px" }}
         secondary
+        active
         fluid
       >
         {session.name}
