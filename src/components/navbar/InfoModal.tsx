@@ -1,8 +1,8 @@
-import { Header, List, Modal } from "semantic-ui-react";
+import { Divider, Header, List, Modal } from "semantic-ui-react";
 import modalColors from "../../styles/modalColors";
 
 const InfoList = () => (
-  <List divided inverted relaxed>
+  <List inverted relaxed>
     <List.Item>
       <List.Content>
         <List.Header>1. FIND YOUR SESSION NAME</List.Header>
@@ -12,6 +12,7 @@ const InfoList = () => (
         </p>
       </List.Content>
     </List.Item>
+    <Divider />
     <List.Item>
       <List.Content>
         <List.Header>2. FIND YOUR ACTIVE ROUND</List.Header>
@@ -22,6 +23,7 @@ const InfoList = () => (
         </p>
       </List.Content>
     </List.Item>
+    <Divider />
     <List.Item>
       <List.Content>
         <List.Header>3. FIND YOUR PARTICIPANT NUMBER</List.Header>
@@ -32,6 +34,7 @@ const InfoList = () => (
         </p>
       </List.Content>
     </List.Item>
+    <Divider />
     <List.Item>
       <List.Content>
         <List.Header>4. CHAT IT UP</List.Header>

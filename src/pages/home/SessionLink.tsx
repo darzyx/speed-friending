@@ -4,6 +4,7 @@ import { getTimeValues } from "../session/utils";
 import { SessionType, SessionWithIdType } from "../../types/session";
 import TimeModal from "../../components/time-modal/TimeModal";
 import { useState } from "react";
+import modalColors from "../../styles/modalColors";
 
 type TimeLabelPropsType = {
   session: SessionType;
@@ -16,8 +17,13 @@ const TimeLabel = ({
   setOpenTimeModal,
 }: TimeLabelPropsType) => {
   const timeValues = getTimeValues({ session, currentTimeInSeconds });
+
   return (
-    <Label color={timeValues.color} onClick={() => setOpenTimeModal(true)}>
+    <Label
+      // color={timeValues.color}
+      onClick={() => setOpenTimeModal(true)}
+      style={modalColors}
+    >
       {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
     </Label>
   );

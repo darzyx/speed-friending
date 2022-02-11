@@ -37,8 +37,8 @@ const Home = ({
       <Header as="h1" inverted textAlign="center">
         <Header.Subheader>Home</Header.Subheader> ✨ Speed Friending 🏕️
       </Header>
-      <Header as="h3" inverted textAlign="center">
-        Click On Your Session
+      <Header as="h3" inverted textAlign="center" style={{ color: "teal" }}>
+        Select Your Session Below
       </Header>
       {hasAnySessions &&
         sessions.map((session, index) => (
