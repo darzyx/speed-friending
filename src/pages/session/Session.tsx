@@ -9,31 +9,14 @@ import {
   Statistic,
 } from "semantic-ui-react";
 
-import Participant from "./Participant";
-import { getGame, getTimeValues, RoundType } from "./utils";
+import { getGame, getTimeValues } from "./utils";
 import { SessionWithIdType } from "../../types/session";
 import { initSession } from "../../App";
-import styled from "styled-components";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
 import TimeModal from "../../components/time-modal/TimeModal";
 import NavButton from "../../components/blocks/NavButton";
 import PastRoundsModal from "./PastRoundsModal";
-
-const ParticipantsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-  grid-gap: 8px;
-`;
-const Participants = ({ activeRound }: { activeRound: RoundType }) => (
-  <ParticipantsContainer>
-    {activeRound.top.map((nTop, idxTop) => (
-      <div key={idxTop}>
-        <Participant n={nTop} top={true} />
-        <Participant n={activeRound.btm[idxTop]} top={false} />
-      </div>
-    ))}
-  </ParticipantsContainer>
-);
+import Participants from "./Participants";
 
 type SessionPropsType = {
   sessions: SessionWithIdType[];
@@ -58,11 +41,6 @@ const Session = ({
     }
   }, [id, sessions]);
 
-  const [
-    activePage,
-    // setSelectedPage
-  ] = useState("1");
-
   const [openTimeModal, setOpenTimeModal] = useState(false);
   const timeValues = getTimeValues({ session, currentTimeInSeconds });
 
@@ -77,7 +55,7 @@ const Session = ({
   }
 
   const game = getGame(session.participant_count, session.total_rounds);
-  const activeRound = Object.values(game)[Number(activePage) - 1];
+  const activeRound = Object.values(game)[Number(session.active_round) - 1];
 
   return (
     <div>
@@ -102,7 +80,7 @@ const Session = ({
           <Statistic.Value>
             {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
           </Statistic.Value>
-          <Statistic.Label>{`Round ${activePage}`}</Statistic.Label>
+          <Statistic.Label>{`Round ${session.active_round}`}</Statistic.Label>
         </Statistic>
         <TimeModal
           session={session}
@@ -111,13 +89,15 @@ const Session = ({
         />
       </CenterMiddle>
       <Divider hidden />
-      <Participants activeRound={activeRound} />
+      <Participants round={activeRound} />
       <Divider hidden />
       <CenterMiddle>
         <NavButton onClick={() => setOpenPastRoundsModal(true)}>
           <Icon name="history" /> View Past Rounds
         </NavButton>
         <PastRoundsModal
+          game={game}
+          activeRound={session.active_round}
           openPastRoundsModal={openPastRoundsModal}
           setOpenPastRoundsModal={setOpenPastRoundsModal}
         />
