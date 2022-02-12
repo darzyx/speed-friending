@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Dimmer, Divider, Header, Loader } from "semantic-ui-react";
+import { Dimmer, Header, Loader } from "semantic-ui-react";
 
 import Participant from "./Participant";
 import { getGame, RoundType } from "./utils";
 import { SessionWithIdType } from "../../types/session";
 import { initSession } from "../../App";
 import SessionHeading from "./SessionHeading";
-import StyledPagination from "./StyledPagination";
 import styled from "styled-components";
 
 const ParticipantsContainer = styled.div`
@@ -15,26 +14,14 @@ const ParticipantsContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
   grid-gap: 8px;
 `;
-const Participants = ({
-  selectedRound,
-  selectedRoundIsActive,
-}: {
-  selectedRound: RoundType;
-  selectedRoundIsActive: boolean;
-}) => (
+const Participants = ({ activeRound }: { activeRound: RoundType }) => (
   <ParticipantsContainer>
-    {selectedRound.top.map((nTop, idxTop) => (
+    {activeRound.top.map((nTop, idxTop) => (
       <div>
+        <Participant key={nTop} n={nTop} top={true} />
         <Participant
-          key={nTop}
-          n={nTop}
-          selectedRoundIsActive={selectedRoundIsActive}
-          top={true}
-        />
-        <Participant
-          key={selectedRound.btm[idxTop]}
-          n={selectedRound.btm[idxTop]}
-          selectedRoundIsActive={selectedRoundIsActive}
+          key={activeRound.btm[idxTop]}
+          n={activeRound.btm[idxTop]}
           top={false}
         />
       </div>
@@ -65,7 +52,10 @@ const Session = ({
     }
   }, [id, sessions]);
 
-  const [selectedPage, setSelectedPage] = useState("1");
+  const [
+    activePage,
+    // setSelectedPage
+  ] = useState("1");
 
   if (isGettingSessions || !hasSession) {
     return (
@@ -76,8 +66,7 @@ const Session = ({
   }
 
   const game = getGame(session.participant_count, session.total_rounds);
-  const selectedRound = Object.values(game)[Number(selectedPage) - 1];
-  const selectedRoundIsActive = session?.active_round === Number(selectedPage);
+  const activeRound = Object.values(game)[Number(activePage) - 1];
 
   return (
     <div>
@@ -87,21 +76,9 @@ const Session = ({
         userIsAdmin={userIsAdmin}
       />
       <Header as="h3" inverted textAlign="center">
-        {`Round ${selectedPage} (${
-          selectedRoundIsActive ? "active" : "inactive"
-        })`}
+        {`Round ${activePage}`}
       </Header>
-      <Participants
-        selectedRound={selectedRound}
-        selectedRoundIsActive={selectedRoundIsActive}
-      />
-      <Divider hidden />
-      <StyledPagination
-        session={session}
-        selectedPage={selectedPage}
-        setSelectedPage={setSelectedPage}
-        selectedRoundIsActive={selectedRoundIsActive}
-      />
+      <Participants activeRound={activeRound} />
     </div>
   );
 };
