@@ -1,12 +1,8 @@
 import { Location } from "react-router-dom";
 import { Divider } from "semantic-ui-react";
 
+import StyledModal from "../../components/blocks/StyledModal";
 import NewForm from "./NewForm";
-import modalColors from "../../styles/modalColors";
-import {
-  CustomModal,
-  CustomHeader,
-} from "../../components/blocks/StyledSemanticComponents";
 
 type NewModalPropsType = {
   location: Location;
@@ -18,19 +14,18 @@ const NewModal = ({
   openNewModal,
   setOpenNewModal,
 }: NewModalPropsType) => (
-  <CustomModal
-    onClose={() => setOpenNewModal(false)}
-    onOpen={() => setOpenNewModal(true)}
-    open={openNewModal}
-    style={modalColors}
-    closeIcon
-  >
-    <CustomHeader>Create New Session</CustomHeader>
-    <CustomModal.Content style={modalColors}>
-      <NewForm setOpenNewModal={setOpenNewModal} />
-      <Divider clearing hidden fitted />
-    </CustomModal.Content>
-  </CustomModal>
+  <StyledModal
+    header="New Group Session"
+    subheader="Create"
+    content={
+      <div>
+        <NewForm setOpenNewModal={setOpenNewModal} />
+        <Divider clearing hidden fitted />
+      </div>
+    }
+    openModal={openNewModal}
+    setOpenModal={setOpenNewModal}
+  />
 );
 
 export default NewModal;

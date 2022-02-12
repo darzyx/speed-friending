@@ -4,7 +4,6 @@ import { getTimeValues } from "../session/utils";
 import { SessionType, SessionWithIdType } from "../../types/session";
 import TimeModal from "../../components/time-modal/TimeModal";
 import { useState } from "react";
-import modalColors from "../../styles/modalColors";
 
 type TimeLabelPropsType = {
   session: SessionType;
@@ -23,7 +22,14 @@ const TimeLabel = ({
   return (
     <Label
       onClick={() => onClickTimeLabel(true)}
-      {...(userIsAdmin ? { color: timeValues.color } : { style: modalColors })}
+      {...(userIsAdmin
+        ? { color: timeValues.color }
+        : {
+            style: {
+              backgroundColor: "#27292a",
+              color: "rgba(255, 255, 255, 0.9)",
+            },
+          })}
     >
       {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
     </Label>

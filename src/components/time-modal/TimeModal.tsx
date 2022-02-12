@@ -1,5 +1,4 @@
-import { CustomModal, CustomHeader } from "../blocks/StyledSemanticComponents";
-import modalColors from "../../styles/modalColors";
+import StyledModal from "../blocks/StyledModal";
 import { SessionType } from "../../types/session";
 
 type TimeModalPropsType = {
@@ -12,19 +11,13 @@ const TimeModal = ({
   openTimeModal,
   setOpenTimeModal,
 }: TimeModalPropsType) => (
-  <CustomModal
-    onClose={() => setOpenTimeModal(false)}
-    onOpen={() => setOpenTimeModal(true)}
-    open={openTimeModal}
-    style={modalColors}
-    closeIcon
-  >
-    <CustomHeader>
-      Manage time for <br />
-      {session.name}
-    </CustomHeader>
-    <CustomModal.Content style={modalColors}>Hello, world!</CustomModal.Content>
-  </CustomModal>
+  <StyledModal
+    header={session.name}
+    subheader="Manage time for"
+    content={<div>Hello, world!</div>}
+    openModal={openTimeModal}
+    setOpenModal={setOpenTimeModal}
+  />
 );
 
 export default TimeModal;
