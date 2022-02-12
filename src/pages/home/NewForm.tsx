@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import {
   Form,
@@ -33,7 +33,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
 
   const [name, setName] = useState("");
   const handleChangeName = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
   ) => {
     if (typeof value === "string" && value.length <= maxNameLength) {
@@ -43,7 +43,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
 
   const [participantCount, setParticipantCount] = useState("");
   const handleChangeParticipantCount = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
   ) => {
     const numberValue = Number(value);
@@ -59,7 +59,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
   const maxRounds = getMaxRounds(Number(participantCount));
   const [totalRounds, setTotalRounds] = useState("");
   const handleChangeTotalRounds = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
   ) => {
     const numberValue = Number(value);
@@ -74,7 +74,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
 
   const [password, setPassword] = useState("");
   const handleChangePassword = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
   ) => {
     if (typeof value === "string") {

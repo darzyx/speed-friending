@@ -1,4 +1,3 @@
-import React from "react";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
 
 import { getParticipantColor } from "./utils";
