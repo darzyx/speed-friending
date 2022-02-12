@@ -1,49 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  Dimmer,
-  Divider,
-  Header,
-  Icon,
-  Loader,
-  Pagination,
-} from "semantic-ui-react";
-import styled from "styled-components";
+import { Dimmer, Divider, Header, Loader } from "semantic-ui-react";
 
 import ParticipantPosition from "./ParticipantPosition";
 import { getGame } from "./utils";
 import { SessionWithIdType } from "../../types/session";
 import { initSession } from "../../App";
-import CenterMiddle from "../../components/blocks/CenterMiddle";
 import SessionHeading from "./SessionHeading";
-
-const StyledPagination = styled(Pagination)`
-  &&&& {
-    max-width: 100%;
-    &,
-    * {
-      color: white !important;
-      background-color: #1b1c1d;
-      outline: none;
-      border: none;
-    }
-    .active.item,
-    &:hover {
-      background-color: #27292a;
-    }
-  }
-`;
-
-const LinkButton = styled.button`
-  background: none;
-  border: none;
-  margin-top: 20px;
-  padding: 0;
-  color: #00aaff;
-  cursor: pointer;
-  font-size: 16px;
-  outline: none;
-`;
+import StyledPagination from "./StyledPagination";
 
 const ParticipantPositionRow = ({
   row,
@@ -88,12 +52,6 @@ const Session = ({
   }, [id, sessions]);
 
   const [selectedPage, setSelectedPage] = useState("1");
-  const handlePageChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    { activePage }: { activePage: string }
-  ) => {
-    setSelectedPage(activePage);
-  };
 
   if (isGettingSessions || !hasSession) {
     return (
@@ -146,30 +104,12 @@ const Session = ({
         top={false}
       />
       <Divider hidden />
-      <CenterMiddle>
-        <StyledPagination
-          activePage={selectedPage}
-          onPageChange={handlePageChange}
-          totalPages={session.total_rounds}
-          boundaryRange={0}
-          ellipsisItem={null}
-          firstItem={null}
-          lastItem={null}
-          siblingRange={1}
-        />
-        <LinkButton
-          onClick={() => setSelectedPage(session.active_round.toString())}
-        >
-          Go to Active Round{" "}
-          <Icon
-            name={
-              selectedRoundIsActive
-                ? "check circle outline"
-                : "arrow alternate circle right outline"
-            }
-          />
-        </LinkButton>
-      </CenterMiddle>
+      <StyledPagination
+        session={session}
+        selectedPage={selectedPage}
+        setSelectedPage={setSelectedPage}
+        selectedRoundIsActive={selectedRoundIsActive}
+      />
     </div>
   );
 };
