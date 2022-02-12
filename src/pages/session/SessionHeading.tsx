@@ -20,22 +20,6 @@ const SessionHeading = ({
 
   return (
     <CenterMiddle textAlign="center">
-      <Header as="h1" inverted>
-        <Header.Subheader>Session</Header.Subheader>
-        {session.name}
-        <Header.Subheader>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-          >
-            <span>{`${session.participant_count} participants`}</span>
-            <span>{`${session.total_rounds} rounds`}</span>
-          </div>
-        </Header.Subheader>
-      </Header>
-
       <Segment
         color={timeValues.color}
         inverted
@@ -50,6 +34,15 @@ const SessionHeading = ({
         openTimeModal={openTimeModal}
         setOpenTimeModal={setOpenTimeModal}
       />
+      <Header as="h1" inverted>
+        <Header.Subheader>Session</Header.Subheader>
+        {session.name}
+        <Header.Subheader>
+          {`${session.participant_count} participants`}
+          <br />
+          {`${session.total_rounds} rounds`}
+        </Header.Subheader>
+      </Header>
     </CenterMiddle>
   );
 };
