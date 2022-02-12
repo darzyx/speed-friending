@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Dimmer, Header, Loader } from "semantic-ui-react";
+import { Dimmer, Divider, Header, Loader, Statistic } from "semantic-ui-react";
 
 import Participant from "./Participant";
-import { getGame, RoundType } from "./utils";
+import { getGame, getTimeValues, RoundType } from "./utils";
 import { SessionWithIdType } from "../../types/session";
 import { initSession } from "../../App";
-import SessionHeading from "./SessionHeading";
 import styled from "styled-components";
+import CenterMiddle from "../../components/blocks/CenterMiddle";
+import TimeModal from "../../components/time-modal/TimeModal";
 
 const ParticipantsContainer = styled.div`
   display: grid;
@@ -57,6 +58,9 @@ const Session = ({
     // setSelectedPage
   ] = useState("1");
 
+  const [openTimeModal, setOpenTimeModal] = useState(false);
+  const timeValues = getTimeValues({ session, currentTimeInSeconds });
+
   if (isGettingSessions || !hasSession) {
     return (
       <Dimmer active>
@@ -70,14 +74,36 @@ const Session = ({
 
   return (
     <div>
-      <SessionHeading
-        session={session}
-        currentTimeInSeconds={currentTimeInSeconds}
-        userIsAdmin={userIsAdmin}
-      />
-      <Header as="h3" inverted textAlign="center">
-        {`Round ${activePage}`}
-      </Header>
+      <CenterMiddle textAlign="center">
+        <Header as="h1" inverted>
+          <Header.Subheader style={{ margin: "7px" }}>Session</Header.Subheader>
+          {session.name}
+          <Header.Subheader>
+            {`${session.participant_count} participants`}
+            <br />
+            {`${session.total_rounds} rounds`}
+          </Header.Subheader>
+        </Header>
+        <Statistic
+          inverted
+          {...(userIsAdmin && {
+            color: timeValues.color,
+            onClick: () => setOpenTimeModal(true),
+            style: { cursor: "pointer" },
+          })}
+        >
+          <Statistic.Value>
+            {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
+          </Statistic.Value>
+          <Statistic.Label>{`Round ${activePage}`}</Statistic.Label>
+        </Statistic>
+        <TimeModal
+          session={session}
+          openTimeModal={openTimeModal}
+          setOpenTimeModal={setOpenTimeModal}
+        />
+      </CenterMiddle>
+      <Divider hidden />
       <Participants activeRound={activeRound} />
     </div>
   );
