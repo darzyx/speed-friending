@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>
-      <StyledButton onClick={() => navigate("/")}>
+      <StyledButton onClick={() => navigate("/home")}>
         <Icon name="home" /> Home
       </StyledButton>
       <StyledButton onClick={() => setOpenInfoModal(true)}>

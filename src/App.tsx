@@ -1,6 +1,6 @@
 import { onSnapshot, collection, Timestamp } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Divider } from "semantic-ui-react";
 import Navbar from "./components/navbar/Navbar";
 
@@ -70,8 +70,9 @@ const App = () => {
           <Navbar />
           <Divider hidden />
           <Routes>
+            <Route index element={<Navigate to="/home" />} />
             <Route
-              index
+              path="home"
               element={
                 <Home
                   userIsAdmin={userIsAdmin}
