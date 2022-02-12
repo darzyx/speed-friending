@@ -2,16 +2,16 @@ import CenterMiddle from "../../components/blocks/CenterMiddle";
 
 import { getParticipantColor } from "./utils";
 
-type ParticipantPositionPropsType = {
+type ParticipantPropsType = {
   n: number;
   selectedRoundIsActive: boolean;
   top?: boolean;
 };
-const ParticipantPosition = ({
+const Participant = ({
   n,
   selectedRoundIsActive,
   top,
-}: ParticipantPositionPropsType) => (
+}: ParticipantPropsType) => (
   <CenterMiddle
     style={{
       height: "100%",
@@ -39,4 +39,4 @@ const ParticipantPosition = ({
   </CenterMiddle>
 );
 
-export default ParticipantPosition;
+export default Participant;

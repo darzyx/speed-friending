@@ -11,7 +11,8 @@ export const getMaxRounds = (participant_count: number) => {
   }
 };
 
-type GameType = { [x: number]: { top: Array<number>; btm: Array<number> } };
+export type RoundType = { top: Array<number>; btm: Array<number> };
+type GameType = { [x: number]: RoundType };
 export const getGame = (nParticipants: number, maxRounds: number = 0) => {
   const game: GameType = {};
   const participants: Array<number> = Array.from(

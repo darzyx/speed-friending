@@ -2,32 +2,44 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Dimmer, Divider, Header, Loader } from "semantic-ui-react";
 
-import ParticipantPosition from "./ParticipantPosition";
-import { getGame } from "./utils";
+import Participant from "./Participant";
+import { getGame, RoundType } from "./utils";
 import { SessionWithIdType } from "../../types/session";
 import { initSession } from "../../App";
 import SessionHeading from "./SessionHeading";
 import StyledPagination from "./StyledPagination";
+import styled from "styled-components";
 
-const ParticipantPositionRow = ({
-  row,
+const ParticipantsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  grid-gap: 5px;
+`;
+const Participants = ({
+  selectedRound,
   selectedRoundIsActive,
-  top,
 }: {
-  row: number[];
+  selectedRound: RoundType;
   selectedRoundIsActive: boolean;
-  top: boolean;
 }) => (
-  <div style={{ display: "flex", justifyContent: "space-between" }}>
-    {row.map((n, rowIndex) => (
-      <ParticipantPosition
-        key={rowIndex}
-        n={n}
-        selectedRoundIsActive={selectedRoundIsActive}
-        top={top}
-      />
+  <ParticipantsContainer>
+    {selectedRound.top.map((nTop, idxTop) => (
+      <div>
+        <Participant
+          key={nTop}
+          n={nTop}
+          selectedRoundIsActive={selectedRoundIsActive}
+          top={true}
+        />
+        <Participant
+          key={selectedRound.btm[idxTop]}
+          n={selectedRound.btm[idxTop]}
+          selectedRoundIsActive={selectedRoundIsActive}
+          top={false}
+        />
+      </div>
     ))}
-  </div>
+  </ParticipantsContainer>
 );
 
 type SessionPropsType = {
@@ -79,32 +91,9 @@ const Session = ({
           selectedRoundIsActive ? "active" : "inactive"
         })`}
       </Header>
-      <ParticipantPositionRow
-        row={selectedRound.top.slice(0, selectedRound.top.length / 2)}
+      <Participants
+        selectedRound={selectedRound}
         selectedRoundIsActive={selectedRoundIsActive}
-        top={true}
-      />
-      <ParticipantPositionRow
-        row={selectedRound.btm.slice(0, selectedRound.top.length / 2)}
-        selectedRoundIsActive={selectedRoundIsActive}
-        top={false}
-      />
-      <Divider hidden />
-      <ParticipantPositionRow
-        row={selectedRound.top.slice(
-          selectedRound.top.length / 2,
-          selectedRound.top.length
-        )}
-        selectedRoundIsActive={selectedRoundIsActive}
-        top={true}
-      />
-      <ParticipantPositionRow
-        row={selectedRound.btm.slice(
-          selectedRound.btm.length / 2,
-          selectedRound.btm.length
-        )}
-        selectedRoundIsActive={selectedRoundIsActive}
-        top={false}
       />
       <Divider hidden />
       <StyledPagination
