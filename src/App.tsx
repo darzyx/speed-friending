@@ -89,6 +89,7 @@ const App = () => {
                   sessions={sessions}
                   isGettingSessions={isGettingSessions}
                   currentTimeInSeconds={currentTimeInSeconds}
+                  userIsAdmin={userIsAdmin}
                 />
               }
             />

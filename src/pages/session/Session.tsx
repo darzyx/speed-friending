@@ -34,11 +34,13 @@ type SessionPropsType = {
   sessions: SessionWithIdType[];
   isGettingSessions: boolean;
   currentTimeInSeconds: number;
+  userIsAdmin: boolean;
 };
 const Session = ({
   sessions,
   isGettingSessions,
   currentTimeInSeconds,
+  userIsAdmin,
 }: SessionPropsType) => {
   const { id } = useParams();
 
@@ -70,6 +72,7 @@ const Session = ({
       <SessionHeading
         session={session}
         currentTimeInSeconds={currentTimeInSeconds}
+        userIsAdmin={userIsAdmin}
       />
       <Header as="h3" inverted textAlign="center" style={{ color: "teal" }}>
         {`Round ${selectedPage} (${
