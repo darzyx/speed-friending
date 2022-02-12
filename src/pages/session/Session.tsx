@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Dimmer, Divider, Header, Loader, Statistic } from "semantic-ui-react";
+import {
+  Dimmer,
+  Divider,
+  Header,
+  Icon,
+  Loader,
+  Statistic,
+} from "semantic-ui-react";
 
 import Participant from "./Participant";
 import { getGame, getTimeValues, RoundType } from "./utils";
@@ -9,6 +16,7 @@ import { initSession } from "../../App";
 import styled from "styled-components";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
 import TimeModal from "../../components/time-modal/TimeModal";
+import NavButton from "../../components/blocks/NavButton";
 
 const ParticipantsContainer = styled.div`
   display: grid;
@@ -105,6 +113,12 @@ const Session = ({
       </CenterMiddle>
       <Divider hidden />
       <Participants activeRound={activeRound} />
+      <Divider hidden />
+      <CenterMiddle>
+        <NavButton>
+          <Icon name="history" /> View Past Rounds
+        </NavButton>
+      </CenterMiddle>
     </div>
   );
 };
