@@ -18,9 +18,7 @@ const InfoModal = ({ openInfoModal, setOpenInfoModal }: InfoModalPropsType) => (
     closeIcon
   >
     <CustomHeader>
-      <CustomHeader.Subheader style={{ color: "rgba(255, 255, 255, 0.8)" }}>
-        Info
-      </CustomHeader.Subheader>
+      <CustomHeader.Subheader>Info</CustomHeader.Subheader>
       How This Works
     </CustomHeader>
     <CustomModal.Content style={modalColors}>
