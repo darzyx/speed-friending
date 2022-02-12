@@ -9,6 +9,7 @@ import { centerMiddleCSS } from "../../components/blocks/CenterMiddle";
 import { SessionWithIdType } from "../../types/session";
 import NewModal from "./NewModal";
 import { Header } from "semantic-ui-react";
+import { ColorfulHeader } from "../../components/blocks/ColorfulText";
 
 const HomeContainer = styled.div`
   ${centerMiddleCSS}
@@ -40,9 +41,7 @@ const Home = ({
         <Header.Subheader style={{ margin: "7px" }}>Home</Header.Subheader> ✨
         Speed Friending 🏕️
       </Header>
-      <Header as="h3" inverted textAlign="center" style={{ color: "teal" }}>
-        Select Your Session Below
-      </Header>
+      <ColorfulHeader as="h3">Select Your Session Below</ColorfulHeader>
       {hasAnySessions &&
         sessions.map((session, index) => (
           <SessionLink

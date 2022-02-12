@@ -86,7 +86,7 @@ const Session = ({
         currentTimeInSeconds={currentTimeInSeconds}
         userIsAdmin={userIsAdmin}
       />
-      <Header as="h3" inverted textAlign="center" style={{ color: "teal" }}>
+      <Header as="h3" inverted textAlign="center">
         {`Round ${selectedPage} (${
           selectedRoundIsActive ? "active" : "inactive"
         })`}
