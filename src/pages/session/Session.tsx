@@ -27,13 +27,9 @@ const ParticipantsContainer = styled.div`
 const Participants = ({ activeRound }: { activeRound: RoundType }) => (
   <ParticipantsContainer>
     {activeRound.top.map((nTop, idxTop) => (
-      <div>
-        <Participant key={nTop} n={nTop} top={true} />
-        <Participant
-          key={activeRound.btm[idxTop]}
-          n={activeRound.btm[idxTop]}
-          top={false}
-        />
+      <div key={idxTop}>
+        <Participant n={nTop} top={true} />
+        <Participant n={activeRound.btm[idxTop]} top={false} />
       </div>
     ))}
   </ParticipantsContainer>
