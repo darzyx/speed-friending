@@ -17,6 +17,7 @@ import styled from "styled-components";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
 import TimeModal from "../../components/time-modal/TimeModal";
 import NavButton from "../../components/blocks/NavButton";
+import PastRoundsModal from "./PastRoundsModal";
 
 const ParticipantsContainer = styled.div`
   display: grid;
@@ -69,6 +70,8 @@ const Session = ({
   const [openTimeModal, setOpenTimeModal] = useState(false);
   const timeValues = getTimeValues({ session, currentTimeInSeconds });
 
+  const [openPastRoundsModal, setOpenPastRoundsModal] = useState(false);
+
   if (isGettingSessions || !hasSession) {
     return (
       <Dimmer active>
@@ -115,9 +118,13 @@ const Session = ({
       <Participants activeRound={activeRound} />
       <Divider hidden />
       <CenterMiddle>
-        <NavButton>
+        <NavButton onClick={() => setOpenPastRoundsModal(true)}>
           <Icon name="history" /> View Past Rounds
         </NavButton>
+        <PastRoundsModal
+          openPastRoundsModal={openPastRoundsModal}
+          setOpenPastRoundsModal={setOpenPastRoundsModal}
+        />
       </CenterMiddle>
     </div>
   );

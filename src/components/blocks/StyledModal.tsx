@@ -44,9 +44,14 @@ const StyledModal = ({
     open={openModal}
   >
     {header && (
-      <Header as="h1" inverted textAlign="center" style={modalColors}>
+      <Header
+        as="h1"
+        inverted
+        textAlign="center"
+        style={{ ...modalColors, marginTop: "7px" }}
+      >
         {subheader && (
-          <Header.Subheader style={{ margin: "7px" }}>
+          <Header.Subheader style={{ marginBottom: "7px" }}>
             {subheader}
           </Header.Subheader>
         )}
