@@ -14,10 +14,8 @@ const Participant = ({
 }: ParticipantPropsType) => (
   <CenterMiddle
     style={{
-      height: "100%",
-      minHeight: "50px",
-      width: "100%",
-      margin: "0 5px 5px 5px",
+      height: "50px",
+      margin: "0",
       color: "white",
       fontWeight: "bold",
       fontSize: "22px",
@@ -29,10 +27,7 @@ const Participant = ({
         backgroundColor: getParticipantColor(n),
         color: "black",
       }),
-      ...(top && {
-        borderRadius: "5px 5px 0 0",
-        margin: "5px 5px 0 5px",
-      }),
+      ...(top && { borderRadius: "5px 5px 0 0" }),
     }}
   >
     {n}
