@@ -7,6 +7,7 @@ import Navbar from "./components/navbar/Navbar";
 import { db } from "./firebase";
 import Home from "./pages/home/Home";
 import Session from "./pages/session/Session";
+import Admin from "./pages/admin/Admin";
 import { SessionWithIdType } from "./types/session";
 
 export const initSession = {
@@ -94,6 +95,7 @@ const App = () => {
                 />
               }
             />
+            <Route path="admin" element={<Admin />} />
           </Routes>
           <Divider hidden />
         </BrowserRouter>
