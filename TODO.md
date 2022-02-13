@@ -1,5 +1,3 @@
 - Standardize all headers
-- Add ellipsis to css text
 - Consider making navbar sticky
 - Update info modal copy
-- No past rounds modal placeholder
