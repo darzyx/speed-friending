@@ -4,6 +4,7 @@ const NoSessionsPlaceholder = () => (
   <div>
     <Divider hidden />
     <p style={{ textAlign: "center" }}>No sessions created yet! Stay tuned</p>
+    <Divider hidden />
   </div>
 );
 
