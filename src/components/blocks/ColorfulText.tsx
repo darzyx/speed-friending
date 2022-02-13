@@ -8,13 +8,13 @@ const colorChange = keyframes`
   100% { color: #9d4ebd; }
 `;
 
-export const ColorfulHeader = styled(Header).attrs({
-  inverted: true,
-  textAlign: "center",
-})`
-  animation-name: ${colorChange};
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-timing-function: ease-in-out;
+export const ColorfulHeader = styled(Header).attrs({ inverted: true })`
+  &&&& {
+    animation-name: ${colorChange};
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    text-align: center;
+  }
 `;

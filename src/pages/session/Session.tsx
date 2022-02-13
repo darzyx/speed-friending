@@ -17,6 +17,7 @@ import TimeModal from "../../components/time-modal/TimeModal";
 import NavButton from "../../components/blocks/NavButton";
 import PastRoundsModal from "./PastRoundsModal";
 import Participants from "./Participants";
+import { ColorfulHeader } from "../../components/blocks/ColorfulText";
 
 type SessionPropsType = {
   sessions: SessionWithIdType[];
@@ -89,6 +90,7 @@ const Session = ({
         />
       </CenterMiddle>
       <Divider hidden />
+      <ColorfulHeader as="h3">Select Your Number Below</ColorfulHeader>
       <Participants round={activeRound} />
       <Divider hidden />
       <CenterMiddle>
