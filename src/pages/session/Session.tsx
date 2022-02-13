@@ -95,13 +95,13 @@ const Session = ({
         <NavButton onClick={() => setOpenPastRoundsModal(true)}>
           <Icon name="history" /> View Past Rounds
         </NavButton>
-        <PastRoundsModal
-          game={game}
-          activeRound={session.active_round}
-          openPastRoundsModal={openPastRoundsModal}
-          setOpenPastRoundsModal={setOpenPastRoundsModal}
-        />
       </CenterMiddle>
+      <PastRoundsModal
+        game={game}
+        activeRound={session.active_round}
+        openPastRoundsModal={openPastRoundsModal}
+        setOpenPastRoundsModal={setOpenPastRoundsModal}
+      />
     </div>
   );
 };
