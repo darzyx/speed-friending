@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { Location, useLocation } from "react-router-dom";
 
 import SessionLink from "./SessionLink";
-import LoadingSessionLink from "./LoadingSessionLink";
-import CreateSessionLink from "./CreateSessionLink";
+import LoadingSessionsPlaceholder from "./LoadingSessionsPlaceholder";
+import CreateSessionButton from "./CreateSessionButton";
+import NoSessionsPlaceholder from "./NoSessionsPlaceholder";
 import { centerMiddleCSS } from "../../components/blocks/CenterMiddle";
 import { SessionWithIdType } from "../../types/session";
 import NewModal from "./NewModal";
@@ -52,9 +53,10 @@ const Home = ({
             index={index}
           />
         ))}
-      {!hasAnySessions && isGettingSessions && <LoadingSessionLink />}
+      {!hasAnySessions && isGettingSessions && <LoadingSessionsPlaceholder />}
+      {!hasAnySessions && !isGettingSessions && <NoSessionsPlaceholder />}
       {userIsAdmin && !isGettingSessions && (
-        <CreateSessionLink
+        <CreateSessionButton
           sessions={sessions}
           hasAnySessions={hasAnySessions}
           setOpenNewModal={setOpenNewModal}

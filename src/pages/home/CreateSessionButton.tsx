@@ -1,20 +1,21 @@
 import { Button, Icon } from "semantic-ui-react";
 import { SessionWithIdType } from "../../types/session";
 
+// TODO: remove this and limit creation to auth users
 const maxSessions = 50;
 
-type CreateSessionLinkPropsType = {
+type CreateSessionButtonPropsType = {
   hasAnySessions: boolean;
   sessions: SessionWithIdType[];
   setOpenNewModal: (arg: boolean) => void;
 };
 
-const CreateSessionLink = ({
+const CreateSessionButton = ({
   hasAnySessions,
   sessions,
   setOpenNewModal,
-}: CreateSessionLinkPropsType) => {
-  const disableNewSession = sessions.length >= maxSessions;
+}: CreateSessionButtonPropsType) => {
+  const disabled = sessions.length >= maxSessions;
   return (
     <Button
       style={{
@@ -24,8 +25,8 @@ const CreateSessionLink = ({
         paddingTop: "15px",
         paddingBottom: "15px",
       }}
-      onClick={disableNewSession ? () => {} : () => setOpenNewModal(true)}
-      disabled={disableNewSession}
+      onClick={disabled ? () => {} : () => setOpenNewModal(true)}
+      disabled={disabled}
       size="large"
       secondary
     >
@@ -38,4 +39,4 @@ const CreateSessionLink = ({
   );
 };
 
-export default CreateSessionLink;
+export default CreateSessionButton;

@@ -1,3 +1,4 @@
 - Standardize all headers
 - Consider making navbar sticky
 - Update info modal copy
+- Remove hard coded max sessions number

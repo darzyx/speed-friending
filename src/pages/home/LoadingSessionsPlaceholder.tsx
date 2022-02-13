@@ -1,7 +1,6 @@
 import { Button, Loader } from "semantic-ui-react";
 
-// Not actually a link - just a loading placeholder for a session link
-const LoadingSessionLink = () => {
+const LoadingSessionsPlaceholder = () => {
   return (
     <Button
       style={{
@@ -18,4 +17,4 @@ const LoadingSessionLink = () => {
   );
 };
 
-export default LoadingSessionLink;
+export default LoadingSessionsPlaceholder;
