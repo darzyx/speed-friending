@@ -1,4 +1,4 @@
-import { Button } from "semantic-ui-react";
+import { Button, Divider, Header } from "semantic-ui-react";
 
 import Participants from "./Participants";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
@@ -24,9 +24,17 @@ const PastRoundsModal = ({
       header="Past Rounds"
       content={
         <div>
-          {pastRounds.map((pastRound, index) => (
-            <Participants key={index} round={pastRound} />
-          ))}
+          {pastRounds
+            .map((pastRound, index) => (
+              <div key={index}>
+                <Header as="h3" inverted textAlign="center">
+                  {`Round ${index + 1}`}
+                </Header>
+                <Participants round={pastRound} />
+                <Divider hidden={index === 0} />
+              </div>
+            ))
+            .reverse()}
           <CenterMiddle>
             <Button onClick={() => setOpenPastRoundsModal(false)}>Close</Button>
           </CenterMiddle>
