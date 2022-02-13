@@ -40,12 +40,17 @@ const App = () => {
   useEffect(
     () =>
       onSnapshot(collection(db, "sessions"), (snapshot) => {
-        const resultSessions = snapshot.docs.map((doc) => ({
+        let resultSessions = snapshot.docs.map((doc) => ({
           ...doc.data(),
           id: doc.id,
         })) as SessionWithIdType[]; // Assumes fetched data is good!
         const resultHasAnySessions =
           Array.isArray(resultSessions) && resultSessions[0]?.name?.length > 0;
+
+        if (resultHasAnySessions) {
+          resultSessions.sort((a, b) => a.name.localeCompare(b.name));
+        }
+
         setSessions(resultSessions);
         setIsGettingSessions(false);
         setHasAnySessions(resultHasAnySessions);
