@@ -17,7 +17,6 @@ import TimeModal from "../../components/time-modal/TimeModal";
 import NavButton from "../../components/blocks/NavButton";
 import PastRoundsModal from "./PastRoundsModal";
 import Participants from "./Participants";
-import { ColorfulHeader } from "../../components/blocks/ColorfulText";
 
 type SessionPropsType = {
   sessions: SessionWithIdType[];
