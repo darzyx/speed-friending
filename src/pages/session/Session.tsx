@@ -90,7 +90,6 @@ const Session = ({
         />
       </CenterMiddle>
       <Divider hidden />
-      <ColorfulHeader as="h3">Select Your Number Below</ColorfulHeader>
       <Participants round={activeRound} />
       <Divider hidden />
       <CenterMiddle>
