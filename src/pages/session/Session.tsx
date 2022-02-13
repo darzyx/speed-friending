@@ -71,11 +71,13 @@ const Session = ({
         </Header>
         <Statistic
           inverted
-          {...(userIsAdmin && {
-            color: timeValues.color,
-            onClick: () => setOpenTimeModal(true),
-            style: { cursor: "pointer" },
-          })}
+          {...(userIsAdmin
+            ? {
+                color: timeValues.color,
+                onClick: () => setOpenTimeModal(true),
+                style: { cursor: "pointer" },
+              }
+            : { color: timeValues.color })}
         >
           <Statistic.Value>
             {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
