@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 
 const colorChange = keyframes`
   0% { color: #a84677; }
-  25% { color: #008080; }
+  25% { color: #009494; }
   50% { color: #6495ed; }
   100% { color: #9d4ebd; }
 `;
