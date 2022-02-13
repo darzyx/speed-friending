@@ -1,7 +1,7 @@
 import { onSnapshot, collection, Timestamp } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Divider } from "semantic-ui-react";
+import { Container, Divider } from "semantic-ui-react";
 import Navbar from "./components/navbar/Navbar";
 
 import { db } from "./firebase";
@@ -65,7 +65,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="Main">
+      <Container>
         <BrowserRouter>
           <Navbar />
           <Divider hidden />
@@ -97,7 +97,7 @@ const App = () => {
           </Routes>
           <Divider hidden />
         </BrowserRouter>
-      </div>
+      </Container>
     </div>
   );
 };

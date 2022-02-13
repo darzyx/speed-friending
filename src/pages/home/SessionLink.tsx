@@ -74,7 +74,15 @@ const SessionLink = ({
       <Button
         as={Link}
         to={`/session/${session.id}`}
-        style={{ textAlign: "left", paddingTop: "15px", paddingBottom: "15px" }}
+        style={{
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+          textAlign: "left",
+          paddingTop: "15px",
+          paddingBottom: "15px",
+          paddingRight: "0",
+        }}
         secondary
         active
         fluid
