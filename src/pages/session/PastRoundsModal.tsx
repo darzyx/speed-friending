@@ -18,23 +18,34 @@ const PastRoundsModal = ({
   setOpenPastRoundsModal,
 }: PastRoundsModalPropsType) => {
   const pastRounds = Object.values(game).slice(0, Number(activeRound) - 1);
+  const hasPastRounds = Array.isArray(pastRounds) && pastRounds.length > 0;
 
   return (
     <StyledModal
       header="Past Rounds"
       content={
         <div>
-          {pastRounds
-            .map((pastRound, index) => (
-              <div key={index}>
-                <Header as="h3" inverted textAlign="center">
-                  {`Round ${index + 1}`}
-                </Header>
-                <Participants round={pastRound} />
-                <Divider hidden={index === 0} />
-              </div>
-            ))
-            .reverse()}
+          {hasPastRounds ? (
+            pastRounds
+              .map((pastRound, index) => (
+                <div key={index}>
+                  <Header as="h3" inverted textAlign="center">
+                    {`Round ${index + 1}`}
+                  </Header>
+                  <Participants round={pastRound} />
+                  <Divider hidden={index === 0} />
+                </div>
+              ))
+              .reverse()
+          ) : (
+            <>
+              <p style={{ textAlign: "center" }}>
+                Your past rounds will appear here. You don't have any past
+                rounds yet
+              </p>
+              <Divider hidden />
+            </>
+          )}
           <CenterMiddle>
             <Button onClick={() => setOpenPastRoundsModal(false)}>Close</Button>
           </CenterMiddle>
