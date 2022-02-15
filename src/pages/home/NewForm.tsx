@@ -15,6 +15,7 @@ import { SessionType } from "../../types/session";
 import { getMaxRounds } from "../session/utils";
 
 const maxNameLength = 30;
+const maxRoundDuration = 60 * 10;
 const maxParticipants = 30;
 
 const StyledFormInput = styled(Form.Input)`
@@ -38,6 +39,21 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
   ) => {
     if (typeof value === "string" && value.length <= maxNameLength) {
       setName(value);
+    }
+  };
+
+  const [roundDuration, setRoundDuration] = useState("300");
+  const handleChangeRoundDuration = (
+    e: ChangeEvent<HTMLInputElement>,
+    { value }: InputOnChangeData
+  ) => {
+    const numberValue = Number(value);
+    if (
+      typeof value === "string" &&
+      (!Number.isNaN(numberValue) || value === "") &&
+      numberValue <= maxRoundDuration
+    ) {
+      setRoundDuration(value);
     }
   };
 
@@ -84,7 +100,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
       participant_count: Number(participantCount),
       active_round: 1,
       total_rounds: Number(totalRounds),
-      end_time: Timestamp.now().seconds + 60 * 5,
+      end_time: Timestamp.now().seconds + Number(roundDuration),
       is_paused: false,
       paused_remaining_time: 0,
     };
@@ -106,7 +122,16 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
             value={name}
             onChange={handleChangeName}
             required
-            width={16}
+            width={10}
+          />
+          <StyledFormInput
+            name="round_duration"
+            placeholder="Round Duration"
+            label={`Round Duration (max ${maxRoundDuration})`}
+            value={roundDuration}
+            onChange={handleChangeRoundDuration}
+            required
+            width={6}
           />
         </Form.Group>
         <Form.Group>

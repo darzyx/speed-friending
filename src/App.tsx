@@ -1,4 +1,4 @@
-import { onSnapshot, collection, Timestamp } from "firebase/firestore";
+import { onSnapshot, collection } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Container, Divider } from "semantic-ui-react";
@@ -16,7 +16,7 @@ export const initSession = {
   participant_count: 0,
   active_round: 0,
   total_rounds: 0,
-  end_time: Timestamp.now().seconds + 60 * 5,
+  end_time: 0,
   is_paused: false,
   paused_remaining_time: 0,
 };
