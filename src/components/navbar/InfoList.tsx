@@ -44,11 +44,14 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
     <Divider />
     <List.Item>
       <List.Content>
-        <StyledListHeader>3. FIND YOUR NUMBER AND PARTNER</StyledListHeader>
+        <StyledListHeader>
+          3. FIND YOUR PARTICIPANT NUMBER AND ROUND PARTNER
+        </StyledListHeader>
         <p style={{ marginTop: "10px" }}>
-          You can find your participant number in the session round page. It
-          will have a specific background color during the whole game that
-          corresponds to your index card
+          You can find your participant number in your session page. It will
+          have a specific background color during the whole game that
+          corresponds to your index card. Your round partner is denoted by the
+          number attached to yours
         </p>
       </List.Content>
     </List.Item>
