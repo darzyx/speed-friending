@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Location, useLocation } from "react-router-dom";
 
 import SessionLink from "./SessionLink";
 import LoadingSessionsPlaceholder from "./LoadingSessionsPlaceholder";
@@ -32,8 +31,6 @@ const Home = ({
   sessions,
   currentTimeInSeconds,
 }: HomePropsType) => {
-  const location: Location = useLocation();
-
   const [openNewModal, setOpenNewModal] = useState(false);
 
   return (
@@ -62,11 +59,7 @@ const Home = ({
           setOpenNewModal={setOpenNewModal}
         />
       )}
-      <NewModal
-        openNewModal={openNewModal}
-        setOpenNewModal={setOpenNewModal}
-        location={location}
-      />
+      <NewModal openNewModal={openNewModal} setOpenNewModal={setOpenNewModal} />
     </HomeContainer>
   );
 };
