@@ -72,16 +72,6 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
     }
   };
 
-  const [password, setPassword] = useState("");
-  const handleChangePassword = (
-    e: ChangeEvent<HTMLInputElement>,
-    { value }: InputOnChangeData
-  ) => {
-    if (typeof value === "string") {
-      setPassword(value);
-    }
-  };
-
   const [isSubmitting, setIsSubmitting] = useState(false);
   const handleSubmit = async () => {
     setIsSubmitting(true);
@@ -116,8 +106,10 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
             value={name}
             onChange={handleChangeName}
             required
-            width={10}
+            width={16}
           />
+        </Form.Group>
+        <Form.Group>
           <StyledFormInput
             name="participant_count"
             placeholder="Participant Count"
@@ -125,10 +117,8 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
             value={participantCount}
             onChange={handleChangeParticipantCount}
             required
-            width={6}
+            width={8}
           />
-        </Form.Group>
-        <Form.Group>
           <StyledFormInput
             name="total_rounds"
             placeholder="Total Rounds"
@@ -136,16 +126,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
             value={totalRounds}
             onChange={handleChangeTotalRounds}
             required
-            width={6}
-          />
-          <StyledFormInput
-            name="password"
-            placeholder="Admin Password"
-            label="Admin Password"
-            value={password}
-            onChange={handleChangePassword}
-            required
-            width={10}
+            width={8}
           />
         </Form.Group>
         <Divider hidden />

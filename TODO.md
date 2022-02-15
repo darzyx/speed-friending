@@ -2,3 +2,4 @@
 - Consider making navbar sticky
 - Update info modal copy
 - Remove hard coded max sessions number
+- Create new session modal: consider adding field to set custom time
