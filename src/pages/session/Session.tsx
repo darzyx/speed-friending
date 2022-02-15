@@ -1,19 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  Dimmer,
-  Divider,
-  Header,
-  Icon,
-  Loader,
-  Statistic,
-} from "semantic-ui-react";
+import { Dimmer, Divider, Header, Icon, Loader } from "semantic-ui-react";
 
 import { getGame, getTimeValues } from "./utils";
 import { SessionWithIdType } from "../../types/session";
 import { initSession } from "../../App";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
-import TimeModal from "../../components/time-modal/TimeModal";
+import TimeDisplay from "../../components/time/TimeDisplay";
+import TimeModal from "../../components/time/TimeModal";
 import NavButton from "../../components/blocks/NavButton";
 import PastRoundsModal from "./PastRoundsModal";
 import Participants from "./Participants";
@@ -69,27 +63,21 @@ const Session = ({
             {`${session.total_rounds} rounds`}
           </Header.Subheader>
         </Header>
-        <Statistic
-          inverted
-          {...(userIsAdmin
-            ? {
-                color: timeValues.color,
-                onClick: () => setOpenTimeModal(true),
-                style: { cursor: "pointer" },
-              }
-            : { color: timeValues.color })}
-        >
-          <Statistic.Value>
-            {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
-          </Statistic.Value>
-          <Statistic.Label>{`Round ${session.active_round}`}</Statistic.Label>
-        </Statistic>
-        <TimeModal
-          session={session}
-          openTimeModal={openTimeModal}
-          setOpenTimeModal={setOpenTimeModal}
-        />
       </CenterMiddle>
+      <Divider hidden />
+      <TimeDisplay
+        userIsAdmin={userIsAdmin}
+        session={session}
+        timeValues={timeValues}
+        setOpenTimeModal={setOpenTimeModal}
+      />
+      <TimeModal
+        userIsAdmin={userIsAdmin}
+        session={session}
+        timeValues={timeValues}
+        openTimeModal={openTimeModal}
+        setOpenTimeModal={setOpenTimeModal}
+      />
       <Divider hidden />
       <Participants round={activeRound} />
       <Divider hidden />

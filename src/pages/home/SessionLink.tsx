@@ -1,40 +1,38 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Button, Label } from "semantic-ui-react";
+import { Button, Label, SemanticCOLORS } from "semantic-ui-react";
 import { getTimeValues } from "../session/utils";
-import { SessionType, SessionWithIdType } from "../../types/session";
-import TimeModal from "../../components/time-modal/TimeModal";
+import { SessionWithIdType } from "../../types/session";
+import TimeModal from "../../components/time/TimeModal";
 import { useState } from "react";
 
 type TimeLabelPropsType = {
-  session: SessionType;
-  currentTimeInSeconds: number;
+  timeValues: {
+    color: SemanticCOLORS;
+    remainingMinutes: string;
+    remainingSeconds: string;
+  };
   onClickTimeLabel: (openTimeModal: boolean) => void;
   userIsAdmin: boolean;
 };
 const TimeLabel = ({
-  session,
-  currentTimeInSeconds,
+  timeValues,
   onClickTimeLabel,
   userIsAdmin,
-}: TimeLabelPropsType) => {
-  const timeValues = getTimeValues({ session, currentTimeInSeconds });
-
-  return (
-    <Label
-      onClick={() => onClickTimeLabel(true)}
-      {...(userIsAdmin
-        ? { color: timeValues.color }
-        : {
-            style: {
-              backgroundColor: "#27292a",
-              color: "rgba(255, 255, 255, 0.9)",
-            },
-          })}
-    >
-      {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
-    </Label>
-  );
-};
+}: TimeLabelPropsType) => (
+  <Label
+    onClick={() => onClickTimeLabel(true)}
+    {...(userIsAdmin
+      ? { color: timeValues.color }
+      : {
+          style: {
+            backgroundColor: "#27292a",
+            color: "rgba(255, 255, 255, 0.9)",
+          },
+        })}
+  >
+    {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
+  </Label>
+);
 
 type SessionLinkPropsType = {
   index: number;
@@ -59,6 +57,8 @@ const SessionLink = ({
       navigate(`/session/${session.id}`);
     }
   };
+
+  const timeValues = getTimeValues({ session, currentTimeInSeconds });
 
   return (
     <Button
@@ -90,13 +90,14 @@ const SessionLink = ({
         {session.name}
       </Button>
       <TimeLabel
-        session={session}
-        currentTimeInSeconds={currentTimeInSeconds}
+        timeValues={timeValues}
         onClickTimeLabel={handleClickTimeLabel}
         userIsAdmin={userIsAdmin}
       />
       <TimeModal
+        userIsAdmin={userIsAdmin}
         session={session}
+        timeValues={timeValues}
         openTimeModal={openTimeModal}
         setOpenTimeModal={setOpenTimeModal}
       />
