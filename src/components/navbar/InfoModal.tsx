@@ -8,22 +8,25 @@ type InfoModalPropsType = {
   openInfoModal: boolean;
   setOpenInfoModal: (openInfoModal: boolean) => void;
 };
-const InfoModal = ({ openInfoModal, setOpenInfoModal }: InfoModalPropsType) => (
-  <StyledModal
-    header="How This Works"
-    subheader="Info"
-    content={
-      <div>
-        <InfoList />
-        <Divider hidden />
-        <CenterMiddle>
-          <Button onClick={() => setOpenInfoModal(false)}>Close</Button>
-        </CenterMiddle>
-      </div>
-    }
-    openModal={openInfoModal}
-    setOpenModal={setOpenInfoModal}
-  />
-);
+const InfoModal = ({ openInfoModal, setOpenInfoModal }: InfoModalPropsType) => {
+  const handleCloseInfoModal = () => setOpenInfoModal(false);
+  return (
+    <StyledModal
+      header="How This Works"
+      subheader="Info"
+      content={
+        <div>
+          <InfoList onCloseInfoModal={handleCloseInfoModal} />
+          <Divider hidden />
+          <CenterMiddle>
+            <Button onClick={handleCloseInfoModal}>Close</Button>
+          </CenterMiddle>
+        </div>
+      }
+      openModal={openInfoModal}
+      setOpenModal={setOpenInfoModal}
+    />
+  );
+};
 
 export default InfoModal;
