@@ -18,8 +18,19 @@ const StyledDiv = styled.div`
   font-weight: bold;
   text-align: center;
   vertical-align: middle;
+  cursor: pointer;
 `;
 
-const UserIsAdminAlert = () => <StyledDiv>Signed in as admin!</StyledDiv>;
+const UserIsAdminAlert = ({
+  userIsAdmin,
+  setUserIsAdmin,
+}: {
+  userIsAdmin: boolean;
+  setUserIsAdmin: (userIsAdmin: boolean) => void;
+}) => (
+  <StyledDiv onClick={() => setUserIsAdmin(!userIsAdmin)}>
+    {userIsAdmin ? "Signed in as admin!" : "Signed in as participant!"}
+  </StyledDiv>
+);
 
 export default UserIsAdminAlert;

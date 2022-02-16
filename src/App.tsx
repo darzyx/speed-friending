@@ -32,7 +32,7 @@ const App = () => {
   const [userIsAdmin, setUserIsAdmin] = useState(false);
   useEffect(() => {
     // TODO: Logic for setting user as admin
-    setUserIsAdmin(true);
+    setUserIsAdmin(false);
   }, []);
 
   const [hasAnySessions, setHasAnySessions] = useState(false);
@@ -73,7 +73,10 @@ const App = () => {
 
   return (
     <div className="App">
-      {userIsAdmin && <UserIsAdminAlert />}
+      <UserIsAdminAlert
+        userIsAdmin={userIsAdmin}
+        setUserIsAdmin={setUserIsAdmin}
+      />
       <div className="Main">
         <Container>
           <BrowserRouter>
