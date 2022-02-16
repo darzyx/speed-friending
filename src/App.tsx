@@ -14,11 +14,12 @@ export const initSession = {
   id: "",
   name: "",
   participant_count: 0,
-  active_round: 0,
   round_count: 0,
-  end_time: 0,
-  is_paused: false,
-  paused_remaining_time: 0,
+  round_active: 0,
+  round_duration: 0,
+  round_end_time: 0,
+  round_is_paused: false,
+  round_paused_time: 0,
 };
 
 type SessionsUseStateType = [

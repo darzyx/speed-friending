@@ -1,11 +1,12 @@
 export type SessionType = {
   name: string;
   participant_count: number;
-  active_round: number;
   round_count: number;
-  end_time: number;
-  is_paused: boolean;
-  paused_remaining_time: number;
+  round_active: number;
+  round_duration: number;
+  round_end_time: number;
+  round_is_paused: boolean;
+  round_paused_time: number;
 };
 
 export type SessionWithIdType = SessionType & { id: string };

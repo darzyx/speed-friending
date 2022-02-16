@@ -71,9 +71,9 @@ export const getTimeValues = ({
   currentTimeInSeconds: number;
 }) => {
   let color: SemanticCOLORS = "green";
-  let remainingTime = session.is_paused
-    ? session.paused_remaining_time
-    : session.end_time - currentTimeInSeconds;
+  let remainingTime = session.round_is_paused
+    ? session.round_paused_time
+    : session.round_end_time - currentTimeInSeconds;
   if (remainingTime <= 0) {
     color = "red";
     remainingTime = 0;

@@ -102,11 +102,12 @@ const CreateSessionForm = ({
     const payload: SessionType = {
       name,
       participant_count: Number(participantCount),
-      active_round: 1,
       round_count: Number(roundCount),
-      end_time: Timestamp.now().seconds + Number(roundDuration),
-      is_paused: false,
-      paused_remaining_time: 0,
+      round_active: 1,
+      round_duration: Number(roundDuration),
+      round_end_time: Timestamp.now().seconds + Number(roundDuration),
+      round_is_paused: true,
+      round_paused_time: 0,
     };
 
     const docRef = await addDoc(collectionRef, payload);

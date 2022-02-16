@@ -49,7 +49,7 @@ const Session = ({
   }
 
   const game = getGame(session.participant_count, session.round_count);
-  const activeRound = Object.values(game)[Number(session.active_round) - 1];
+  const activeRound = Object.values(game)[Number(session.round_active) - 1];
 
   return (
     <div>
@@ -88,7 +88,7 @@ const Session = ({
       </CenterMiddle>
       <PastRoundsModal
         game={game}
-        activeRound={session.active_round}
+        activeRound={session.round_active}
         openPastRoundsModal={openPastRoundsModal}
         setOpenPastRoundsModal={setOpenPastRoundsModal}
       />
