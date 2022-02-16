@@ -44,8 +44,8 @@ const PastRoundsModal = ({
           ) : (
             <>
               <p style={{ textAlign: "center" }}>
-                Your past rounds will appear here. You don't have any past
-                rounds yet
+                {group.name} doesn't have any past rounds yet. Past rounds will
+                appear here
               </p>
               <Divider hidden />
             </>
