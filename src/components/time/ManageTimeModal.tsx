@@ -31,30 +31,50 @@ const ManageTimeModal = ({
     const payload = {
       ...session,
       round_end_time: Timestamp.now().seconds + session.round_duration,
+      round_is_paused: true,
+      round_paused_time: session.round_duration,
     };
     setDoc(docRef, payload);
   };
 
   const handleClickToggleStart = () => {
     if (session.round_is_paused) {
-      const payload = { ...session, round_is_paused: false };
+      const payload = {
+        ...session,
+        round_end_time: Timestamp.now().seconds + session.round_paused_time,
+        round_is_paused: false,
+      };
       const docRef = doc(db, "sessions", session.id);
       setDoc(docRef, payload);
     } else {
-      const payload = { ...session, round_is_paused: true };
+      const payload = {
+        ...session,
+        round_is_paused: true,
+        round_paused_time: session.round_end_time - Timestamp.now().seconds,
+      };
       setDoc(docRef, payload);
     }
   };
 
   const handleClickEndRound = () => {
-    const payload = {
-      ...session,
-      round_active:
-        session.round_active < session.round_count
-          ? session.round_active + 1
-          : session.round_active,
-    };
-    setDoc(docRef, payload);
+    if (session.round_active < session.round_count) {
+      const payload = {
+        ...session,
+        round_active: session.round_active + 1,
+        round_end_time: Timestamp.now().seconds + session.round_duration,
+        round_is_paused: true,
+        round_paused_time: session.round_duration,
+      };
+      setDoc(docRef, payload);
+    } else {
+      const payload = {
+        ...session,
+        round_end_time: Timestamp.now().seconds,
+        round_is_paused: true,
+        round_paused_time: 0,
+      };
+      setDoc(docRef, payload);
+    }
   };
 
   return (
