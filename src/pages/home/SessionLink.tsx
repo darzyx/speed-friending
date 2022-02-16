@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button, Label, SemanticCOLORS } from "semantic-ui-react";
 import { getTimeValues } from "../session/utils";
 import { SessionWithIdType } from "../../types/session";
-import TimeModal from "../../components/time/TimeModal";
+import ManageTimeModal from "../../components/time/ManageTimeModal";
 import { useState } from "react";
 
 type TimeLabelPropsType = {
@@ -94,7 +94,7 @@ const SessionLink = ({
         onClickTimeLabel={handleClickTimeLabel}
         userIsAdmin={userIsAdmin}
       />
-      <TimeModal
+      <ManageTimeModal
         userIsAdmin={userIsAdmin}
         session={session}
         timeValues={timeValues}

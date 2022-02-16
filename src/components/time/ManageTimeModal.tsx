@@ -3,7 +3,7 @@ import { SessionWithIdType } from "../../types/session";
 import { SemanticCOLORS } from "semantic-ui-react";
 import TimeDisplay from "./TimeDisplay";
 
-type TimeModalPropsType = {
+type ManageTimeModalPropsType = {
   userIsAdmin: boolean;
   session: SessionWithIdType;
   timeValues: {
@@ -14,13 +14,13 @@ type TimeModalPropsType = {
   openTimeModal: boolean;
   setOpenTimeModal: (openTimeModal: boolean) => void;
 };
-const TimeModal = ({
+const ManageTimeModal = ({
   userIsAdmin,
   session,
   timeValues,
   openTimeModal,
   setOpenTimeModal,
-}: TimeModalPropsType) => (
+}: ManageTimeModalPropsType) => (
   <StyledModal
     header={session.name}
     subheader="Manage time for"
@@ -39,4 +39,4 @@ const TimeModal = ({
   />
 );
 
-export default TimeModal;
+export default ManageTimeModal;

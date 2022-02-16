@@ -7,7 +7,7 @@ import { SessionWithIdType } from "../../types/session";
 import { initSession } from "../../App";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
 import TimeDisplay from "../../components/time/TimeDisplay";
-import TimeModal from "../../components/time/TimeModal";
+import ManageTimeModal from "../../components/time/ManageTimeModal";
 import NavButton from "../../components/blocks/NavButton";
 import PastRoundsModal from "./PastRoundsModal";
 import Participants from "./Participants";
@@ -71,7 +71,7 @@ const Session = ({
         timeValues={timeValues}
         setOpenTimeModal={setOpenTimeModal}
       />
-      <TimeModal
+      <ManageTimeModal
         userIsAdmin={userIsAdmin}
         session={session}
         timeValues={timeValues}
