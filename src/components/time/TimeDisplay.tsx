@@ -1,15 +1,12 @@
-import { SemanticCOLORS, Statistic } from "semantic-ui-react";
+import { Statistic } from "semantic-ui-react";
+import { TimeValuesType } from "../../pages/session/utils";
 import { SessionWithIdType } from "../../types/session";
 import CenterMiddle from "../blocks/CenterMiddle";
 
 type TimeDisplayPropsType = {
   userIsAdmin: boolean;
   session: SessionWithIdType;
-  timeValues: {
-    color: SemanticCOLORS;
-    remainingMinutes: string;
-    remainingSeconds: string;
-  };
+  timeValues: TimeValuesType;
   setOpenTimeModal: (arg: boolean) => void;
 };
 const TimeDisplay = ({
@@ -30,7 +27,7 @@ const TimeDisplay = ({
         : { color: timeValues.color })}
     >
       <Statistic.Value style={{ fontFamily: "'Orbitron', sans-serif" }}>
-        {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
+        {`${timeValues.remainingMinutesDisplay}:${timeValues.remainingSecondsDisplay}`}
       </Statistic.Value>
       <Statistic.Label>{`Round ${session.round_active}`}</Statistic.Label>
     </Statistic>

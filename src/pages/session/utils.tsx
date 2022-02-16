@@ -63,6 +63,12 @@ export const getParticipantColor = (n: number) => {
   }
 };
 
+export type TimeValuesType = {
+  color: SemanticCOLORS;
+  remainingMinutesDisplay: string;
+  remainingSecondsDisplay: string;
+  remainingTime: number;
+};
 export const getTimeValues = ({
   session,
   currentTimeInSeconds,
@@ -85,12 +91,14 @@ export const getTimeValues = ({
   }
   const remainingSeconds = remainingTime % 60;
   const remainingMinutes = (remainingTime - remainingSeconds) / 60;
-  return {
+  const timeValues: TimeValuesType = {
     color,
-    remainingMinutes: remainingMinutes.toString(),
-    remainingSeconds:
+    remainingTime,
+    remainingMinutesDisplay: remainingMinutes.toString(),
+    remainingSecondsDisplay:
       remainingSeconds < 10
         ? "0" + remainingSeconds.toString()
         : remainingSeconds.toString(),
   };
+  return timeValues;
 };

@@ -1,16 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Button, Label, SemanticCOLORS } from "semantic-ui-react";
-import { getTimeValues } from "../session/utils";
+import { Button, Label } from "semantic-ui-react";
+import { getTimeValues, TimeValuesType } from "../session/utils";
 import { SessionWithIdType } from "../../types/session";
 import ManageTimeModal from "../../components/time/ManageTimeModal";
 import { useState } from "react";
 
 type TimeLabelPropsType = {
-  timeValues: {
-    color: SemanticCOLORS;
-    remainingMinutes: string;
-    remainingSeconds: string;
-  };
+  timeValues: TimeValuesType;
   onClickTimeLabel: (openTimeModal: boolean) => void;
   userIsAdmin: boolean;
 };
@@ -30,7 +26,7 @@ const TimeLabel = ({
           },
         })}
   >
-    {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
+    {`${timeValues.remainingMinutesDisplay}:${timeValues.remainingSecondsDisplay}`}
   </Label>
 );
 
