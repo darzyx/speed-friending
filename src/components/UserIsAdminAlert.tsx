@@ -29,7 +29,7 @@ const UserIsAdminAlert = ({
   setUserIsAdmin: (userIsAdmin: boolean) => void;
 }) => (
   <StyledDiv onClick={() => setUserIsAdmin(!userIsAdmin)}>
-    TESTING_MODE:{" "}
+    TEST_MODE:{" "}
     {userIsAdmin ? "Signed in as admin!" : "Signed in as participant!"}
   </StyledDiv>
 );

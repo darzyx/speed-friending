@@ -166,6 +166,7 @@ const CreateGroupForm = ({
             content="Cancel"
             onClick={() => setOpenCreateGroupModal(false)}
             floated="left"
+            type="button"
           />
           <Button
             disabled={isSubmitting}
