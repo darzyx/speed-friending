@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Dimmer, Divider, Header, Icon, Loader } from "semantic-ui-react";
+import {
+  Button,
+  Dimmer,
+  Divider,
+  Grid,
+  Header,
+  Icon,
+  Loader,
+} from "semantic-ui-react";
 
 import { getGame, getTimeValues } from "./utils";
 import { GroupWithIdType } from "../../types/group";
@@ -11,6 +19,7 @@ import ManageTimeModal from "../../components/time/ManageTimeModal";
 import NavButton from "../../components/blocks/NavButton";
 import PastRoundsModal from "./PastRoundsModal";
 import Participants from "./Participants";
+import StyledModal from "../../components/blocks/StyledModal";
 
 type GroupPropsType = {
   groups: GroupWithIdType[];
@@ -39,6 +48,12 @@ const Group = ({
   const timeValues = getTimeValues({ group, currentTimeInSeconds });
 
   const [openPastRoundsModal, setOpenPastRoundsModal] = useState(false);
+
+  const [openConfirmDeleteModal, setOpenConfirmDeleteModal] = useState(false);
+  const handleDeleteGroup = () => {
+    console.log("CLICKED DELETE");
+    setOpenConfirmDeleteModal(false);
+  };
 
   if (isGettingGroups || !hasGroup) {
     return (
@@ -85,6 +100,44 @@ const Group = ({
         <NavButton onClick={() => setOpenPastRoundsModal(true)}>
           <Icon name="history" /> View Past Rounds
         </NavButton>
+        {userIsAdmin && (
+          <>
+            <Divider hidden />
+            <Button
+              onClick={() => setOpenConfirmDeleteModal(true)}
+              inverted
+              color="red"
+              size="small"
+            >
+              Delete Group
+            </Button>
+            <StyledModal
+              header="Delete"
+              subheader={group.name}
+              content={
+                <p style={{ textAlign: "center" }}>This cannot be undone</p>
+              }
+              actions={
+                <Grid inverted>
+                  <Grid.Row columns={2}>
+                    <Grid.Column textAlign="right" verticalAlign="middle">
+                      <Button onClick={() => setOpenConfirmDeleteModal(false)}>
+                        Cancel
+                      </Button>
+                    </Grid.Column>
+                    <Grid.Column textAlign="left" verticalAlign="middle">
+                      <Button onClick={handleDeleteGroup} negative>
+                        Delete
+                      </Button>
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              }
+              openModal={openConfirmDeleteModal}
+              setOpenModal={setOpenConfirmDeleteModal}
+            />
+          </>
+        )}
       </CenterMiddle>
       <PastRoundsModal
         game={game}
