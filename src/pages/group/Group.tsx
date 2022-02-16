@@ -10,6 +10,7 @@ import {
   Loader,
 } from "semantic-ui-react";
 
+import { db } from "../../firebase";
 import { getGame, getTimeValues } from "./utils";
 import { GroupWithIdType } from "../../types/group";
 import { initGroup } from "../../App";
@@ -20,6 +21,7 @@ import NavButton from "../../components/blocks/NavButton";
 import PastRoundsModal from "./PastRoundsModal";
 import Participants from "./Participants";
 import StyledModal from "../../components/blocks/StyledModal";
+import { deleteDoc, doc } from "firebase/firestore";
 
 type GroupPropsType = {
   groups: GroupWithIdType[];
@@ -50,8 +52,9 @@ const Group = ({
   const [openPastRoundsModal, setOpenPastRoundsModal] = useState(false);
 
   const [openConfirmDeleteModal, setOpenConfirmDeleteModal] = useState(false);
-  const handleDeleteGroup = () => {
-    console.log("CLICKED DELETE");
+  const handleDeleteGroup = async () => {
+    const docRef = doc(db, "groups", group.id);
+    await deleteDoc(docRef);
     setOpenConfirmDeleteModal(false);
   };
 
