@@ -25,21 +25,36 @@ const ManageTimeModal = ({
   openTimeModal,
   setOpenTimeModal,
 }: ManageTimeModalPropsType) => {
+  const docRef = doc(db, "sessions", session.id);
+
   const handleClickReset = async () => {
     const payload = {
       ...session,
       round_end_time: Timestamp.now().seconds + session.round_duration,
     };
-    const docRef = doc(db, "sessions", session.id);
     setDoc(docRef, payload);
   };
 
   const handleClickToggleStart = () => {
-    console.log("TOGGLE");
+    if (session.round_is_paused) {
+      const payload = { ...session, round_is_paused: false };
+      const docRef = doc(db, "sessions", session.id);
+      setDoc(docRef, payload);
+    } else {
+      const payload = { ...session, round_is_paused: true };
+      setDoc(docRef, payload);
+    }
   };
 
   const handleClickEndRound = () => {
-    console.log("CONFIRM END ROUND");
+    const payload = {
+      ...session,
+      round_active:
+        session.round_active < session.round_count
+          ? session.round_active + 1
+          : session.round_active,
+    };
+    setDoc(docRef, payload);
   };
 
   return (
