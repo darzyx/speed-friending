@@ -53,11 +53,16 @@ const Group = ({
 
   const [openPastRoundsModal, setOpenPastRoundsModal] = useState(false);
 
+  const [isDeleting, setIsDeleting] = useState(false);
   const [openConfirmDeleteModal, setOpenConfirmDeleteModal] = useState(false);
   const handleDeleteGroup = async () => {
+    setIsDeleting(true);
     const docRef = doc(db, "groups", group.id);
+
     await deleteDoc(docRef);
+
     setOpenConfirmDeleteModal(false);
+    setIsDeleting(false);
     navigate("/home");
   };
 
@@ -132,7 +137,12 @@ const Group = ({
                       </Button>
                     </Grid.Column>
                     <Grid.Column textAlign="left" verticalAlign="middle">
-                      <Button onClick={handleDeleteGroup} negative>
+                      <Button
+                        onClick={handleDeleteGroup}
+                        disabled={isDeleting}
+                        loading={isDeleting}
+                        negative
+                      >
                         Delete
                       </Button>
                     </Grid.Column>

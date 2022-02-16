@@ -111,9 +111,10 @@ const CreateGroupForm = ({
     };
 
     const docRef = await addDoc(collectionRef, payload);
-    navigate(`/group/${docRef.id}`);
 
     setOpenCreateGroupModal(false);
+    setIsSubmitting(false);
+    navigate(`/group/${docRef.id}`);
   };
 
   return (
