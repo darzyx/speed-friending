@@ -1,5 +1,5 @@
 import { SemanticCOLORS } from "semantic-ui-react";
-import { SessionType } from "../../types/session";
+import { SessionWithIdType } from "../../types/session";
 
 export const getMaxRounds = (participant_count: number) => {
   if (participant_count === 0 || participant_count === 1) {
@@ -67,7 +67,7 @@ export const getTimeValues = ({
   session,
   currentTimeInSeconds,
 }: {
-  session: SessionType;
+  session: SessionWithIdType;
   currentTimeInSeconds: number;
 }) => {
   let color: SemanticCOLORS = "green";

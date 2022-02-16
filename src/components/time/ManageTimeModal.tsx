@@ -1,3 +1,6 @@
+import { doc, setDoc, Timestamp } from "firebase/firestore";
+
+import { db } from "../../firebase";
 import StyledModal from "../blocks/StyledModal";
 import { SessionWithIdType } from "../../types/session";
 import { SemanticCOLORS } from "semantic-ui-react";
@@ -22,8 +25,13 @@ const ManageTimeModal = ({
   openTimeModal,
   setOpenTimeModal,
 }: ManageTimeModalPropsType) => {
-  const handleClickReset = () => {
-    console.log("CONFIRM RESET");
+  const handleClickReset = async () => {
+    const payload = {
+      ...session,
+      round_end_time: Timestamp.now().seconds + session.round_duration,
+    };
+    const docRef = doc(db, "sessions", session.id);
+    setDoc(docRef, payload);
   };
 
   const handleClickToggleStart = () => {
