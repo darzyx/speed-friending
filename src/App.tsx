@@ -6,12 +6,12 @@ import Navbar from "./components/navbar/Navbar";
 
 import { db } from "./firebase";
 import Home from "./pages/home/Home";
-import Session from "./pages/session/Session";
+import Group from "./pages/group/Group";
 import Admin from "./pages/admin/Admin";
-import { SessionWithIdType } from "./types/session";
+import { GroupWithIdType } from "./types/group";
 import UserIsAdminAlert from "./components/UserIsAdminAlert";
 
-export const initSession = {
+export const initGroup = {
   id: "",
   name: "",
   participant_count: 0,
@@ -23,10 +23,7 @@ export const initSession = {
   round_paused_time: 0,
 };
 
-type SessionsUseStateType = [
-  SessionWithIdType[],
-  (arg: SessionWithIdType[]) => void
-];
+type GroupsUseStateType = [GroupWithIdType[], (arg: GroupWithIdType[]) => void];
 
 const App = () => {
   const [userIsAdmin, setUserIsAdmin] = useState(false);
@@ -35,27 +32,27 @@ const App = () => {
     setUserIsAdmin(false);
   }, []);
 
-  const [hasAnySessions, setHasAnySessions] = useState(false);
-  const [isGettingSessions, setIsGettingSessions] = useState(true);
-  const [sessions, setSessions]: SessionsUseStateType = useState([initSession]);
+  const [hasAnyGroups, setHasAnyGroups] = useState(false);
+  const [isGettingGroups, setIsGettingGroups] = useState(true);
+  const [groups, setGroups]: GroupsUseStateType = useState([initGroup]);
   // Returns onSnapshot because its return value terminates the listener
   useEffect(
     () =>
-      onSnapshot(collection(db, "sessions"), (snapshot) => {
-        let resultSessions = snapshot.docs.map((doc) => ({
+      onSnapshot(collection(db, "groups"), (snapshot) => {
+        let resultGroups = snapshot.docs.map((doc) => ({
           ...doc.data(),
           id: doc.id,
-        })) as SessionWithIdType[]; // Assumes fetched data is good!
-        const resultHasAnySessions =
-          Array.isArray(resultSessions) && resultSessions[0]?.name?.length > 0;
+        })) as GroupWithIdType[]; // Assumes fetched data is good!
+        const resultHasAnyGroups =
+          Array.isArray(resultGroups) && resultGroups[0]?.name?.length > 0;
 
-        if (resultHasAnySessions) {
-          resultSessions.sort((a, b) => a.name.localeCompare(b.name));
+        if (resultHasAnyGroups) {
+          resultGroups.sort((a, b) => a.name.localeCompare(b.name));
         }
 
-        setSessions(resultSessions);
-        setIsGettingSessions(false);
-        setHasAnySessions(resultHasAnySessions);
+        setGroups(resultGroups);
+        setIsGettingGroups(false);
+        setHasAnyGroups(resultHasAnyGroups);
       }),
     []
   );
@@ -89,19 +86,19 @@ const App = () => {
                 element={
                   <Home
                     userIsAdmin={userIsAdmin}
-                    isGettingSessions={isGettingSessions}
-                    hasAnySessions={hasAnySessions}
-                    sessions={sessions}
+                    isGettingGroups={isGettingGroups}
+                    hasAnyGroups={hasAnyGroups}
+                    groups={groups}
                     currentTimeInSeconds={currentTimeInSeconds}
                   />
                 }
               />
               <Route
-                path="session/:id"
+                path="group/:id"
                 element={
-                  <Session
-                    sessions={sessions}
-                    isGettingSessions={isGettingSessions}
+                  <Group
+                    groups={groups}
+                    isGettingGroups={isGettingGroups}
                     currentTimeInSeconds={currentTimeInSeconds}
                     userIsAdmin={userIsAdmin}
                   />

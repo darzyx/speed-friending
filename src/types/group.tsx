@@ -1,4 +1,4 @@
-export type SessionType = {
+export type GroupType = {
   name: string;
   participant_count: number;
   round_count: number;
@@ -9,4 +9,4 @@ export type SessionType = {
   round_paused_time: number; // Time remaining when paused
 };
 
-export type SessionWithIdType = SessionType & { id: string };
+export type GroupWithIdType = GroupType & { id: string };

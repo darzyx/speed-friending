@@ -4,21 +4,21 @@ import Participants from "./Participants";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
 import StyledModal from "../../components/blocks/StyledModal";
 import { GameType } from "./utils";
-import { SessionWithIdType } from "../../types/session";
+import { GroupWithIdType } from "../../types/group";
 
 type PastRoundsModalPropsType = {
   game: GameType;
   activeRound: number;
   openPastRoundsModal: boolean;
   setOpenPastRoundsModal: (openPastRoundsModal: boolean) => void;
-  session: SessionWithIdType;
+  group: GroupWithIdType;
 };
 const PastRoundsModal = ({
   game,
   activeRound,
   openPastRoundsModal,
   setOpenPastRoundsModal,
-  session,
+  group,
 }: PastRoundsModalPropsType) => {
   const pastRounds = Object.values(game).slice(0, Number(activeRound) - 1);
   const hasPastRounds = Array.isArray(pastRounds) && pastRounds.length > 0;
@@ -26,7 +26,7 @@ const PastRoundsModal = ({
   return (
     <StyledModal
       header="Past Rounds"
-      subheader={session.name}
+      subheader={group.name}
       content={
         <div>
           {hasPastRounds ? (

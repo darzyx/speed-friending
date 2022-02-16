@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Label } from "semantic-ui-react";
-import { getTimeValues, TimeValuesType } from "../session/utils";
-import { SessionWithIdType } from "../../types/session";
+import { getTimeValues, TimeValuesType } from "../group/utils";
+import { GroupWithIdType } from "../../types/group";
 import ManageTimeModal from "../../components/time/ManageTimeModal";
 import { useState } from "react";
 
@@ -30,18 +30,18 @@ const TimeLabel = ({
   </Label>
 );
 
-type SessionLinkPropsType = {
+type GroupLinkPropsType = {
   index: number;
-  session: SessionWithIdType;
+  group: GroupWithIdType;
   currentTimeInSeconds: number;
   userIsAdmin: boolean;
 };
-const SessionLink = ({
+const GroupLink = ({
   index,
-  session,
+  group,
   currentTimeInSeconds,
   userIsAdmin,
-}: SessionLinkPropsType) => {
+}: GroupLinkPropsType) => {
   const navigate = useNavigate();
 
   const [openTimeModal, setOpenTimeModal] = useState(false);
@@ -50,11 +50,11 @@ const SessionLink = ({
     if (userIsAdmin) {
       setOpenTimeModal(newOpenTimeLabel);
     } else {
-      navigate(`/session/${session.id}`);
+      navigate(`/group/${group.id}`);
     }
   };
 
-  const timeValues = getTimeValues({ session, currentTimeInSeconds });
+  const timeValues = getTimeValues({ group, currentTimeInSeconds });
 
   return (
     <Button
@@ -69,7 +69,7 @@ const SessionLink = ({
     >
       <Button
         as={Link}
-        to={`/session/${session.id}`}
+        to={`/group/${group.id}`}
         style={{
           overflow: "hidden",
           textOverflow: "ellipsis",
@@ -83,7 +83,7 @@ const SessionLink = ({
         active
         fluid
       >
-        {session.name}
+        {group.name}
       </Button>
       <TimeLabel
         timeValues={timeValues}
@@ -92,7 +92,7 @@ const SessionLink = ({
       />
       <ManageTimeModal
         userIsAdmin={userIsAdmin}
-        session={session}
+        group={group}
         timeValues={timeValues}
         openTimeModal={openTimeModal}
         setOpenTimeModal={setOpenTimeModal}
@@ -101,4 +101,4 @@ const SessionLink = ({
   );
 };
 
-export default SessionLink;
+export default GroupLink;

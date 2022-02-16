@@ -1,17 +1,17 @@
 import { Statistic } from "semantic-ui-react";
-import { TimeValuesType } from "../../pages/session/utils";
-import { SessionWithIdType } from "../../types/session";
+import { TimeValuesType } from "../../pages/group/utils";
+import { GroupWithIdType } from "../../types/group";
 import CenterMiddle from "../blocks/CenterMiddle";
 
 type TimeDisplayPropsType = {
   userIsAdmin: boolean;
-  session: SessionWithIdType;
+  group: GroupWithIdType;
   timeValues: TimeValuesType;
   setOpenTimeModal: (arg: boolean) => void;
 };
 const TimeDisplay = ({
   userIsAdmin,
-  session,
+  group,
   timeValues,
   setOpenTimeModal,
 }: TimeDisplayPropsType) => (
@@ -29,7 +29,7 @@ const TimeDisplay = ({
       <Statistic.Value style={{ fontFamily: "'Orbitron', sans-serif" }}>
         {`${timeValues.remainingMinutesDisplay}:${timeValues.remainingSecondsDisplay}`}
       </Statistic.Value>
-      <Statistic.Label>{`Round ${session.round_active}`}</Statistic.Label>
+      <Statistic.Label>{`Round ${group.round_active}`}</Statistic.Label>
     </Statistic>
   </CenterMiddle>
 );

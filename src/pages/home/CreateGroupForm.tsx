@@ -11,8 +11,8 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { db } from "../../firebase";
-import { SessionType } from "../../types/session";
-import { getMaxRounds } from "../session/utils";
+import { GroupType } from "../../types/group";
+import { getMaxRounds } from "../group/utils";
 
 const maxNameLength = 30;
 const maxRoundDuration = 60 * 10;
@@ -28,12 +28,12 @@ const StyledFormInput = styled(Form.Input)`
   }
 `;
 
-type CreateSessionFormPropsType = {
-  setOpenCreateSessionModal: (openCreateSessionModal: boolean) => void;
+type CreateGroupFormPropsType = {
+  setOpenCreateGroupModal: (openCreateGroupModal: boolean) => void;
 };
-const CreateSessionForm = ({
-  setOpenCreateSessionModal,
-}: CreateSessionFormPropsType) => {
+const CreateGroupForm = ({
+  setOpenCreateGroupModal,
+}: CreateGroupFormPropsType) => {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -96,10 +96,10 @@ const CreateSessionForm = ({
   const handleSubmit = async () => {
     setIsSubmitting(true);
 
-    const collectionRef = collection(db, "sessions");
+    const collectionRef = collection(db, "groups");
 
     // TODO: validate all types before submitting
-    const payload: SessionType = {
+    const payload: GroupType = {
       name,
       participant_count: Number(participantCount),
       round_count: Number(roundCount),
@@ -111,9 +111,9 @@ const CreateSessionForm = ({
     };
 
     const docRef = await addDoc(collectionRef, payload);
-    navigate(`/session/${docRef.id}`);
+    navigate(`/group/${docRef.id}`);
 
-    setOpenCreateSessionModal(false);
+    setOpenCreateGroupModal(false);
   };
 
   return (
@@ -122,8 +122,8 @@ const CreateSessionForm = ({
         <Form.Group>
           <StyledFormInput
             name="name"
-            placeholder="Session Name"
-            label={`Session Name (max ${maxNameLength})`}
+            placeholder="Group Name"
+            label={`Group Name (max ${maxNameLength})`}
             value={name}
             onChange={handleChangeName}
             required
@@ -163,7 +163,7 @@ const CreateSessionForm = ({
         <div>
           <Button
             content="Cancel"
-            onClick={() => setOpenCreateSessionModal(false)}
+            onClick={() => setOpenCreateGroupModal(false)}
             floated="left"
           />
           <Button
@@ -184,4 +184,4 @@ const CreateSessionForm = ({
   );
 };
 
-export default CreateSessionForm;
+export default CreateGroupForm;

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import SessionLink from "./SessionLink";
-import LoadingSessionsPlaceholder from "./LoadingSessionsPlaceholder";
-import CreateSessionModalTrigger from "./CreateSessionModalTrigger";
-import NoSessionsPlaceholder from "./NoSessionsPlaceholder";
+import GroupLink from "./GroupLink";
+import LoadingGroupsPlaceholder from "./LoadingGroupsPlaceholder";
+import CreateGroupModalTrigger from "./CreateGroupModalTrigger";
+import NoGroupsPlaceholder from "./NoGroupsPlaceholder";
 import { centerMiddleCSS } from "../../components/blocks/CenterMiddle";
-import { SessionWithIdType } from "../../types/session";
-import CreateSessionModal from "./CreateSessionModal";
+import { GroupWithIdType } from "../../types/group";
+import CreateGroupModal from "./CreateGroupModal";
 import { Header } from "semantic-ui-react";
 import { ColorfulHeader } from "../../components/blocks/ColorfulText";
 
@@ -19,19 +19,19 @@ const HomeContainer = styled.div`
 
 type HomePropsType = {
   userIsAdmin: boolean;
-  isGettingSessions: boolean;
-  hasAnySessions: boolean;
-  sessions: SessionWithIdType[];
+  isGettingGroups: boolean;
+  hasAnyGroups: boolean;
+  groups: GroupWithIdType[];
   currentTimeInSeconds: number;
 };
 const Home = ({
   userIsAdmin,
-  isGettingSessions,
-  hasAnySessions,
-  sessions,
+  isGettingGroups,
+  hasAnyGroups,
+  groups,
   currentTimeInSeconds,
 }: HomePropsType) => {
-  const [openCreateSessionModal, setOpenCreateSessionModal] = useState(false);
+  const [openCreateGroupModal, setOpenCreateGroupModal] = useState(false);
 
   return (
     <HomeContainer>
@@ -39,29 +39,29 @@ const Home = ({
         <Header.Subheader style={{ margin: "7px" }}>Home</Header.Subheader> ✨
         Speed Friending 🏕️
       </Header>
-      <ColorfulHeader as="h3">Select Your Session Below</ColorfulHeader>
-      {hasAnySessions &&
-        sessions.map((session, index) => (
-          <SessionLink
+      <ColorfulHeader as="h3">Select Your Group Below</ColorfulHeader>
+      {hasAnyGroups &&
+        groups.map((group, index) => (
+          <GroupLink
             userIsAdmin={userIsAdmin}
             currentTimeInSeconds={currentTimeInSeconds}
-            session={session}
-            key={session.id}
+            group={group}
+            key={group.id}
             index={index}
           />
         ))}
-      {!hasAnySessions && isGettingSessions && <LoadingSessionsPlaceholder />}
-      {!hasAnySessions && !isGettingSessions && <NoSessionsPlaceholder />}
-      {userIsAdmin && !isGettingSessions && (
-        <CreateSessionModalTrigger
-          sessions={sessions}
-          hasAnySessions={hasAnySessions}
-          setOpenCreateSessionModal={setOpenCreateSessionModal}
+      {!hasAnyGroups && isGettingGroups && <LoadingGroupsPlaceholder />}
+      {!hasAnyGroups && !isGettingGroups && <NoGroupsPlaceholder />}
+      {userIsAdmin && !isGettingGroups && (
+        <CreateGroupModalTrigger
+          groups={groups}
+          hasAnyGroups={hasAnyGroups}
+          setOpenCreateGroupModal={setOpenCreateGroupModal}
         />
       )}
-      <CreateSessionModal
-        openCreateSessionModal={openCreateSessionModal}
-        setOpenCreateSessionModal={setOpenCreateSessionModal}
+      <CreateGroupModal
+        openCreateGroupModal={openCreateGroupModal}
+        setOpenCreateGroupModal={setOpenCreateGroupModal}
       />
     </HomeContainer>
   );

@@ -1,5 +1,5 @@
 import { SemanticCOLORS } from "semantic-ui-react";
-import { SessionWithIdType } from "../../types/session";
+import { GroupWithIdType } from "../../types/group";
 
 export const getMaxRounds = (participant_count: number) => {
   if (participant_count === 0 || participant_count === 1) {
@@ -70,19 +70,19 @@ export type TimeValuesType = {
   remainingTime: number;
 };
 export const getTimeValues = ({
-  session,
+  group,
   currentTimeInSeconds,
 }: {
-  session: SessionWithIdType;
+  group: GroupWithIdType;
   currentTimeInSeconds: number;
 }) => {
   let color: SemanticCOLORS = "green";
-  let remainingTime = session.round_is_paused
-    ? session.round_paused_time
-    : session.round_end_time - currentTimeInSeconds;
-  if (remainingTime > session.round_duration) {
+  let remainingTime = group.round_is_paused
+    ? group.round_paused_time
+    : group.round_end_time - currentTimeInSeconds;
+  if (remainingTime > group.round_duration) {
     // Sometimes round_end_time is a second too large at start
-    remainingTime = session.round_duration;
+    remainingTime = group.round_duration;
   } else if (remainingTime <= 0) {
     color = "red";
     remainingTime = 0;

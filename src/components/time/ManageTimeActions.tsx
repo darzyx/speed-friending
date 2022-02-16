@@ -1,17 +1,17 @@
 import { Button, Grid } from "semantic-ui-react";
-import { TimeValuesType } from "../../pages/session/utils";
+import { TimeValuesType } from "../../pages/group/utils";
 
-import { SessionWithIdType } from "../../types/session";
+import { GroupWithIdType } from "../../types/group";
 
 type ManageTimeActionsPropsType = {
-  session: SessionWithIdType;
+  group: GroupWithIdType;
   onClickReset: () => void;
   onClickToggleStart: () => void;
   onClickEndRound: () => void;
   timeValues: TimeValuesType;
 };
 const ManageTimeActions = ({
-  session,
+  group,
   onClickReset,
   onClickToggleStart,
   onClickEndRound,
@@ -31,12 +31,12 @@ const ManageTimeActions = ({
           <Button
             disabled={outOfTime}
             onClick={onClickToggleStart}
-            positive={session.round_is_paused || outOfTime}
-            negative={!session.round_is_paused && !outOfTime}
+            positive={group.round_is_paused || outOfTime}
+            negative={!group.round_is_paused && !outOfTime}
             size="huge"
             fluid
           >
-            {session.round_is_paused || outOfTime ? "Start" : "Pause"}
+            {group.round_is_paused || outOfTime ? "Start" : "Pause"}
           </Button>
         </Grid.Column>
       </Grid.Row>

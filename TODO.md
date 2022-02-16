@@ -1,11 +1,11 @@
 - Standardize all headers
 - Consider making navbar sticky
 - Update info modal copy
-- Remove hard coded max sessions number
-- Create new session modal: consider adding field to set custom time
+- Remove hard coded max groups number
+- Create new group modal: consider adding field to set custom time
 - Make string values numbers where appropriate on create form
 - Make sure Firebase can handle 400 users at once day of
 - Add admin auth login feature
 - Add confirmation logic to time reset and end round buttons
 - Add user dropout functionality
-- Rename "session" and "sessions" to "group" and "groups" for better UX
+- Rename "group" and "groups" to "group" and "groups" for better UX

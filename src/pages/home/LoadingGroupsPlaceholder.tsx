@@ -1,6 +1,6 @@
 import { Button, Loader } from "semantic-ui-react";
 
-const LoadingSessionsPlaceholder = () => {
+const LoadingGroupsPlaceholder = () => {
   return (
     <Button
       style={{
@@ -17,4 +17,4 @@ const LoadingSessionsPlaceholder = () => {
   );
 };
 
-export default LoadingSessionsPlaceholder;
+export default LoadingGroupsPlaceholder;

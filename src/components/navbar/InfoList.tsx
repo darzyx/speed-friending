@@ -14,7 +14,7 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
     <List.Item>
       <List.Content>
         <StyledListHeader>
-          1. GET SESSION NAME, PARTICIPANT NUMBER, INDEX CARD, BADGE, AND PEN
+          1. GET GROUP NAME, PARTICIPANT NUMBER, INDEX CARD, BADGE, AND PEN
         </StyledListHeader>
         <p style={{ marginTop: "10px" }}>
           You will be provided these by an organizer before you start. The pen
@@ -27,9 +27,9 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
     <Divider />
     <List.Item>
       <List.Content>
-        <StyledListHeader>2. FIND YOUR SESSION ON THIS APP</StyledListHeader>
+        <StyledListHeader>2. FIND YOUR GROUP ON THIS APP</StyledListHeader>
         <p style={{ marginTop: "10px" }}>
-          You can find your session name in the "Ongoing Sessions" list on the{" "}
+          You can find your group name in the "Ongoing Groups" list on the{" "}
           <Link
             to="/home"
             style={{ textDecoration: "underline" }}
@@ -37,7 +37,7 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
           >
             Home
           </Link>{" "}
-          page. Click on your session name to go to your session page
+          page. Click on your group name to go to your group page
         </p>
       </List.Content>
     </List.Item>
@@ -48,10 +48,10 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
           3. FIND YOUR PARTICIPANT NUMBER AND ROUND PARTNER
         </StyledListHeader>
         <p style={{ marginTop: "10px" }}>
-          You can find your participant number in your session page. It will
-          have a specific background color during the whole game that
-          corresponds to your index card. Your round partner is denoted by the
-          number attached to yours
+          You can find your participant number in your group page. It will have
+          a specific background color during the whole game that corresponds to
+          your index card. Your round partner is denoted by the number attached
+          to yours
         </p>
       </List.Content>
     </List.Item>

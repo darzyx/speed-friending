@@ -2,69 +2,69 @@ import { doc, setDoc, Timestamp } from "firebase/firestore";
 
 import { db } from "../../firebase";
 import StyledModal from "../blocks/StyledModal";
-import { SessionWithIdType } from "../../types/session";
+import { GroupWithIdType } from "../../types/group";
 import TimeDisplay from "./TimeDisplay";
 import ManageTimeActions from "./ManageTimeActions";
-import { TimeValuesType } from "../../pages/session/utils";
+import { TimeValuesType } from "../../pages/group/utils";
 
 type ManageTimeModalPropsType = {
   userIsAdmin: boolean;
-  session: SessionWithIdType;
+  group: GroupWithIdType;
   timeValues: TimeValuesType;
   openTimeModal: boolean;
   setOpenTimeModal: (openTimeModal: boolean) => void;
 };
 const ManageTimeModal = ({
   userIsAdmin,
-  session,
+  group,
   timeValues,
   openTimeModal,
   setOpenTimeModal,
 }: ManageTimeModalPropsType) => {
-  const docRef = doc(db, "sessions", session.id);
+  const docRef = doc(db, "groups", group.id);
 
   const handleClickReset = async () => {
     const payload = {
-      ...session,
-      round_end_time: Timestamp.now().seconds + session.round_duration,
+      ...group,
+      round_end_time: Timestamp.now().seconds + group.round_duration,
       round_is_paused: true,
-      round_paused_time: session.round_duration,
+      round_paused_time: group.round_duration,
     };
     setDoc(docRef, payload);
   };
 
   const handleClickToggleStart = () => {
-    if (session.round_is_paused) {
+    if (group.round_is_paused) {
       const payload = {
-        ...session,
-        round_end_time: Timestamp.now().seconds + session.round_paused_time,
+        ...group,
+        round_end_time: Timestamp.now().seconds + group.round_paused_time,
         round_is_paused: false,
       };
-      const docRef = doc(db, "sessions", session.id);
+      const docRef = doc(db, "groups", group.id);
       setDoc(docRef, payload);
     } else {
       const payload = {
-        ...session,
+        ...group,
         round_is_paused: true,
-        round_paused_time: session.round_end_time - Timestamp.now().seconds,
+        round_paused_time: group.round_end_time - Timestamp.now().seconds,
       };
       setDoc(docRef, payload);
     }
   };
 
   const handleClickEndRound = () => {
-    if (session.round_active < session.round_count) {
+    if (group.round_active < group.round_count) {
       const payload = {
-        ...session,
-        round_active: session.round_active + 1,
-        round_end_time: Timestamp.now().seconds + session.round_duration,
+        ...group,
+        round_active: group.round_active + 1,
+        round_end_time: Timestamp.now().seconds + group.round_duration,
         round_is_paused: true,
-        round_paused_time: session.round_duration,
+        round_paused_time: group.round_duration,
       };
       setDoc(docRef, payload);
     } else {
       const payload = {
-        ...session,
+        ...group,
         round_end_time: Timestamp.now().seconds,
         round_is_paused: true,
         round_paused_time: 0,
@@ -75,19 +75,19 @@ const ManageTimeModal = ({
 
   return (
     <StyledModal
-      header={session.name}
+      header={group.name}
       subheader="Manage time for"
       content={
         <TimeDisplay
           userIsAdmin={userIsAdmin}
-          session={session}
+          group={group}
           timeValues={timeValues}
           setOpenTimeModal={setOpenTimeModal}
         />
       }
       actions={
         <ManageTimeActions
-          session={session}
+          group={group}
           onClickReset={handleClickReset}
           onClickToggleStart={handleClickToggleStart}
           onClickEndRound={handleClickEndRound}
