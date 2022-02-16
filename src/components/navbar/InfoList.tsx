@@ -29,7 +29,8 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
       <List.Content>
         <StyledListHeader>2. FIND YOUR GROUP ON THIS APP</StyledListHeader>
         <p style={{ marginTop: "10px" }}>
-          You can find your group name in the "Ongoing Groups" list on the{" "}
+          You can find your group name in the "Select Assigned Group Below" list
+          on the{" "}
           <Link
             to="/home"
             style={{ textDecoration: "underline" }}
