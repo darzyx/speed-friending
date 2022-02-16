@@ -10,3 +10,5 @@
 - Add user dropout functionality
 - Rename "group" and "groups" to "group" and "groups" for better UX
 - Clicking enter on create group form doesn't submit
+- Error when submitting create new session form:
+  Warning: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function.
