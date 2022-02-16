@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   Button,
   Dimmer,
@@ -37,6 +37,8 @@ const Group = ({
 }: GroupPropsType) => {
   const { id } = useParams();
 
+  const navigate = useNavigate();
+
   const [group, setGroup] = useState(initGroup);
   const hasGroup = group?.name?.length > 0;
   useEffect(() => {
@@ -56,6 +58,7 @@ const Group = ({
     const docRef = doc(db, "groups", group.id);
     await deleteDoc(docRef);
     setOpenConfirmDeleteModal(false);
+    navigate("/home");
   };
 
   if (isGettingGroups || !hasGroup) {
