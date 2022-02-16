@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import SessionLink from "./SessionLink";
 import LoadingSessionsPlaceholder from "./LoadingSessionsPlaceholder";
-import CreateSessionButton from "./CreateSessionButton";
+import CreateSessionModalTrigger from "./CreateSessionModalTrigger";
 import NoSessionsPlaceholder from "./NoSessionsPlaceholder";
 import { centerMiddleCSS } from "../../components/blocks/CenterMiddle";
 import { SessionWithIdType } from "../../types/session";
@@ -53,7 +53,7 @@ const Home = ({
       {!hasAnySessions && isGettingSessions && <LoadingSessionsPlaceholder />}
       {!hasAnySessions && !isGettingSessions && <NoSessionsPlaceholder />}
       {userIsAdmin && !isGettingSessions && (
-        <CreateSessionButton
+        <CreateSessionModalTrigger
           sessions={sessions}
           hasAnySessions={hasAnySessions}
           setOpenCreateSessionModal={setOpenCreateSessionModal}

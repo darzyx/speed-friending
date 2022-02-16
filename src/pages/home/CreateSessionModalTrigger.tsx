@@ -10,7 +10,7 @@ type CreateSessionButtonPropsType = {
   setOpenCreateSessionModal: (openCreateSessionModal: boolean) => void;
 };
 
-const CreateSessionButton = ({
+const CreateSessionModalTrigger = ({
   hasAnySessions,
   sessions,
   setOpenCreateSessionModal,
@@ -39,4 +39,4 @@ const CreateSessionButton = ({
   );
 };
 
-export default CreateSessionButton;
+export default CreateSessionModalTrigger;
