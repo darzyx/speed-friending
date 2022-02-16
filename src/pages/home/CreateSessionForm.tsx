@@ -107,7 +107,7 @@ const CreateSessionForm = ({
       round_duration: Number(roundDuration),
       round_end_time: Timestamp.now().seconds + Number(roundDuration),
       round_is_paused: true,
-      round_paused_time: 0, // Time remaining when paused
+      round_paused_time: Number(roundDuration), // Time remaining when paused
     };
 
     const docRef = await addDoc(collectionRef, payload);
