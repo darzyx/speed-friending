@@ -1,7 +1,8 @@
 import StyledModal from "../blocks/StyledModal";
 import { SessionWithIdType } from "../../types/session";
-import { Button, Grid, SemanticCOLORS } from "semantic-ui-react";
+import { SemanticCOLORS } from "semantic-ui-react";
 import TimeDisplay from "./TimeDisplay";
+import ManageTimeActions from "./ManageTimeActions";
 
 type ManageTimeModalPropsType = {
   userIsAdmin: boolean;
@@ -46,33 +47,12 @@ const ManageTimeModal = ({
         />
       }
       actions={
-        <Grid inverted>
-          <Grid.Row columns={2}>
-            <Grid.Column textAlign="right" verticalAlign="middle">
-              <Button onClick={handleClickReset} size="huge" fluid secondary>
-                Reset
-              </Button>
-            </Grid.Column>
-            <Grid.Column textAlign="left" verticalAlign="middle">
-              <Button
-                onClick={handleClickToggleStart}
-                positive={session.round_is_paused}
-                negative={!session.round_is_paused}
-                size="huge"
-                fluid
-              >
-                {session.round_is_paused ? "Start" : "Pause"}
-              </Button>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row columns={1}>
-            <Grid.Column textAlign="center" verticalAlign="middle">
-              <Button onClick={handleClickEndRound} primary size="huge" fluid>
-                End Round
-              </Button>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+        <ManageTimeActions
+          session={session}
+          onClickReset={handleClickReset}
+          onClickToggleStart={handleClickToggleStart}
+          onClickEndRound={handleClickEndRound}
+        />
       }
       openModal={openTimeModal}
       setOpenModal={setOpenTimeModal}
