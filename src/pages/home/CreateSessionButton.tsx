@@ -7,13 +7,13 @@ const maxSessions = 50;
 type CreateSessionButtonPropsType = {
   hasAnySessions: boolean;
   sessions: SessionWithIdType[];
-  setOpenNewModal: (arg: boolean) => void;
+  setOpenCreateSessionModal: (openCreateSessionModal: boolean) => void;
 };
 
 const CreateSessionButton = ({
   hasAnySessions,
   sessions,
-  setOpenNewModal,
+  setOpenCreateSessionModal,
 }: CreateSessionButtonPropsType) => {
   const disabled = sessions.length >= maxSessions;
   return (
@@ -25,7 +25,7 @@ const CreateSessionButton = ({
         paddingTop: "15px",
         paddingBottom: "15px",
       }}
-      onClick={disabled ? () => {} : () => setOpenNewModal(true)}
+      onClick={disabled ? () => {} : () => setOpenCreateSessionModal(true)}
       disabled={disabled}
       size="large"
       secondary

@@ -28,8 +28,12 @@ const StyledFormInput = styled(Form.Input)`
   }
 `;
 
-type NewFormPropsType = { setOpenNewModal: (openNewModal: boolean) => void };
-const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
+type CreateSessionFormPropsType = {
+  setOpenCreateSessionModal: (openCreateSessionModal: boolean) => void;
+};
+const CreateSessionForm = ({
+  setOpenCreateSessionModal,
+}: CreateSessionFormPropsType) => {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -108,7 +112,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
     const docRef = await addDoc(collectionRef, payload);
     navigate(`/session/${docRef.id}`);
 
-    setOpenNewModal(false);
+    setOpenCreateSessionModal(false);
   };
 
   return (
@@ -158,7 +162,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
         <div>
           <Button
             content="Cancel"
-            onClick={() => setOpenNewModal(false)}
+            onClick={() => setOpenCreateSessionModal(false)}
             floated="left"
           />
           <Button
@@ -179,4 +183,4 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
   );
 };
 
-export default NewForm;
+export default CreateSessionForm;

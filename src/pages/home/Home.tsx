@@ -7,7 +7,7 @@ import CreateSessionButton from "./CreateSessionButton";
 import NoSessionsPlaceholder from "./NoSessionsPlaceholder";
 import { centerMiddleCSS } from "../../components/blocks/CenterMiddle";
 import { SessionWithIdType } from "../../types/session";
-import NewModal from "./NewModal";
+import CreateSessionModal from "./CreateSessionModal";
 import { Header } from "semantic-ui-react";
 import { ColorfulHeader } from "../../components/blocks/ColorfulText";
 
@@ -31,7 +31,7 @@ const Home = ({
   sessions,
   currentTimeInSeconds,
 }: HomePropsType) => {
-  const [openNewModal, setOpenNewModal] = useState(false);
+  const [openCreateSessionModal, setOpenCreateSessionModal] = useState(false);
 
   return (
     <HomeContainer>
@@ -56,10 +56,13 @@ const Home = ({
         <CreateSessionButton
           sessions={sessions}
           hasAnySessions={hasAnySessions}
-          setOpenNewModal={setOpenNewModal}
+          setOpenCreateSessionModal={setOpenCreateSessionModal}
         />
       )}
-      <NewModal openNewModal={openNewModal} setOpenNewModal={setOpenNewModal} />
+      <CreateSessionModal
+        openCreateSessionModal={openCreateSessionModal}
+        setOpenCreateSessionModal={setOpenCreateSessionModal}
+      />
     </HomeContainer>
   );
 };
