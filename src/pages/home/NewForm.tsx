@@ -73,8 +73,8 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
   };
 
   const maxRounds = getMaxRounds(Number(participantCount));
-  const [totalRounds, setTotalRounds] = useState("");
-  const handleChangeTotalRounds = (
+  const [roundCount, setRoundCount] = useState("");
+  const handleChangeRoundCount = (
     e: ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
   ) => {
@@ -84,7 +84,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
       (!Number.isNaN(numberValue) || value === "") &&
       numberValue <= maxRounds
     ) {
-      setTotalRounds(value);
+      setRoundCount(value);
     }
   };
 
@@ -99,7 +99,7 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
       name,
       participant_count: Number(participantCount),
       active_round: 1,
-      total_rounds: Number(totalRounds),
+      round_count: Number(roundCount),
       end_time: Timestamp.now().seconds + Number(roundDuration),
       is_paused: false,
       paused_remaining_time: 0,
@@ -145,11 +145,11 @@ const NewForm = ({ setOpenNewModal }: NewFormPropsType) => {
             width={8}
           />
           <StyledFormInput
-            name="total_rounds"
-            placeholder="Total Rounds"
-            label={`Total Rounds (max ${maxRounds})`}
-            value={totalRounds}
-            onChange={handleChangeTotalRounds}
+            name="round_count"
+            placeholder="Round Count"
+            label={`Round Count (max ${maxRounds})`}
+            value={roundCount}
+            onChange={handleChangeRoundCount}
             required
             width={8}
           />

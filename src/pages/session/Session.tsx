@@ -48,7 +48,7 @@ const Session = ({
     );
   }
 
-  const game = getGame(session.participant_count, session.total_rounds);
+  const game = getGame(session.participant_count, session.round_count);
   const activeRound = Object.values(game)[Number(session.active_round) - 1];
 
   return (
@@ -60,7 +60,7 @@ const Session = ({
           <Header.Subheader>
             {`${session.participant_count} participants`}
             <br />
-            {`${session.total_rounds} rounds`}
+            {`${session.round_count} rounds`}
           </Header.Subheader>
         </Header>
       </CenterMiddle>
