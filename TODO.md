@@ -4,8 +4,8 @@
 - Remove hard coded max sessions number
 - Create new session modal: consider adding field to set custom time
 - Make string values numbers where appropriate on create form
-- Add session name to Past Rounds modal
 - Make sure Firebase can handle 400 users at once day of
 - Add admin auth login feature
 - Add confirmation logic to time reset and end round buttons
 - Add user dropout functionality
+- Rename "session" and "sessions" to "group" and "groups" for better UX

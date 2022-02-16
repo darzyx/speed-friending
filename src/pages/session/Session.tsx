@@ -91,6 +91,7 @@ const Session = ({
         activeRound={session.round_active}
         openPastRoundsModal={openPastRoundsModal}
         setOpenPastRoundsModal={setOpenPastRoundsModal}
+        session={session}
       />
     </div>
   );
