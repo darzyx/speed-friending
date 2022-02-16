@@ -9,6 +9,7 @@ import Home from "./pages/home/Home";
 import Session from "./pages/session/Session";
 import Admin from "./pages/admin/Admin";
 import { SessionWithIdType } from "./types/session";
+import UserIsAdminAlert from "./components/UserIsAdminAlert";
 
 export const initSession = {
   id: "",
@@ -72,40 +73,43 @@ const App = () => {
 
   return (
     <div className="App">
-      <Container>
-        <BrowserRouter>
-          <Navbar />
-          <Divider hidden />
-          <Routes>
-            <Route index element={<Navigate to="/home" />} />
-            <Route
-              path="home"
-              element={
-                <Home
-                  userIsAdmin={userIsAdmin}
-                  isGettingSessions={isGettingSessions}
-                  hasAnySessions={hasAnySessions}
-                  sessions={sessions}
-                  currentTimeInSeconds={currentTimeInSeconds}
-                />
-              }
-            />
-            <Route
-              path="session/:id"
-              element={
-                <Session
-                  sessions={sessions}
-                  isGettingSessions={isGettingSessions}
-                  currentTimeInSeconds={currentTimeInSeconds}
-                  userIsAdmin={userIsAdmin}
-                />
-              }
-            />
-            <Route path="admin" element={<Admin />} />
-          </Routes>
-          <Divider hidden />
-        </BrowserRouter>
-      </Container>
+      {userIsAdmin && <UserIsAdminAlert />}
+      <div className="Main">
+        <Container>
+          <BrowserRouter>
+            <Navbar />
+            <Divider hidden />
+            <Routes>
+              <Route index element={<Navigate to="/home" />} />
+              <Route
+                path="home"
+                element={
+                  <Home
+                    userIsAdmin={userIsAdmin}
+                    isGettingSessions={isGettingSessions}
+                    hasAnySessions={hasAnySessions}
+                    sessions={sessions}
+                    currentTimeInSeconds={currentTimeInSeconds}
+                  />
+                }
+              />
+              <Route
+                path="session/:id"
+                element={
+                  <Session
+                    sessions={sessions}
+                    isGettingSessions={isGettingSessions}
+                    currentTimeInSeconds={currentTimeInSeconds}
+                    userIsAdmin={userIsAdmin}
+                  />
+                }
+              />
+              <Route path="admin" element={<Admin />} />
+            </Routes>
+            <Divider hidden />
+          </BrowserRouter>
+        </Container>
+      </div>
     </div>
   );
 };
