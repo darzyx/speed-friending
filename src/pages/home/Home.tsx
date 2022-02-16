@@ -39,7 +39,7 @@ const Home = ({
         <Header.Subheader style={{ margin: "7px" }}>Home</Header.Subheader> ✨
         Speed Friending 🏕️
       </Header>
-      <ColorfulHeader as="h3">Select Your Group Below</ColorfulHeader>
+      <ColorfulHeader as="h3">Select Assigned Group Below</ColorfulHeader>
       {hasAnyGroups &&
         groups.map((group, index) => (
           <GroupLink
