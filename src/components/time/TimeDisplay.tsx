@@ -29,7 +29,7 @@ const TimeDisplay = ({
           }
         : { color: timeValues.color })}
     >
-      <Statistic.Value>
+      <Statistic.Value style={{ fontFamily: "'Orbitron', sans-serif" }}>
         {`${timeValues.remainingMinutes}:${timeValues.remainingSeconds}`}
       </Statistic.Value>
       <Statistic.Label>{`Round ${session.active_round}`}</Statistic.Label>
