@@ -12,7 +12,7 @@ const CreateGroupModal = ({
   setOpenCreateGroupModal,
 }: CreateGroupModalPropsType) => (
   <StyledModal
-    header="New Group Group"
+    header="New Group"
     subheader="Create"
     content={
       <div>
