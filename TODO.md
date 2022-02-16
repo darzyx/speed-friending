@@ -6,3 +6,4 @@
 - Make string values numbers where appropriate on create form
 - Add session name to Past Rounds modal
 - Make sure Firebase can handle 400 users at once day of
+- Add admin auth login feature
