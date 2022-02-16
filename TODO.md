@@ -4,3 +4,4 @@
 - Remove hard coded max sessions number
 - Create new session modal: consider adding field to set custom time
 - Make string values numbers where appropriate on create form
+- Add session name to Past Rounds modal
