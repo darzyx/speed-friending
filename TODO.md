@@ -9,3 +9,4 @@
 - Add confirmation logic to time reset and end round buttons
 - Add user dropout functionality
 - Rename "group" and "groups" to "group" and "groups" for better UX
+- Clicking enter on create group form doesn't submit
