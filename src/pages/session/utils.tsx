@@ -74,7 +74,10 @@ export const getTimeValues = ({
   let remainingTime = session.round_is_paused
     ? session.round_paused_time
     : session.round_end_time - currentTimeInSeconds;
-  if (remainingTime <= 0) {
+  if (remainingTime > session.round_duration) {
+    // Sometimes round_end_time is a second too large at start
+    remainingTime = session.round_duration;
+  } else if (remainingTime <= 0) {
     color = "red";
     remainingTime = 0;
   } else if (remainingTime <= 60) {
