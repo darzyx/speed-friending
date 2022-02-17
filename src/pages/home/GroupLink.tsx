@@ -20,7 +20,12 @@ const TimeLabel = ({
   <Label
     onClick={() => onClickTimeLabel(true)}
     {...(userIsAdmin
-      ? { color: timeValues.color }
+      ? {
+          color: timeValues.color,
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+        }
       : {
           style: {
             backgroundColor: "#27292a",
@@ -29,7 +34,7 @@ const TimeLabel = ({
         })}
   >
     {`(${group.round_active})`}
-    <br />
+    <span style={{ visibility: "hidden" }}>•</span>
     {`${timeValues.remainingMinutesDisplay}:${timeValues.remainingSecondsDisplay}`}
   </Label>
 );
@@ -79,11 +84,7 @@ const GroupLink = ({
           textOverflow: "ellipsis",
           whiteSpace: "nowrap",
           textAlign: "left",
-          verticalAlign: "middle",
-          lineHeight: "20px",
-          paddingTop: "15px",
-          paddingBottom: "15px",
-          paddingRight: "0",
+          padding: "15px 0 15px 20px",
         }}
         secondary
         active
