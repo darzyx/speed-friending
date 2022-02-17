@@ -12,7 +12,15 @@ const Navbar = () => {
 
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>
-      <NavButton onClick={() => navigate("/home")}>
+      <NavButton
+        onClick={() => {
+          if (window.location.pathname === "/home") {
+            window.location.reload();
+          } else {
+            navigate("/home");
+          }
+        }}
+      >
         <Icon name="home" /> Home
       </NavButton>
       <NavButton onClick={() => setOpenInfoModal(true)}>

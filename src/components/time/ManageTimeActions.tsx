@@ -25,7 +25,7 @@ const ManageTimeActions = ({
     <Grid inverted>
       <Grid.Row columns={2}>
         <Grid.Column textAlign="right" verticalAlign="middle">
-          <Button onClick={onClickReset} size="huge" fluid secondary>
+          <Button onClick={onClickReset} size="huge" fluid color="grey">
             Reset
           </Button>
         </Grid.Column>
