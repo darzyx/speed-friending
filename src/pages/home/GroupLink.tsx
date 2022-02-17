@@ -84,7 +84,7 @@ const GroupLink = ({
           textOverflow: "ellipsis",
           whiteSpace: "nowrap",
           textAlign: "left",
-          padding: "15px 0 15px 20px",
+          padding: "15px 5px 15px 20px",
         }}
         secondary
         active

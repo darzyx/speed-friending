@@ -48,7 +48,14 @@ const StyledModal = ({
         as="h1"
         inverted
         textAlign="center"
-        style={{ ...modalColors, marginTop: "7px" }}
+        style={{
+          ...modalColors,
+          marginTop: "7px",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+          maxWidth: "100%",
+        }}
       >
         {subheader && (
           <Header.Subheader style={{ marginBottom: "7px" }}>

@@ -13,3 +13,4 @@ OTHER
 - Remove hard coded max groups number
 - Create group modal: consider adding advanced section to set custom time/round
 - Make string values numbers where appropriate on create form
+- Consider using CDN for semantic ui css

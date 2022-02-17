@@ -80,7 +80,16 @@ const Group = ({
   return (
     <div>
       <CenterMiddle textAlign="center">
-        <Header as="h1" inverted>
+        <Header
+          as="h1"
+          inverted
+          style={{
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            maxWidth: "100%",
+          }}
+        >
           <Header.Subheader style={{ margin: "7px" }}>Group</Header.Subheader>
           {group.name}
           <Header.Subheader>
