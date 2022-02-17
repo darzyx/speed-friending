@@ -9,11 +9,13 @@ type TimeLabelPropsType = {
   timeValues: TimeValuesType;
   onClickTimeLabel: (openTimeModal: boolean) => void;
   userIsAdmin: boolean;
+  group: GroupWithIdType;
 };
 const TimeLabel = ({
   timeValues,
   onClickTimeLabel,
   userIsAdmin,
+  group,
 }: TimeLabelPropsType) => (
   <Label
     onClick={() => onClickTimeLabel(true)}
@@ -26,6 +28,8 @@ const TimeLabel = ({
           },
         })}
   >
+    {`(${group.round_active})`}
+    <br />
     {`${timeValues.remainingMinutesDisplay}:${timeValues.remainingSecondsDisplay}`}
   </Label>
 );
@@ -75,6 +79,8 @@ const GroupLink = ({
           textOverflow: "ellipsis",
           whiteSpace: "nowrap",
           textAlign: "left",
+          verticalAlign: "middle",
+          lineHeight: "18px",
           paddingTop: "15px",
           paddingBottom: "15px",
           paddingRight: "0",
@@ -86,6 +92,7 @@ const GroupLink = ({
         {group.name}
       </Button>
       <TimeLabel
+        group={group}
         timeValues={timeValues}
         onClickTimeLabel={handleClickTimeLabel}
         userIsAdmin={userIsAdmin}
