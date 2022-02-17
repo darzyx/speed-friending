@@ -106,6 +106,15 @@ const ManageTimeModal = ({
           <StyledModal
             header="Are you sure?"
             subheader="Confirm"
+            content={
+              <p style={{ textAlign: "center" }}>
+                {confirmingAction === "reset"
+                  ? "You are about to reset the round time"
+                  : confirmingAction === "end_round"
+                  ? "You are about to end the round"
+                  : "Please confirm your action"}
+              </p>
+            }
             actions={
               <Grid inverted>
                 <Grid.Row columns={2}>
