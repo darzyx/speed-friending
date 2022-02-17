@@ -33,9 +33,9 @@ const TimeLabel = ({
           },
         })}
   >
-    {`(${group.round_active})`}
-    <span style={{ visibility: "hidden" }}>•</span>
     {`${timeValues.remainingMinutesDisplay}:${timeValues.remainingSecondsDisplay}`}
+    <span style={{ visibility: "hidden" }}>•</span>
+    {`(${group.round_active})`}
   </Label>
 );
 
