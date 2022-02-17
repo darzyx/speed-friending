@@ -11,6 +11,8 @@ import CreateGroupModal from "./CreateGroupModal";
 import { Header } from "semantic-ui-react";
 import { ColorfulHeader } from "../../components/blocks/ColorfulText";
 
+export const homeTextCTA = "Select Assigned Group Below";
+
 const HomeContainer = styled.div`
   ${centerMiddleCSS}
   margin: 0;
@@ -39,7 +41,7 @@ const Home = ({
         <Header.Subheader style={{ margin: "7px" }}>Home</Header.Subheader> ✨
         Speed Friending 🏕️
       </Header>
-      <ColorfulHeader as="h3">Select Assigned Group Below</ColorfulHeader>
+      <ColorfulHeader as="h3">{homeTextCTA}</ColorfulHeader>
       {hasAnyGroups &&
         groups.map((group, index) => (
           <GroupLink
