@@ -122,14 +122,20 @@ const Group = ({
         </NavButton>
         {userIsAdmin && (
           <>
-            <Divider hidden />
+            <Button
+              style={{ marginTop: "10px", minWidth: "175px" }}
+              color="grey"
+              size="small"
+            >
+              <Icon name="remove user" /> Remove Participant
+            </Button>
             <Button
               onClick={() => setOpenConfirmDeleteModal(true)}
-              inverted
+              style={{ marginTop: "10px", minWidth: "175px" }}
               color="red"
               size="small"
             >
-              Delete Group
+              <Icon name="close" /> Delete Group
             </Button>
             <StyledModal
               header="Delete"

@@ -5,6 +5,7 @@ HIGH PRIORITY
 - Add user dropout functionality
 - Site crashes if min values are entered. But don't want to validate pre submit
   because of UX on entering field values. Should validate post submit attempt
+- put manage time modal content on group page instead of modal
 
 MID PRIORITY
 
