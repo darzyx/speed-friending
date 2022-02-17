@@ -26,7 +26,9 @@ const TimeDisplay = ({
           }
         : { color: timeValues.color })}
     >
-      <Statistic.Value style={{ fontFamily: "'Orbitron', sans-serif" }}>
+      <Statistic.Value
+        style={{ fontFamily: "'Orbitron', sans-serif", userSelect: "none" }}
+      >
         {`${timeValues.remainingMinutesDisplay}:${timeValues.remainingSecondsDisplay}`}
       </Statistic.Value>
       <Statistic.Label>{`Round ${group.round_active}`}</Statistic.Label>

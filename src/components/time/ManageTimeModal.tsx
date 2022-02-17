@@ -91,6 +91,7 @@ const ManageTimeModal = ({
           onClickReset={handleClickReset}
           onClickToggleStart={handleClickToggleStart}
           onClickEndRound={handleClickEndRound}
+          setOpenTimeModal={setOpenTimeModal}
           timeValues={timeValues}
         />
       }

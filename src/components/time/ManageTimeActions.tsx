@@ -8,6 +8,7 @@ type ManageTimeActionsPropsType = {
   onClickReset: () => void;
   onClickToggleStart: () => void;
   onClickEndRound: () => void;
+  setOpenTimeModal: (openTimeModal: boolean) => void;
   timeValues: TimeValuesType;
 };
 const ManageTimeActions = ({
@@ -15,6 +16,7 @@ const ManageTimeActions = ({
   onClickReset,
   onClickToggleStart,
   onClickEndRound,
+  setOpenTimeModal,
   timeValues,
 }: ManageTimeActionsPropsType) => {
   const outOfTime = timeValues.remainingTime <= 0;
@@ -45,6 +47,11 @@ const ManageTimeActions = ({
           <Button onClick={onClickEndRound} primary size="huge" fluid>
             End Round
           </Button>
+        </Grid.Column>
+      </Grid.Row>
+      <Grid.Row columns={1}>
+        <Grid.Column textAlign="center" verticalAlign="middle">
+          <Button onClick={() => setOpenTimeModal(false)}>Close</Button>
         </Grid.Column>
       </Grid.Row>
     </Grid>

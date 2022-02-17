@@ -1,13 +1,15 @@
-- Standardize all headers
-- Consider making navbar sticky
-- Update info modal copy
-- Remove hard coded max groups number
-- Create new group modal: consider adding field to set custom time
-- Make string values numbers where appropriate on create form
+HIGH PRIORITY
+
 - Make sure Firebase can handle 400 users at once day of
 - Add admin auth login feature
 - Add confirmation logic to time reset and end round buttons
 - Add user dropout functionality
-- Clicking enter on create group form doesn't submit
-- Error when submitting create new session form:
-  Warning: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function.
+
+OTHER
+
+- Standardize all headers
+- Consider making navbar sticky
+- Update info modal copy
+- Remove hard coded max groups number
+- Create group modal: consider adding advanced section to set custom time/round
+- Make string values numbers where appropriate on create form
