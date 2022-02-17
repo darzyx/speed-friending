@@ -6,6 +6,8 @@ import { GroupWithIdType } from "../../types/group";
 import TimeDisplay from "./TimeDisplay";
 import ManageTimeActions from "./ManageTimeActions";
 import { TimeValuesType } from "../../pages/group/utils";
+import { useState } from "react";
+import { Button, Grid } from "semantic-ui-react";
 
 type ManageTimeModalPropsType = {
   userIsAdmin: boolean;
@@ -23,7 +25,7 @@ const ManageTimeModal = ({
 }: ManageTimeModalPropsType) => {
   const docRef = doc(db, "groups", group.id);
 
-  const handleClickReset = async () => {
+  const handleReset = () => {
     const payload = {
       ...group,
       round_end_time: Timestamp.now().seconds + group.round_duration,
@@ -33,7 +35,7 @@ const ManageTimeModal = ({
     setDoc(docRef, payload);
   };
 
-  const handleClickToggleStart = () => {
+  const handleToggleStart = () => {
     if (group.round_is_paused) {
       const payload = {
         ...group,
@@ -52,7 +54,7 @@ const ManageTimeModal = ({
     }
   };
 
-  const handleClickEndRound = () => {
+  const handleEndRound = () => {
     if (group.round_active < group.round_count) {
       const payload = {
         ...group,
@@ -73,24 +75,68 @@ const ManageTimeModal = ({
     }
   };
 
+  const [confirmingAction, setConfirmingAction] = useState("");
+  const [openConfirmModal, setOpenConfirmModal] = useState(false);
+  const handleCancelAction = () => {
+    setConfirmingAction("");
+    setOpenConfirmModal(false);
+  };
+  const handleConfirmAction = () => {
+    if (confirmingAction === "reset") {
+      handleReset();
+    } else if (confirmingAction === "end_round") {
+      handleEndRound();
+    }
+    setConfirmingAction("");
+    setOpenConfirmModal(false);
+  };
+
   return (
     <StyledModal
       header={group.name}
       subheader="Manage time for"
       content={
-        <TimeDisplay
-          userIsAdmin={userIsAdmin}
-          group={group}
-          timeValues={timeValues}
-          setOpenTimeModal={setOpenTimeModal}
-        />
+        <div>
+          <TimeDisplay
+            userIsAdmin={userIsAdmin}
+            group={group}
+            timeValues={timeValues}
+            setOpenTimeModal={setOpenTimeModal}
+          />
+          <StyledModal
+            header="Are you sure?"
+            subheader="Confirm"
+            actions={
+              <Grid inverted>
+                <Grid.Row columns={2}>
+                  <Grid.Column textAlign="right" verticalAlign="middle">
+                    <Button onClick={handleCancelAction}>Cancel</Button>
+                  </Grid.Column>
+                  <Grid.Column textAlign="left" verticalAlign="middle">
+                    <Button primary onClick={handleConfirmAction}>
+                      Confirm
+                    </Button>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            }
+            openModal={openConfirmModal}
+            setOpenModal={setOpenConfirmModal}
+          />
+        </div>
       }
       actions={
         <ManageTimeActions
           group={group}
-          onClickReset={handleClickReset}
-          onClickToggleStart={handleClickToggleStart}
-          onClickEndRound={handleClickEndRound}
+          onClickReset={() => {
+            setConfirmingAction("reset");
+            setOpenConfirmModal(true);
+          }}
+          onClickToggleStart={handleToggleStart}
+          onClickEndRound={() => {
+            setConfirmingAction("end_round");
+            setOpenConfirmModal(true);
+          }}
           setOpenTimeModal={setOpenTimeModal}
           timeValues={timeValues}
         />

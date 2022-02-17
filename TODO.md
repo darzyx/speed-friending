@@ -2,7 +2,6 @@ HIGH PRIORITY
 
 - Make sure Firebase can handle 400 users at once day of
 - Add admin auth login feature
-- Add confirmation logic to time reset and end round buttons
 - Add user dropout functionality
 
 OTHER
