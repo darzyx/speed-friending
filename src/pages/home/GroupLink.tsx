@@ -80,7 +80,7 @@ const GroupLink = ({
           whiteSpace: "nowrap",
           textAlign: "left",
           verticalAlign: "middle",
-          lineHeight: "18px",
+          lineHeight: "20px",
           paddingTop: "15px",
           paddingBottom: "15px",
           paddingRight: "0",
