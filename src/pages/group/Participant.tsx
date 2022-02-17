@@ -18,7 +18,7 @@ const Participant = ({ n, top }: ParticipantPropsType) => (
       ...(top && { borderRadius: "5px 5px 0 0" }),
     }}
   >
-    {n}
+    {n === 0 ? "X" : n}
   </CenterMiddle>
 );
 
