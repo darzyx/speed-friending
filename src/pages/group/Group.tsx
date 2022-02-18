@@ -1,14 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  Button,
-  Dimmer,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Loader,
-} from "semantic-ui-react";
+import { Dimmer, Divider, Header, Icon, Loader } from "semantic-ui-react";
 
 import { db } from "../../firebase";
 import { getGame, getTimeValues } from "./utils";
@@ -20,8 +12,8 @@ import ManageTimeModal from "../../components/time/ManageTimeModal";
 import NavButton from "../../components/blocks/NavButton";
 import PastRoundsModal from "./PastRoundsModal";
 import Participants from "./Participants";
-import StyledModal from "../../components/blocks/StyledModal";
 import { deleteDoc, doc } from "firebase/firestore";
+import GroupAdminFooterActions from "./GroupAdminFooterActions";
 
 type GroupPropsType = {
   groups: GroupWithIdType[];
@@ -121,53 +113,13 @@ const Group = ({
           <Icon name="history" /> View Past Rounds
         </NavButton>
         {userIsAdmin && (
-          <>
-            <Button
-              style={{ marginTop: "10px", minWidth: "175px" }}
-              color="grey"
-              size="small"
-            >
-              <Icon name="remove user" /> Remove Participant
-            </Button>
-            <Button
-              onClick={() => setOpenConfirmDeleteModal(true)}
-              style={{ marginTop: "10px", minWidth: "175px" }}
-              color="red"
-              size="small"
-            >
-              <Icon name="close" /> Delete Group
-            </Button>
-            <StyledModal
-              header="Delete"
-              subheader={group.name}
-              content={
-                <p style={{ textAlign: "center" }}>This cannot be undone</p>
-              }
-              actions={
-                <Grid inverted>
-                  <Grid.Row columns={2}>
-                    <Grid.Column textAlign="right" verticalAlign="middle">
-                      <Button onClick={() => setOpenConfirmDeleteModal(false)}>
-                        Cancel
-                      </Button>
-                    </Grid.Column>
-                    <Grid.Column textAlign="left" verticalAlign="middle">
-                      <Button
-                        onClick={handleDeleteGroup}
-                        disabled={isDeleting}
-                        loading={isDeleting}
-                        negative
-                      >
-                        Delete
-                      </Button>
-                    </Grid.Column>
-                  </Grid.Row>
-                </Grid>
-              }
-              openModal={openConfirmDeleteModal}
-              setOpenModal={setOpenConfirmDeleteModal}
-            />
-          </>
+          <GroupAdminFooterActions
+            group={group}
+            handleDeleteGroup={handleDeleteGroup}
+            openConfirmDeleteModal={openConfirmDeleteModal}
+            setOpenConfirmDeleteModal={setOpenConfirmDeleteModal}
+            isDeleting={isDeleting}
+          />
         )}
       </CenterMiddle>
       <PastRoundsModal
