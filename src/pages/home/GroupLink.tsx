@@ -94,7 +94,6 @@ const GroupLink = ({
         userIsAdmin={userIsAdmin}
       />
       <ManageTimeModal
-        userIsAdmin={userIsAdmin}
         group={group}
         timeValues={timeValues}
         openTimeModal={openTimeModal}
