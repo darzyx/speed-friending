@@ -12,8 +12,13 @@ import ConfirmModal from "./ConfirmModal";
 type AdminActionsPropsType = {
   group: GroupWithIdType;
   timeValues: TimeValuesType;
+  setOpenAdminModal: (openAdminModal: boolean) => void;
 };
-const AdminActions = ({ group, timeValues }: AdminActionsPropsType) => {
+const AdminActions = ({
+  group,
+  timeValues,
+  setOpenAdminModal,
+}: AdminActionsPropsType) => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -164,21 +169,11 @@ const AdminActions = ({ group, timeValues }: AdminActionsPropsType) => {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-      <Divider hidden />
+      <Divider inverted />
       <CenterMiddle>
-        <div
-          onClick={() => console.log("HELLO")}
-          style={{
-            color: "#ff695e",
-            fontWeight: "bold",
-            cursor: "pointer",
-            padding: "10px 20px",
-          }}
-        >
-          Advanced
-        </div>
+        <Button onClick={() => setOpenAdminModal(false)}>Close</Button>
       </CenterMiddle>
-      <Divider hidden clearing />
+      <Divider hidden />
       <ConfirmModal
         confirmingAction={confirmingAction}
         onCancelAction={handleCancelAction}

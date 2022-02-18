@@ -21,7 +21,13 @@ const AdminModal = ({
       header={group.name}
       subheader="Manage Group"
       content={<TimeDisplay group={group} timeValues={timeValues} />}
-      actions={<AdminActions group={group} timeValues={timeValues} />}
+      actions={
+        <AdminActions
+          group={group}
+          timeValues={timeValues}
+          setOpenAdminModal={setOpenAdminModal}
+        />
+      }
       setOpenModal={setOpenAdminModal}
       openModal={openAdminModal}
     />
