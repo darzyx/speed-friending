@@ -14,7 +14,7 @@ const StyledDiv = styled.div`
   animation-direction: alternate;
   animation-timing-function: ease-in-out;
   padding: 3px 5px;
-  color: black;
+  color: #181a1b;
   font-weight: bold;
   text-align: center;
   vertical-align: middle;

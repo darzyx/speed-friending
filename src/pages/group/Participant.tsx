@@ -10,7 +10,7 @@ const Participant = ({ n, top }: ParticipantPropsType) => (
       margin: "0",
       fontWeight: "bold",
       fontSize: "22px",
-      color: "black",
+      color: "#181a1b",
       backgroundColor: getParticipantColor(n),
       boxShadow: "2px 2px 6px 0px  rgba(0,0,0,0.3)",
       borderRadius: "0 0 5px 5px",
