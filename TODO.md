@@ -16,5 +16,4 @@ MID PRIORITY
 LOW PRIORITY
 
 - Make string values numbers where appropriate on create form
-- Make string values numbers where appropriate on create form
 - Remove hard coded max groups number
