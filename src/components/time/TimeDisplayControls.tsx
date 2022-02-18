@@ -5,7 +5,8 @@ import StyledModal from "../blocks/StyledModal";
 import { GroupWithIdType } from "../../types/group";
 import { TimeValuesType } from "../../pages/group/utils";
 import { useState } from "react";
-import { Button, Grid, Icon } from "semantic-ui-react";
+import { Button, Divider, Grid, Icon } from "semantic-ui-react";
+import CenterMiddle from "../blocks/CenterMiddle";
 
 type ConfirmTimeActionModalPropsType = {
   confirmingAction: string;
@@ -181,6 +182,20 @@ const TimeDisplayControls = ({
           </Grid.Column>
         </Grid.Row>
       </Grid>
+      <Divider hidden />
+      <CenterMiddle>
+        <div
+          onClick={() => console.log("HELLO")}
+          style={{
+            color: "#ff695e",
+            fontWeight: "bold",
+            cursor: "pointer",
+            padding: "10px 20px",
+          }}
+        >
+          Advanced
+        </div>
+      </CenterMiddle>
       <ConfirmTimeActionModal
         confirmingAction={confirmingAction}
         onCancelAction={handleCancelAction}
