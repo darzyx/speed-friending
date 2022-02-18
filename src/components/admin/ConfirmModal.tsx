@@ -24,6 +24,8 @@ const ConfirmModal = ({
           ? "You are about to reset the round time"
           : confirmingAction === "end_round"
           ? "You are about to end the round"
+          : confirmingAction === "delete"
+          ? "You are about to delete this group"
           : "Please confirm your action"}
       </p>
     }
