@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { Divider, Header, Icon, Loader } from "semantic-ui-react";
+import { useParams } from "react-router-dom";
+import { Button, Divider, Header, Icon, Loader } from "semantic-ui-react";
 
-import { db } from "../../firebase";
 import { getGame, getTimeValues } from "./utils";
 import { GroupWithIdType } from "../../types/group";
 import { initGroup } from "../../App";
@@ -11,9 +10,7 @@ import TimeDisplay from "../../components/time/TimeDisplay";
 import NavButton from "../../components/blocks/NavButton";
 import PastRoundsModal from "./PastRoundsModal";
 import Participants from "./Participants";
-import { deleteDoc, doc } from "firebase/firestore";
-import GroupAdminFooterActions from "./GroupAdminFooterActions";
-import ManageTimeSegment from "../../components/time/ManageTimeSegment";
+import AdminModal from "../../components/admin/AdminModal";
 
 type GroupPropsType = {
   groups: GroupWithIdType[];
@@ -29,8 +26,6 @@ const Group = ({
 }: GroupPropsType) => {
   const { id } = useParams();
 
-  const navigate = useNavigate();
-
   const [group, setGroup] = useState(initGroup);
   const hasGroup = group?.name?.length > 0;
   useEffect(() => {
@@ -44,18 +39,7 @@ const Group = ({
 
   const [openPastRoundsModal, setOpenPastRoundsModal] = useState(false);
 
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [openConfirmDeleteModal, setOpenConfirmDeleteModal] = useState(false);
-  const handleDeleteGroup = async () => {
-    setIsDeleting(true);
-    const docRef = doc(db, "groups", group.id);
-
-    await deleteDoc(docRef);
-
-    setOpenConfirmDeleteModal(false);
-    setIsDeleting(false);
-    navigate("/home");
-  };
+  const [openAdminModal, setOpenAdminModal] = useState(false);
 
   if (isGettingGroups || !hasGroup) {
     return (
@@ -91,30 +75,31 @@ const Group = ({
         </Header>
       </CenterMiddle>
       <Divider hidden />
-      {userIsAdmin ? (
-        <ManageTimeSegment group={group} timeValues={timeValues} />
-      ) : (
-        <TimeDisplay timeValues={timeValues} group={group} />
+      <TimeDisplay timeValues={timeValues} group={group} />
+      {userIsAdmin && (
+        <>
+          <Divider hidden />
+          <CenterMiddle>
+            <Button onClick={() => setOpenAdminModal(true)} primary>
+              <Icon name="sliders" /> Manage Group
+            </Button>
+          </CenterMiddle>
+          <AdminModal
+            group={group}
+            timeValues={timeValues}
+            openAdminModal={openAdminModal}
+            setOpenAdminModal={setOpenAdminModal}
+          />
+        </>
       )}
       <Divider hidden />
       <Participants round={activeRound} />
       <Divider hidden />
-      {userIsAdmin ? (
-        <GroupAdminFooterActions
-          group={group}
-          handleDeleteGroup={handleDeleteGroup}
-          openConfirmDeleteModal={openConfirmDeleteModal}
-          setOpenConfirmDeleteModal={setOpenConfirmDeleteModal}
-          setOpenPastRoundsModal={setOpenPastRoundsModal}
-          isDeleting={isDeleting}
-        />
-      ) : (
-        <CenterMiddle>
-          <NavButton onClick={() => setOpenPastRoundsModal(true)}>
-            <Icon name="history" /> Past Rounds
-          </NavButton>
-        </CenterMiddle>
-      )}
+      <CenterMiddle>
+        <NavButton onClick={() => setOpenPastRoundsModal(true)}>
+          <Icon name="history" /> Past Rounds
+        </NavButton>
+      </CenterMiddle>
       <PastRoundsModal
         game={game}
         activeRound={group.round_active}
