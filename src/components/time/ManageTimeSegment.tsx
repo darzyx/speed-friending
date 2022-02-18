@@ -15,7 +15,7 @@ const ManageTimeSegment = ({
   timeValues,
 }: ManageTimeSegmentPropsType) => (
   <CenterMiddle>
-    <Segment inverted style={{ backgroundColor: "#27292a" }}>
+    <Segment inverted padded style={{ backgroundColor: "#27292a" }}>
       <TimeDisplay timeValues={timeValues} group={group} />
       <Divider hidden />
       <TimeDisplayControls group={group} timeValues={timeValues} />

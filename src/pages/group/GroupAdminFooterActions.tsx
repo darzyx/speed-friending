@@ -22,7 +22,7 @@ const GroupAdminFooterActions = ({
 }: GroupAdminFooterActionsPropsType) => (
   <>
     <CenterMiddle>
-      <Segment inverted style={{ backgroundColor: "#27292a" }}>
+      <Segment padded inverted style={{ backgroundColor: "#27292a" }}>
         <Grid inverted>
           <Grid.Row columns={1}>
             <Grid.Column>
