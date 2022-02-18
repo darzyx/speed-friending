@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Dimmer, Divider, Header, Icon, Loader } from "semantic-ui-react";
+import { Divider, Header, Icon, Loader } from "semantic-ui-react";
 
 import { db } from "../../firebase";
 import { getGame, getTimeValues } from "./utils";
@@ -59,9 +59,9 @@ const Group = ({
 
   if (isGettingGroups || !hasGroup) {
     return (
-      <Dimmer active>
-        <Loader size="big">Loading...</Loader>
-      </Dimmer>
+      <CenterMiddle style={{ minHeight: "50vh" }}>
+        <Loader active inline="centered" size="huge" />
+      </CenterMiddle>
     );
   }
 
