@@ -93,10 +93,10 @@ const Group = ({
       <Divider hidden />
       <TimeDisplay timeValues={timeValues} group={group} />
       {userIsAdmin && (
-        <>
+        <CenterMiddle>
           <Divider hidden />
           <TimeDisplayControls group={group} timeValues={timeValues} />
-        </>
+        </CenterMiddle>
       )}
       <Divider hidden />
       <Participants round={activeRound} />

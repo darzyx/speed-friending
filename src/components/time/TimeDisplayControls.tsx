@@ -91,23 +91,23 @@ const TimeDisplayControls = ({
         <Grid.Row columns={2}>
           <Grid.Column textAlign="right" verticalAlign="middle">
             <Button
-              style={{ width: "175px" }}
               onClick={() => {
                 setConfirmingAction("reset");
                 setOpenConfirmModal(true);
               }}
               color="grey"
+              fluid
             >
               Reset
             </Button>
           </Grid.Column>
           <Grid.Column textAlign="left" verticalAlign="middle">
             <Button
-              style={{ width: "175px" }}
               disabled={outOfTime}
               onClick={handleToggleStart}
               positive={group.round_is_paused || outOfTime}
               negative={!group.round_is_paused && !outOfTime}
+              fluid
             >
               {group.round_is_paused || outOfTime ? "Start" : "Pause"}
             </Button>
@@ -116,12 +116,12 @@ const TimeDisplayControls = ({
         <Grid.Row columns={1}>
           <Grid.Column textAlign="center" verticalAlign="middle">
             <Button
-              style={{ width: "175px" }}
               onClick={() => {
                 setConfirmingAction("end_round");
                 setOpenConfirmModal(true);
               }}
               primary
+              fluid
             >
               End Round
             </Button>
