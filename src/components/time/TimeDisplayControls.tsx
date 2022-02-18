@@ -5,7 +5,7 @@ import StyledModal from "../blocks/StyledModal";
 import { GroupWithIdType } from "../../types/group";
 import { TimeValuesType } from "../../pages/group/utils";
 import { useState } from "react";
-import { Button, Grid } from "semantic-ui-react";
+import { Button, Grid, Icon } from "semantic-ui-react";
 
 type TimeDisplayControlsPropsType = {
   group: GroupWithIdType;
@@ -98,7 +98,7 @@ const TimeDisplayControls = ({
               color="grey"
               fluid
             >
-              Reset
+              <Icon name="repeat" /> Reset
             </Button>
           </Grid.Column>
           <Grid.Column>
@@ -109,7 +109,15 @@ const TimeDisplayControls = ({
               negative={!group.round_is_paused && !outOfTime}
               fluid
             >
-              {group.round_is_paused || outOfTime ? "Start" : "Pause"}
+              {group.round_is_paused || outOfTime ? (
+                <>
+                  <Icon name="play" /> Start
+                </>
+              ) : (
+                <>
+                  <Icon name="stop" /> Pause
+                </>
+              )}
             </Button>
           </Grid.Column>
         </Grid.Row>
@@ -123,7 +131,7 @@ const TimeDisplayControls = ({
               primary
               fluid
             >
-              End Round
+              <Icon name="close" /> End Round
             </Button>
           </Grid.Column>
         </Grid.Row>

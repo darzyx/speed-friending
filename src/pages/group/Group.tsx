@@ -124,7 +124,7 @@ const Group = ({
       ) : (
         <CenterMiddle>
           <NavButton onClick={() => setOpenPastRoundsModal(true)}>
-            <Icon name="history" /> View Past Rounds
+            <Icon name="history" /> Past Rounds
           </NavButton>
         </CenterMiddle>
       )}

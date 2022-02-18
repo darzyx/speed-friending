@@ -31,14 +31,14 @@ const GroupAdminFooterActions = ({
                 color="grey"
                 fluid
               >
-                <Icon name="history" /> View Past Rounds
+                <Icon name="history" /> Past Rounds
               </Button>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row columns={2}>
             <Grid.Column>
               <Button color="red" fluid>
-                <Icon name="remove user" /> Remove Participant
+                <Icon name="remove user" /> Dropout
               </Button>
             </Grid.Column>
             <Grid.Column>
@@ -47,7 +47,7 @@ const GroupAdminFooterActions = ({
                 color="red"
                 fluid
               >
-                <Icon name="close" /> Delete Group
+                <Icon name="close" /> Delete
               </Button>
             </Grid.Column>
           </Grid.Row>
