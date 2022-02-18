@@ -89,7 +89,7 @@ const TimeDisplayControls = ({
     <div>
       <Grid inverted>
         <Grid.Row columns={2}>
-          <Grid.Column textAlign="right" verticalAlign="middle">
+          <Grid.Column>
             <Button
               onClick={() => {
                 setConfirmingAction("reset");
@@ -101,7 +101,7 @@ const TimeDisplayControls = ({
               Reset
             </Button>
           </Grid.Column>
-          <Grid.Column textAlign="left" verticalAlign="middle">
+          <Grid.Column>
             <Button
               disabled={outOfTime}
               onClick={handleToggleStart}
@@ -114,7 +114,7 @@ const TimeDisplayControls = ({
           </Grid.Column>
         </Grid.Row>
         <Grid.Row columns={1}>
-          <Grid.Column textAlign="center" verticalAlign="middle">
+          <Grid.Column>
             <Button
               onClick={() => {
                 setConfirmingAction("end_round");
