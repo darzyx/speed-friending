@@ -1,13 +1,15 @@
-import { Button, Grid, Icon } from "semantic-ui-react";
+import { Button, Grid, Icon, Segment } from "semantic-ui-react";
 
 import { GroupWithIdType } from "../../types/group";
 import StyledModal from "../../components/blocks/StyledModal";
+import CenterMiddle from "../../components/blocks/CenterMiddle";
 
 type GroupAdminFooterActionsPropsType = {
   group: GroupWithIdType;
   handleDeleteGroup: () => void;
   openConfirmDeleteModal: boolean;
   setOpenConfirmDeleteModal: (openConfirmDeleteModal: boolean) => void;
+  setOpenPastRoundsModal: (openPastRoundsModal: boolean) => void;
   isDeleting: boolean;
 };
 const GroupAdminFooterActions = ({
@@ -15,24 +17,43 @@ const GroupAdminFooterActions = ({
   handleDeleteGroup,
   openConfirmDeleteModal,
   setOpenConfirmDeleteModal,
+  setOpenPastRoundsModal,
   isDeleting,
 }: GroupAdminFooterActionsPropsType) => (
   <>
-    <Button
-      style={{ marginTop: "10px", minWidth: "175px" }}
-      color="grey"
-      size="small"
-    >
-      <Icon name="remove user" /> Remove Participant
-    </Button>
-    <Button
-      onClick={() => setOpenConfirmDeleteModal(true)}
-      style={{ marginTop: "10px", minWidth: "175px" }}
-      color="red"
-      size="small"
-    >
-      <Icon name="close" /> Delete Group
-    </Button>
+    <CenterMiddle>
+      <Segment inverted style={{ backgroundColor: "#27292a" }}>
+        <Grid inverted>
+          <Grid.Row columns={1}>
+            <Grid.Column>
+              <Button
+                onClick={() => setOpenPastRoundsModal(true)}
+                color="grey"
+                fluid
+              >
+                <Icon name="history" /> View Past Rounds
+              </Button>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row columns={2}>
+            <Grid.Column>
+              <Button color="red" fluid>
+                <Icon name="remove user" /> Remove Participant
+              </Button>
+            </Grid.Column>
+            <Grid.Column>
+              <Button
+                onClick={() => setOpenConfirmDeleteModal(true)}
+                color="red"
+                fluid
+              >
+                <Icon name="close" /> Delete Group
+              </Button>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Segment>
+    </CenterMiddle>
     <StyledModal
       header="Delete"
       subheader={group.name}

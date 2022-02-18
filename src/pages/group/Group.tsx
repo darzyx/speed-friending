@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Dimmer, Divider, Header, Icon, Loader } from "semantic-ui-react";
+import {
+  Dimmer,
+  Divider,
+  Header,
+  Icon,
+  Loader,
+  Segment,
+} from "semantic-ui-react";
 
 import { db } from "../../firebase";
 import { getGame, getTimeValues } from "./utils";
@@ -91,30 +98,36 @@ const Group = ({
         </Header>
       </CenterMiddle>
       <Divider hidden />
-      <TimeDisplay timeValues={timeValues} group={group} />
-      {userIsAdmin && (
+      {userIsAdmin ? (
         <CenterMiddle>
-          <Divider hidden />
-          <TimeDisplayControls group={group} timeValues={timeValues} />
+          <Segment inverted style={{ backgroundColor: "#27292a" }}>
+            <TimeDisplay timeValues={timeValues} group={group} />
+            <Divider hidden />
+            <TimeDisplayControls group={group} timeValues={timeValues} />
+          </Segment>
         </CenterMiddle>
+      ) : (
+        <TimeDisplay timeValues={timeValues} group={group} />
       )}
       <Divider hidden />
       <Participants round={activeRound} />
       <Divider hidden />
-      <CenterMiddle>
-        <NavButton onClick={() => setOpenPastRoundsModal(true)}>
-          <Icon name="history" /> View Past Rounds
-        </NavButton>
-        {userIsAdmin && (
-          <GroupAdminFooterActions
-            group={group}
-            handleDeleteGroup={handleDeleteGroup}
-            openConfirmDeleteModal={openConfirmDeleteModal}
-            setOpenConfirmDeleteModal={setOpenConfirmDeleteModal}
-            isDeleting={isDeleting}
-          />
-        )}
-      </CenterMiddle>
+      {userIsAdmin ? (
+        <GroupAdminFooterActions
+          group={group}
+          handleDeleteGroup={handleDeleteGroup}
+          openConfirmDeleteModal={openConfirmDeleteModal}
+          setOpenConfirmDeleteModal={setOpenConfirmDeleteModal}
+          setOpenPastRoundsModal={setOpenPastRoundsModal}
+          isDeleting={isDeleting}
+        />
+      ) : (
+        <CenterMiddle>
+          <NavButton onClick={() => setOpenPastRoundsModal(true)}>
+            <Icon name="history" /> View Past Rounds
+          </NavButton>
+        </CenterMiddle>
+      )}
       <PastRoundsModal
         game={game}
         activeRound={group.round_active}

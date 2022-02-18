@@ -5,7 +5,7 @@ import { RoundType } from "./utils";
 
 const ParticipantsContainer = styled.div`
   margin: auto;
-  max-width: 800px;
+  max-width: 100%;
 `;
 
 const ParticipantsGrid = styled.div`
