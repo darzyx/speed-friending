@@ -94,7 +94,10 @@ export const getTimeValues = ({
   const timeValues: TimeValuesType = {
     color,
     remainingTime,
-    remainingMinutesDisplay: remainingMinutes.toString(),
+    remainingMinutesDisplay:
+      remainingMinutes < 10
+        ? "0" + remainingMinutes.toString()
+        : remainingMinutes.toString(),
     remainingSecondsDisplay:
       remainingSeconds < 10
         ? "0" + remainingSeconds.toString()
