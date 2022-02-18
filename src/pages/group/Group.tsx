@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  Dimmer,
-  Divider,
-  Header,
-  Icon,
-  Loader,
-  Segment,
-} from "semantic-ui-react";
+import { Dimmer, Divider, Header, Icon, Loader } from "semantic-ui-react";
 
 import { db } from "../../firebase";
 import { getGame, getTimeValues } from "./utils";
@@ -20,7 +13,7 @@ import PastRoundsModal from "./PastRoundsModal";
 import Participants from "./Participants";
 import { deleteDoc, doc } from "firebase/firestore";
 import GroupAdminFooterActions from "./GroupAdminFooterActions";
-import TimeDisplayControls from "../../components/time/TimeDisplayControls";
+import ManageTimeSegment from "../../components/time/ManageTimeSegment";
 
 type GroupPropsType = {
   groups: GroupWithIdType[];
@@ -99,13 +92,7 @@ const Group = ({
       </CenterMiddle>
       <Divider hidden />
       {userIsAdmin ? (
-        <CenterMiddle>
-          <Segment inverted style={{ backgroundColor: "#27292a" }}>
-            <TimeDisplay timeValues={timeValues} group={group} />
-            <Divider hidden />
-            <TimeDisplayControls group={group} timeValues={timeValues} />
-          </Segment>
-        </CenterMiddle>
+        <ManageTimeSegment group={group} timeValues={timeValues} />
       ) : (
         <TimeDisplay timeValues={timeValues} group={group} />
       )}
