@@ -8,12 +8,12 @@ import { GroupWithIdType } from "../../types/group";
 import { initGroup } from "../../App";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
 import TimeDisplay from "../../components/time/TimeDisplay";
-import ManageTimeModal from "../../components/time/ManageTimeModal";
 import NavButton from "../../components/blocks/NavButton";
 import PastRoundsModal from "./PastRoundsModal";
 import Participants from "./Participants";
 import { deleteDoc, doc } from "firebase/firestore";
 import GroupAdminFooterActions from "./GroupAdminFooterActions";
+import TimeDisplayControls from "../../components/time/TimeDisplayControls";
 
 type GroupPropsType = {
   groups: GroupWithIdType[];
@@ -40,7 +40,6 @@ const Group = ({
     }
   }, [id, groups]);
 
-  const [openTimeModal, setOpenTimeModal] = useState(false);
   const timeValues = getTimeValues({ group, currentTimeInSeconds });
 
   const [openPastRoundsModal, setOpenPastRoundsModal] = useState(false);
@@ -92,19 +91,13 @@ const Group = ({
         </Header>
       </CenterMiddle>
       <Divider hidden />
-      <TimeDisplay
-        userIsAdmin={userIsAdmin}
-        group={group}
-        timeValues={timeValues}
-        setOpenTimeModal={setOpenTimeModal}
-      />
-      <ManageTimeModal
-        userIsAdmin={userIsAdmin}
-        group={group}
-        timeValues={timeValues}
-        openTimeModal={openTimeModal}
-        setOpenTimeModal={setOpenTimeModal}
-      />
+      <TimeDisplay timeValues={timeValues} group={group} />
+      {userIsAdmin && (
+        <>
+          <Divider hidden />
+          <TimeDisplayControls group={group} timeValues={timeValues} />
+        </>
+      )}
       <Divider hidden />
       <Participants round={activeRound} />
       <Divider hidden />

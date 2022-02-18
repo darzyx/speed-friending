@@ -97,12 +97,7 @@ const ManageTimeModal = ({
       subheader="Manage time for"
       content={
         <div>
-          <TimeDisplay
-            userIsAdmin={userIsAdmin}
-            group={group}
-            timeValues={timeValues}
-            setOpenTimeModal={setOpenTimeModal}
-          />
+          <TimeDisplay group={group} timeValues={timeValues} />
           <StyledModal
             header="Are you sure?"
             subheader="Confirm"

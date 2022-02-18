@@ -4,28 +4,12 @@ import { GroupWithIdType } from "../../types/group";
 import CenterMiddle from "../blocks/CenterMiddle";
 
 type TimeDisplayPropsType = {
-  userIsAdmin: boolean;
   group: GroupWithIdType;
   timeValues: TimeValuesType;
-  setOpenTimeModal: (arg: boolean) => void;
 };
-const TimeDisplay = ({
-  userIsAdmin,
-  group,
-  timeValues,
-  setOpenTimeModal,
-}: TimeDisplayPropsType) => (
+const TimeDisplay = ({ group, timeValues }: TimeDisplayPropsType) => (
   <CenterMiddle>
-    <Statistic
-      inverted
-      {...(userIsAdmin
-        ? {
-            color: timeValues.color,
-            onClick: () => setOpenTimeModal(true),
-            style: { cursor: "pointer" },
-          }
-        : { color: timeValues.color })}
-    >
+    <Statistic inverted color={timeValues.color}>
       <Statistic.Value
         style={{ fontFamily: "'Orbitron', sans-serif", userSelect: "none" }}
       >
