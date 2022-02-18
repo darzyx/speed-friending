@@ -37,7 +37,7 @@ const GroupAdminFooterActions = ({
           </Grid.Row>
           <Grid.Row columns={2}>
             <Grid.Column>
-              <Button color="red" fluid>
+              <Button color="yellow" fluid>
                 <Icon name="remove user" /> Dropout
               </Button>
             </Grid.Column>
