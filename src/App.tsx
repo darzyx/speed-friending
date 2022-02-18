@@ -70,46 +70,43 @@ const App = () => {
 
   return (
     <div className="App">
-      <UserIsAdminAlert
-        userIsAdmin={userIsAdmin}
-        setUserIsAdmin={setUserIsAdmin}
-      />
-      <div className="Main">
+      <BrowserRouter>
+        {userIsAdmin && <UserIsAdminAlert />}
         <Container>
-          <BrowserRouter>
-            <Navbar />
-            <Divider hidden />
-            <Routes>
-              <Route index element={<Navigate to="/home" />} />
-              <Route
-                path="home"
-                element={
-                  <Home
-                    userIsAdmin={userIsAdmin}
-                    isGettingGroups={isGettingGroups}
-                    hasAnyGroups={hasAnyGroups}
-                    groups={groups}
-                    currentTimeInSeconds={currentTimeInSeconds}
-                  />
-                }
-              />
-              <Route
-                path="group/:id"
-                element={
-                  <Group
-                    groups={groups}
-                    isGettingGroups={isGettingGroups}
-                    currentTimeInSeconds={currentTimeInSeconds}
-                    userIsAdmin={userIsAdmin}
-                  />
-                }
-              />
-              <Route path="admin" element={<Admin />} />
-            </Routes>
-            <Divider hidden />
-          </BrowserRouter>
+          <Divider hidden />
+          <Navbar />
+          <Divider hidden />
+          <Routes>
+            <Route index element={<Navigate to="/home" />} />
+            <Route
+              path="home"
+              element={
+                <Home
+                  userIsAdmin={userIsAdmin}
+                  setUserIsAdmin={setUserIsAdmin}
+                  isGettingGroups={isGettingGroups}
+                  hasAnyGroups={hasAnyGroups}
+                  groups={groups}
+                  currentTimeInSeconds={currentTimeInSeconds}
+                />
+              }
+            />
+            <Route
+              path="group/:id"
+              element={
+                <Group
+                  groups={groups}
+                  isGettingGroups={isGettingGroups}
+                  currentTimeInSeconds={currentTimeInSeconds}
+                  userIsAdmin={userIsAdmin}
+                />
+              }
+            />
+            <Route path="admin" element={<Admin />} />
+          </Routes>
+          <Divider hidden />
         </Container>
-      </div>
+      </BrowserRouter>
     </div>
   );
 };

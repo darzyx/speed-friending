@@ -21,17 +21,6 @@ const StyledDiv = styled.div`
   cursor: pointer;
 `;
 
-const UserIsAdminAlert = ({
-  userIsAdmin,
-  setUserIsAdmin,
-}: {
-  userIsAdmin: boolean;
-  setUserIsAdmin: (userIsAdmin: boolean) => void;
-}) => (
-  <StyledDiv onClick={() => setUserIsAdmin(!userIsAdmin)}>
-    TEST_MODE:{" "}
-    {userIsAdmin ? "Signed in as admin!" : "Signed in as participant!"}
-  </StyledDiv>
-);
+const UserIsAdminAlert = () => <StyledDiv>Signed in as admin!</StyledDiv>;
 
 export default UserIsAdminAlert;

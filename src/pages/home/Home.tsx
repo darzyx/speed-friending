@@ -21,6 +21,7 @@ const HomeContainer = styled.div`
 
 type HomePropsType = {
   userIsAdmin: boolean;
+  setUserIsAdmin: (userIsAdmin: boolean) => void;
   isGettingGroups: boolean;
   hasAnyGroups: boolean;
   groups: GroupWithIdType[];
@@ -28,6 +29,7 @@ type HomePropsType = {
 };
 const Home = ({
   userIsAdmin,
+  setUserIsAdmin,
   isGettingGroups,
   hasAnyGroups,
   groups,
@@ -38,8 +40,13 @@ const Home = ({
   return (
     <HomeContainer>
       <Header as="h1" inverted textAlign="center">
-        <Header.Subheader style={{ margin: "7px" }}>Home</Header.Subheader> ✨
-        Speed Friending 🏕️
+        <Header.Subheader
+          onClick={() => setUserIsAdmin(!userIsAdmin)}
+          style={{ margin: "7px" }}
+        >
+          Home
+        </Header.Subheader>{" "}
+        ✨ Speed Friending 🏕️
       </Header>
       <ColorfulHeader as="h3">{homeTextCTA}</ColorfulHeader>
       {hasAnyGroups &&
