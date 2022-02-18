@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Label } from "semantic-ui-react";
+
 import { getTimeValues, TimeValuesType } from "../group/utils";
 import { GroupWithIdType } from "../../types/group";
-import ManageTimeModal from "../../components/time/ManageTimeModal";
-import { useState } from "react";
+import AdminModal from "../../components/admin/AdminModal";
 
 type TimeLabelPropsType = {
   timeValues: TimeValuesType;
@@ -49,11 +50,11 @@ const GroupLink = ({
 }: GroupLinkPropsType) => {
   const navigate = useNavigate();
 
-  const [openTimeModal, setOpenTimeModal] = useState(false);
+  const [openAdminModal, setOpenAdminModal] = useState(false);
 
-  const handleClickTimeLabel = (newOpenTimeLabel: boolean) => {
+  const handleClickTimeLabel = (newOpenAdminModal: boolean) => {
     if (userIsAdmin) {
-      setOpenTimeModal(newOpenTimeLabel);
+      setOpenAdminModal(newOpenAdminModal);
     } else {
       navigate(`/group/${group.id}`);
     }
@@ -93,11 +94,11 @@ const GroupLink = ({
         onClickTimeLabel={handleClickTimeLabel}
         userIsAdmin={userIsAdmin}
       />
-      <ManageTimeModal
+      <AdminModal
         group={group}
         timeValues={timeValues}
-        openTimeModal={openTimeModal}
-        setOpenTimeModal={setOpenTimeModal}
+        openAdminModal={openAdminModal}
+        setOpenAdminModal={setOpenAdminModal}
       />
     </Button>
   );
