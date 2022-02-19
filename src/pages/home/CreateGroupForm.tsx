@@ -73,7 +73,7 @@ const CreateGroupForm = ({
   };
 
   const maxRounds = getMaxRounds(Number(participantCount));
-  const [roundCount, setRoundCount] = useState("");
+  const [roundCount, setRoundCount] = useState("12");
   const handleChangeRoundCount = (
     e: ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
