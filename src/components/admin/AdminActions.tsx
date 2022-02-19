@@ -1,4 +1,4 @@
-import { deleteDoc, doc, setDoc, Timestamp } from "firebase/firestore";
+import { deleteDoc, doc, setDoc } from "firebase/firestore";
 import { Button, Divider, Grid, Icon } from "semantic-ui-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -31,7 +31,7 @@ const AdminActions = ({
   const handleReset = () => {
     const payload = {
       ...group,
-      round_end_time: Timestamp.now().seconds + group.round_duration,
+      round_end_time: currentTimeInSeconds + group.round_duration,
       round_is_paused: true,
       round_paused_time: group.round_duration,
     };
@@ -56,35 +56,29 @@ const AdminActions = ({
       } else {
         const payload = {
           ...group,
-          round_end_time: Timestamp.now().seconds + group.round_duration,
+          round_end_time: currentTimeInSeconds + group.round_duration,
         };
         setDoc(docRef, payload);
       }
     }
-
-    // const newRemainingTime = timeValues.remainingTime + 30;
-    // if (newRemainingTime < group.round_duration) {
-    //   const payload = {
-    //     ...group,
-    //     round_end_time: Timestamp.now().seconds + newRemainingTime,
-    //   };
-    //   setDoc(docRef, payload);
-    // } else {
-    //   handleReset();
-    // }
   };
 
   const handleSubtract30Seconds = () => {
-    const newRemainingTime = timeValues.remainingTime - 30;
-    if (newRemainingTime > 0) {
+    if (group.round_is_paused) {
       const payload = {
         ...group,
-        round_end_time: Timestamp.now().seconds + newRemainingTime,
+        round_paused_time: Math.max(group.round_paused_time - 30, 0),
       };
       setDoc(docRef, payload);
     } else {
-      const payload = { ...group, round_end_time: Timestamp.now().seconds };
-      setDoc(docRef, payload);
+      const newRoundEndTime = group.round_end_time - 30;
+      if (newRoundEndTime > currentTimeInSeconds) {
+        const payload = { ...group, round_end_time: newRoundEndTime };
+        setDoc(docRef, payload);
+      } else {
+        const payload = { ...group, round_end_time: currentTimeInSeconds };
+        setDoc(docRef, payload);
+      }
     }
   };
 
@@ -92,7 +86,7 @@ const AdminActions = ({
     if (group.round_is_paused) {
       const payload = {
         ...group,
-        round_end_time: Timestamp.now().seconds + group.round_paused_time,
+        round_end_time: currentTimeInSeconds + group.round_paused_time,
         round_is_paused: false,
       };
       const docRef = doc(db, "groups", group.id);
@@ -101,7 +95,7 @@ const AdminActions = ({
       const payload = {
         ...group,
         round_is_paused: true,
-        round_paused_time: group.round_end_time - Timestamp.now().seconds,
+        round_paused_time: group.round_end_time - currentTimeInSeconds,
       };
       setDoc(docRef, payload);
     }
@@ -112,7 +106,7 @@ const AdminActions = ({
       const payload = {
         ...group,
         round_active: group.round_active + 1,
-        round_end_time: Timestamp.now().seconds + group.round_duration,
+        round_end_time: currentTimeInSeconds + group.round_duration,
         round_is_paused: true,
         round_paused_time: group.round_duration,
       };
@@ -120,7 +114,7 @@ const AdminActions = ({
     } else {
       const payload = {
         ...group,
-        round_end_time: Timestamp.now().seconds,
+        round_end_time: currentTimeInSeconds,
         round_is_paused: true,
         round_paused_time: 0,
       };
