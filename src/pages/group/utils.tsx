@@ -37,7 +37,7 @@ export const getGame = (nParticipants: number, maxRounds: number = 0) => {
 
 export const getParticipantColor = (n: number) => {
   if (n === 0) {
-    return "#a9a9a9"; // Grey
+    return "#181a1b"; // Grey
   } else if (n % 10 === 0) {
     return "#ffffff"; // White
   } else if (n % 10 === 9) {

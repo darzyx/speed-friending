@@ -15,8 +15,12 @@ const Participant = ({
   onClickParticipant,
   currentTimeInSeconds,
 }: ParticipantPropsType) => {
-  const hide =
-    n === 0 || (dropouts.includes(n) && currentTimeInSeconds % 2 === 0);
+  const oddTime = currentTimeInSeconds % 2 === 0;
+  const darkMode = n === 0 || (dropouts.includes(n) && oddTime);
+  const hideNumber =
+    (dropouts.includes(n) && oddTime) ||
+    (n === 0 && onClickParticipant && oddTime) ||
+    (n === 0 && !onClickParticipant);
 
   return (
     <CenterMiddle
@@ -25,17 +29,17 @@ const Participant = ({
         margin: "0",
         fontWeight: "bold",
         fontSize: "22px",
-        color: "#181a1b",
-        backgroundColor: getParticipantColor(n),
         borderRadius: "0 0 5px 5px",
         boxSizing: "border-box",
+        color: "#181a1b",
+        backgroundColor: getParticipantColor(n),
         ...(onClickParticipant && { cursor: "pointer" }),
-        ...(hide && { color: "white", backgroundColor: "#181a1b" }),
+        ...(darkMode && { color: "white", backgroundColor: "#181a1b" }),
         ...(top && { borderRadius: "5px 5px 0 0" }),
       }}
       {...(onClickParticipant && { onClick: () => onClickParticipant(n) })}
     >
-      {hide ? "X" : n}
+      {hideNumber ? "X" : n}
     </CenterMiddle>
   );
 };

@@ -44,6 +44,10 @@ const DropoutModal = ({
         <div>
           <p style={{ textAlign: "center" }}>
             Click on a participant to toggle dropout status
+            {group.participant_count % 2 !== 0
+              ? ". Note that zero (0) is just a placeholder for groups " +
+                "with an odd number of participants"
+              : ""}
           </p>
           <Participants
             round={activeRound}
