@@ -71,9 +71,9 @@ const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
-        {userIsAdmin && <UserIsAdminAlert />}
+        <UserIsAdminAlert userIsAdmin={userIsAdmin} />
         <Container>
-          <Divider hidden />
+          {userIsAdmin && <Divider hidden />}
           <Navbar />
           <Divider hidden />
           <Routes>

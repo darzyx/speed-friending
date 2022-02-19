@@ -8,6 +8,8 @@ const backgroundColorChange = keyframes`
 `;
 
 const StyledDiv = styled.div`
+  visibility: ${({ userIsAdmin }: { userIsAdmin: boolean }) =>
+    userIsAdmin ? "initial" : "hidden"};
   animation-name: ${backgroundColorChange};
   animation-duration: 3s;
   animation-iteration-count: infinite;
@@ -21,6 +23,8 @@ const StyledDiv = styled.div`
   cursor: pointer;
 `;
 
-const UserIsAdminAlert = () => <StyledDiv>Signed in as admin!</StyledDiv>;
+const UserIsAdminAlert = ({ userIsAdmin }: { userIsAdmin: boolean }) => (
+  <StyledDiv userIsAdmin={userIsAdmin}>Signed in as admin!</StyledDiv>
+);
 
 export default UserIsAdminAlert;
