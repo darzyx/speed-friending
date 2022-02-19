@@ -1,9 +1,8 @@
-import { Button, Divider, Header } from "semantic-ui-react";
+import { Button, Divider, Grid, Header } from "semantic-ui-react";
 
-import Participants from "./Participants";
-import CenterMiddle from "../../components/blocks/CenterMiddle";
-import StyledModal from "../../components/blocks/StyledModal";
 import { GameType } from "./utils";
+import Participants from "./Participants";
+import StyledModal from "../../components/blocks/StyledModal";
 import { GroupWithIdType } from "../../types/group";
 
 type PastRoundsModalPropsType = {
@@ -59,9 +58,15 @@ const PastRoundsModal = ({
         </div>
       }
       actions={
-        <CenterMiddle>
-          <Button onClick={() => setOpenPastRoundsModal(false)}>Close</Button>
-        </CenterMiddle>
+        <Grid>
+          <Grid.Row columns={1}>
+            <Grid.Column textAlign="center">
+              <Button onClick={() => setOpenPastRoundsModal(false)}>
+                Close
+              </Button>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       }
       openModal={openPastRoundsModal}
       setOpenModal={setOpenPastRoundsModal}

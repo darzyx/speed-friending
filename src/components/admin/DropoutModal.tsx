@@ -1,11 +1,10 @@
-import { Button } from "semantic-ui-react";
+import { Button, Grid } from "semantic-ui-react";
 import { doc, updateDoc } from "firebase/firestore";
 
 import { db } from "../../firebase";
 import Participants from "../../pages/group/Participants";
 import { RoundType } from "../../pages/group/utils";
 import { GroupWithIdType } from "../../types/group";
-import CenterMiddle from "../blocks/CenterMiddle";
 import StyledModal from "../blocks/StyledModal";
 
 type DropoutModalPropsType = {
@@ -54,9 +53,13 @@ const DropoutModal = ({
         </div>
       }
       actions={
-        <CenterMiddle>
-          <Button onClick={() => setOpenDropoutModal(false)}>Close</Button>
-        </CenterMiddle>
+        <Grid>
+          <Grid.Row columns={1}>
+            <Grid.Column textAlign="center">
+              <Button onClick={() => setOpenDropoutModal(false)}>Close</Button>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       }
       setOpenModal={setOpenDropoutModal}
       openModal={openDropoutModal}

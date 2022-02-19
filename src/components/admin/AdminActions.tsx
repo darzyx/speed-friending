@@ -6,7 +6,6 @@ import { db } from "../../firebase";
 import { GroupWithIdType } from "../../types/group";
 import { RoundType, TimeValuesType } from "../../pages/group/utils";
 import { useState } from "react";
-import CenterMiddle from "../blocks/CenterMiddle";
 import ConfirmModal from "./ConfirmModal";
 import DropoutModal from "./DropoutModal";
 
@@ -188,9 +187,13 @@ const AdminActions = ({
         </Grid.Row>
       </Grid>
       <Divider />
-      <CenterMiddle>
-        <Button onClick={() => setOpenAdminModal(false)}>Close</Button>
-      </CenterMiddle>
+      <Grid>
+        <Grid.Row columns={1}>
+          <Grid.Column textAlign="center">
+            <Button onClick={() => setOpenAdminModal(false)}>Close</Button>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
       <ConfirmModal
         confirmingAction={confirmingAction}
         onCancelAction={handleCancelAction}
