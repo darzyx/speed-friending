@@ -27,6 +27,7 @@ const StyledModal = ({
   setOpenModal,
 }: StyledModalPropsType) => (
   <Modal
+    size="tiny"
     onClose={() => setOpenModal(false)}
     onOpen={() => setOpenModal(true)}
     open={openModal}

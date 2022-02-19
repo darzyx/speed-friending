@@ -109,6 +109,7 @@ const AdminActions = ({
                 setConfirmingAction("reset");
                 setOpenConfirmModal(true);
               }}
+              size="big"
               color="grey"
               fluid
             >
@@ -121,6 +122,7 @@ const AdminActions = ({
               onClick={handleToggleStart}
               positive={group.round_is_paused || outOfTime}
               negative={!group.round_is_paused && !outOfTime}
+              size="big"
               fluid
             >
               {group.round_is_paused || outOfTime ? (
@@ -142,6 +144,7 @@ const AdminActions = ({
                 setConfirmingAction("end_round");
                 setOpenConfirmModal(true);
               }}
+              size="big"
               primary
               fluid
             >
@@ -151,7 +154,7 @@ const AdminActions = ({
         </Grid.Row>
         <Grid.Row columns={2}>
           <Grid.Column>
-            <Button color="yellow" fluid>
+            <Button color="yellow" size="big" fluid>
               <Icon name="remove user" /> Dropout
             </Button>
           </Grid.Column>
@@ -161,6 +164,7 @@ const AdminActions = ({
                 setConfirmingAction("delete");
                 setOpenConfirmModal(true);
               }}
+              size="big"
               color="red"
               fluid
             >
