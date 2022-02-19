@@ -12,6 +12,7 @@ MID PRIORITY
 - Create group modal: consider adding advanced section to set custom time/round
 - Add functionality to advanced time controls button
 - Update info modal copy
+- Clean up prop errors (see browser console e.g. when using modals)
 
 LOW PRIORITY
 

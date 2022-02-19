@@ -128,22 +128,22 @@ const CreateGroupForm = ({
             width={10}
           />
           <StyledFormInput
-            name="round_duration"
-            placeholder="Round Duration"
-            label={`Round Duration (max ${maxRoundDuration})`}
-            value={roundDuration}
-            onChange={handleChangeRoundDuration}
+            name="participant_count"
+            placeholder="Participants"
+            label={`Participants (max ${maxParticipants})`}
+            value={participantCount}
+            onChange={handleChangeParticipantCount}
             required
             width={6}
           />
         </Form.Group>
         <Form.Group>
           <StyledFormInput
-            name="participant_count"
-            placeholder="Participant Count"
-            label={`Participant Count (max ${maxParticipants})`}
-            value={participantCount}
-            onChange={handleChangeParticipantCount}
+            name="round_duration"
+            placeholder="Round Duration"
+            label={`Round Duration (max ${maxRoundDuration})`}
+            value={roundDuration}
+            onChange={handleChangeRoundDuration}
             required
             width={8}
           />

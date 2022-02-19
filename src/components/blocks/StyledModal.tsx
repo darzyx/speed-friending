@@ -17,6 +17,7 @@ type StyledModalPropsType = {
   actions?: JSX.Element;
   openModal: boolean;
   setOpenModal: (openModal: boolean) => void;
+  size?: string;
 };
 const StyledModal = ({
   header,
@@ -25,12 +26,13 @@ const StyledModal = ({
   actions,
   openModal,
   setOpenModal,
+  size,
 }: StyledModalPropsType) => (
   <Modal
-    size="tiny"
+    open={openModal}
     onClose={() => setOpenModal(false)}
     onOpen={() => setOpenModal(true)}
-    open={openModal}
+    {...(size && { size })}
   >
     {header && (
       <Header

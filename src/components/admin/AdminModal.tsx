@@ -30,6 +30,7 @@ const AdminModal = ({
       }
       setOpenModal={setOpenAdminModal}
       openModal={openAdminModal}
+      size="tiny"
     />
   );
 };

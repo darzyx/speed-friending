@@ -22,6 +22,7 @@ const CreateGroupModal = ({
     }
     openModal={openCreateGroupModal}
     setOpenModal={setOpenCreateGroupModal}
+    size="small"
   />
 );
 
