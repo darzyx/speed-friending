@@ -18,10 +18,12 @@ const InfoModal = ({ openInfoModal, setOpenInfoModal }: InfoModalPropsType) => {
         <div>
           <InfoList onCloseInfoModal={handleCloseInfoModal} />
           <Divider hidden />
-          <CenterMiddle>
-            <Button onClick={handleCloseInfoModal}>Close</Button>
-          </CenterMiddle>
         </div>
+      }
+      actions={
+        <CenterMiddle>
+          <Button onClick={handleCloseInfoModal}>Close</Button>
+        </CenterMiddle>
       }
       openModal={openInfoModal}
       setOpenModal={setOpenInfoModal}

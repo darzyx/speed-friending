@@ -50,10 +50,12 @@ const PastRoundsModal = ({
               <Divider hidden />
             </>
           )}
-          <CenterMiddle>
-            <Button onClick={() => setOpenPastRoundsModal(false)}>Close</Button>
-          </CenterMiddle>
         </div>
+      }
+      actions={
+        <CenterMiddle>
+          <Button onClick={() => setOpenPastRoundsModal(false)}>Close</Button>
+        </CenterMiddle>
       }
       openModal={openPastRoundsModal}
       setOpenModal={setOpenPastRoundsModal}

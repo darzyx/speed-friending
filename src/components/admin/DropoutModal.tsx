@@ -1,4 +1,4 @@
-import { Button, Divider } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import Participants from "../../pages/group/Participants";
 import { RoundType } from "../../pages/group/utils";
 import { GroupWithIdType } from "../../types/group";
@@ -30,7 +30,6 @@ const DropoutModal = ({
       actions={
         <CenterMiddle>
           <Button onClick={() => setOpenDropoutModal(false)}>Close</Button>
-          <Divider hidden clearing />
         </CenterMiddle>
       }
       setOpenModal={setOpenDropoutModal}
