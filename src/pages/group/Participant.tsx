@@ -12,9 +12,9 @@ const Participant = ({ n, top }: ParticipantPropsType) => (
       fontSize: "22px",
       color: "#181a1b",
       backgroundColor: getParticipantColor(n),
-      boxShadow: "2px 2px 6px 0px  rgba(0,0,0,0.3)",
       borderRadius: "0 0 5px 5px",
       boxSizing: "border-box",
+      ...(n === 0 && { color: "white", backgroundColor: "#181a1b" }),
       ...(top && { borderRadius: "5px 5px 0 0" }),
     }}
   >
