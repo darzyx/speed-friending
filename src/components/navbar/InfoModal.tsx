@@ -25,6 +25,7 @@ const InfoModal = ({ openInfoModal, setOpenInfoModal }: InfoModalPropsType) => {
       }
       openModal={openInfoModal}
       setOpenModal={setOpenInfoModal}
+      size="small"
     />
   );
 };

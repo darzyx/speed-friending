@@ -45,6 +45,7 @@ const ConfirmModal = ({
     }
     openModal={openConfirmModal}
     setOpenModal={setOpenConfirmModal}
+    size="small"
   />
 );
 
