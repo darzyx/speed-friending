@@ -50,11 +50,7 @@ const Group = ({
     if (timeValues.remainingTime <= 0 && !roundIsOver) {
       setRoundIsOver(true);
       const docRef = doc(db, "groups", group.id);
-      const payload = {
-        ...group,
-        round_is_paused: true,
-        round_paused_time: 0,
-      };
+      const payload = { ...group, round_is_paused: true, round_paused_time: 0 };
       setDoc(docRef, payload);
     } else if (timeValues.remainingTime > 0 && roundIsOver) {
       setRoundIsOver(false);
