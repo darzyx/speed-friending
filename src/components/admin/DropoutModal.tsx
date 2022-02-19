@@ -30,8 +30,6 @@ const DropoutModal = ({
     };
 
     updateDoc(docRef, payload);
-
-    console.log({ n });
   };
 
   return (
@@ -40,7 +38,9 @@ const DropoutModal = ({
       subheader="Dropout"
       content={
         <div>
-          <p style={{ textAlign: "center" }}>Click on the dropout(s)</p>
+          <p style={{ textAlign: "center" }}>
+            Click on a participant to toggle dropout status
+          </p>
           <Participants
             round={activeRound}
             onClickParticipant={handleClickParticipant}
