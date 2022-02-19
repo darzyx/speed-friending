@@ -18,12 +18,7 @@ const TimeLabel = ({
 }: TimeLabelPropsType) => (
   <Label
     onClick={() => onClickTimeLabel(true)}
-    {...(userIsAdmin && {
-      color: timeValues.color,
-      overflow: "hidden",
-      textOverflow: "ellipsis",
-      whiteSpace: "nowrap",
-    })}
+    {...(userIsAdmin && { color: timeValues.color })}
   >
     {`${timeValues.remainingMinutesDisplay}:${timeValues.remainingSecondsDisplay}`}
   </Label>
