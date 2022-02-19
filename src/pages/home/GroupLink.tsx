@@ -76,7 +76,6 @@ const GroupLink = ({
           textAlign: "left",
           padding: "15px 5px 15px 20px",
         }}
-        active
         fluid
       >
         {group.name}
