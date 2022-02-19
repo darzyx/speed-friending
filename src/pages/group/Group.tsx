@@ -30,7 +30,7 @@ const Group = ({
   const { id } = useParams();
 
   const [group, setGroup] = useState(initGroup);
-  const hasGroup = group?.name?.length > 0;
+  const groupExists = group?.name?.length > 0;
   useEffect(() => {
     const foundGroup = groups.find((s) => s.id === id);
     if (foundGroup) {
@@ -48,7 +48,7 @@ const Group = ({
 
   const [roundIsOver, setRoundIsOver] = useState(false);
   useEffect(() => {
-    if (timeValues.remainingTime <= 0 && !roundIsOver) {
+    if (groupExists && timeValues.remainingTime <= 0 && !roundIsOver) {
       setRoundIsOver(true);
       const docRef = doc(db, "groups", group.id);
       const payload = { ...group, round_is_paused: true, round_paused_time: 0 };
@@ -56,10 +56,10 @@ const Group = ({
     } else if (timeValues.remainingTime > 0 && roundIsOver) {
       setRoundIsOver(false);
     }
-  }, [timeValues.remainingTime, roundIsOver, group]);
+  }, [timeValues.remainingTime, roundIsOver, group, groupExists]);
 
   if (isGettingGroups) return <LoadingGroup />;
-  if (!hasGroup) return <GroupNotFound />;
+  if (!groupExists) return <GroupNotFound />;
 
   return (
     <div>
