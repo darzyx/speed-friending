@@ -188,7 +188,6 @@ const AdminActions = ({
       <CenterMiddle>
         <Button onClick={() => setOpenAdminModal(false)}>Close</Button>
       </CenterMiddle>
-      <Divider hidden />
       <ConfirmModal
         confirmingAction={confirmingAction}
         onCancelAction={handleCancelAction}
