@@ -17,10 +17,12 @@ const Participants = ({
   round,
   onClickParticipant,
   dropouts,
+  currentTimeInSeconds,
 }: {
   round: RoundType;
   onClickParticipant?: (n: number) => void;
   dropouts: number[];
+  currentTimeInSeconds: number;
 }) => (
   <ParticipantsContainer>
     <ParticipantsGrid>
@@ -31,12 +33,14 @@ const Participants = ({
             top={true}
             onClickParticipant={onClickParticipant}
             dropouts={dropouts}
+            currentTimeInSeconds={currentTimeInSeconds}
           />
           <Participant
             n={round.btm[idxTop]}
             top={false}
             onClickParticipant={onClickParticipant}
             dropouts={dropouts}
+            currentTimeInSeconds={currentTimeInSeconds}
           />
         </div>
       ))}

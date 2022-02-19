@@ -9,6 +9,7 @@ type AdminModalPropsType = {
   timeValues: TimeValuesType;
   openAdminModal: boolean;
   setOpenAdminModal: (openAdminModal: boolean) => void;
+  currentTimeInSeconds: number;
   activeRound: RoundType;
 };
 const AdminModal = ({
@@ -16,6 +17,7 @@ const AdminModal = ({
   timeValues,
   openAdminModal,
   setOpenAdminModal,
+  currentTimeInSeconds,
   activeRound,
 }: AdminModalPropsType) => {
   return (
@@ -28,6 +30,7 @@ const AdminModal = ({
           group={group}
           timeValues={timeValues}
           setOpenAdminModal={setOpenAdminModal}
+          currentTimeInSeconds={currentTimeInSeconds}
           activeRound={activeRound}
         />
       }

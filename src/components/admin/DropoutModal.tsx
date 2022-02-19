@@ -12,24 +12,28 @@ type DropoutModalPropsType = {
   group: GroupWithIdType;
   openDropoutModal: boolean;
   setOpenDropoutModal: (openDropoutModal: boolean) => void;
+  currentTimeInSeconds: number;
   activeRound: RoundType;
 };
 const DropoutModal = ({
   group,
   openDropoutModal,
   setOpenDropoutModal,
+  currentTimeInSeconds,
   activeRound,
 }: DropoutModalPropsType) => {
   const handleClickParticipant = (n: number) => {
-    const docRef = doc(db, "groups", group.id);
-    const payload = {
-      ...group,
-      dropouts: group.dropouts.includes(n)
-        ? group.dropouts.filter((dropout) => dropout !== n)
-        : Array.from(new Set(group.dropouts.concat([n]))),
-    };
+    if (n !== 0) {
+      const docRef = doc(db, "groups", group.id);
+      const payload = {
+        ...group,
+        dropouts: group.dropouts.includes(n)
+          ? group.dropouts.filter((dropout) => dropout !== n)
+          : Array.from(new Set(group.dropouts.concat([n]))),
+      };
 
-    updateDoc(docRef, payload);
+      updateDoc(docRef, payload);
+    }
   };
 
   return (
@@ -44,6 +48,7 @@ const DropoutModal = ({
           <Participants
             round={activeRound}
             onClickParticipant={handleClickParticipant}
+            currentTimeInSeconds={currentTimeInSeconds}
             dropouts={group.dropouts}
           />
         </div>

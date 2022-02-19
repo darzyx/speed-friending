@@ -14,12 +14,14 @@ type AdminActionsPropsType = {
   group: GroupWithIdType;
   timeValues: TimeValuesType;
   setOpenAdminModal: (openAdminModal: boolean) => void;
+  currentTimeInSeconds: number;
   activeRound: RoundType;
 };
 const AdminActions = ({
   group,
   timeValues,
   setOpenAdminModal,
+  currentTimeInSeconds,
   activeRound,
 }: AdminActionsPropsType) => {
   const location = useLocation();
@@ -167,6 +169,7 @@ const AdminActions = ({
               group={group}
               openDropoutModal={openDropoutModal}
               setOpenDropoutModal={setOpenDropoutModal}
+              currentTimeInSeconds={currentTimeInSeconds}
               activeRound={activeRound}
             />
           </Grid.Column>

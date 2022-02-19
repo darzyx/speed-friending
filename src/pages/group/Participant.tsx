@@ -6,14 +6,17 @@ type ParticipantPropsType = {
   top?: boolean;
   onClickParticipant?: (n: number) => void;
   dropouts: number[];
+  currentTimeInSeconds: number;
 };
 const Participant = ({
   n,
   top,
-  onClickParticipant,
   dropouts,
+  onClickParticipant,
+  currentTimeInSeconds,
 }: ParticipantPropsType) => {
-  const isX = n === 0 || dropouts.includes(n);
+  const noParticipant = n === 0 || dropouts.includes(n);
+  const showX = noParticipant && currentTimeInSeconds % 2 === 0;
   return (
     <CenterMiddle
       style={{
@@ -26,12 +29,12 @@ const Participant = ({
         borderRadius: "0 0 5px 5px",
         boxSizing: "border-box",
         cursor: "pointer",
-        ...(isX && { color: "white", backgroundColor: "#181a1b" }),
+        ...(noParticipant && { color: "white", backgroundColor: "#181a1b" }),
         ...(top && { borderRadius: "5px 5px 0 0" }),
       }}
       {...(onClickParticipant && { onClick: () => onClickParticipant(n) })}
     >
-      {isX ? "X" : n}
+      {showX ? "X" : n}
     </CenterMiddle>
   );
 };

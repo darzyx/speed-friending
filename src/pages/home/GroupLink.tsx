@@ -93,6 +93,7 @@ const GroupLink = ({
         timeValues={timeValues}
         openAdminModal={openAdminModal}
         setOpenAdminModal={setOpenAdminModal}
+        currentTimeInSeconds={currentTimeInSeconds}
         activeRound={activeRound}
       />
     </Button>

@@ -88,12 +88,17 @@ const Group = ({
             timeValues={timeValues}
             openAdminModal={openAdminModal}
             setOpenAdminModal={setOpenAdminModal}
+            currentTimeInSeconds={currentTimeInSeconds}
             activeRound={activeRound}
           />
         </>
       )}
       <Divider hidden />
-      <Participants round={activeRound} dropouts={group.dropouts} />
+      <Participants
+        round={activeRound}
+        dropouts={group.dropouts}
+        currentTimeInSeconds={currentTimeInSeconds}
+      />
       <Divider hidden />
       <CenterMiddle>
         <NavButton onClick={() => setOpenPastRoundsModal(true)}>
@@ -102,10 +107,11 @@ const Group = ({
       </CenterMiddle>
       <PastRoundsModal
         game={game}
+        group={group}
         activeRound={group.round_active}
         openPastRoundsModal={openPastRoundsModal}
         setOpenPastRoundsModal={setOpenPastRoundsModal}
-        group={group}
+        currentTimeInSeconds={currentTimeInSeconds}
       />
     </div>
   );
