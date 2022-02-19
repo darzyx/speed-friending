@@ -166,8 +166,8 @@ const AdminActions = ({
 
   return (
     <div>
-      <Header as="h2" textAlign="center">
-        Time
+      <Header as="h3" textAlign="center">
+        Time Controls
       </Header>
       <Grid>
         <Grid.Row columns={2}>
@@ -221,8 +221,8 @@ const AdminActions = ({
         </Grid.Row>
       </Grid>
       <Divider />
-      <Header as="h2" textAlign="center">
-        Game
+      <Header as="h3" textAlign="center" style={{ marginTop: "0" }}>
+        Other Controls
       </Header>
       <Grid>
         <Grid.Row columns={2}>
