@@ -93,7 +93,7 @@ const Group = ({
         </>
       )}
       <Divider hidden />
-      <Participants round={activeRound} />
+      <Participants round={activeRound} dropouts={group.dropouts} />
       <Divider hidden />
       <CenterMiddle>
         <NavButton onClick={() => setOpenPastRoundsModal(true)}>

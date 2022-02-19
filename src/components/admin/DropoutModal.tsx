@@ -1,4 +1,7 @@
 import { Button } from "semantic-ui-react";
+import { doc, updateDoc } from "firebase/firestore";
+
+import { db } from "../../firebase";
 import Participants from "../../pages/group/Participants";
 import { RoundType } from "../../pages/group/utils";
 import { GroupWithIdType } from "../../types/group";
@@ -17,6 +20,20 @@ const DropoutModal = ({
   setOpenDropoutModal,
   activeRound,
 }: DropoutModalPropsType) => {
+  const handleClickParticipant = (n: number) => {
+    const docRef = doc(db, "groups", group.id);
+    const payload = {
+      ...group,
+      dropouts: group.dropouts.includes(n)
+        ? group.dropouts.filter((dropout) => dropout !== n)
+        : Array.from(new Set(group.dropouts.concat([n]))),
+    };
+
+    updateDoc(docRef, payload);
+
+    console.log({ n });
+  };
+
   return (
     <StyledModal
       header={group.name}
@@ -24,7 +41,11 @@ const DropoutModal = ({
       content={
         <div>
           <p style={{ textAlign: "center" }}>Click on the dropout(s)</p>
-          <Participants round={activeRound} />
+          <Participants
+            round={activeRound}
+            onClickParticipant={handleClickParticipant}
+            dropouts={group.dropouts}
+          />
         </div>
       }
       actions={

@@ -13,13 +13,31 @@ const ParticipantsGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
   grid-gap: 8px;
 `;
-const Participants = ({ round }: { round: RoundType }) => (
+const Participants = ({
+  round,
+  onClickParticipant,
+  dropouts,
+}: {
+  round: RoundType;
+  onClickParticipant?: (n: number) => void;
+  dropouts: number[];
+}) => (
   <ParticipantsContainer>
     <ParticipantsGrid>
       {round.top.map((nTop, idxTop) => (
         <div key={idxTop}>
-          <Participant n={nTop} top={true} />
-          <Participant n={round.btm[idxTop]} top={false} />
+          <Participant
+            n={nTop}
+            top={true}
+            onClickParticipant={onClickParticipant}
+            dropouts={dropouts}
+          />
+          <Participant
+            n={round.btm[idxTop]}
+            top={false}
+            onClickParticipant={onClickParticipant}
+            dropouts={dropouts}
+          />
         </div>
       ))}
     </ParticipantsGrid>
