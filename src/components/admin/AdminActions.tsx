@@ -1,5 +1,5 @@
 import { deleteDoc, doc, setDoc } from "firebase/firestore";
-import { Button, Divider, Grid, Icon } from "semantic-ui-react";
+import { Button, Divider, Grid, Header, Icon } from "semantic-ui-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { db } from "../../firebase";
@@ -101,7 +101,7 @@ const AdminActions = ({
     }
   };
 
-  const handleEndRound = () => {
+  const handleNextRound = () => {
     if (group.round_active < group.round_count) {
       const payload = {
         ...group,
@@ -122,6 +122,19 @@ const AdminActions = ({
     }
   };
 
+  const handlePrevRound = () => {
+    if (group.round_active > 1) {
+      const payload = {
+        ...group,
+        round_active: group.round_active - 1,
+        round_end_time: currentTimeInSeconds + group.round_duration,
+        round_is_paused: true,
+        round_paused_time: group.round_duration,
+      };
+      setDoc(docRef, payload);
+    }
+  };
+
   const handleDeleteGroup = async () => {
     await deleteDoc(docRef);
     if (location.pathname !== "/home") navigate("/home");
@@ -136,8 +149,10 @@ const AdminActions = ({
   const handleConfirmAction = () => {
     if (confirmingAction === "reset") {
       handleReset();
-    } else if (confirmingAction === "end_round") {
-      handleEndRound();
+    } else if (confirmingAction === "next_round") {
+      handleNextRound();
+    } else if (confirmingAction === "prev_round") {
+      handlePrevRound();
     } else if (confirmingAction === "delete") {
       handleDeleteGroup();
     }
@@ -151,6 +166,9 @@ const AdminActions = ({
 
   return (
     <div>
+      <Header as="h2" textAlign="center">
+        Time
+      </Header>
       <Grid>
         <Grid.Row columns={2}>
           <Grid.Column>
@@ -201,17 +219,39 @@ const AdminActions = ({
             </Grid.Column>
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row columns={1}>
+      </Grid>
+      <Divider />
+      <Header as="h2" textAlign="center">
+        Game
+      </Header>
+      <Grid>
+        <Grid.Row columns={2}>
           <Grid.Column>
             <Button
               onClick={() => {
-                setConfirmingAction("end_round");
+                setConfirmingAction("prev_round");
                 setOpenConfirmModal(true);
               }}
               primary
               fluid
             >
-              <Icon name="flag checkered" /> End Round
+              <Icon name="backward" style={{ margin: "0 0 5px 0" }} />
+              <br />
+              Prev Round
+            </Button>
+          </Grid.Column>
+          <Grid.Column>
+            <Button
+              onClick={() => {
+                setConfirmingAction("next_round");
+                setOpenConfirmModal(true);
+              }}
+              primary
+              fluid
+            >
+              <Icon name="forward" style={{ margin: "0 0 5px 0" }} />
+              <br />
+              Next Round
             </Button>
           </Grid.Column>
         </Grid.Row>

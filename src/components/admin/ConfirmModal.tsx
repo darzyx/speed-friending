@@ -22,8 +22,10 @@ const ConfirmModal = ({
       <p style={{ textAlign: "center" }}>
         {confirmingAction === "reset"
           ? "You are about to reset the round time"
-          : confirmingAction === "end_round"
-          ? "You are about to end the round"
+          : confirmingAction === "next_round"
+          ? "You are about to end this round and start the next one"
+          : confirmingAction === "prev_round"
+          ? "You are about to end this round and start the previous one"
           : confirmingAction === "delete"
           ? "You are about to delete this group"
           : "Please confirm your action"}
