@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { Button, Divider, Header, Icon, Loader } from "semantic-ui-react";
+import { useParams } from "react-router-dom";
+import { Button, Divider, Header, Icon } from "semantic-ui-react";
 import { doc, setDoc } from "firebase/firestore";
 
 import { db } from "../../firebase";
@@ -13,6 +13,7 @@ import NavButton from "../../components/blocks/NavButton";
 import PastRoundsModal from "./PastRoundsModal";
 import Participants from "./Participants";
 import AdminModal from "../../components/admin/AdminModal";
+import { GroupNotFound, LoadingGroup } from "./Placeholders";
 
 type GroupPropsType = {
   groups: GroupWithIdType[];
@@ -57,22 +58,8 @@ const Group = ({
     }
   }, [timeValues.remainingTime, roundIsOver, group]);
 
-  if (isGettingGroups) {
-    return (
-      <CenterMiddle style={{ minHeight: "50vh" }}>
-        <Loader active inline="centered" size="huge" />
-      </CenterMiddle>
-    );
-  } else if (!hasGroup) {
-    return (
-      <CenterMiddle style={{ minHeight: "50vh" }}>
-        <Icon name="window close outline" size="massive" />
-        <Divider hidden />
-        <p>This group does not exist. It may have been deleted</p>
-        <Link to="/home">Find existing groups on the home page &rarr;</Link>
-      </CenterMiddle>
-    );
-  }
+  if (isGettingGroups) return <LoadingGroup />;
+  if (!hasGroup) return <GroupNotFound />;
 
   return (
     <div>
