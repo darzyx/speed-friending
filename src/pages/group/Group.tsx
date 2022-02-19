@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Button, Divider, Header, Icon, Loader } from "semantic-ui-react";
 
 import { getGame, getTimeValues } from "./utils";
@@ -41,10 +41,19 @@ const Group = ({
 
   const [openAdminModal, setOpenAdminModal] = useState(false);
 
-  if (isGettingGroups || !hasGroup) {
+  if (isGettingGroups) {
     return (
       <CenterMiddle style={{ minHeight: "50vh" }}>
         <Loader active inline="centered" size="huge" />
+      </CenterMiddle>
+    );
+  } else if (!hasGroup) {
+    return (
+      <CenterMiddle style={{ minHeight: "50vh" }}>
+        <Icon name="window close outline" size="massive" />
+        <Divider hidden />
+        <p>This group does not exist. It may have been deleted</p>
+        <Link to="/home">Find existing groups on the home page &rarr;</Link>
       </CenterMiddle>
     );
   }

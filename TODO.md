@@ -8,7 +8,6 @@ HIGH PRIORITY
 
 MID PRIORITY
 
-- Consider making navbar sticky
 - Create group modal: consider adding advanced section to set custom time/round
 - Add functionality to advanced time controls button
 - Update info modal copy
