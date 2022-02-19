@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Label } from "semantic-ui-react";
 
-import { getTimeValues, TimeValuesType } from "../group/utils";
+import { getGame, getTimeValues, TimeValuesType } from "../group/utils";
 import { GroupWithIdType } from "../../types/group";
 import AdminModal from "../../components/admin/AdminModal";
 
@@ -55,6 +55,9 @@ const GroupLink = ({
 
   const timeValues = getTimeValues({ group, currentTimeInSeconds });
 
+  const game = getGame(group.participant_count, group.round_count);
+  const activeRound = Object.values(game)[Number(group.round_active) - 1];
+
   return (
     <Button
       as="div"
@@ -90,6 +93,7 @@ const GroupLink = ({
         timeValues={timeValues}
         openAdminModal={openAdminModal}
         setOpenAdminModal={setOpenAdminModal}
+        activeRound={activeRound}
       />
     </Button>
   );

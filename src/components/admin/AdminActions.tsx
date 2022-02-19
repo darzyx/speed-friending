@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { db } from "../../firebase";
 import { GroupWithIdType } from "../../types/group";
-import { TimeValuesType } from "../../pages/group/utils";
+import { RoundType, TimeValuesType } from "../../pages/group/utils";
 import { useState } from "react";
 import CenterMiddle from "../blocks/CenterMiddle";
 import ConfirmModal from "./ConfirmModal";
@@ -14,11 +14,13 @@ type AdminActionsPropsType = {
   group: GroupWithIdType;
   timeValues: TimeValuesType;
   setOpenAdminModal: (openAdminModal: boolean) => void;
+  activeRound: RoundType;
 };
 const AdminActions = ({
   group,
   timeValues,
   setOpenAdminModal,
+  activeRound,
 }: AdminActionsPropsType) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -165,6 +167,7 @@ const AdminActions = ({
               group={group}
               openDropoutModal={openDropoutModal}
               setOpenDropoutModal={setOpenDropoutModal}
+              activeRound={activeRound}
             />
           </Grid.Column>
           <Grid.Column>

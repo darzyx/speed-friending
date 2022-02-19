@@ -1,4 +1,4 @@
-import { TimeValuesType } from "../../pages/group/utils";
+import { RoundType, TimeValuesType } from "../../pages/group/utils";
 import { GroupWithIdType } from "../../types/group";
 import StyledModal from "../blocks/StyledModal";
 import TimeDisplay from "../time/TimeDisplay";
@@ -9,12 +9,14 @@ type AdminModalPropsType = {
   timeValues: TimeValuesType;
   openAdminModal: boolean;
   setOpenAdminModal: (openAdminModal: boolean) => void;
+  activeRound: RoundType;
 };
 const AdminModal = ({
   group,
   timeValues,
   openAdminModal,
   setOpenAdminModal,
+  activeRound,
 }: AdminModalPropsType) => {
   return (
     <StyledModal
@@ -26,6 +28,7 @@ const AdminModal = ({
           group={group}
           timeValues={timeValues}
           setOpenAdminModal={setOpenAdminModal}
+          activeRound={activeRound}
         />
       }
       setOpenModal={setOpenAdminModal}

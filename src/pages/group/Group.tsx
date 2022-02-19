@@ -88,6 +88,7 @@ const Group = ({
             timeValues={timeValues}
             openAdminModal={openAdminModal}
             setOpenAdminModal={setOpenAdminModal}
+            activeRound={activeRound}
           />
         </>
       )}
