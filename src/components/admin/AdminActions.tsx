@@ -8,6 +8,7 @@ import { TimeValuesType } from "../../pages/group/utils";
 import { useState } from "react";
 import CenterMiddle from "../blocks/CenterMiddle";
 import ConfirmModal from "./ConfirmModal";
+import DropoutModal from "./DropoutModal";
 
 type AdminActionsPropsType = {
   group: GroupWithIdType;
@@ -97,6 +98,8 @@ const AdminActions = ({
     setOpenConfirmModal(false);
   };
 
+  const [openDropoutModal, setOpenDropoutModal] = useState(false);
+
   const outOfTime = timeValues.remainingTime <= 0;
 
   return (
@@ -151,9 +154,18 @@ const AdminActions = ({
         </Grid.Row>
         <Grid.Row columns={2}>
           <Grid.Column>
-            <Button color="yellow" fluid>
+            <Button
+              onClick={() => setOpenDropoutModal(true)}
+              color="yellow"
+              fluid
+            >
               <Icon name="remove user" /> Dropout
             </Button>
+            <DropoutModal
+              group={group}
+              openDropoutModal={openDropoutModal}
+              setOpenDropoutModal={setOpenDropoutModal}
+            />
           </Grid.Column>
           <Grid.Column>
             <Button
