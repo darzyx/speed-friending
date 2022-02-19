@@ -1,5 +1,6 @@
-import CenterMiddle from "../../components/blocks/CenterMiddle";
+import { Icon } from "semantic-ui-react";
 
+import CenterMiddle from "../../components/blocks/CenterMiddle";
 import { getParticipantColor } from "./utils";
 
 type ParticipantPropsType = { n: number; top?: boolean };
@@ -18,7 +19,7 @@ const Participant = ({ n, top }: ParticipantPropsType) => (
       ...(top && { borderRadius: "5px 5px 0 0" }),
     }}
   >
-    {n === 0 ? "X" : n}
+    {n === 0 ? <Icon name="remove" style={{ margin: "0" }} /> : n}
   </CenterMiddle>
 );
 

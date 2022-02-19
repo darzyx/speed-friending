@@ -21,7 +21,8 @@ export const initGroup = {
   round_end_time: 0,
   round_is_paused: false,
   round_paused_time: 0,
-};
+  dropouts: [],
+} as GroupWithIdType; // Assumes init data is good!
 
 type GroupsUseStateType = [GroupWithIdType[], (arg: GroupWithIdType[]) => void];
 

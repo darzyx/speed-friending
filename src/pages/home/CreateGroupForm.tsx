@@ -104,6 +104,7 @@ const CreateGroupForm = ({
       round_end_time: Timestamp.now().seconds + Number(roundDuration),
       round_is_paused: true,
       round_paused_time: Number(roundDuration), // Time remaining when paused
+      dropouts: [],
     };
 
     const docRef = await addDoc(collectionRef, payload);
