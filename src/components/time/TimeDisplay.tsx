@@ -9,7 +9,7 @@ type TimeDisplayPropsType = {
 };
 const TimeDisplay = ({ group, timeValues }: TimeDisplayPropsType) => (
   <CenterMiddle>
-    <Statistic inverted color={timeValues.color}>
+    <Statistic color={timeValues.color}>
       <Statistic.Value
         style={{ fontFamily: "'Orbitron', sans-serif", userSelect: "none" }}
       >

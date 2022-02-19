@@ -7,12 +7,13 @@ import { homeTextCTA } from "../../pages/home/Home";
 const StyledListHeader = styled(List.Header)`
   &&&& {
     color: #6495ed !important;
+    font-weight: bold;
   }
 `;
 
 type InfoListPropsType = { onCloseInfoModal: () => void };
 const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
-  <List inverted relaxed>
+  <List relaxed>
     <List.Item>
       <List.Content>
         <StyledListHeader>

@@ -1,22 +1,10 @@
 import { Modal as SemanticModal, Header } from "semantic-ui-react";
 import styled from "styled-components";
 
-const modalColors = {
-  backgroundColor: "#27292a",
-  color: "rgba(255, 255, 255, 0.9)",
-};
-
 const Modal = styled(SemanticModal).attrs({ closeIcon: true })`
   &&&& {
-    ${modalColors}
-
-    // Top right close icon
-    i.close.icon {
-      color: rgba(255, 255, 255, 0.9) !important;
-    }
-
     // Main modal header
-    h1.ui.inverted.center.aligned.header {
+    h1.ui.center.aligned.header {
       padding: 0.75rem 1rem !important;
     }
   }
@@ -46,10 +34,8 @@ const StyledModal = ({
     {header && (
       <Header
         as="h1"
-        inverted
         textAlign="center"
         style={{
-          ...modalColors,
           marginTop: "7px",
           overflow: "hidden",
           textOverflow: "ellipsis",
@@ -65,8 +51,8 @@ const StyledModal = ({
         {header}
       </Header>
     )}
-    {content && <Modal.Content style={modalColors}>{content}</Modal.Content>}
-    {actions && <Modal.Actions style={modalColors}>{actions}</Modal.Actions>}
+    {content && <Modal.Content>{content}</Modal.Content>}
+    {actions && <Modal.Actions>{actions}</Modal.Actions>}
   </Modal>
 );
 

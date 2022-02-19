@@ -28,7 +28,6 @@ const CreateGroupModalTrigger = ({
       onClick={disabled ? () => {} : () => setOpenCreateGroupModal(true)}
       disabled={disabled}
       size="large"
-      secondary
     >
       {groups.length >= maxGroups ? (
         <Icon name="close" />

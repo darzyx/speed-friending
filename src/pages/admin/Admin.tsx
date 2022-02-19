@@ -12,7 +12,7 @@ const AdminContainer = styled.div`
 const Admin = () => {
   return (
     <AdminContainer>
-      <Header as="h1" inverted textAlign="center">
+      <Header as="h1" textAlign="center">
         <Header.Subheader style={{ margin: "7px" }}>Admin</Header.Subheader>
         Sign In
       </Header>

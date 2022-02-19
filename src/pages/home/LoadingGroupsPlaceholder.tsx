@@ -10,7 +10,6 @@ const LoadingGroupsPlaceholder = () => {
         paddingBottom: "15px",
       }}
       size="large"
-      secondary
     >
       <Loader active inline="centered" size="tiny" />
     </Button>

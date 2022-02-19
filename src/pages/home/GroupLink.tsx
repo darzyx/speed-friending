@@ -18,19 +18,12 @@ const TimeLabel = ({
 }: TimeLabelPropsType) => (
   <Label
     onClick={() => onClickTimeLabel(true)}
-    {...(userIsAdmin
-      ? {
-          color: timeValues.color,
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          whiteSpace: "nowrap",
-        }
-      : {
-          style: {
-            backgroundColor: "#27292a",
-            color: "rgba(255, 255, 255, 0.9)",
-          },
-        })}
+    {...(userIsAdmin && {
+      color: timeValues.color,
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+    })}
   >
     {`${timeValues.remainingMinutesDisplay}:${timeValues.remainingSecondsDisplay}`}
   </Label>
@@ -83,7 +76,6 @@ const GroupLink = ({
           textAlign: "left",
           padding: "15px 5px 15px 20px",
         }}
-        secondary
         active
         fluid
       >

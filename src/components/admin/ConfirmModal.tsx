@@ -30,7 +30,7 @@ const ConfirmModal = ({
       </p>
     }
     actions={
-      <Grid inverted>
+      <Grid>
         <Grid.Row columns={2}>
           <Grid.Column textAlign="right" verticalAlign="middle">
             <Button onClick={onCancelAction}>Cancel</Button>

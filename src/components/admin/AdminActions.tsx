@@ -101,7 +101,7 @@ const AdminActions = ({
 
   return (
     <div>
-      <Grid inverted>
+      <Grid>
         <Grid.Row columns={2}>
           <Grid.Column>
             <Button
@@ -169,7 +169,7 @@ const AdminActions = ({
           </Grid.Column>
         </Grid.Row>
       </Grid>
-      <Divider inverted />
+      <Divider />
       <CenterMiddle>
         <Button onClick={() => setOpenAdminModal(false)}>Close</Button>
       </CenterMiddle>

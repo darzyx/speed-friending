@@ -39,7 +39,7 @@ const Home = ({
 
   return (
     <HomeContainer>
-      <Header as="h1" inverted textAlign="center">
+      <Header as="h1" textAlign="center">
         <Header.Subheader
           onClick={() => setUserIsAdmin(!userIsAdmin)}
           style={{ margin: "7px" }}

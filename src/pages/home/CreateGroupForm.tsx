@@ -21,10 +21,6 @@ const maxParticipants = 30;
 const StyledFormInput = styled(Form.Input)`
   &&&& {
     margin-bottom: 10px;
-    input {
-      background-color: #1b1c1d;
-      color: white;
-    }
   }
 `;
 
@@ -119,7 +115,7 @@ const CreateGroupForm = ({
 
   return (
     <div>
-      <Form onSubmit={handleSubmit} inverted autoComplete="off">
+      <Form onSubmit={handleSubmit} autoComplete="off">
         <Form.Group>
           <StyledFormInput
             name="name"

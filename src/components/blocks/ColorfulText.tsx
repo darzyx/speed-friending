@@ -16,7 +16,7 @@ export const colorfulTextAnimationCSS = css`
   animation-timing-function: ease-in-out;
 `;
 
-export const ColorfulHeader = styled(Header).attrs({ inverted: true })`
+export const ColorfulHeader = styled(Header)`
   &&&& {
     ${colorfulTextAnimationCSS};
     text-align: center;
