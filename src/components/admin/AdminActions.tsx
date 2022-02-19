@@ -38,6 +38,56 @@ const AdminActions = ({
     setDoc(docRef, payload);
   };
 
+  const handleAdd30Seconds = () => {
+    if (group.round_is_paused) {
+      const payload = {
+        ...group,
+        round_paused_time: Math.min(
+          group.round_paused_time + 30,
+          group.round_duration
+        ),
+      };
+      setDoc(docRef, payload);
+    } else {
+      const newRoundEndTime = group.round_end_time + 30;
+      if (newRoundEndTime - currentTimeInSeconds < group.round_duration) {
+        const payload = { ...group, round_end_time: newRoundEndTime };
+        setDoc(docRef, payload);
+      } else {
+        const payload = {
+          ...group,
+          round_end_time: Timestamp.now().seconds + group.round_duration,
+        };
+        setDoc(docRef, payload);
+      }
+    }
+
+    // const newRemainingTime = timeValues.remainingTime + 30;
+    // if (newRemainingTime < group.round_duration) {
+    //   const payload = {
+    //     ...group,
+    //     round_end_time: Timestamp.now().seconds + newRemainingTime,
+    //   };
+    //   setDoc(docRef, payload);
+    // } else {
+    //   handleReset();
+    // }
+  };
+
+  const handleSubtract30Seconds = () => {
+    const newRemainingTime = timeValues.remainingTime - 30;
+    if (newRemainingTime > 0) {
+      const payload = {
+        ...group,
+        round_end_time: Timestamp.now().seconds + newRemainingTime,
+      };
+      setDoc(docRef, payload);
+    } else {
+      const payload = { ...group, round_end_time: Timestamp.now().seconds };
+      setDoc(docRef, payload);
+    }
+  };
+
   const handleToggleStart = () => {
     if (group.round_is_paused) {
       const payload = {
@@ -139,6 +189,22 @@ const AdminActions = ({
                 </>
               )}
             </Button>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row columns={2}>
+          <Grid.Column>
+            <Grid.Column>
+              <Button onClick={handleSubtract30Seconds} color="pink" fluid>
+                <Icon name="minus circle" /> -30s
+              </Button>
+            </Grid.Column>
+          </Grid.Column>
+          <Grid.Column>
+            <Grid.Column>
+              <Button onClick={handleAdd30Seconds} color="teal" fluid>
+                <Icon name="plus circle" /> +30s
+              </Button>
+            </Grid.Column>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row columns={1}>
