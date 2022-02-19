@@ -46,7 +46,7 @@ const Home = ({
         >
           Home
         </Header.Subheader>{" "}
-        ✨ Speed Friending 🏕️
+        🤝 Speed Friending ✨
       </Header>
       <ColorfulHeader as="h3">{homeTextCTA}</ColorfulHeader>
       {hasAnyGroups &&
