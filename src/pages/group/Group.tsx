@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Button, Divider, Header, Icon, Loader } from "semantic-ui-react";
+import { doc, setDoc } from "firebase/firestore";
 
+import { db } from "../../firebase";
 import { getGame, getTimeValues } from "./utils";
 import { GroupWithIdType } from "../../types/group";
 import { initGroup } from "../../App";
@@ -35,11 +37,29 @@ const Group = ({
     }
   }, [id, groups]);
 
-  const timeValues = getTimeValues({ group, currentTimeInSeconds });
-
   const [openPastRoundsModal, setOpenPastRoundsModal] = useState(false);
 
   const [openAdminModal, setOpenAdminModal] = useState(false);
+
+  const game = getGame(group.participant_count, group.round_count);
+  const activeRound = Object.values(game)[Number(group.round_active) - 1];
+  const timeValues = getTimeValues({ group, currentTimeInSeconds });
+
+  const [roundIsOver, setRoundIsOver] = useState(false);
+  useEffect(() => {
+    if (timeValues.remainingTime <= 0 && !roundIsOver) {
+      setRoundIsOver(true);
+      const docRef = doc(db, "groups", group.id);
+      const payload = {
+        ...group,
+        round_is_paused: true,
+        round_paused_time: 0,
+      };
+      setDoc(docRef, payload);
+    } else if (timeValues.remainingTime > 0 && roundIsOver) {
+      setRoundIsOver(false);
+    }
+  }, [timeValues.remainingTime, roundIsOver, group]);
 
   if (isGettingGroups) {
     return (
@@ -57,9 +77,6 @@ const Group = ({
       </CenterMiddle>
     );
   }
-
-  const game = getGame(group.participant_count, group.round_count);
-  const activeRound = Object.values(game)[Number(group.round_active) - 1];
 
   return (
     <div>

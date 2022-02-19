@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { doc, setDoc } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Label } from "semantic-ui-react";
 
 import { getGame, getTimeValues, TimeValuesType } from "../group/utils";
 import { GroupWithIdType } from "../../types/group";
 import AdminModal from "../../components/admin/AdminModal";
+import { db } from "../../firebase";
 
 type TimeLabelPropsType = {
   timeValues: TimeValuesType;
@@ -48,10 +50,21 @@ const GroupLink = ({
     }
   };
 
-  const timeValues = getTimeValues({ group, currentTimeInSeconds });
-
   const game = getGame(group.participant_count, group.round_count);
   const activeRound = Object.values(game)[Number(group.round_active) - 1];
+  const timeValues = getTimeValues({ group, currentTimeInSeconds });
+
+  const [roundIsOver, setRoundIsOver] = useState(false);
+  useEffect(() => {
+    if (timeValues.remainingTime <= 0 && !roundIsOver) {
+      setRoundIsOver(true);
+      const docRef = doc(db, "groups", group.id);
+      const payload = { ...group, round_is_paused: true, round_paused_time: 0 };
+      setDoc(docRef, payload);
+    } else if (timeValues.remainingTime > 0 && roundIsOver) {
+      setRoundIsOver(false);
+    }
+  }, [timeValues.remainingTime, roundIsOver, group]);
 
   return (
     <Button
