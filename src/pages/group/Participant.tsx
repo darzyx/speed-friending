@@ -15,8 +15,9 @@ const Participant = ({
   onClickParticipant,
   currentTimeInSeconds,
 }: ParticipantPropsType) => {
-  const noParticipant = n === 0 || dropouts.includes(n);
-  const showX = noParticipant && currentTimeInSeconds % 2 === 0;
+  const hide =
+    n === 0 || (dropouts.includes(n) && currentTimeInSeconds % 2 === 0);
+
   return (
     <CenterMiddle
       style={{
@@ -28,13 +29,13 @@ const Participant = ({
         backgroundColor: getParticipantColor(n),
         borderRadius: "0 0 5px 5px",
         boxSizing: "border-box",
-        cursor: "pointer",
-        ...(noParticipant && { color: "white", backgroundColor: "#181a1b" }),
+        ...(onClickParticipant && { cursor: "pointer" }),
+        ...(hide && { color: "white", backgroundColor: "#181a1b" }),
         ...(top && { borderRadius: "5px 5px 0 0" }),
       }}
       {...(onClickParticipant && { onClick: () => onClickParticipant(n) })}
     >
-      {showX ? "X" : n}
+      {hide ? "X" : n}
     </CenterMiddle>
   );
 };
