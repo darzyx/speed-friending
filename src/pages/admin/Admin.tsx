@@ -13,14 +13,15 @@ const AdminContainer = styled.div`
   padding: 0;
 `;
 
-const Admin = () => {
+type AdminPropsType = { setUserIsAdmin: (userIsAdmin: boolean) => void };
+const Admin = ({ setUserIsAdmin }: AdminPropsType) => {
   return (
     <AdminContainer>
       <Header inverted as="h1" textAlign="center">
         <Header.Subheader style={{ margin: "7px" }}>Admin</Header.Subheader>
         Enter Password
       </Header>
-      <AdminSignInForm />
+      <AdminSignInForm setUserIsAdmin={setUserIsAdmin} />
       <Divider hidden />
       <CenterMiddle>
         <p style={{ textAlign: "center" }}>Not an administrator?</p>

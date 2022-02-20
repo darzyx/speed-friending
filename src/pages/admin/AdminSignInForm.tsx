@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Button,
   Divider,
@@ -14,7 +15,12 @@ import theme from "../../styles/theme";
 
 const maxPasswordLength = 30;
 
-const AdminSignInForm = () => {
+type AdminSignInFormPropsType = {
+  setUserIsAdmin: (userIsAdmin: boolean) => void;
+};
+const AdminSignInForm = ({ setUserIsAdmin }: AdminSignInFormPropsType) => {
+  const navigate = useNavigate();
+
   const [password, setPassword] = useState("");
   const handleChangePassword = (
     e: ChangeEvent<HTMLInputElement>,
@@ -26,9 +32,16 @@ const AdminSignInForm = () => {
   };
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log("SUBMITTING");
-    setIsSubmitting(!isSubmitting);
+    setIsSubmitting(true);
+    await new Promise(() =>
+      setTimeout(() => {
+        setUserIsAdmin(true);
+        setIsSubmitting(false);
+        navigate("/home");
+      }, 1000)
+    );
   };
 
   return (

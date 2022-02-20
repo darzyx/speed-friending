@@ -107,7 +107,10 @@ const App = () => {
                   />
                 }
               />
-              <Route path="admin" element={<Admin />} />
+              <Route
+                path="admin"
+                element={<Admin setUserIsAdmin={setUserIsAdmin} />}
+              />
             </Routes>
             <Divider hidden />
             <Divider hidden />

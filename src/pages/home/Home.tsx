@@ -68,12 +68,7 @@ const Home = ({
       </Segment>
       <Divider hidden />
       <CenterMiddle>
-        <NavButton
-          onClick={() => {
-            setUserIsAdmin(!userIsAdmin);
-            navigate("/admin");
-          }}
-        >
+        <NavButton onClick={() => navigate("/admin")}>
           <Icon name="star" /> Admin
         </NavButton>
       </CenterMiddle>
