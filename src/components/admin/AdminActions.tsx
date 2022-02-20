@@ -166,7 +166,7 @@ const AdminActions = ({
 
   return (
     <div>
-      <Header as="h3" textAlign="center">
+      <Header inverted as="h3" textAlign="center">
         Time Controls
       </Header>
       <Grid>
@@ -221,7 +221,7 @@ const AdminActions = ({
         </Grid.Row>
       </Grid>
       <Divider />
-      <Header as="h3" textAlign="center" style={{ marginTop: "0" }}>
+      <Header inverted as="h3" textAlign="center" style={{ marginTop: "0" }}>
         Other Controls
       </Header>
       <Grid>

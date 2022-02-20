@@ -21,6 +21,7 @@ const TimeLabel = ({
   <Label
     onClick={() => onClickTimeLabel(true)}
     {...(userIsAdmin && { color: timeValues.color })}
+    style={{ backgroundColor: "#4b555d", color: "white" }}
   >
     {`${timeValues.remainingMinutesDisplay}:${timeValues.remainingSecondsDisplay}`}
   </Label>
@@ -72,9 +73,8 @@ const GroupLink = ({
       style={{
         width: "100%",
         maxWidth: "600px",
-        marginTop: index === 0 ? "0" : "10px",
+        margin: `${index === 0 ? "0" : "10px"} 0 0 0`,
       }}
-      size="large"
       labelPosition="right"
     >
       <Button
@@ -86,6 +86,8 @@ const GroupLink = ({
           whiteSpace: "nowrap",
           textAlign: "left",
           padding: "15px 5px 15px 20px",
+          backgroundColor: "#323941",
+          color: "white",
         }}
         fluid
       >

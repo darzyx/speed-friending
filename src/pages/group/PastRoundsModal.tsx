@@ -34,7 +34,7 @@ const PastRoundsModal = ({
             pastRounds
               .map((pastRound, index) => (
                 <div key={index}>
-                  <Header as="h3" textAlign="center">
+                  <Header inverted as="h3" textAlign="center">
                     {`Round ${index + 1}`}
                   </Header>
                   <Participants

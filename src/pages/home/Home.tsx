@@ -8,7 +8,7 @@ import NoGroupsPlaceholder from "./NoGroupsPlaceholder";
 import { centerMiddleCSS } from "../../components/blocks/CenterMiddle";
 import { GroupWithIdType } from "../../types/group";
 import CreateGroupModal from "./CreateGroupModal";
-import { Header } from "semantic-ui-react";
+import { Header, Segment } from "semantic-ui-react";
 import { ColorfulHeader } from "../../components/blocks/ColorfulText";
 
 export const homeTextCTA = "Select Assigned Group Below";
@@ -39,7 +39,7 @@ const Home = ({
 
   return (
     <HomeContainer>
-      <Header as="h1" textAlign="center">
+      <Header inverted as="h1" textAlign="center">
         <Header.Subheader
           onClick={() => setUserIsAdmin(!userIsAdmin)}
           style={{ margin: "7px" }}
@@ -49,25 +49,27 @@ const Home = ({
         ✨ Speed Friending ✨
       </Header>
       <ColorfulHeader as="h3">{homeTextCTA}</ColorfulHeader>
-      {hasAnyGroups &&
-        groups.map((group, index) => (
-          <GroupLink
-            userIsAdmin={userIsAdmin}
-            currentTimeInSeconds={currentTimeInSeconds}
-            group={group}
-            key={group.id}
-            index={index}
+      <Segment inverted style={{ backgroundColor: "#22262a" }}>
+        {hasAnyGroups &&
+          groups.map((group, index) => (
+            <GroupLink
+              userIsAdmin={userIsAdmin}
+              currentTimeInSeconds={currentTimeInSeconds}
+              group={group}
+              key={group.id}
+              index={index}
+            />
+          ))}
+        {!hasAnyGroups && isGettingGroups && <LoadingGroupsPlaceholder />}
+        {!hasAnyGroups && !isGettingGroups && <NoGroupsPlaceholder />}
+        {userIsAdmin && !isGettingGroups && (
+          <CreateGroupModalTrigger
+            groups={groups}
+            hasAnyGroups={hasAnyGroups}
+            setOpenCreateGroupModal={setOpenCreateGroupModal}
           />
-        ))}
-      {!hasAnyGroups && isGettingGroups && <LoadingGroupsPlaceholder />}
-      {!hasAnyGroups && !isGettingGroups && <NoGroupsPlaceholder />}
-      {userIsAdmin && !isGettingGroups && (
-        <CreateGroupModalTrigger
-          groups={groups}
-          hasAnyGroups={hasAnyGroups}
-          setOpenCreateGroupModal={setOpenCreateGroupModal}
-        />
-      )}
+        )}
+      </Segment>
       <CreateGroupModal
         openCreateGroupModal={openCreateGroupModal}
         setOpenCreateGroupModal={setOpenCreateGroupModal}

@@ -65,6 +65,7 @@ const Group = ({
     <div>
       <CenterMiddle textAlign="center">
         <Header
+          inverted
           as="h1"
           style={{
             overflow: "hidden",

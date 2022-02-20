@@ -36,6 +36,7 @@ const StyledModal = ({
   >
     {header && (
       <Header
+        inverted
         as="h1"
         textAlign="center"
         style={{
