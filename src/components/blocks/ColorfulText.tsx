@@ -5,16 +5,16 @@ import styled, { css, keyframes } from "styled-components";
 const colorChange = keyframes`
   0% { color: #a84677; }
   25% { color: #009494; }
-  50% { color: #6495ed; }
-  100% { color: #9d4ebd; }
+  50% { color: #567fcc; }
+  100% { color: #8b44a7; }
 `;
 
 export const colorfulTextAnimationCSS = css`
   animation-name: ${colorChange};
-  animation-duration: 7s;
+  animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  animation-timing-function: ease-in-out;
+  animation-timing-function: linear;
 `;
 
 export const ColorfulHeader = styled(Header)`

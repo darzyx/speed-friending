@@ -117,6 +117,7 @@ const Group = ({
         </NavButton>
       </CenterMiddle>
       <Divider hidden />
+      <Divider hidden />
       <Image src={imageSVG} size="tiny" centered />
       <Divider hidden />
       <PastRoundsModal

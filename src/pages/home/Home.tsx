@@ -76,6 +76,7 @@ const Home = ({
         )}
       </Segment>
       <Divider hidden />
+      <Divider hidden />
       <Image src={imageSVG} size="tiny" centered />
       <Divider hidden />
       <CreateGroupModal
