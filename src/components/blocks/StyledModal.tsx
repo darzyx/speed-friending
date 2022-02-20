@@ -3,9 +3,21 @@ import styled from "styled-components";
 
 const Modal = styled(SemanticModal).attrs({ closeIcon: true })`
   &&&& {
+    background-color: #323941;
+    color: white;
+
     // Main modal header
     h1.ui.center.aligned.header {
       padding: 0.75rem 1rem !important;
+      background-color: #323941;
+      color: white;
+    }
+
+    i.close.icon,
+    .content,
+    .actions {
+      background-color: #323941;
+      color: white;
     }
   }
 `;

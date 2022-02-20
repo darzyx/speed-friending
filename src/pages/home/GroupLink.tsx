@@ -70,11 +70,7 @@ const GroupLink = ({
   return (
     <Button
       as="div"
-      style={{
-        width: "100%",
-        maxWidth: "600px",
-        margin: `${index === 0 ? "0" : "10px"} 0 0 0`,
-      }}
+      style={{ width: "100%", margin: `${index === 0 ? "0" : "10px"} 0 0 0` }}
       labelPosition="right"
     >
       <Button

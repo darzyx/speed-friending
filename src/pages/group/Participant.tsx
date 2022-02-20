@@ -27,10 +27,11 @@ const Participant = ({
         fontSize: "22px",
         borderRadius: "0 0 5px 5px",
         boxSizing: "border-box",
-        color: "#181a1b",
+        color: "#0e0f10",
         backgroundColor: getParticipantColor(n),
+        border: "1px solid #22262a",
         ...(onClickParticipant && { cursor: "pointer" }),
-        ...(hiddenMode && { color: "white", backgroundColor: "#181a1b" }),
+        ...(hiddenMode && { color: "white", backgroundColor: "#323941" }),
         ...(top && { borderRadius: "5px 5px 0 0" }),
       }}
       {...(onClickParticipant && { onClick: () => onClickParticipant(n) })}

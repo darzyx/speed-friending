@@ -283,7 +283,7 @@ const AdminActions = ({
               color="red"
               fluid
             >
-              <Icon name="close" /> Delete
+              <Icon name="remove" /> Delete
             </Button>
           </Grid.Column>
         </Grid.Row>

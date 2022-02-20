@@ -20,7 +20,6 @@ const CreateGroupModalTrigger = ({
     <Button
       style={{
         width: "100%",
-        maxWidth: "600px",
         margin: `${hasAnyGroups ? "10px" : "0"} 0 0 0`,
         paddingTop: "14px",
         paddingBottom: "14px",
@@ -32,7 +31,7 @@ const CreateGroupModalTrigger = ({
       size="large"
     >
       {groups.length >= maxGroups ? (
-        <Icon name="close" />
+        <Icon name="remove" />
       ) : (
         <Icon name="plus" />
       )}

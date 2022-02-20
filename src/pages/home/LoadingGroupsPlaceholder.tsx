@@ -5,13 +5,14 @@ const LoadingGroupsPlaceholder = () => {
     <Button
       style={{
         width: "100%",
-        maxWidth: "600px",
         paddingTop: "15px",
         paddingBottom: "15px",
+        backgroundColor: "#4b555d",
+        color: "white",
       }}
       size="large"
     >
-      <Loader active inline="centered" size="tiny" />
+      <Loader inverted active inline="centered" size="tiny" />
     </Button>
   );
 };

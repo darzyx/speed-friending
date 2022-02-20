@@ -49,7 +49,7 @@ const Home = ({
         ✨ Speed Friending ✨
       </Header>
       <ColorfulHeader as="h3">{homeTextCTA}</ColorfulHeader>
-      <Segment inverted style={{ backgroundColor: "#22262a" }}>
+      <Segment inverted style={{ backgroundColor: "#22262a", width: "100%" }}>
         {hasAnyGroups &&
           groups.map((group, index) => (
             <GroupLink
