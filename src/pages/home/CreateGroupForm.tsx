@@ -8,29 +8,15 @@ import {
   Divider,
 } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 
 import { db } from "../../firebase";
 import { GroupType } from "../../types/group";
 import { getMaxRounds } from "../group/utils";
+import StyledFormInput from "../../components/blocks/StyledFormInput";
 
 const maxNameLength = 30;
 const maxRoundDuration = 60 * 10;
 const maxParticipants = 30;
-
-const StyledFormInput = styled(Form.Input)`
-  &&&& {
-    margin-bottom: 10px;
-    input {
-      background-color: ${({ theme }) => theme.color.two};
-      color: ${({ theme }) => theme.color.text};
-
-      &::placeholder {
-        color: ${({ theme }) => theme.color.five};
-      }
-    }
-  }
-`;
 
 type CreateGroupFormPropsType = {
   setOpenCreateGroupModal: (openCreateGroupModal: boolean) => void;

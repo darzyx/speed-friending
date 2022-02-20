@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import { centerMiddleCSS } from "../../components/blocks/CenterMiddle";
 import { Header } from "semantic-ui-react";
+import SignInForm from "./SignInForm";
 
 const AdminContainer = styled.div`
   ${centerMiddleCSS}
@@ -16,6 +17,7 @@ const Admin = () => {
         <Header.Subheader style={{ margin: "7px" }}>Admin</Header.Subheader>
         Sign In
       </Header>
+      <SignInForm />
     </AdminContainer>
   );
 };
