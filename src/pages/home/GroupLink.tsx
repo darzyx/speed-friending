@@ -7,7 +7,7 @@ import { getGame, getTimeValues, TimeValuesType } from "../group/utils";
 import { GroupWithIdType } from "../../types/group";
 import AdminModal from "../../components/admin/AdminModal";
 import { db } from "../../firebase";
-import themeStyles from "../../styles/themeStyles";
+import theme from "../../styles/theme";
 
 type TimeLabelPropsType = {
   timeValues: TimeValuesType;
@@ -23,8 +23,8 @@ const TimeLabel = ({
     onClick={() => onClickTimeLabel(true)}
     {...(userIsAdmin && { color: timeValues.color })}
     style={{
-      backgroundColor: themeStyles.color.four,
-      color: themeStyles.color.text,
+      backgroundColor: theme.color.four,
+      color: theme.color.text,
     }}
   >
     {`${timeValues.remainingMinutesDisplay}:${timeValues.remainingSecondsDisplay}`}
@@ -86,8 +86,8 @@ const GroupLink = ({
           whiteSpace: "nowrap",
           textAlign: "left",
           padding: "15px 5px 15px 20px",
-          backgroundColor: themeStyles.color.three,
-          color: themeStyles.color.text,
+          backgroundColor: theme.color.three,
+          color: theme.color.text,
         }}
         fluid
       >

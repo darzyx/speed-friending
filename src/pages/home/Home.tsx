@@ -10,7 +10,7 @@ import { GroupWithIdType } from "../../types/group";
 import CreateGroupModal from "./CreateGroupModal";
 import { Header, Segment } from "semantic-ui-react";
 import { ColorfulHeader } from "../../components/blocks/ColorfulText";
-import themeStyles from "../../styles/themeStyles";
+import theme from "../../styles/theme";
 
 export const homeTextCTA = "Select Your Group Below";
 
@@ -52,7 +52,7 @@ const Home = ({
       <ColorfulHeader as="h3">{homeTextCTA}</ColorfulHeader>
       <Segment
         inverted
-        style={{ backgroundColor: themeStyles.color.two, width: "100%" }}
+        style={{ backgroundColor: theme.color.two, width: "100%" }}
       >
         {hasAnyGroups &&
           groups.map((group, index) => (

@@ -13,7 +13,6 @@ import styled from "styled-components";
 import { db } from "../../firebase";
 import { GroupType } from "../../types/group";
 import { getMaxRounds } from "../group/utils";
-import themeStyles from "../../styles/themeStyles";
 
 const maxNameLength = 30;
 const maxRoundDuration = 60 * 10;
@@ -23,11 +22,11 @@ const StyledFormInput = styled(Form.Input)`
   &&&& {
     margin-bottom: 10px;
     input {
-      background-color: ${themeStyles.color.two};
-      color: ${themeStyles.color.text};
+      background-color: ${({ theme }) => theme.color.two};
+      color: ${({ theme }) => theme.color.text};
 
       &::placeholder {
-        color: ${themeStyles.color.five};
+        color: ${({ theme }) => theme.color.five};
       }
     }
   }

@@ -1,27 +1,26 @@
 import { Modal as SemanticModal, Header } from "semantic-ui-react";
 import styled from "styled-components";
-import themeStyles from "../../styles/themeStyles";
 
 const Modal = styled(SemanticModal).attrs({ closeIcon: true })`
   &&&& {
-    background-color: ${themeStyles.color.three};
-    color: ${themeStyles.color.text};
+    background-color: ${({ theme }) => theme.color.three} !important;
+    color: ${({ theme }) => theme.color.text};
 
     // Main modal header
     h1.ui.center.aligned.header {
       padding: 0.75rem 1rem !important;
-      background-color: ${themeStyles.color.three};
-      color: ${themeStyles.color.text};
+      background-color: ${({ theme }) => theme.color.three};
+      color: ${({ theme }) => theme.color.text};
     }
 
     .content,
     .actions {
-      background-color: ${themeStyles.color.three};
-      color: ${themeStyles.color.text};
+      background-color: ${({ theme }) => theme.color.three};
+      color: ${({ theme }) => theme.color.text};
     }
 
     i.close.icon {
-      color: ${themeStyles.color.text};
+      color: ${({ theme }) => theme.color.text};
     }
   }
 `;

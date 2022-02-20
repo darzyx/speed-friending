@@ -1,5 +1,5 @@
 import { Button, Icon } from "semantic-ui-react";
-import themeStyles from "../../styles/themeStyles";
+import theme from "../../styles/theme";
 import { GroupWithIdType } from "../../types/group";
 
 // TODO: remove this and limit creation to auth users
@@ -24,8 +24,8 @@ const CreateGroupModalTrigger = ({
         margin: `${hasAnyGroups ? "10px" : "0"} 0 0 0`,
         paddingTop: "14px",
         paddingBottom: "14px",
-        backgroundColor: themeStyles.color.four,
-        color: themeStyles.color.text,
+        backgroundColor: theme.color.four,
+        color: theme.color.text,
       }}
       onClick={disabled ? () => {} : () => setOpenCreateGroupModal(true)}
       disabled={disabled}
