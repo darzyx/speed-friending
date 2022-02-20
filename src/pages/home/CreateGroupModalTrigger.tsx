@@ -24,7 +24,7 @@ const CreateGroupModalTrigger = ({
         margin: `${hasAnyGroups ? "10px" : "0"} 0 0 0`,
         paddingTop: "14px",
         paddingBottom: "14px",
-        backgroundColor: theme.color.four,
+        backgroundColor: theme.color.five,
         color: theme.color.text,
       }}
       onClick={disabled ? () => {} : () => setOpenCreateGroupModal(true)}
