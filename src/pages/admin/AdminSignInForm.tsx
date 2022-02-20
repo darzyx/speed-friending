@@ -13,6 +13,9 @@ import {
 import StyledFormInput from "../../components/blocks/StyledFormInput";
 import theme from "../../styles/theme";
 
+// TODO: Add real auth logic, new password(s), and remove this
+const testPassword = "justvibebro";
+
 const maxPasswordLength = 30;
 
 type AdminSignInFormPropsType = {
@@ -33,15 +36,16 @@ const AdminSignInForm = ({ setUserIsAdmin }: AdminSignInFormPropsType) => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const handleSubmit = async () => {
-    console.log("SUBMITTING");
-    setIsSubmitting(true);
-    await new Promise(() =>
-      setTimeout(() => {
-        setUserIsAdmin(true);
-        setIsSubmitting(false);
-        navigate("/home");
-      }, 1000)
-    );
+    if (password === testPassword) {
+      setIsSubmitting(true);
+      await new Promise(() =>
+        setTimeout(() => {
+          setUserIsAdmin(true);
+          setIsSubmitting(false);
+          navigate("/home");
+        }, 1000)
+      );
+    }
   };
 
   return (
