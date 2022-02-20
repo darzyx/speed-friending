@@ -112,6 +112,7 @@ const App = () => {
             <Divider hidden />
             <Divider hidden />
             <Image src={imageSVG} size="tiny" centered />
+            <Divider hidden />
           </Container>
         </BrowserRouter>
       </ThemeProvider>
