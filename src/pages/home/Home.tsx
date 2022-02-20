@@ -8,10 +8,9 @@ import NoGroupsPlaceholder from "./NoGroupsPlaceholder";
 import { centerMiddleCSS } from "../../components/blocks/CenterMiddle";
 import { GroupWithIdType } from "../../types/group";
 import CreateGroupModal from "./CreateGroupModal";
-import { Divider, Header, Image, Segment } from "semantic-ui-react";
+import { Header, Segment } from "semantic-ui-react";
 import { ColorfulHeader } from "../../components/blocks/ColorfulText";
 import theme from "../../styles/theme";
-import imageSVG from "../../media/lotus.svg";
 
 export const homeTextCTA = "Select Group Below";
 
@@ -75,10 +74,6 @@ const Home = ({
           />
         )}
       </Segment>
-      <Divider hidden />
-      <Divider hidden />
-      <Image src={imageSVG} size="tiny" centered />
-      <Divider hidden />
       <CreateGroupModal
         openCreateGroupModal={openCreateGroupModal}
         setOpenCreateGroupModal={setOpenCreateGroupModal}

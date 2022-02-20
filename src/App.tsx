@@ -1,7 +1,7 @@
 import { onSnapshot, collection } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Container, Divider } from "semantic-ui-react";
+import { Container, Divider, Image } from "semantic-ui-react";
 import { ThemeProvider } from "styled-components";
 
 import Navbar from "./components/navbar/Navbar";
@@ -12,6 +12,7 @@ import Admin from "./pages/admin/Admin";
 import { GroupWithIdType } from "./types/group";
 import UserIsAdminAlert from "./components/UserIsAdminAlert";
 import theme from "./styles/theme";
+import imageSVG from "./media/lotus.svg";
 
 export const initGroup = {
   id: "",
@@ -109,6 +110,8 @@ const App = () => {
               <Route path="admin" element={<Admin />} />
             </Routes>
             <Divider hidden />
+            <Divider hidden />
+            <Image src={imageSVG} size="tiny" centered />
           </Container>
         </BrowserRouter>
       </ThemeProvider>
