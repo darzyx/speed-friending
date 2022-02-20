@@ -12,20 +12,9 @@ import {
 import StyledFormInput from "../../components/blocks/StyledFormInput";
 import theme from "../../styles/theme";
 
-const maxUsernameLength = 30;
 const maxPasswordLength = 30;
 
-const SignInForm = () => {
-  const [username, setUsername] = useState("");
-  const handleChangeUsername = (
-    e: ChangeEvent<HTMLInputElement>,
-    { value }: InputOnChangeData
-  ) => {
-    if (typeof value === "string" && value.length <= maxUsernameLength) {
-      setUsername(value);
-    }
-  };
-
+const AdminSignInForm = () => {
   const [password, setPassword] = useState("");
   const handleChangePassword = (
     e: ChangeEvent<HTMLInputElement>,
@@ -54,19 +43,12 @@ const SignInForm = () => {
     >
       <Form inverted onSubmit={handleSubmit} autoComplete="off">
         <StyledFormInput
-          name="username"
-          placeholder="Usermame"
-          label="Username"
-          value={username}
-          onChange={handleChangeUsername}
-          required
-        />
-        <StyledFormInput
           name="password"
           placeholder="Password"
           label="Password"
           value={password}
           onChange={handleChangePassword}
+          type="password"
           required
         />
         <Divider hidden />
@@ -92,4 +74,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default AdminSignInForm;
