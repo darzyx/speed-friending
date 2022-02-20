@@ -13,10 +13,13 @@ const Modal = styled(SemanticModal).attrs({ closeIcon: true })`
       color: white;
     }
 
-    i.close.icon,
     .content,
     .actions {
       background-color: #323941;
+      color: white;
+    }
+
+    i.close.icon {
       color: white;
     }
   }

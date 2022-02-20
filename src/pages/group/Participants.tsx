@@ -1,3 +1,4 @@
+import { Segment } from "semantic-ui-react";
 import styled from "styled-components";
 
 import Participant from "./Participant";
@@ -24,28 +25,30 @@ const Participants = ({
   dropouts: number[];
   currentTimeInSeconds: number;
 }) => (
-  <ParticipantsContainer>
-    <ParticipantsGrid>
-      {round.top.map((nTop, idxTop) => (
-        <div key={idxTop}>
-          <Participant
-            n={nTop}
-            top={true}
-            onClickParticipant={onClickParticipant}
-            dropouts={dropouts}
-            currentTimeInSeconds={currentTimeInSeconds}
-          />
-          <Participant
-            n={round.btm[idxTop]}
-            top={false}
-            onClickParticipant={onClickParticipant}
-            dropouts={dropouts}
-            currentTimeInSeconds={currentTimeInSeconds}
-          />
-        </div>
-      ))}
-    </ParticipantsGrid>
-  </ParticipantsContainer>
+  <Segment inverted style={{ backgroundColor: "#0e0f10" }}>
+    <ParticipantsContainer>
+      <ParticipantsGrid>
+        {round.top.map((nTop, idxTop) => (
+          <div key={idxTop}>
+            <Participant
+              n={nTop}
+              top={true}
+              onClickParticipant={onClickParticipant}
+              dropouts={dropouts}
+              currentTimeInSeconds={currentTimeInSeconds}
+            />
+            <Participant
+              n={round.btm[idxTop]}
+              top={false}
+              onClickParticipant={onClickParticipant}
+              dropouts={dropouts}
+              currentTimeInSeconds={currentTimeInSeconds}
+            />
+          </div>
+        ))}
+      </ParticipantsGrid>
+    </ParticipantsContainer>
+  </Segment>
 );
 
 export default Participants;
