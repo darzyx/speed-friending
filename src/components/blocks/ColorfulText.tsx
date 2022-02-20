@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Header } from "semantic-ui-react";
 import styled, { css, keyframes } from "styled-components";
 
@@ -20,5 +21,13 @@ export const ColorfulHeader = styled(Header)`
   &&&& {
     ${colorfulTextAnimationCSS};
     text-align: center;
+  }
+`;
+
+export const ColorfulLink = styled(Link)`
+  &&&& {
+    ${colorfulTextAnimationCSS};
+    text-align: center;
+    font-weight: bold;
   }
 `;

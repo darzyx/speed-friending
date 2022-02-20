@@ -1,8 +1,8 @@
 import { Divider, List } from "semantic-ui-react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { homeTextCTA } from "../../pages/home/Home";
+import { ColorfulLink } from "../blocks/ColorfulText";
 
 const StyledListHeader = styled(List.Header)`
   &&&& {
@@ -33,13 +33,13 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
         <StyledListHeader>2. FIND YOUR GROUP ON THIS APP</StyledListHeader>
         <p style={{ marginTop: "10px" }}>
           You can find your group name in the "{homeTextCTA}" list on the{" "}
-          <Link
+          <ColorfulLink
             to="/home"
             style={{ textDecoration: "underline" }}
             onClick={onCloseInfoModal}
           >
             Home
-          </Link>{" "}
+          </ColorfulLink>{" "}
           page. Click on your group name to go to your group page
         </p>
       </List.Content>

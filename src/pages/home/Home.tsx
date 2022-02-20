@@ -11,7 +11,7 @@ import CreateGroupModal from "./CreateGroupModal";
 import { Header, Segment } from "semantic-ui-react";
 import { ColorfulHeader } from "../../components/blocks/ColorfulText";
 
-export const homeTextCTA = "Select Assigned Group Below";
+export const homeTextCTA = "Select Your Group Below";
 
 const HomeContainer = styled.div`
   ${centerMiddleCSS}
