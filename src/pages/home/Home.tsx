@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import GroupLink from "./GroupLink";
@@ -31,6 +31,11 @@ const Home = ({
   groups,
   currentTimeInSeconds,
 }: HomePropsType) => {
+  // Reset scroll on component mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const navigate = useNavigate();
 
   const [openCreateGroupModal, setOpenCreateGroupModal] = useState(false);

@@ -27,6 +27,11 @@ const Group = ({
   currentTimeInSeconds,
   userIsAdmin,
 }: GroupPropsType) => {
+  // Reset scroll on component mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { id } = useParams();
 
   const [group, setGroup] = useState(initGroup);

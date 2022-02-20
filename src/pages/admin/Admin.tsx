@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 
 import CenterMiddle, {
@@ -15,6 +16,11 @@ const AdminContainer = styled.div`
 
 type AdminPropsType = { setUserIsAdmin: (userIsAdmin: boolean) => void };
 const Admin = ({ setUserIsAdmin }: AdminPropsType) => {
+  // Reset scroll on component mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <AdminContainer>
       <Header inverted as="h1" textAlign="center">
