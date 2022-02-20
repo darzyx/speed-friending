@@ -3,15 +3,15 @@ import { Header } from "semantic-ui-react";
 import styled, { css, keyframes } from "styled-components";
 
 const colorChange = keyframes`
-  0% { color: #a84677; }
-  25% { color: #009494; }
-  50% { color: #567fcc; }
-  100% { color: #8b44a7; }
+  0% { color: #773d5a; }
+  25% { color: #00635e; }
+  50% { color: #415f97; }
+  100% { color: #713888; }
 `;
 
 export const colorfulTextAnimationCSS = css`
   animation-name: ${colorChange};
-  animation-duration: 1s;
+  animation-duration: 6s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: linear;

@@ -6,11 +6,12 @@ HIGH PRIORITY
   because of UX on entering field values. Should validate post submit attempt
 - Remove admin via clicking home
 - Do a lot of testing of the time controls and functionality
-- Theme
+- Get participant colors right
 
 MID PRIORITY
 
 - Update info modal copy
+- Consider adding light mode (should be easy)
 
 LOW PRIORITY
 

@@ -47,8 +47,8 @@ const Home = ({
           style={{ margin: "7px" }}
         >
           Home
-        </Header.Subheader>{" "}
-        ✨ Speed Friending ✨
+        </Header.Subheader>
+        Speed Friending
       </Header>
       <ColorfulHeader as="h3">{homeTextCTA}</ColorfulHeader>
       <Segment
