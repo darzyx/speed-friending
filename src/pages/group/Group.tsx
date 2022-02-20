@@ -118,6 +118,7 @@ const Group = ({
       </CenterMiddle>
       <Divider hidden />
       <Image src={imageSVG} size="tiny" centered />
+      <Divider hidden />
       <PastRoundsModal
         game={game}
         group={group}
