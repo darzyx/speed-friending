@@ -13,7 +13,7 @@ import { ColorfulHeader } from "../../components/blocks/ColorfulText";
 import theme from "../../styles/theme";
 import imageSVG from "../../media/lotus.svg";
 
-export const homeTextCTA = "Select Your Group Below";
+export const homeTextCTA = "Select Group Below";
 
 const HomeContainer = styled.div`
   ${centerMiddleCSS}

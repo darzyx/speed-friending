@@ -14,7 +14,7 @@ import PastRoundsModal from "./PastRoundsModal";
 import Participants from "./Participants";
 import AdminModal from "../../components/admin/AdminModal";
 import { GroupNotFound, LoadingGroup } from "./Placeholders";
-import imageSVG from "../../media/flower.svg";
+import imageSVG from "../../media/lotus.svg";
 
 type GroupPropsType = {
   groups: GroupWithIdType[];
