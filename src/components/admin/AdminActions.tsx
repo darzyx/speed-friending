@@ -232,6 +232,7 @@ const AdminActions = ({
                 setConfirmingAction("prev_round");
                 setOpenConfirmModal(true);
               }}
+              disabled={group.round_active === 1}
               primary
               fluid
             >
@@ -246,6 +247,7 @@ const AdminActions = ({
                 setConfirmingAction("next_round");
                 setOpenConfirmModal(true);
               }}
+              disabled={group.round_active === group.round_count}
               primary
               fluid
             >

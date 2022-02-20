@@ -73,7 +73,7 @@ const CreateGroupForm = ({
   };
 
   const maxRounds = getMaxRounds(Number(participantCount));
-  const [roundCount, setRoundCount] = useState("12");
+  const [roundCount, setRoundCount] = useState("");
   const handleChangeRoundCount = (
     e: ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
@@ -92,8 +92,6 @@ const CreateGroupForm = ({
   const handleSubmit = async () => {
     setIsSubmitting(true);
 
-    const collectionRef = collection(db, "groups");
-
     // TODO: validate all types before submitting
     const payload: GroupType = {
       name,
@@ -107,6 +105,7 @@ const CreateGroupForm = ({
       dropouts: [],
     };
 
+    const collectionRef = collection(db, "groups");
     const docRef = await addDoc(collectionRef, payload);
 
     setOpenCreateGroupModal(false);
