@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Button, Divider, Header, Icon } from "semantic-ui-react";
+import { Button, Divider, Header, Icon, Image } from "semantic-ui-react";
 import { doc, setDoc } from "firebase/firestore";
 
 import { db } from "../../firebase";
@@ -14,6 +14,7 @@ import PastRoundsModal from "./PastRoundsModal";
 import Participants from "./Participants";
 import AdminModal from "../../components/admin/AdminModal";
 import { GroupNotFound, LoadingGroup } from "./Placeholders";
+import imageSVG from "../../media/flower.svg";
 
 type GroupPropsType = {
   groups: GroupWithIdType[];
@@ -115,6 +116,8 @@ const Group = ({
           <Icon name="history" /> Past Rounds
         </NavButton>
       </CenterMiddle>
+      <Divider hidden />
+      <Image src={imageSVG} size="tiny" centered />
       <PastRoundsModal
         game={game}
         group={group}
