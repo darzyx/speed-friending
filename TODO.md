@@ -6,12 +6,11 @@ HIGH PRIORITY
   because of UX on entering field values. Should validate post submit attempt
 - Remove admin via clicking home
 - Do a lot of testing of the time controls and functionality
+- Theme
 
 MID PRIORITY
 
 - Update info modal copy
-- Clean up prop errors (see browser console e.g. when using modals)
-- Consider automatically pausing round when time runs out
 
 LOW PRIORITY
 
