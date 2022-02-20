@@ -1,4 +1,5 @@
 import { Button, Loader } from "semantic-ui-react";
+import themeStyles from "../../styles/themeStyles";
 
 const LoadingGroupsPlaceholder = () => {
   return (
@@ -7,8 +8,8 @@ const LoadingGroupsPlaceholder = () => {
         width: "100%",
         paddingTop: "15px",
         paddingBottom: "15px",
-        backgroundColor: "#4b555d",
-        color: "white",
+        backgroundColor: themeStyles.color.four,
+        color: themeStyles.color.text,
       }}
       size="large"
     >

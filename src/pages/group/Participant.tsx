@@ -1,4 +1,5 @@
 import CenterMiddle from "../../components/blocks/CenterMiddle";
+import themeStyles from "../../styles/themeStyles";
 import { getParticipantColor } from "./utils";
 
 type ParticipantPropsType = {
@@ -27,11 +28,14 @@ const Participant = ({
         fontSize: "22px",
         borderRadius: "0 0 5px 5px",
         boxSizing: "border-box",
-        color: "#0e0f10",
+        color: themeStyles.color.one,
         backgroundColor: getParticipantColor(n),
-        border: "1px solid #22262a",
+        border: `1px solid ${themeStyles.color.two}`,
         ...(onClickParticipant && { cursor: "pointer" }),
-        ...(hiddenMode && { color: "white", backgroundColor: "#323941" }),
+        ...(hiddenMode && {
+          color: themeStyles.color.text,
+          backgroundColor: themeStyles.color.three,
+        }),
         ...(top && { borderRadius: "5px 5px 0 0" }),
       }}
       {...(onClickParticipant && { onClick: () => onClickParticipant(n) })}

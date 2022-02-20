@@ -1,5 +1,6 @@
 import { Segment } from "semantic-ui-react";
 import styled from "styled-components";
+import themeStyles from "../../styles/themeStyles";
 
 import Participant from "./Participant";
 import { RoundType } from "./utils";
@@ -25,7 +26,7 @@ const Participants = ({
   dropouts: number[];
   currentTimeInSeconds: number;
 }) => (
-  <Segment inverted style={{ backgroundColor: "#0e0f10" }}>
+  <Segment inverted style={{ backgroundColor: themeStyles.color.one }}>
     <ParticipantsContainer>
       <ParticipantsGrid>
         {round.top.map((nTop, idxTop) => (
