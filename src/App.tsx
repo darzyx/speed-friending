@@ -111,6 +111,7 @@ const App = () => {
             </Routes>
             <Divider hidden />
             <Divider hidden />
+            <Divider hidden />
             <Image src={imageSVG} size="tiny" centered />
             <Divider hidden />
           </Container>
