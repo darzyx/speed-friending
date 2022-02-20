@@ -1,11 +1,11 @@
 const theme = {
   color: {
     text: "rgb(255, 255, 255)",
-    one: "rgb(14, 15, 16)",
-    two: "rgb(34, 38, 42)",
-    three: "rgb(50, 57, 65)",
-    four: "rgb(75, 85, 93)",
-    five: "rgb(101, 110, 119)",
+    one: "rgb(8, 14, 19)",
+    two: "rgb(23, 30, 37)",
+    three: "rgb(44, 58, 73)",
+    four: "rgb(69, 87, 102)",
+    five: "rgb(95, 113, 131)",
   },
 };
 

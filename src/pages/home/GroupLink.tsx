@@ -23,7 +23,7 @@ const TimeLabel = ({
     onClick={() => onClickTimeLabel(true)}
     {...(userIsAdmin && { color: timeValues.color })}
     style={{
-      backgroundColor: theme.color.four,
+      backgroundColor: theme.color.three,
       color: theme.color.text,
     }}
   >
@@ -86,7 +86,7 @@ const GroupLink = ({
           whiteSpace: "nowrap",
           textAlign: "left",
           padding: "15px 5px 15px 20px",
-          backgroundColor: theme.color.three,
+          backgroundColor: theme.color.four,
           color: theme.color.text,
         }}
         fluid

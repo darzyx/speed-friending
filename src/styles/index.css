@@ -10,9 +10,9 @@ body,
 
 body {
   /* theme.color.one: */
-  background-color: rgb(14, 15, 16);
+  background-color: rgb(8, 14, 19);
   /* theme.color.text */
-  color: #ffffff;
+  color: rgb(255, 255, 255);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
