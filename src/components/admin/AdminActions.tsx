@@ -6,8 +6,8 @@ import { db } from "../../firebase";
 import { GroupWithIdType } from "../../types/group";
 import { RoundType, TimeValuesType } from "../../pages/group/utils";
 import { useState } from "react";
-import ConfirmModal from "./ConfirmModal";
-import DropoutModal from "./DropoutModal";
+import AdminConfirmModal from "./AdminConfirmModal";
+import AdminDropoutModal from "./AdminDropoutModal";
 
 type AdminActionsPropsType = {
   group: GroupWithIdType;
@@ -272,7 +272,7 @@ const AdminActions = ({
             >
               <Icon name="remove user" /> Dropout
             </Button>
-            <DropoutModal
+            <AdminDropoutModal
               group={group}
               openDropoutModal={openDropoutModal}
               setOpenDropoutModal={setOpenDropoutModal}
@@ -301,7 +301,7 @@ const AdminActions = ({
           </Grid.Column>
         </Grid.Row>
       </Grid>
-      <ConfirmModal
+      <AdminConfirmModal
         confirmingAction={confirmingAction}
         onCancelAction={handleCancelAction}
         onConfirmAction={handleConfirmAction}

@@ -7,18 +7,18 @@ import { RoundType } from "../../pages/group/utils";
 import { GroupWithIdType } from "../../types/group";
 import StyledModal from "../blocks/StyledModal";
 
-type DropoutModalPropsType = {
+type AdminDropoutModalPropsType = {
   group: GroupWithIdType;
   openDropoutModal: boolean;
   setOpenDropoutModal: (openDropoutModal: boolean) => void;
   activeRound: RoundType;
 };
-const DropoutModal = ({
+const AdminDropoutModal = ({
   group,
   openDropoutModal,
   setOpenDropoutModal,
   activeRound,
-}: DropoutModalPropsType) => {
+}: AdminDropoutModalPropsType) => {
   const handleToggleDropoutStatus = (n: number) => {
     if (n !== 0) {
       const docRef = doc(db, "groups", group.id);
@@ -64,4 +64,4 @@ const DropoutModal = ({
   );
 };
 
-export default DropoutModal;
+export default AdminDropoutModal;

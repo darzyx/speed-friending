@@ -1,20 +1,20 @@
 import StyledModal from "../blocks/StyledModal";
 import { Button, Grid } from "semantic-ui-react";
 
-type ConfirmModalPropsType = {
+type AdminConfirmModalPropsType = {
   confirmingAction: string;
   onCancelAction: () => void;
   onConfirmAction: () => void;
   openConfirmModal: boolean;
   setOpenConfirmModal: (openConfirmModal: boolean) => void;
 };
-const ConfirmModal = ({
+const AdminConfirmModal = ({
   confirmingAction,
   onCancelAction,
   onConfirmAction,
   openConfirmModal,
   setOpenConfirmModal,
-}: ConfirmModalPropsType) => (
+}: AdminConfirmModalPropsType) => (
   <StyledModal
     header="Are you sure?"
     subheader="Confirm"
@@ -51,4 +51,4 @@ const ConfirmModal = ({
   />
 );
 
-export default ConfirmModal;
+export default AdminConfirmModal;

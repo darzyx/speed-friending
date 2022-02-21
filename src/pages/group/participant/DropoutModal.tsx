@@ -2,18 +2,18 @@ import { Button, Grid, Icon } from "semantic-ui-react";
 
 import StyledModal from "../../../components/blocks/StyledModal";
 
-type ParticipantPropsType = {
+type DropoutModalPropsType = {
   n: number;
   partner: number;
   openHideModal: boolean;
   setOpenHideModal: (openHideModal: boolean) => void;
 };
-const HideModal = ({
+const DropoutModal = ({
   n,
   partner,
   openHideModal,
   setOpenHideModal,
-}: ParticipantPropsType) => (
+}: DropoutModalPropsType) => (
   <StyledModal
     header={`Participant #${n}`}
     subheader={<Icon name="remove user" style={{ margin: "0" }} />}
@@ -38,4 +38,4 @@ const HideModal = ({
   />
 );
 
-export default HideModal;
+export default DropoutModal;

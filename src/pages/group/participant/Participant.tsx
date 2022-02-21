@@ -4,7 +4,7 @@ import { Icon } from "semantic-ui-react";
 import CenterMiddle from "../../../components/blocks/CenterMiddle";
 import theme from "../../../styles/theme";
 import { getParticipantColor } from "../utils";
-import HideModal from "./HideModal";
+import DropoutModal from "./DropoutModal";
 import ZeroModal from "./ZeroModal";
 
 type ParticipantPropsType = {
@@ -83,7 +83,7 @@ const Participant = ({
         openZeroModal={openZeroModal}
         setOpenZeroModal={setOpenZeroModal}
       />
-      <HideModal
+      <DropoutModal
         n={n}
         partner={partner}
         openHideModal={openHideModal}
