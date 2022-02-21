@@ -19,12 +19,10 @@ const Participants = ({
   round,
   dropouts,
   onToggleDropoutStatus,
-  modalView,
 }: {
   round: RoundType;
   dropouts: number[];
   onToggleDropoutStatus?: (n: number) => void;
-  modalView?: boolean;
 }) => (
   <Segment inverted style={{ backgroundColor: theme.color.one }}>
     <ParticipantsContainer>
@@ -37,7 +35,6 @@ const Participants = ({
               dropouts={dropouts}
               partner={round.btm[idxTop]}
               onToggleDropoutStatus={onToggleDropoutStatus}
-              modalView={modalView}
             />
             <Participant
               n={round.btm[idxTop]}
@@ -45,7 +42,6 @@ const Participants = ({
               dropouts={dropouts}
               partner={nTop}
               onToggleDropoutStatus={onToggleDropoutStatus}
-              modalView={modalView}
             />
           </div>
         ))}

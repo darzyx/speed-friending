@@ -35,11 +35,7 @@ const PastRoundsModal = ({
                   <Header inverted as="h3" textAlign="center">
                     {`Round ${index + 1}`}
                   </Header>
-                  <Participants
-                    round={pastRound}
-                    dropouts={group.dropouts}
-                    modalView={true}
-                  />
+                  <Participants round={pastRound} dropouts={group.dropouts} />
                   <Divider hidden={index === 0} />
                 </div>
               ))

@@ -11,7 +11,6 @@ type ParticipantPropsType = {
   partner: number;
   dropouts: number[];
   onToggleDropoutStatus?: (n: number) => void;
-  modalView?: boolean;
 };
 const Participant = ({
   n,
@@ -19,7 +18,6 @@ const Participant = ({
   partner,
   dropouts,
   onToggleDropoutStatus,
-  modalView = false,
 }: ParticipantPropsType) => {
   const [hide, setHide] = useState(dropouts.includes(n));
   const needsClickHandler = onToggleDropoutStatus || (hide && n !== 0);
@@ -45,9 +43,8 @@ const Participant = ({
       inverted
       hideOnScroll
       size="small"
-      disabled={Boolean(onToggleDropoutStatus) || modalView}
       trigger={
-        <div {...(needsClickHandler && { onClick: handleClick })}>
+        <div>
           <CenterMiddle
             style={{
               height: "50px",
@@ -68,6 +65,7 @@ const Participant = ({
               }),
               ...(top && { borderRadius: "5px 5px 0 0" }),
             }}
+            {...(needsClickHandler && { onClick: handleClick })}
           >
             {n === 0 ? (
               <Icon name="ban" size="large" style={{ margin: "0" }} />

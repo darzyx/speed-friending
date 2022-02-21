@@ -46,7 +46,6 @@ const DropoutModal = ({
             round={activeRound}
             onToggleDropoutStatus={handleToggleDropoutStatus}
             dropouts={group.dropouts}
-            modalView={true}
           />
         </div>
       }
