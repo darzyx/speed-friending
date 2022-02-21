@@ -16,13 +16,11 @@ const ZeroModal = ({
     header="Placeholder"
     subheader={<Icon name="ban" style={{ margin: "0" }} />}
     content={
-      <p>
+      <p style={{ textAlign: "center" }}>
         {`This is a placeholder. ` +
           `The group has an odd number of participants, ` +
           `so a different person will have to take a break each round. ` +
-          `Whoever matches with this placeholder ` +
-          `(participant ${partner} this round) ` +
-          `will take a break for the round`}
+          `Participant ${partner} will take a break this round `}
       </p>
     }
     actions={
