@@ -19,9 +19,9 @@ const HideModal = ({
     subheader={<Icon name="remove user" style={{ margin: "0" }} />}
     content={
       <p>
-        {`This participant dropped out, ` +
-          `so ${n}'s partners will have to take a short break. ` +
-          `This means ${partner} takes a break this round`}
+        {`This participant dropped out. ` +
+          `${n}'s partners (participant ${partner} this round) ` +
+          `will take a break for the round`}
       </p>
     }
     actions={
