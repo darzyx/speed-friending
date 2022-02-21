@@ -20,7 +20,7 @@ const HideModal = ({
     content={
       <p style={{ textAlign: "center" }}>
         {`Participant ${n} dropped out, ` +
-          `so participant ${partner} will take a break for this round `}
+          `so participant ${partner} will take a break this round `}
       </p>
     }
     actions={
