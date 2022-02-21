@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Icon, Popup } from "semantic-ui-react";
 
 import CenterMiddle from "../../components/blocks/CenterMiddle";
@@ -30,6 +30,13 @@ const Participant = ({
       setTimeout(() => setHide(true), 1000);
     }
   };
+  useEffect(() => {
+    if (dropouts.includes(n)) {
+      setHide(true);
+    } else {
+      setHide(false);
+    }
+  }, [dropouts, n]);
 
   return (
     <Popup
