@@ -2,7 +2,7 @@ import { Segment } from "semantic-ui-react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 
-import Participant from "./Participant";
+import Participant from "./participant/Participant";
 import { RoundType } from "./utils";
 
 const ParticipantsContainer = styled.div`
