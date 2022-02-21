@@ -167,7 +167,7 @@ const AdminActions = ({
   return (
     <div>
       <Header inverted as="h3" textAlign="center">
-        Time Controls
+        Time
       </Header>
       <Grid>
         <Grid.Row columns={2}>
@@ -222,7 +222,7 @@ const AdminActions = ({
       </Grid>
       <Divider />
       <Header inverted as="h3" textAlign="center" style={{ marginTop: "0" }}>
-        Other Controls
+        Round
       </Header>
       <Grid>
         <Grid.Row columns={2}>
@@ -257,11 +257,17 @@ const AdminActions = ({
             </Button>
           </Grid.Column>
         </Grid.Row>
+      </Grid>
+      <Divider />
+      <Header inverted as="h3" textAlign="center" style={{ marginTop: "0" }}>
+        Advanced
+      </Header>
+      <Grid>
         <Grid.Row columns={2}>
           <Grid.Column>
             <Button
               onClick={() => setOpenDropoutModal(true)}
-              color="yellow"
+              color="purple"
               fluid
             >
               <Icon name="remove user" /> Dropout
