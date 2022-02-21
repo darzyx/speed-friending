@@ -270,7 +270,6 @@ const AdminActions = ({
               group={group}
               openDropoutModal={openDropoutModal}
               setOpenDropoutModal={setOpenDropoutModal}
-              currentTimeInSeconds={currentTimeInSeconds}
               activeRound={activeRound}
             />
           </Grid.Column>

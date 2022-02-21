@@ -12,19 +12,17 @@ const ParticipantsContainer = styled.div`
 
 const ParticipantsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
   grid-gap: 8px;
 `;
 const Participants = ({
   round,
   dropouts,
-  currentTimeInSeconds,
   onToggleDropoutStatus,
   modalView,
 }: {
   round: RoundType;
   dropouts: number[];
-  currentTimeInSeconds: number;
   onToggleDropoutStatus?: (n: number) => void;
   modalView?: boolean;
 }) => (
@@ -38,7 +36,6 @@ const Participants = ({
               top={true}
               dropouts={dropouts}
               partner={round.btm[idxTop]}
-              currentTimeInSeconds={currentTimeInSeconds}
               onToggleDropoutStatus={onToggleDropoutStatus}
               modalView={modalView}
             />
@@ -47,7 +44,6 @@ const Participants = ({
               top={false}
               dropouts={dropouts}
               partner={nTop}
-              currentTimeInSeconds={currentTimeInSeconds}
               onToggleDropoutStatus={onToggleDropoutStatus}
               modalView={modalView}
             />

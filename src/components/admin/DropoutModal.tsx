@@ -11,14 +11,12 @@ type DropoutModalPropsType = {
   group: GroupWithIdType;
   openDropoutModal: boolean;
   setOpenDropoutModal: (openDropoutModal: boolean) => void;
-  currentTimeInSeconds: number;
   activeRound: RoundType;
 };
 const DropoutModal = ({
   group,
   openDropoutModal,
   setOpenDropoutModal,
-  currentTimeInSeconds,
   activeRound,
 }: DropoutModalPropsType) => {
   const handleToggleDropoutStatus = (n: number) => {
@@ -47,7 +45,6 @@ const DropoutModal = ({
           <Participants
             round={activeRound}
             onToggleDropoutStatus={handleToggleDropoutStatus}
-            currentTimeInSeconds={currentTimeInSeconds}
             dropouts={group.dropouts}
             modalView={true}
           />

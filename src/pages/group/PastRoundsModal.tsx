@@ -11,7 +11,6 @@ type PastRoundsModalPropsType = {
   activeRound: number;
   openPastRoundsModal: boolean;
   setOpenPastRoundsModal: (openPastRoundsModal: boolean) => void;
-  currentTimeInSeconds: number;
 };
 const PastRoundsModal = ({
   game,
@@ -19,7 +18,6 @@ const PastRoundsModal = ({
   activeRound,
   openPastRoundsModal,
   setOpenPastRoundsModal,
-  currentTimeInSeconds,
 }: PastRoundsModalPropsType) => {
   const pastRounds = Object.values(game).slice(0, Number(activeRound) - 1);
   const hasPastRounds = Array.isArray(pastRounds) && pastRounds.length > 0;
@@ -40,7 +38,6 @@ const PastRoundsModal = ({
                   <Participants
                     round={pastRound}
                     dropouts={group.dropouts}
-                    currentTimeInSeconds={currentTimeInSeconds}
                     modalView={true}
                   />
                   <Divider hidden={index === 0} />
