@@ -80,9 +80,9 @@ const Participant = ({
           <p>
             {`This is just a placeholder. ` +
               `The group has an odd number of participants, ` +
-              `so one person will have to take a break each round. ` +
+              `so a different person will have to take a break each round. ` +
               `Whoever matches with this placeholder ` +
-              `(in this case, participant ${partner}) ` +
+              `(in this round, participant ${partner}) ` +
               `will be that person`}
           </p>
         }
