@@ -27,7 +27,7 @@ const Modal = styled(SemanticModal).attrs({ closeIcon: true })`
 
 type StyledModalPropsType = {
   header?: string | JSX.Element;
-  subheader?: string;
+  subheader?: string | JSX.Element;
   content?: JSX.Element;
   actions?: JSX.Element;
   openModal: boolean;

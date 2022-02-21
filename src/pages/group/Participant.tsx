@@ -1,30 +1,37 @@
 import { useEffect, useState } from "react";
-import { Icon } from "semantic-ui-react";
+import { Button, Grid, Icon } from "semantic-ui-react";
 
 import CenterMiddle from "../../components/blocks/CenterMiddle";
+import StyledModal from "../../components/blocks/StyledModal";
 import theme from "../../styles/theme";
 import { getParticipantColor } from "./utils";
 
 type ParticipantPropsType = {
   n: number;
   top?: boolean;
+  partner: number;
   dropouts: number[];
   onToggleDropoutStatus?: (n: number) => void;
 };
 const Participant = ({
   n,
   top,
+  partner,
   dropouts,
   onToggleDropoutStatus,
 }: ParticipantPropsType) => {
+  const [openZeroModal, setOpenZeroModal] = useState(false);
   const [hide, setHide] = useState(dropouts.includes(n));
-  const needsClickHandler = onToggleDropoutStatus || (hide && n !== 0);
   const handleClick = () => {
-    if (onToggleDropoutStatus) {
-      onToggleDropoutStatus(n);
-    } else if (hide && n !== 0) {
-      setHide(false);
-      setTimeout(() => setHide(true), 1000);
+    if (n === 0 && !openZeroModal) {
+      setOpenZeroModal(true);
+    } else {
+      if (onToggleDropoutStatus) {
+        onToggleDropoutStatus(n);
+      } else if (hide) {
+        setHide(false);
+        setTimeout(() => setHide(true), 1000);
+      }
     }
   };
 
@@ -38,6 +45,7 @@ const Participant = ({
 
   return (
     <CenterMiddle
+      onClick={handleClick}
       style={{
         height: "50px",
         margin: "0",
@@ -57,7 +65,6 @@ const Participant = ({
         }),
         ...(top && { borderRadius: "5px 5px 0 0" }),
       }}
-      {...(needsClickHandler && { onClick: handleClick })}
     >
       {n === 0 ? (
         <Icon name="ban" size="large" style={{ margin: "0" }} />
@@ -66,6 +73,40 @@ const Participant = ({
       ) : (
         n
       )}
+      <StyledModal
+        header="Placeholder"
+        subheader={<Icon name="ban" style={{ margin: "0" }} />}
+        content={
+          <p>
+            {`This is just a placeholder. ` +
+              `The group has an odd number of participants, ` +
+              `so one person will have to take a break each round. ` +
+              `Whoever matches with this placeholder ` +
+              `(in this case, participant ${partner}) ` +
+              `will be that person`}
+          </p>
+        }
+        actions={
+          <Grid>
+            <Grid.Row columns={1}>
+              <Grid.Column textAlign="center">
+                <Button
+                  onClick={() => {
+                    console.log("CLOSING MODAL");
+
+                    setOpenZeroModal(false);
+                  }}
+                >
+                  Close
+                </Button>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        }
+        openModal={openZeroModal}
+        setOpenModal={setOpenZeroModal}
+        size="tiny"
+      />
     </CenterMiddle>
   );
 };
