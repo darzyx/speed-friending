@@ -4,6 +4,7 @@ import { Icon } from "semantic-ui-react";
 import CenterMiddle from "../../../components/blocks/CenterMiddle";
 import theme from "../../../styles/theme";
 import { getParticipantColor } from "../utils";
+import HideModal from "./HideModal";
 import ZeroModal from "./ZeroModal";
 
 type ParticipantPropsType = {
@@ -21,6 +22,7 @@ const Participant = ({
   onToggleDropoutStatus,
 }: ParticipantPropsType) => {
   const [openZeroModal, setOpenZeroModal] = useState(false);
+  const [openHideModal, setOpenHideModal] = useState(false);
   const [hide, setHide] = useState(dropouts.includes(n));
   const handleClick = () => {
     if (n === 0 && !openZeroModal) {
@@ -28,9 +30,8 @@ const Participant = ({
     } else {
       if (onToggleDropoutStatus) {
         onToggleDropoutStatus(n);
-      } else if (hide) {
-        setHide(false);
-        setTimeout(() => setHide(true), 1000);
+      } else if (hide && !openHideModal) {
+        setOpenHideModal(true);
       }
     }
   };
@@ -79,6 +80,12 @@ const Participant = ({
         partner={partner}
         openZeroModal={openZeroModal}
         setOpenZeroModal={setOpenZeroModal}
+      />
+      <HideModal
+        n={n}
+        partner={partner}
+        openHideModal={openHideModal}
+        setOpenHideModal={setOpenHideModal}
       />
     </div>
   );
