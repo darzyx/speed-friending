@@ -21,7 +21,7 @@ const DropoutModal = ({
   currentTimeInSeconds,
   activeRound,
 }: DropoutModalPropsType) => {
-  const handleClickParticipant = (n: number) => {
+  const handleToggleDropoutStatus = (n: number) => {
     if (n !== 0) {
       const docRef = doc(db, "groups", group.id);
       const payload = {
@@ -46,9 +46,10 @@ const DropoutModal = ({
           </p>
           <Participants
             round={activeRound}
-            onClickParticipant={handleClickParticipant}
+            onToggleDropoutStatus={handleToggleDropoutStatus}
             currentTimeInSeconds={currentTimeInSeconds}
             dropouts={group.dropouts}
+            modalView={true}
           />
         </div>
       }

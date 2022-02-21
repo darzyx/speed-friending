@@ -17,14 +17,16 @@ const ParticipantsGrid = styled.div`
 `;
 const Participants = ({
   round,
-  onClickParticipant,
   dropouts,
   currentTimeInSeconds,
+  onToggleDropoutStatus,
+  modalView,
 }: {
   round: RoundType;
-  onClickParticipant?: (n: number) => void;
   dropouts: number[];
   currentTimeInSeconds: number;
+  onToggleDropoutStatus?: (n: number) => void;
+  modalView?: boolean;
 }) => (
   <Segment inverted style={{ backgroundColor: theme.color.one }}>
     <ParticipantsContainer>
@@ -34,16 +36,20 @@ const Participants = ({
             <Participant
               n={nTop}
               top={true}
-              onClickParticipant={onClickParticipant}
               dropouts={dropouts}
+              partner={round.btm[idxTop]}
               currentTimeInSeconds={currentTimeInSeconds}
+              onToggleDropoutStatus={onToggleDropoutStatus}
+              modalView={modalView}
             />
             <Participant
               n={round.btm[idxTop]}
               top={false}
-              onClickParticipant={onClickParticipant}
               dropouts={dropouts}
+              partner={nTop}
               currentTimeInSeconds={currentTimeInSeconds}
+              onToggleDropoutStatus={onToggleDropoutStatus}
+              modalView={modalView}
             />
           </div>
         ))}

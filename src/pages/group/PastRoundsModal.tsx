@@ -41,6 +41,7 @@ const PastRoundsModal = ({
                     round={pastRound}
                     dropouts={group.dropouts}
                     currentTimeInSeconds={currentTimeInSeconds}
+                    modalView={true}
                   />
                   <Divider hidden={index === 0} />
                 </div>
