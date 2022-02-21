@@ -37,29 +37,19 @@ export const getGame = (nParticipants: number, maxRounds: number = 0) => {
 
 export const getParticipantColor = (n: number) => {
   if (n === 0) {
-    return "#181a1b"; // Grey
-  } else if (n % 10 === 0) {
-    return "#ffffff"; // White
-  } else if (n % 10 === 9) {
-    return "#f032e6"; // Magenta
-  } else if (n % 10 === 8) {
-    return "#911eb4"; // Purple
-  } else if (n % 10 === 7) {
-    return "#bfef45"; // Lime
-  } else if (n % 10 === 6) {
-    return "#42d4f4"; // Cyan
-  } else if (n % 10 === 5) {
-    return "#e6194B"; // Red
-  } else if (n % 10 === 4) {
-    return "#ffe119"; // Yellow
-  } else if (n % 10 === 3) {
-    return "#4363d8"; // Blue
-  } else if (n % 10 === 2) {
-    return "#f58231"; // Orange
-  } else if (n % 10 === 1) {
-    return "#3cb44b"; // Green
+    return "#181a1b"; // Black
+  } else if (n % 5 === 0) {
+    return "#648FFF"; // Blue
+  } else if (n % 5 === 4) {
+    return "#785EF0"; // Purple
+  } else if (n % 5 === 3) {
+    return "#DC267F"; // Pink
+  } else if (n % 5 === 2) {
+    return "#FE6100"; // Orange
+  } else if (n % 5 === 1) {
+    return "#FFB000"; // Yellow
   } else {
-    return "#a9a9a9"; // Grey
+    return "#181a1b"; // Black
   }
 };
 
