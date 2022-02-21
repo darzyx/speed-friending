@@ -22,7 +22,7 @@ const ZeroModal = ({
           `so a different person will have to take a break each round. ` +
           `Whoever matches with this placeholder ` +
           `(in this round, participant ${partner}) ` +
-          `will be that person`}
+          `will take a break`}
       </p>
     }
     actions={
