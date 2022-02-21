@@ -41,7 +41,7 @@ export const getParticipantColor = (n: number) => {
   } else if (n % 5 === 0) {
     return "#648FFF"; // Blue
   } else if (n % 5 === 4) {
-    return "#785EF0"; // Purple
+    return "#604AC5"; // Purple
   } else if (n % 5 === 3) {
     return "#DC267F"; // Pink
   } else if (n % 5 === 2) {
