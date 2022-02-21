@@ -4,9 +4,11 @@ import styled from "styled-components";
 import CenterMiddle, {
   centerMiddleCSS,
 } from "../../components/blocks/CenterMiddle";
-import { Divider, Header } from "semantic-ui-react";
+import { Divider, Header, Segment } from "semantic-ui-react";
 import AdminSignInForm from "./AdminSignInForm";
 import { ColorfulLink } from "../../components/blocks/ColorfulText";
+import theme from "../../styles/theme";
+import { Link } from "react-router-dom";
 
 const AdminContainer = styled.div`
   ${centerMiddleCSS}
@@ -14,8 +16,11 @@ const AdminContainer = styled.div`
   padding: 0;
 `;
 
-type AdminPropsType = { setUserIsAdmin: (userIsAdmin: boolean) => void };
-const Admin = ({ setUserIsAdmin }: AdminPropsType) => {
+type AdminPropsType = {
+  userIsAdmin: boolean;
+  setUserIsAdmin: (userIsAdmin: boolean) => void;
+};
+const Admin = ({ userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
   // Reset scroll on component mount
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -27,12 +32,31 @@ const Admin = ({ setUserIsAdmin }: AdminPropsType) => {
         <Header.Subheader style={{ margin: "7px" }}>Admin</Header.Subheader>
         Enter Password
       </Header>
-      <AdminSignInForm setUserIsAdmin={setUserIsAdmin} />
+      {userIsAdmin ? (
+        <Segment
+          inverted
+          style={{
+            width: "100%",
+            maxWidth: "500px",
+            color: theme.color.text,
+            backgroundColor: theme.color.three,
+          }}
+        >
+          <CenterMiddle>
+            <p style={{ textAlign: "center" }}>Already signed in as admin</p>
+            <Link to="/home">&larr; Go Home</Link>
+          </CenterMiddle>
+        </Segment>
+      ) : (
+        <AdminSignInForm setUserIsAdmin={setUserIsAdmin} />
+      )}
       <Divider hidden />
-      <CenterMiddle>
-        <p style={{ textAlign: "center" }}>Not an administrator?</p>
-        <ColorfulLink to="/"> &larr; Go home to select group</ColorfulLink>
-      </CenterMiddle>
+      {!userIsAdmin && (
+        <CenterMiddle>
+          <p style={{ textAlign: "center" }}>Not an administrator?</p>
+          <ColorfulLink to="/"> &larr; Go home to select group</ColorfulLink>
+        </CenterMiddle>
+      )}
     </AdminContainer>
   );
 };

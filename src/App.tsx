@@ -109,7 +109,12 @@ const App = () => {
               />
               <Route
                 path="admin"
-                element={<Admin setUserIsAdmin={setUserIsAdmin} />}
+                element={
+                  <Admin
+                    userIsAdmin={userIsAdmin}
+                    setUserIsAdmin={setUserIsAdmin}
+                  />
+                }
               />
             </Routes>
             <Divider hidden />
