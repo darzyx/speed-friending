@@ -82,7 +82,7 @@ const Participant = ({
       <Popup.Header>{n === 0 ? "Placeholder" : n}</Popup.Header>
       <Popup.Content style={{ maxWidth: "100px" }}>
         {n === 0
-          ? "Placeholder"
+          ? "Group has odd number of participants. Partner takes a break"
           : partner === 0
           ? `No partner this round. ${n} takes a break`
           : dropouts.includes(n)
