@@ -8,6 +8,7 @@ MID PRIORITY
 
 - Add admin auth login feature (or change password)
 - Update info modal copy
+- Placeholder if admin already logged in on admin page
 
 LOW PRIORITY
 
