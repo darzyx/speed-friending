@@ -95,7 +95,7 @@ const Group = ({
           <Divider hidden />
           <CenterMiddle>
             <Button onClick={() => setOpenAdminModal(true)} primary>
-              <Icon name="sliders" /> Manage Group
+              <Icon name="settings" /> Manage Group
             </Button>
           </CenterMiddle>
           <AdminModal
