@@ -22,6 +22,7 @@ const Participant = ({
   modalView = false,
 }: ParticipantPropsType) => {
   const [hide, setHide] = useState(dropouts.includes(n));
+  const needsClickHandler = onToggleDropoutStatus || (hide && n !== 0);
   const handleClick = () => {
     if (onToggleDropoutStatus) {
       onToggleDropoutStatus(n);
@@ -30,6 +31,7 @@ const Participant = ({
       setTimeout(() => setHide(true), 1000);
     }
   };
+
   useEffect(() => {
     if (dropouts.includes(n)) {
       setHide(true);
@@ -47,7 +49,6 @@ const Participant = ({
       trigger={
         <div>
           <CenterMiddle
-            onClick={handleClick}
             style={{
               height: "50px",
               margin: "0",
@@ -67,6 +68,7 @@ const Participant = ({
               }),
               ...(top && { borderRadius: "5px 5px 0 0" }),
             }}
+            {...(needsClickHandler && { onClick: handleClick })}
           >
             {n === 0 ? (
               <Icon name="ban" size="large" style={{ margin: "0" }} />
