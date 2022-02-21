@@ -33,14 +33,12 @@ const Participants = ({
               n={nTop}
               top={true}
               dropouts={dropouts}
-              partner={round.btm[idxTop]}
               onToggleDropoutStatus={onToggleDropoutStatus}
             />
             <Participant
               n={round.btm[idxTop]}
               top={false}
               dropouts={dropouts}
-              partner={nTop}
               onToggleDropoutStatus={onToggleDropoutStatus}
             />
           </div>
