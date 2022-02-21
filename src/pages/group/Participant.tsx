@@ -47,7 +47,7 @@ const Participant = ({
       size="small"
       disabled={Boolean(onToggleDropoutStatus) || modalView}
       trigger={
-        <div>
+        <div {...(needsClickHandler && { onClick: handleClick })}>
           <CenterMiddle
             style={{
               height: "50px",
@@ -68,7 +68,6 @@ const Participant = ({
               }),
               ...(top && { borderRadius: "5px 5px 0 0" }),
             }}
-            {...(needsClickHandler && { onClick: handleClick })}
           >
             {n === 0 ? (
               <Icon name="ban" size="large" style={{ margin: "0" }} />
