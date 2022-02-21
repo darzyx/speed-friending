@@ -21,7 +21,7 @@ const ZeroModal = ({
           `The group has an odd number of participants, ` +
           `so a different person will have to take a break each round. ` +
           `Whoever matches with this placeholder ` +
-          `(in this round, participant ${partner}) ` +
+          `(participant ${partner} this round) ` +
           `will take a break`}
       </p>
     }
