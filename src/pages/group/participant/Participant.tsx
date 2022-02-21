@@ -24,15 +24,17 @@ const Participant = ({
   const [openZeroModal, setOpenZeroModal] = useState(false);
   const [openHideModal, setOpenHideModal] = useState(false);
   const [hide, setHide] = useState(dropouts.includes(n));
+  const hasAction =
+    (n === 0 && !openZeroModal) ||
+    onToggleDropoutStatus ||
+    (hide && !openHideModal);
   const handleClick = () => {
     if (n === 0 && !openZeroModal) {
       setOpenZeroModal(true);
-    } else {
-      if (onToggleDropoutStatus) {
-        onToggleDropoutStatus(n);
-      } else if (hide && !openHideModal) {
-        setOpenHideModal(true);
-      }
+    } else if (onToggleDropoutStatus) {
+      onToggleDropoutStatus(n);
+    } else if (hide && !openHideModal) {
+      setOpenHideModal(true);
     }
   };
 
@@ -47,7 +49,6 @@ const Participant = ({
   return (
     <div>
       <CenterMiddle
-        onClick={handleClick}
         style={{
           height: "50px",
           margin: "0",
@@ -57,7 +58,7 @@ const Participant = ({
           borderRadius: "0 0 5px 5px",
           boxSizing: "border-box",
           userSelect: "none",
-          cursor: "pointer",
+          cursor: hasAction ? "pointer" : "auto",
           color: theme.color.one,
           backgroundColor: getParticipantColor(n),
           border: `1px solid ${theme.color.two}`,
@@ -67,6 +68,7 @@ const Participant = ({
           }),
           ...(top && { borderRadius: "5px 5px 0 0" }),
         }}
+        {...(hasAction && { onClick: handleClick })}
       >
         {n === 0 ? (
           <Icon name="ban" size="large" style={{ margin: "0" }} />
