@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Icon, Popup } from "semantic-ui-react";
+import { Divider, Icon, Popup } from "semantic-ui-react";
 
 import CenterMiddle from "../../components/blocks/CenterMiddle";
 import theme from "../../styles/theme";
@@ -81,15 +81,19 @@ const Participant = ({
     >
       <Popup.Header>{n === 0 ? "Placeholder" : n}</Popup.Header>
       <Popup.Content style={{ maxWidth: "100px" }}>
-        {n === 0
-          ? "Group has odd number of participants. Partner takes a break"
-          : partner === 0
-          ? `No partner this round. ${n} takes a break`
-          : dropouts.includes(n)
-          ? "Dropped out"
-          : dropouts.includes(partner)
-          ? `Partner dropped out. ${n} takes a break this round`
-          : `Partnered with number ${partner}`}
+        <Divider inverted fitted />
+        <p style={{ margin: "5px 0 0 0", padding: "0" }}>
+          {n === 0
+            ? `Group has odd number of participants. ` +
+              `${partner} takes a break this round`
+            : partner === 0
+            ? `No assigned partner. ${n} takes a break this round`
+            : dropouts.includes(n)
+            ? `Participant ${n} dropped out`
+            : dropouts.includes(partner)
+            ? `Partner dropped out. ${n} takes a break this round`
+            : `Partnered with number ${partner}`}
+        </p>
       </Popup.Content>
     </Popup>
   );
