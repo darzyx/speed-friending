@@ -12,7 +12,7 @@ const ParticipantsContainer = styled.div`
 
 const ParticipantsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
   grid-gap: 8px;
 `;
 const Participants = ({
