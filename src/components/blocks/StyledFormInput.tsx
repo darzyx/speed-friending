@@ -7,6 +7,7 @@ const StyledFormInput = styled(Form.Input)`
     input {
       background-color: ${({ theme }) => theme.color.two};
       color: ${({ theme }) => theme.color.text};
+      border-color: ${({ theme }) => theme.color.four};
 
       &::placeholder {
         color: ${({ theme }) => theme.color.five};
