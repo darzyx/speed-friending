@@ -5,14 +5,14 @@ import StyledModal from "../../../components/blocks/StyledModal";
 type DropoutModalPropsType = {
   n: number;
   partner: number;
-  openHideModal: boolean;
-  setOpenHideModal: (openHideModal: boolean) => void;
+  openDropoutModal: boolean;
+  setOpenDropoutModal: (openDropoutModal: boolean) => void;
 };
 const DropoutModal = ({
   n,
   partner,
-  openHideModal,
-  setOpenHideModal,
+  openDropoutModal,
+  setOpenDropoutModal,
 }: DropoutModalPropsType) => (
   <StyledModal
     header={`Participant #${n}`}
@@ -27,13 +27,13 @@ const DropoutModal = ({
       <Grid>
         <Grid.Row columns={1}>
           <Grid.Column textAlign="center">
-            <Button onClick={() => setOpenHideModal(false)}>Close</Button>
+            <Button onClick={() => setOpenDropoutModal(false)}>Close</Button>
           </Grid.Column>
         </Grid.Row>
       </Grid>
     }
-    openModal={openHideModal}
-    setOpenModal={setOpenHideModal}
+    openModal={openDropoutModal}
+    setOpenModal={setOpenDropoutModal}
     size="tiny"
   />
 );

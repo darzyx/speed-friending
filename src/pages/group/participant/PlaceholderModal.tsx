@@ -4,13 +4,13 @@ import StyledModal from "../../../components/blocks/StyledModal";
 
 type ParticipantPropsType = {
   partner: number;
-  openZeroModal: boolean;
-  setOpenZeroModal: (openZeroModal: boolean) => void;
+  openPlaceholderModal: boolean;
+  setOpenPlaceholderModal: (openPlaceholderModal: boolean) => void;
 };
-const ZeroModal = ({
+const PlaceholderModal = ({
   partner,
-  openZeroModal,
-  setOpenZeroModal,
+  openPlaceholderModal,
+  setOpenPlaceholderModal,
 }: ParticipantPropsType) => (
   <StyledModal
     header="Placeholder"
@@ -27,15 +27,17 @@ const ZeroModal = ({
       <Grid>
         <Grid.Row columns={1}>
           <Grid.Column textAlign="center">
-            <Button onClick={() => setOpenZeroModal(false)}>Close</Button>
+            <Button onClick={() => setOpenPlaceholderModal(false)}>
+              Close
+            </Button>
           </Grid.Column>
         </Grid.Row>
       </Grid>
     }
-    openModal={openZeroModal}
-    setOpenModal={setOpenZeroModal}
+    openModal={openPlaceholderModal}
+    setOpenModal={setOpenPlaceholderModal}
     size="tiny"
   />
 );
 
-export default ZeroModal;
+export default PlaceholderModal;

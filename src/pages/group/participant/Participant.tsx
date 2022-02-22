@@ -5,7 +5,7 @@ import CenterMiddle from "../../../components/blocks/CenterMiddle";
 import theme from "../../../styles/theme";
 import { getParticipantColor } from "../utils";
 import DropoutModal from "./DropoutModal";
-import ZeroModal from "./ZeroModal";
+import PlaceholderModal from "./PlaceholderModal";
 
 type ParticipantPropsType = {
   n: number;
@@ -21,20 +21,20 @@ const Participant = ({
   dropouts,
   onToggleDropoutStatus,
 }: ParticipantPropsType) => {
-  const [openZeroModal, setOpenZeroModal] = useState(false);
-  const [openHideModal, setOpenHideModal] = useState(false);
+  const [openPlaceholderModal, setOpenPlaceholderModal] = useState(false);
+  const [openDropoutModal, setOpenDropoutModal] = useState(false);
   const [hide, setHide] = useState(dropouts.includes(n));
   const hasAction =
-    (n === 0 && !openZeroModal) ||
+    (n === 0 && !openPlaceholderModal) ||
     onToggleDropoutStatus ||
-    (hide && !openHideModal);
+    (hide && !openDropoutModal);
   const handleClick = () => {
-    if (n === 0 && !openZeroModal) {
-      setOpenZeroModal(true);
+    if (n === 0 && !openPlaceholderModal) {
+      setOpenPlaceholderModal(true);
     } else if (onToggleDropoutStatus) {
       onToggleDropoutStatus(n);
-    } else if (hide && !openHideModal) {
-      setOpenHideModal(true);
+    } else if (hide && !openDropoutModal) {
+      setOpenDropoutModal(true);
     }
   };
 
@@ -78,16 +78,16 @@ const Participant = ({
           n
         )}
       </CenterMiddle>
-      <ZeroModal
+      <PlaceholderModal
         partner={partner}
-        openZeroModal={openZeroModal}
-        setOpenZeroModal={setOpenZeroModal}
+        openPlaceholderModal={openPlaceholderModal}
+        setOpenPlaceholderModal={setOpenPlaceholderModal}
       />
       <DropoutModal
         n={n}
         partner={partner}
-        openHideModal={openHideModal}
-        setOpenHideModal={setOpenHideModal}
+        openDropoutModal={openDropoutModal}
+        setOpenDropoutModal={setOpenDropoutModal}
       />
     </div>
   );
