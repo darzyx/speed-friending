@@ -1,10 +1,10 @@
 import styled, { keyframes } from "styled-components";
 
 const backgroundColorChange = keyframes`
-  0% { color: #648FFF; }
-  33% { color: #604AC5; }
-  66% { color: #604AC5; }
-  100% { color: #DC267F; }
+  0% { background-color: #648FFF; }
+  33% { background-color: #604AC5; }
+  66% { background-color: #604AC5; }
+  100% { background-color: #DC267F; }
 `;
 
 const StyledDiv = styled.div`
