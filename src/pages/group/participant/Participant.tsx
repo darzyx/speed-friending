@@ -6,6 +6,7 @@ import theme from "../../../styles/theme";
 import { getParticipantColor } from "../utils";
 import DropoutModal from "./DropoutModal";
 import PlaceholderModal from "./PlaceholderModal";
+import NoPartnerModal from "./NoPartnerModal";
 
 type ParticipantPropsType = {
   n: number;
@@ -23,28 +24,44 @@ const Participant = ({
 }: ParticipantPropsType) => {
   const [openPlaceholderModal, setOpenPlaceholderModal] = useState(false);
   const [openDropoutModal, setOpenDropoutModal] = useState(false);
-  const [hide, setHide] = useState(dropouts.includes(n));
+  const [openNoPartnerModal, setOpenNoPartnerModal] = useState(false);
+  const [isDropout, setIsDropout] = useState(dropouts.includes(n));
+  const [partnerIsDropout, setPartnerIsDropout] = useState(
+    dropouts.includes(partner)
+  );
   const hasAction =
     (n === 0 && !openPlaceholderModal) ||
     onToggleDropoutStatus ||
-    (hide && !openDropoutModal);
+    (isDropout && !openDropoutModal) ||
+    ((partnerIsDropout || partner === 0) && !openNoPartnerModal);
   const handleClick = () => {
     if (n === 0 && !openPlaceholderModal) {
       setOpenPlaceholderModal(true);
     } else if (onToggleDropoutStatus) {
       onToggleDropoutStatus(n);
-    } else if (hide && !openDropoutModal) {
+    } else if (isDropout && !openDropoutModal) {
       setOpenDropoutModal(true);
+    } else if ((partnerIsDropout || partner === 0) && !openNoPartnerModal) {
+      setOpenNoPartnerModal(true);
     }
   };
 
+  // Keep up to date when admin changes dropout status:
   useEffect(() => {
     if (dropouts.includes(n)) {
-      setHide(true);
+      setIsDropout(true);
     } else {
-      setHide(false);
+      setIsDropout(false);
     }
   }, [dropouts, n]);
+
+  useEffect(() => {
+    if (dropouts.includes(partner)) {
+      setPartnerIsDropout(true);
+    } else {
+      setPartnerIsDropout(false);
+    }
+  }, [dropouts, partner]);
 
   return (
     <div>
@@ -62,7 +79,7 @@ const Participant = ({
           color: theme.color.one,
           backgroundColor: getParticipantColor(n),
           border: `1px solid ${theme.color.two}`,
-          ...((hide || n === 0) && {
+          ...((isDropout || n === 0) && {
             color: theme.color.text,
             backgroundColor: theme.color.three,
           }),
@@ -72,7 +89,7 @@ const Participant = ({
       >
         {n === 0 ? (
           <Icon name="ban" size="large" style={{ margin: "0" }} />
-        ) : hide ? (
+        ) : isDropout ? (
           <Icon name="remove user" size="large" style={{ margin: "0" }} />
         ) : (
           n
@@ -88,6 +105,12 @@ const Participant = ({
         partner={partner}
         openDropoutModal={openDropoutModal}
         setOpenDropoutModal={setOpenDropoutModal}
+      />
+      <NoPartnerModal
+        n={n}
+        partner={partner}
+        openNoPartnerModal={openNoPartnerModal}
+        setOpenNoPartnerModal={setOpenNoPartnerModal}
       />
     </div>
   );

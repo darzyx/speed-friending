@@ -18,10 +18,20 @@ const NoPartnerModal = ({
     header={`Participant #${n}`}
     subheader="No Partner For"
     content={
-      <p style={{ textAlign: "center" }}>
-        {`Participant ${partner} dropped out, ` +
-          `so participant ${n} will take a break this round `}
-      </p>
+      <div>
+        {partner === 0 ? (
+          <p style={{ textAlign: "center" }}>
+            {`This group has an odd number of participants, ` +
+              `so a different person will have to take a break each round. ` +
+              `Participant ${n} takes a break this round `}
+          </p>
+        ) : (
+          <p style={{ textAlign: "center" }}>
+            {`Participant ${partner} dropped out, ` +
+              `so participant ${n} will take a break this round `}
+          </p>
+        )}
+      </div>
     }
     actions={
       <Grid>
