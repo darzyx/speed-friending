@@ -27,31 +27,25 @@ const CreateGroupForm = ({
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
+  const [nameError, setNameError] = useState(false);
   const handleChangeName = (
     e: ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
   ) => {
     if (typeof value === "string" && value.length <= maxNameLength) {
       setName(value);
-    }
-  };
 
-  const [roundDuration, setRoundDuration] = useState("300");
-  const handleChangeRoundDuration = (
-    e: ChangeEvent<HTMLInputElement>,
-    { value }: InputOnChangeData
-  ) => {
-    const numberValue = Number(value);
-    if (
-      typeof value === "string" &&
-      (!Number.isNaN(numberValue) || value === "") &&
-      numberValue <= maxRoundDuration
-    ) {
-      setRoundDuration(value);
+      // Validate
+      if (value.length < 1) {
+        setNameError(true);
+      } else {
+        setNameError(false);
+      }
     }
   };
 
   const [participantCount, setParticipantCount] = useState("");
+  const [participantCountError, setParticipantCountError] = useState(false);
   const handleChangeParticipantCount = (
     e: ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
@@ -59,15 +53,48 @@ const CreateGroupForm = ({
     const numberValue = Number(value);
     if (
       typeof value === "string" &&
+      value.length <= 3 &&
       (!Number.isNaN(numberValue) || value === "") &&
       numberValue <= maxParticipants
     ) {
       setParticipantCount(value);
+
+      // Validate
+      if (Number.isNaN(numberValue) || numberValue < 2) {
+        setParticipantCountError(true);
+      } else {
+        setParticipantCountError(false);
+      }
+    }
+  };
+
+  const [roundDuration, setRoundDuration] = useState("300");
+  const [roundDurationError, setRoundDurationError] = useState(false);
+  const handleChangeRoundDuration = (
+    e: ChangeEvent<HTMLInputElement>,
+    { value }: InputOnChangeData
+  ) => {
+    const numberValue = Number(value);
+    if (
+      typeof value === "string" &&
+      value.length <= 4 &&
+      (!Number.isNaN(numberValue) || value === "") &&
+      numberValue <= maxRoundDuration
+    ) {
+      setRoundDuration(value);
+
+      // Validate
+      if (Number.isNaN(numberValue) || numberValue < 30) {
+        setRoundDurationError(true);
+      } else {
+        setRoundDurationError(false);
+      }
     }
   };
 
   const maxRounds = getMaxRounds(Number(participantCount));
   const [roundCount, setRoundCount] = useState("");
+  const [roundCountError, setRoundCountError] = useState(false);
   const handleChangeRoundCount = (
     e: ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
@@ -75,10 +102,18 @@ const CreateGroupForm = ({
     const numberValue = Number(value);
     if (
       typeof value === "string" &&
+      value.length <= 2 &&
       (!Number.isNaN(numberValue) || value === "") &&
       numberValue <= maxRounds
     ) {
       setRoundCount(value);
+
+      // Validate
+      if (Number.isNaN(numberValue) || numberValue < 1) {
+        setRoundCountError(true);
+      } else {
+        setRoundCountError(false);
+      }
     }
   };
 
@@ -119,6 +154,7 @@ const CreateGroupForm = ({
             onChange={handleChangeName}
             required
             width={10}
+            error={nameError}
           />
           <StyledFormInput
             name="participant_count"
@@ -128,6 +164,7 @@ const CreateGroupForm = ({
             onChange={handleChangeParticipantCount}
             required
             width={6}
+            error={participantCountError}
           />
         </Form.Group>
         <Form.Group>
@@ -139,6 +176,7 @@ const CreateGroupForm = ({
             onChange={handleChangeRoundDuration}
             required
             width={8}
+            error={roundDurationError}
           />
           <StyledFormInput
             name="round_count"
@@ -148,6 +186,7 @@ const CreateGroupForm = ({
             onChange={handleChangeRoundCount}
             required
             width={8}
+            error={roundCountError}
           />
         </Form.Group>
         <Divider hidden />
