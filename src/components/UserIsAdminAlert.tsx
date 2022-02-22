@@ -11,7 +11,7 @@ const StyledDiv = styled.div`
   visibility: ${({ userIsAdmin }: { userIsAdmin: boolean }) =>
     userIsAdmin ? "initial" : "hidden"};
   animation-name: ${backgroundColorChange};
-  animation-duration: 3s;
+  animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: ease-in-out;

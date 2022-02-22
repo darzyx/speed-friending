@@ -11,7 +11,7 @@ const colorChange = keyframes`
 
 export const colorfulTextAnimationCSS = css`
   animation-name: ${colorChange};
-  animation-duration: 3s;
+  animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: linear;
