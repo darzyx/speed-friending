@@ -142,6 +142,9 @@ const CreateGroupForm = ({
     navigate(`/group/${docRef.id}`);
   };
 
+  const hasError =
+    nameError || participantCountError || roundDurationError || roundCountError;
+
   return (
     <div>
       <Form inverted onSubmit={handleSubmit} autoComplete="off">
@@ -198,7 +201,7 @@ const CreateGroupForm = ({
             type="button"
           />
           <Button
-            disabled={isSubmitting}
+            disabled={isSubmitting || hasError}
             loading={isSubmitting}
             icon
             floated="right"
