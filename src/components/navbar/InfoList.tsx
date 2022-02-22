@@ -32,8 +32,9 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
         </StyledListHeader>
         <p style={{ marginTop: "10px" }}>
           Write your participant number in large print on the back of your card.
-          Write your group name in small print too. Use the index card and pen
-          to keep track of which participants you'd like to exchance contact
+          Write your group name in small print too. Write your contact
+          information on the front (lined) side. Use the index card and pen to
+          keep track of which participants you'd like to exchance contact
           information with. Use badge to give partner conversation prompts
         </p>
       </List.Content>
