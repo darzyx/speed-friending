@@ -4,9 +4,9 @@ import styled from "styled-components";
 import { homeTextCTA } from "../../pages/home/Home";
 import { ColorfulLink } from "../blocks/ColorfulText";
 
-const StyledListHeader = styled(List.Header)`
+const StyledListHeader = styled(List.Header).attrs({ as: "h3" })`
   &&&& {
-    color: #6495ed !important;
+    color: #648fff !important;
     font-weight: bold;
   }
 `;
@@ -17,22 +17,34 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
     <List.Item>
       <List.Content>
         <StyledListHeader>
-          1. GET GROUP NAME, PARTICIPANT NUMBER, INDEX CARD, BADGE, AND PEN
+          1. GET ASSIGNED GROUP NAME AND PARTICIPANT NUMBER
         </StyledListHeader>
         <p style={{ marginTop: "10px" }}>
-          You will be provided these by an organizer before you start. The pen
-          and index card help you keep track of your responses to whether you'd
-          like to exchange contact info. The badge gives your partners a few
-          topics to use to keep the conversation going
+          You will be provided this information by an organizer
         </p>
       </List.Content>
     </List.Item>
     <Divider />
     <List.Item>
       <List.Content>
-        <StyledListHeader>2. FIND YOUR GROUP ON THIS APP</StyledListHeader>
+        <StyledListHeader>
+          2. GET INDEX CARD, PEN, AND BADGE (IF YOU NEED ONE)
+        </StyledListHeader>
         <p style={{ marginTop: "10px" }}>
-          You can find your group name in the "{homeTextCTA}" list on the{" "}
+          Write your participant number in large print on the back of your card.
+          Write your group name in small print too. Use the index card and pen
+          to keep track of which participants you'd like to exchance contact
+          information with. Use badge to give partner conversation prompts
+        </p>
+      </List.Content>
+    </List.Item>
+    <Divider />
+    <List.Item>
+      <List.Content>
+        <StyledListHeader>3. FIND GROUP ON THIS APP</StyledListHeader>
+        <p style={{ marginTop: "10px" }}>
+          You can find your assigned group name in the "{homeTextCTA}" list on
+          the{" "}
           <ColorfulLink
             to="/home"
             style={{ textDecoration: "underline" }}
@@ -48,7 +60,7 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
     <List.Item>
       <List.Content>
         <StyledListHeader>
-          3. FIND YOUR PARTICIPANT NUMBER AND ROUND PARTNER
+          4. FIND YOUR PARTICIPANT NUMBER AND ROUND PARTNER
         </StyledListHeader>
         <p style={{ marginTop: "10px" }}>
           You can find your participant number in your group page. It will have
@@ -61,7 +73,7 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
     <Divider />
     <List.Item>
       <List.Content>
-        <StyledListHeader>4. HAVE FUN CHATTING</StyledListHeader>
+        <StyledListHeader>5. HAVE FUN!</StyledListHeader>
         <p style={{ marginTop: "10px" }}>
           Please put your phone away while chatting to maximize your experience.
           We will let you know when you should come back to the app to find your

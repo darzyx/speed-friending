@@ -13,7 +13,7 @@ import { ColorfulHeader } from "../../components/blocks/ColorfulText";
 import theme from "../../styles/theme";
 import NavButton from "../../components/blocks/NavButton";
 
-export const homeTextCTA = "Select Assigned Group Below";
+export const homeTextCTA = "Select Group Below";
 
 type HomePropsType = {
   userIsAdmin: boolean;
