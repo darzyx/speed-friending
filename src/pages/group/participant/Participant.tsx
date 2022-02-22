@@ -7,6 +7,7 @@ import { getParticipantColor } from "../utils";
 import DropoutModal from "./DropoutModal";
 import PlaceholderModal from "./PlaceholderModal";
 import NoPartnerModal from "./NoPartnerModal";
+import ParticipantModal from "./ParticipantModal";
 
 type ParticipantPropsType = {
   n: number;
@@ -25,15 +26,11 @@ const Participant = ({
   const [openPlaceholderModal, setOpenPlaceholderModal] = useState(false);
   const [openDropoutModal, setOpenDropoutModal] = useState(false);
   const [openNoPartnerModal, setOpenNoPartnerModal] = useState(false);
+  const [openParticipantModal, setOpenParticipantModal] = useState(false);
   const [isDropout, setIsDropout] = useState(dropouts.includes(n));
   const [partnerIsDropout, setPartnerIsDropout] = useState(
     dropouts.includes(partner)
   );
-  const hasAction =
-    (n === 0 && !openPlaceholderModal) ||
-    onToggleDropoutStatus ||
-    (isDropout && !openDropoutModal) ||
-    ((partnerIsDropout || partner === 0) && !openNoPartnerModal);
   const handleClick = () => {
     if (n === 0 && !openPlaceholderModal) {
       setOpenPlaceholderModal(true);
@@ -43,6 +40,8 @@ const Participant = ({
       setOpenDropoutModal(true);
     } else if ((partnerIsDropout || partner === 0) && !openNoPartnerModal) {
       setOpenNoPartnerModal(true);
+    } else {
+      setOpenParticipantModal(true);
     }
   };
 
@@ -66,6 +65,7 @@ const Participant = ({
   return (
     <div>
       <CenterMiddle
+        onClick={handleClick}
         style={{
           height: "50px",
           margin: "0",
@@ -75,7 +75,7 @@ const Participant = ({
           borderRadius: "0 0 5px 5px",
           boxSizing: "border-box",
           userSelect: "none",
-          cursor: hasAction ? "pointer" : "auto",
+          cursor: "pointer",
           color: theme.color.one,
           backgroundColor: getParticipantColor(n),
           border: `1px solid ${theme.color.two}`,
@@ -85,7 +85,6 @@ const Participant = ({
           }),
           ...(top && { borderRadius: "5px 5px 0 0" }),
         }}
-        {...(hasAction && { onClick: handleClick })}
       >
         {n === 0 ? (
           <Icon name="ban" size="large" style={{ margin: "0" }} />
@@ -111,6 +110,12 @@ const Participant = ({
         partner={partner}
         openNoPartnerModal={openNoPartnerModal}
         setOpenNoPartnerModal={setOpenNoPartnerModal}
+      />
+      <ParticipantModal
+        n={n}
+        partner={partner}
+        openParticipantModal={openParticipantModal}
+        setOpenParticipantModal={setOpenParticipantModal}
       />
     </div>
   );
