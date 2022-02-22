@@ -32,13 +32,13 @@ const CreateGroupForm = ({
     e: ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
   ) => {
-    if (typeof value === "string" && value.length <= maxNameLength) {
+    if (typeof value === "string") {
       setName(value);
 
       // Validate
-      if (value.length < 1) {
-        setNameError(true);
-      } else {
+      if (value.length < 1 || value.length > maxNameLength) {
+        if (!nameError) setNameError(true);
+      } else if (nameError) {
         setNameError(false);
       }
     }
@@ -53,16 +53,19 @@ const CreateGroupForm = ({
     const numberValue = Number(value);
     if (
       typeof value === "string" &&
-      value.length <= 3 &&
-      (!Number.isNaN(numberValue) || value === "") &&
-      numberValue <= maxParticipants
+      (!Number.isNaN(numberValue) || value === "")
     ) {
       setParticipantCount(value);
 
       // Validate
-      if (Number.isNaN(numberValue) || numberValue < 2) {
-        setParticipantCountError(true);
-      } else {
+      if (
+        Number.isNaN(numberValue) ||
+        numberValue < 2 ||
+        numberValue > maxParticipants ||
+        value.length > 3
+      ) {
+        if (!participantCountError) setParticipantCountError(true);
+      } else if (participantCountError) {
         setParticipantCountError(false);
       }
     }
@@ -77,16 +80,19 @@ const CreateGroupForm = ({
     const numberValue = Number(value);
     if (
       typeof value === "string" &&
-      value.length <= 4 &&
-      (!Number.isNaN(numberValue) || value === "") &&
-      numberValue <= maxRoundDuration
+      (!Number.isNaN(numberValue) || value === "")
     ) {
       setRoundDuration(value);
 
       // Validate
-      if (Number.isNaN(numberValue) || numberValue < 30) {
-        setRoundDurationError(true);
-      } else {
+      if (
+        Number.isNaN(numberValue) ||
+        numberValue < 30 ||
+        numberValue > maxRoundDuration ||
+        value.length > 4
+      ) {
+        if (!roundDurationError) setRoundDurationError(true);
+      } else if (roundDurationError) {
         setRoundDurationError(false);
       }
     }
@@ -102,16 +108,19 @@ const CreateGroupForm = ({
     const numberValue = Number(value);
     if (
       typeof value === "string" &&
-      value.length <= 2 &&
-      (!Number.isNaN(numberValue) || value === "") &&
-      numberValue <= maxRounds
+      (!Number.isNaN(numberValue) || value === "")
     ) {
       setRoundCount(value);
 
       // Validate
-      if (Number.isNaN(numberValue) || numberValue < 1) {
-        setRoundCountError(true);
-      } else {
+      if (
+        Number.isNaN(numberValue) ||
+        numberValue < 1 ||
+        numberValue > maxRounds ||
+        value.length > 2
+      ) {
+        if (!roundCountError) setRoundCountError(true);
+      } else if (roundCountError) {
         setRoundCountError(false);
       }
     }
