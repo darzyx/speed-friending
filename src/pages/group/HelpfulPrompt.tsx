@@ -19,7 +19,7 @@ const HelpfulPrompt = ({ timeValues }: HelpfulPromptPropsType) => (
         ? "Round Over"
         : ""}
     </ColorfulHeader>
-    <p style={{ textAlign: "center" }}>
+    <p style={{ textAlign: "center", margin: "0 12px" }}>
       {timeValues.color === "green"
         ? "Your partner's number and card color are attached to yours below"
         : timeValues.color === "blue"
