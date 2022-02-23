@@ -3,24 +3,24 @@ import { Button, Grid, Icon } from "semantic-ui-react";
 import StyledModal from "../../../components/blocks/StyledModal";
 
 type DropoutModalPropsType = {
-  n: number;
-  partner: number;
+  nParticipant: number;
+  nPartner: number;
   openDropoutModal: boolean;
   setOpenDropoutModal: (openDropoutModal: boolean) => void;
 };
 const DropoutModal = ({
-  n,
-  partner,
+  nParticipant,
+  nPartner,
   openDropoutModal,
   setOpenDropoutModal,
 }: DropoutModalPropsType) => (
   <StyledModal
-    header={`Participant #${n}`}
+    header={`Participant #${nParticipant}`}
     subheader={<Icon name="remove user" style={{ margin: "0" }} />}
     content={
       <p style={{ textAlign: "center" }}>
-        {`Participant ${n} dropped out, ` +
-          `so participant ${partner} takes a break this round `}
+        {`Participant ${nParticipant} dropped out, ` +
+          `so participant ${nPartner} takes a break this round `}
       </p>
     }
     actions={

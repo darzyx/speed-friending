@@ -3,32 +3,32 @@ import { Button, Grid } from "semantic-ui-react";
 import StyledModal from "../../../components/blocks/StyledModal";
 
 type NoPartnerModalModalPropsType = {
-  n: number;
-  partner: number;
+  nParticipant: number;
+  nPartner: number;
   openNoPartnerModal: boolean;
   setOpenNoPartnerModal: (openNoPartnerModal: boolean) => void;
 };
 const NoPartnerModal = ({
-  n,
-  partner,
+  nParticipant,
+  nPartner,
   openNoPartnerModal,
   setOpenNoPartnerModal,
 }: NoPartnerModalModalPropsType) => (
   <StyledModal
-    header={`Participant #${n}`}
+    header={`Participant #${nParticipant}`}
     subheader="No Partner For"
     content={
       <div>
-        {partner === 0 ? (
+        {nPartner === 0 ? (
           <p style={{ textAlign: "center" }}>
             {`This group has an odd number of participants, ` +
               `so a different person will have to take a break each round. ` +
-              `Participant ${n} takes a break this round `}
+              `Participant ${nParticipant} takes a break this round `}
           </p>
         ) : (
           <p style={{ textAlign: "center" }}>
-            {`Participant ${partner} dropped out, ` +
-              `so participant ${n} takes a break this round `}
+            {`Participant ${nPartner} dropped out, ` +
+              `so participant ${nParticipant} takes a break this round `}
           </p>
         )}
       </div>

@@ -22,13 +22,22 @@ const AdminDropoutModal = ({
   const handleToggleDropoutStatus = (n: number) => {
     if (n !== 0) {
       const docRef = doc(db, "groups", group.id);
+      const dropoutNumbers = group.dropouts.map((d) => d.participant_number);
       const payload = {
         ...group,
-        dropouts: group.dropouts.includes(n)
-          ? group.dropouts.filter((dropout) => dropout !== n)
-          : Array.from(new Set(group.dropouts.concat([n]))),
+        dropouts: dropoutNumbers.includes(n)
+          ? dropoutNumbers.filter((dropout) => dropout !== n)
+          : Array.from(
+              new Set(
+                group.dropouts.concat([
+                  {
+                    participant_number: n,
+                    round_dropped_out: group.round_active,
+                  },
+                ])
+              )
+            ),
       };
-
       updateDoc(docRef, payload);
     }
   };

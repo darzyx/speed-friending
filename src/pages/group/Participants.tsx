@@ -21,7 +21,7 @@ const Participants = ({
   onToggleDropoutStatus,
 }: {
   round: RoundType;
-  dropouts: number[];
+  dropouts: { participant_number: number; round_dropped_out: number }[];
   onToggleDropoutStatus?: (n: number) => void;
 }) => (
   <Segment
@@ -36,17 +36,17 @@ const Participants = ({
         {round.top.map((nTop, idxTop) => (
           <div key={idxTop}>
             <Participant
-              n={nTop}
+              nParticipant={nTop}
               top={true}
               dropouts={dropouts}
-              partner={round.btm[idxTop]}
+              nPartner={round.btm[idxTop]}
               onToggleDropoutStatus={onToggleDropoutStatus}
             />
             <Participant
-              n={round.btm[idxTop]}
+              nParticipant={round.btm[idxTop]}
               top={false}
               dropouts={dropouts}
-              partner={nTop}
+              nPartner={nTop}
               onToggleDropoutStatus={onToggleDropoutStatus}
             />
           </div>

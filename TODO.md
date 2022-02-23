@@ -14,3 +14,4 @@ LOW PRIORITY
 - Consider adding light mode (should be easy)
 - Make string values numbers where appropriate on create form
 - Remove hard coded max groups number
+- Consider renaming `round_active` to `num_round_active` or something

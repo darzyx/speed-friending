@@ -3,24 +3,24 @@ import { Button, Grid, Icon } from "semantic-ui-react";
 import StyledModal from "../../../components/blocks/StyledModal";
 
 type ParticipantModalModalPropsType = {
-  n: number;
-  partner: number;
+  nParticipant: number;
+  nPartner: number;
   openParticipantModal: boolean;
   setOpenParticipantModal: (openParticipantModal: boolean) => void;
 };
 const ParticipantModal = ({
-  n,
-  partner,
+  nParticipant,
+  nPartner,
   openParticipantModal,
   setOpenParticipantModal,
 }: ParticipantModalModalPropsType) => (
   <StyledModal
-    header={`Participant #${n}`}
+    header={`Participant #${nParticipant}`}
     subheader={<Icon name="user" style={{ margin: "0" }} />}
     content={
       <p style={{ textAlign: "center" }}>
-        {`Participant ${n} is partnered with ` +
-          `participant ${partner} this round`}
+        {`Participant ${nParticipant} is partnered with ` +
+          `participant ${nPartner} this round`}
       </p>
     }
     actions={

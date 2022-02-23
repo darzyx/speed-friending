@@ -10,35 +10,39 @@ import NoPartnerModal from "./NoPartnerModal";
 import ParticipantModal from "./ParticipantModal";
 
 type ParticipantPropsType = {
-  n: number;
+  nParticipant: number;
   top?: boolean;
-  partner: number;
-  dropouts: number[];
+  nPartner: number;
+  dropouts: { participant_number: number; round_dropped_out: number }[];
   onToggleDropoutStatus?: (n: number) => void;
 };
 const Participant = ({
-  n,
+  nParticipant,
   top,
-  partner,
+  nPartner,
   dropouts,
   onToggleDropoutStatus,
 }: ParticipantPropsType) => {
+  const dropoutNumbers = dropouts.map((d) => d.participant_number);
+
   const [openPlaceholderModal, setOpenPlaceholderModal] = useState(false);
   const [openDropoutModal, setOpenDropoutModal] = useState(false);
   const [openNoPartnerModal, setOpenNoPartnerModal] = useState(false);
   const [openParticipantModal, setOpenParticipantModal] = useState(false);
-  const [isDropout, setIsDropout] = useState(dropouts.includes(n));
+  const [isDropout, setIsDropout] = useState(
+    dropoutNumbers.includes(nParticipant)
+  );
   const [partnerIsDropout, setPartnerIsDropout] = useState(
-    dropouts.includes(partner)
+    dropoutNumbers.includes(nPartner)
   );
   const handleClick = () => {
-    if (n === 0 && !openPlaceholderModal) {
+    if (nParticipant === 0 && !openPlaceholderModal) {
       setOpenPlaceholderModal(true);
     } else if (onToggleDropoutStatus) {
-      onToggleDropoutStatus(n);
+      onToggleDropoutStatus(nParticipant);
     } else if (isDropout && !openDropoutModal) {
       setOpenDropoutModal(true);
-    } else if ((partnerIsDropout || partner === 0) && !openNoPartnerModal) {
+    } else if ((partnerIsDropout || nPartner === 0) && !openNoPartnerModal) {
       setOpenNoPartnerModal(true);
     } else {
       setOpenParticipantModal(true);
@@ -47,20 +51,20 @@ const Participant = ({
 
   // Keep up to date when admin changes dropout status:
   useEffect(() => {
-    if (dropouts.includes(n)) {
+    if (dropoutNumbers.includes(nParticipant)) {
       setIsDropout(true);
     } else {
       setIsDropout(false);
     }
-  }, [dropouts, n]);
+  }, [dropoutNumbers, nParticipant]);
 
   useEffect(() => {
-    if (dropouts.includes(partner)) {
+    if (dropouts.map((d) => d.participant_number).includes(nPartner)) {
       setPartnerIsDropout(true);
     } else {
       setPartnerIsDropout(false);
     }
-  }, [dropouts, partner]);
+  }, [dropouts, nPartner]);
 
   return (
     <div>
@@ -77,43 +81,43 @@ const Participant = ({
           userSelect: "none",
           cursor: "pointer",
           color: theme.color.one,
-          backgroundColor: getParticipantColor(n),
+          backgroundColor: getParticipantColor(nParticipant),
           border: `1px solid ${theme.color.two}`,
-          ...((isDropout || n === 0) && {
+          ...((isDropout || nParticipant === 0) && {
             color: theme.color.text,
             backgroundColor: theme.color.three,
           }),
           ...(top && { borderRadius: "5px 5px 0 0" }),
         }}
       >
-        {n === 0 ? (
+        {nParticipant === 0 ? (
           <Icon name="ban" size="large" style={{ margin: "0" }} />
         ) : isDropout ? (
           <Icon name="remove user" size="large" style={{ margin: "0" }} />
         ) : (
-          n
+          nParticipant
         )}
       </CenterMiddle>
       <PlaceholderModal
-        partner={partner}
+        nPartner={nPartner}
         openPlaceholderModal={openPlaceholderModal}
         setOpenPlaceholderModal={setOpenPlaceholderModal}
       />
       <DropoutModal
-        n={n}
-        partner={partner}
+        nParticipant={nParticipant}
+        nPartner={nPartner}
         openDropoutModal={openDropoutModal}
         setOpenDropoutModal={setOpenDropoutModal}
       />
       <NoPartnerModal
-        n={n}
-        partner={partner}
+        nParticipant={nParticipant}
+        nPartner={nPartner}
         openNoPartnerModal={openNoPartnerModal}
         setOpenNoPartnerModal={setOpenNoPartnerModal}
       />
       <ParticipantModal
-        n={n}
-        partner={partner}
+        nParticipant={nParticipant}
+        nPartner={nPartner}
         openParticipantModal={openParticipantModal}
         setOpenParticipantModal={setOpenParticipantModal}
       />
