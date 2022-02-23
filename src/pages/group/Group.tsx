@@ -112,7 +112,7 @@ const Group = ({
       <Participants round={activeRound} dropouts={group.dropouts} />
       <p style={{ textAlign: "center" }}>
         {`${group.participant_count - group.dropouts.length}` +
-          `/${group.participant_count} participants`}
+          `/${group.participant_count} group participants`}
       </p>
       <Divider hidden />
       <CenterMiddle>

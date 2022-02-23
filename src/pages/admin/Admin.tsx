@@ -30,7 +30,7 @@ const Admin = ({ userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
     <AdminContainer>
       <Header inverted as="h1" textAlign="center">
         <Header.Subheader style={{ margin: "7px" }}>Admin</Header.Subheader>
-        Enter Password
+        Sign In
       </Header>
       {userIsAdmin ? (
         <Segment

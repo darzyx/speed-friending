@@ -71,6 +71,26 @@ const Home = ({
           />
         )}
       </Segment>
+      {hasAnyGroups && !isGettingGroups && userIsAdmin && (
+        <p>
+          {(() => {
+            let totalParticipants = 0;
+            let totalDropouts = 0;
+            for (let i = 0; i < groups.length; i++) {
+              if (groups[i]?.participant_count) {
+                totalParticipants += groups[i].participant_count;
+              }
+              if (Array.isArray(groups[i]?.dropouts)) {
+                totalDropouts += groups[i]?.dropouts.length;
+              }
+            }
+            return (
+              `${totalParticipants - totalDropouts}` +
+              `/${totalParticipants} total participants`
+            );
+          })()}
+        </p>
+      )}
       <Divider hidden />
       <CenterMiddle>
         <NavButton onClick={() => navigate("/admin")}>
