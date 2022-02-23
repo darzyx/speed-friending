@@ -14,6 +14,7 @@ import PastRoundsModal from "./PastRoundsModal";
 import Participants from "./Participants";
 import AdminModal from "../../components/admin/AdminModal";
 import { GroupNotFound, LoadingGroup } from "./Placeholders";
+import HelpfulPrompt from "./HelpfulPrompt";
 
 type GroupPropsType = {
   groups: GroupWithIdType[];
@@ -103,6 +104,8 @@ const Group = ({
         </>
       )}
       <TimeDisplay timeValues={timeValues} group={group} />
+      <Divider hidden />
+      <HelpfulPrompt timeValues={timeValues} />
       <Divider hidden />
       <Participants round={activeRound} dropouts={group.dropouts} />
       <p style={{ textAlign: "center" }}>

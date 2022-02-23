@@ -54,7 +54,7 @@ export const getParticipantColor = (n: number) => {
 };
 
 export type TimeValuesType = {
-  color: SemanticCOLORS;
+  color: "blue" | "green" | "yellow" | "pink" | "red";
   remainingMinutesDisplay: string;
   remainingSecondsDisplay: string;
   remainingTime: number;
@@ -66,19 +66,29 @@ export const getTimeValues = ({
   group: GroupWithIdType;
   currentTimeInSeconds: number;
 }) => {
-  let color: SemanticCOLORS = "green";
   let remainingTime = group.round_is_paused
     ? group.round_paused_time
     : group.round_end_time - currentTimeInSeconds;
+
   if (remainingTime > group.round_duration) {
     // Sometimes round_end_time is a second too large at start
     remainingTime = group.round_duration;
+  }
+
+  let color: SemanticCOLORS = "green";
+  if (remainingTime >= group.round_duration) {
+    color = "blue";
   } else if (remainingTime <= 0) {
     color = "red";
     remainingTime = 0;
-  } else if (remainingTime <= 60) {
+  } else if (group.round_is_paused) {
     color = "yellow";
+  } else if (remainingTime <= 30) {
+    color = "pink";
+  } else {
+    color = "green";
   }
+
   const remainingSeconds = remainingTime % 60;
   const remainingMinutes = (remainingTime - remainingSeconds) / 60;
   const timeValues: TimeValuesType = {
