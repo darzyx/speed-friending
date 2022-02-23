@@ -3,7 +3,7 @@ import { doc, updateDoc } from "firebase/firestore";
 
 import { db } from "../../firebase";
 import Participants from "../../pages/group/Participants";
-import { RoundType } from "../../pages/group/utils";
+import { getIsRoundDropout, RoundType } from "../../pages/group/utils";
 import { GroupWithIdType } from "../../types/group";
 import StyledModal from "../blocks/StyledModal";
 
@@ -19,20 +19,26 @@ const AdminDropoutModal = ({
   setOpenDropoutModal,
   activeRound,
 }: AdminDropoutModalPropsType) => {
+  const { id, dropouts, round_active, name } = group;
   const handleToggleDropoutStatus = (n: number) => {
+    console.log("TOGGLER FUNCTION");
+
     if (n !== 0) {
-      const docRef = doc(db, "groups", group.id);
-      const dropoutNumbers = group.dropouts.map((d) => d.participant_number);
+      const docRef = doc(db, "groups", id);
       const payload = {
         ...group,
-        dropouts: dropoutNumbers.includes(n)
-          ? dropoutNumbers.filter((dropout) => dropout !== n)
+        dropouts: getIsRoundDropout({
+          nParticipant: n,
+          roundNumber: group.round_active,
+          group,
+        })
+          ? dropouts.filter((d) => d.participant_number !== n)
           : Array.from(
               new Set(
-                group.dropouts.concat([
+                dropouts.concat([
                   {
                     participant_number: n,
-                    round_dropped_out: group.round_active,
+                    round_dropped_out: round_active,
                   },
                 ])
               )
@@ -44,7 +50,7 @@ const AdminDropoutModal = ({
 
   return (
     <StyledModal
-      header={group.name}
+      header={name}
       subheader="Dropout"
       content={
         <div>
@@ -53,8 +59,9 @@ const AdminDropoutModal = ({
           </p>
           <Participants
             round={activeRound}
+            roundNumber={group.round_active}
             onToggleDropoutStatus={handleToggleDropoutStatus}
-            dropouts={group.dropouts}
+            group={group}
           />
         </div>
       }

@@ -1,6 +1,7 @@
 import { Segment } from "semantic-ui-react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
+import { GroupWithIdType } from "../../types/group";
 
 import Participant from "./participant/Participant";
 import { RoundType } from "./utils";
@@ -17,12 +18,14 @@ const ParticipantsGrid = styled.div`
 `;
 const Participants = ({
   round,
-  dropouts,
+  roundNumber,
   onToggleDropoutStatus,
+  group,
 }: {
   round: RoundType;
-  dropouts: { participant_number: number; round_dropped_out: number }[];
+  roundNumber: number;
   onToggleDropoutStatus?: (n: number) => void;
+  group: GroupWithIdType;
 }) => (
   <Segment
     inverted
@@ -38,16 +41,18 @@ const Participants = ({
             <Participant
               nParticipant={nTop}
               top={true}
-              dropouts={dropouts}
               nPartner={round.btm[idxTop]}
               onToggleDropoutStatus={onToggleDropoutStatus}
+              group={group}
+              roundNumber={roundNumber}
             />
             <Participant
               nParticipant={round.btm[idxTop]}
               top={false}
-              dropouts={dropouts}
               nPartner={nTop}
               onToggleDropoutStatus={onToggleDropoutStatus}
+              group={group}
+              roundNumber={roundNumber}
             />
           </div>
         ))}

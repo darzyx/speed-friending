@@ -3,37 +3,38 @@ import { Icon } from "semantic-ui-react";
 
 import CenterMiddle from "../../../components/blocks/CenterMiddle";
 import theme from "../../../styles/theme";
-import { getParticipantColor } from "../utils";
+import { getIsRoundDropout, getParticipantColor } from "../utils";
 import DropoutModal from "./DropoutModal";
 import PlaceholderModal from "./PlaceholderModal";
 import NoPartnerModal from "./NoPartnerModal";
 import ParticipantModal from "./ParticipantModal";
+import { GroupWithIdType } from "../../../types/group";
 
 type ParticipantPropsType = {
   nParticipant: number;
   top?: boolean;
   nPartner: number;
-  dropouts: { participant_number: number; round_dropped_out: number }[];
   onToggleDropoutStatus?: (n: number) => void;
+  group: GroupWithIdType;
+  roundNumber: number;
 };
 const Participant = ({
   nParticipant,
   top,
   nPartner,
-  dropouts,
   onToggleDropoutStatus,
+  group,
+  roundNumber,
 }: ParticipantPropsType) => {
-  const dropoutNumbers = dropouts.map((d) => d.participant_number);
-
   const [openPlaceholderModal, setOpenPlaceholderModal] = useState(false);
   const [openDropoutModal, setOpenDropoutModal] = useState(false);
   const [openNoPartnerModal, setOpenNoPartnerModal] = useState(false);
   const [openParticipantModal, setOpenParticipantModal] = useState(false);
   const [isDropout, setIsDropout] = useState(
-    dropoutNumbers.includes(nParticipant)
+    getIsRoundDropout({ nParticipant, roundNumber, group })
   );
   const [partnerIsDropout, setPartnerIsDropout] = useState(
-    dropoutNumbers.includes(nPartner)
+    getIsRoundDropout({ nParticipant: nPartner, roundNumber, group })
   );
   const handleClick = () => {
     if (nParticipant === 0 && !openPlaceholderModal) {
@@ -51,20 +52,20 @@ const Participant = ({
 
   // Keep up to date when admin changes dropout status:
   useEffect(() => {
-    if (dropoutNumbers.includes(nParticipant)) {
+    if (getIsRoundDropout({ nParticipant, roundNumber, group })) {
       setIsDropout(true);
     } else {
       setIsDropout(false);
     }
-  }, [dropoutNumbers, nParticipant]);
+  }, [nParticipant, roundNumber, group]);
 
   useEffect(() => {
-    if (dropouts.map((d) => d.participant_number).includes(nPartner)) {
+    if (getIsRoundDropout({ nParticipant: nPartner, roundNumber, group })) {
       setPartnerIsDropout(true);
     } else {
       setPartnerIsDropout(false);
     }
-  }, [dropouts, nPartner]);
+  }, [nPartner, roundNumber, group]);
 
   return (
     <div>

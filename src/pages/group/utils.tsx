@@ -105,3 +105,22 @@ export const getTimeValues = ({
   };
   return timeValues;
 };
+
+export const getIsRoundDropout = ({
+  nParticipant,
+  roundNumber,
+  group,
+}: {
+  nParticipant: number;
+  roundNumber: number;
+  group: GroupWithIdType;
+}) => {
+  const dropout = group.dropouts.find(
+    (d) => d?.participant_number === nParticipant
+  );
+  if (dropout?.participant_number && dropout.round_dropped_out <= roundNumber) {
+    return true;
+  } else {
+    return false;
+  }
+};

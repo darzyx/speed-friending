@@ -109,7 +109,11 @@ const Group = ({
       <TimeDisplay timeValues={timeValues} group={group} />
       <Divider hidden />
       <HelpfulPrompt timeValues={timeValues} />
-      <Participants round={activeRound} dropouts={group.dropouts} />
+      <Participants
+        round={activeRound}
+        roundNumber={group.round_active}
+        group={group}
+      />
       <p style={{ textAlign: "center" }}>
         {`${group.participant_count - group.dropouts.length}` +
           `/${group.participant_count} group participants`}
