@@ -52,7 +52,7 @@ export const getParticipantColor = (n: number) => {
   }
 };
 
-type TimeColorsType = "teal" | "green" | "yellow" | "pink" | "red";
+type TimeColorsType = "blue" | "green" | "yellow" | "pink" | "red";
 export type TimeValuesType = {
   color: TimeColorsType;
   remainingMinutesDisplay: string;
@@ -75,7 +75,7 @@ export const getTimeValues = ({
     remainingTime = group.round_duration;
   }
 
-  let color: TimeColorsType = "teal";
+  let color: TimeColorsType = "blue";
   if (remainingTime >= group.round_duration) {
     color = "green";
   } else if (remainingTime <= 0) {
@@ -86,7 +86,7 @@ export const getTimeValues = ({
   } else if (remainingTime <= 30) {
     color = "pink";
   } else {
-    color = "teal";
+    color = "blue";
   }
 
   const remainingSeconds = remainingTime % 60;
