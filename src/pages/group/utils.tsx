@@ -115,6 +115,7 @@ export const getIsRoundDropout = ({
   roundNumber: number;
   group: GroupWithIdType;
 }) => {
+  if (nParticipant === 0) return false;
   const dropout = group.dropouts.find(
     (d) => d?.participant_number === nParticipant
   );
