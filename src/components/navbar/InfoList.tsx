@@ -74,8 +74,8 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
         <p style={{ marginTop: "10px" }}>
           You can find your participant number in your group page. It will have
           a specific background color during the whole game that corresponds to
-          your index card. Your round partner is denoted by the number attached
-          to your number (and color)
+          your index card. Your round partner is denoted by the other number
+          attached to your number
         </p>
       </List.Content>
     </List.Item>
