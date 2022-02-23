@@ -5,6 +5,7 @@ HIGH PRIORITY
 MID PRIORITY
 
 - Update info modal copy
+- Record and display on what round a dropout drops out
 
 LOW PRIORITY
 
