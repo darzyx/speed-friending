@@ -15,7 +15,9 @@ const TimeDisplay = ({ group, timeValues }: TimeDisplayPropsType) => (
       >
         {`${timeValues.remainingMinutesDisplay}:${timeValues.remainingSecondsDisplay}`}
       </Statistic.Value>
-      <Statistic.Label>{`Round ${group.round_active}`}</Statistic.Label>
+      <Statistic.Label>
+        {`Round ${group.round_active}/${group.round_count}`}
+      </Statistic.Label>
     </Statistic>
   </CenterMiddle>
 );

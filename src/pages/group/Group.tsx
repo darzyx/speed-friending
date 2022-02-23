@@ -81,11 +81,6 @@ const Group = ({
         >
           <Header.Subheader style={{ margin: "7px" }}>Group</Header.Subheader>
           {group.name}
-          <Header.Subheader>
-            {`${group.participant_count} participants`}
-            <br />
-            {`${group.round_count} rounds`}
-          </Header.Subheader>
         </Header>
       </CenterMiddle>
       <Divider hidden />
@@ -110,6 +105,10 @@ const Group = ({
       )}
       <Divider hidden />
       <Participants round={activeRound} dropouts={group.dropouts} />
+      <p style={{ textAlign: "center" }}>
+        {`${group.participant_count - group.dropouts.length}` +
+          `/${group.participant_count} participants`}
+      </p>
       <Divider hidden />
       <CenterMiddle>
         <NavButton onClick={() => setOpenPastRoundsModal(true)}>
