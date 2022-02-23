@@ -88,7 +88,11 @@ const Group = ({
       {userIsAdmin && (
         <>
           <CenterMiddle>
-            <Button onClick={() => setOpenAdminModal(true)} primary>
+            <Button
+              onClick={() => setOpenAdminModal(true)}
+              size="large"
+              primary
+            >
               <Icon name="settings" /> Manage Group
             </Button>
           </CenterMiddle>
