@@ -8,15 +8,15 @@ const HelpfulPrompt = ({ timeValues }: HelpfulPromptPropsType) => (
   <div>
     <ColorfulHeader as="h2" style={{ marginBottom: "0" }}>
       {timeValues.color === "green"
-        ? "Find Your Partner!"
+        ? "Find Your Partner"
         : timeValues.color === "blue"
-        ? "Time to Chat!"
+        ? "Time to Chat"
         : timeValues.color === "yellow"
-        ? "Round Paused!"
+        ? "Round Paused"
         : timeValues.color === "pink"
-        ? "Time's Almost Up!"
+        ? "Time's Almost Up"
         : timeValues.color === "red"
-        ? "Round Over!"
+        ? "Round Over"
         : ""}
     </ColorfulHeader>
     <p style={{ textAlign: "center" }}>
