@@ -30,7 +30,7 @@ const HelpfulPrompt = ({ timeValues }: HelpfulPromptPropsType) => (
         ? "You should not be looking at your phone right now"
         : timeValues.color === "red"
         ? "Please record your partner's assigned number and " +
-          "whether you'd like to keep in touch"
+          "whether you'd like to keep in touch (yes/no)"
         : ""}
     </p>
   </div>
