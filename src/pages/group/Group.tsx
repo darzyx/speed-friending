@@ -69,22 +69,6 @@ const Group = ({
 
   return (
     <div>
-      <CenterMiddle textAlign="center">
-        <Header
-          inverted
-          as="h1"
-          style={{
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-            maxWidth: "100%",
-          }}
-        >
-          <Header.Subheader style={{ margin: "7px" }}>Group</Header.Subheader>
-          {group.name}
-        </Header>
-      </CenterMiddle>
-      <Divider hidden />
       {userIsAdmin && (
         <>
           <CenterMiddle>
@@ -107,10 +91,24 @@ const Group = ({
           <Divider hidden />
         </>
       )}
+      <CenterMiddle textAlign="center">
+        <Header
+          inverted
+          as="h1"
+          style={{
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            maxWidth: "100%",
+          }}
+        >
+          <Header.Subheader style={{ margin: "7px" }}>Group</Header.Subheader>
+          {group.name}
+        </Header>
+      </CenterMiddle>
       <TimeDisplay timeValues={timeValues} group={group} />
       <Divider hidden />
       <HelpfulPrompt timeValues={timeValues} />
-      <Divider hidden />
       <Participants round={activeRound} dropouts={group.dropouts} />
       <p style={{ textAlign: "center" }}>
         {`${group.participant_count - group.dropouts.length}` +
