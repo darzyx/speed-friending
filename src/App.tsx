@@ -33,7 +33,7 @@ const App = () => {
   const [userIsAdmin, setUserIsAdmin] = useState(false);
   useEffect(() => {
     // TODO: Logic for setting user as admin
-    setUserIsAdmin(false);
+    setUserIsAdmin(true);
   }, []);
 
   const [hasAnyGroups, setHasAnyGroups] = useState(false);

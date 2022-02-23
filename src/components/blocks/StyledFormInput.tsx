@@ -5,12 +5,11 @@ const StyledFormInput = styled(Form.Input)`
   &&&& {
     margin-bottom: 10px;
     input {
-      background-color: ${({ theme }) => theme.color.two};
+      background-color: ${({ theme }) => theme.color.two} !important;
       color: ${({ theme }) => theme.color.text};
-      border-color: ${({ theme }) => theme.color.four};
-
+      border-color: ${({ theme }) => theme.color.four} !important;
       &::placeholder {
-        color: ${({ theme }) => theme.color.five};
+        color: ${({ theme }) => theme.color.five} !important;
       }
     }
   }
