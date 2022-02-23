@@ -31,19 +31,26 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
           2. GET INDEX CARD, PEN, AND BADGE (IF YOU NEED ONE)
         </StyledListHeader>
         <p style={{ marginTop: "10px" }}>
-          Write your participant number in large print on the back of your card.
-          Write your group name in small print below that. Write your contact
-          information on the front (ruled) side. Use the rest of the index
-          card's front side to keep track of which participants you'd like to
-          exchance contact information with. Use your badge to give partner
-          conversation prompts
+          Write your participant number in very large print on the back
+          (non-ruled) side of your card. Write your group name in small print
+          below that
+        </p>
+        <p>
+          Write your contact information in small print on the bottom front
+          (ruled) side. Use the rest of the index card's front side to keep
+          track of which participants you'd like to keep in touch with (e.g.
+          "3:YES")
+        </p>
+        <p>
+          If you do not have a badge, please ask for materials to make one from
+          an organizer
         </p>
       </List.Content>
     </List.Item>
     <Divider />
     <List.Item>
       <List.Content>
-        <StyledListHeader>3. FIND GROUP ON THIS APP</StyledListHeader>
+        <StyledListHeader>3. FIND YOUR GROUP ON THIS APP</StyledListHeader>
         <p style={{ marginTop: "10px" }}>
           You can find your assigned group name in the "{homeTextCTA}" list on
           the{" "}
@@ -77,9 +84,13 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
       <List.Content>
         <StyledListHeader>5. CHAT IT UP</StyledListHeader>
         <p style={{ marginTop: "10px" }}>
+          You may use your partner's badge to help you with conversation
+          prompts, but this is optional
+        </p>
+        <p>
           Please put your phone away while chatting to maximize your experience.
           We will let you know when you should come back to the app to find your
-          next round partner. Have fun!
+          next round partner
         </p>
       </List.Content>
     </List.Item>
