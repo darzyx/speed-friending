@@ -20,7 +20,7 @@ const PlaceholderModal = ({
         {`This is a placeholder. ` +
           `The group has an odd number of participants, ` +
           `so a different person will have to take a break each round. ` +
-          `Participant ${partner} will take a break this round `}
+          `Participant ${partner} takes a break this round `}
       </p>
     }
     actions={

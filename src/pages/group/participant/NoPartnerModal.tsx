@@ -28,7 +28,7 @@ const NoPartnerModal = ({
         ) : (
           <p style={{ textAlign: "center" }}>
             {`Participant ${partner} dropped out, ` +
-              `so participant ${n} will take a break this round `}
+              `so participant ${n} takes a break this round `}
           </p>
         )}
       </div>

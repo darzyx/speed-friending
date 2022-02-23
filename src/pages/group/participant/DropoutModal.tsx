@@ -20,7 +20,7 @@ const DropoutModal = ({
     content={
       <p style={{ textAlign: "center" }}>
         {`Participant ${n} dropped out, ` +
-          `so participant ${partner} will take a break this round `}
+          `so participant ${partner} takes a break this round `}
       </p>
     }
     actions={
