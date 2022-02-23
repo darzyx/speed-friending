@@ -1,4 +1,3 @@
-import { SemanticCOLORS } from "semantic-ui-react";
 import { GroupWithIdType } from "../../types/group";
 
 export const getMaxRounds = (participant_count: number) => {
@@ -53,8 +52,9 @@ export const getParticipantColor = (n: number) => {
   }
 };
 
+type TimeColorsType = "teal" | "green" | "yellow" | "pink" | "red";
 export type TimeValuesType = {
-  color: "blue" | "green" | "yellow" | "pink" | "red";
+  color: TimeColorsType;
   remainingMinutesDisplay: string;
   remainingSecondsDisplay: string;
   remainingTime: number;
@@ -75,9 +75,9 @@ export const getTimeValues = ({
     remainingTime = group.round_duration;
   }
 
-  let color: SemanticCOLORS = "green";
+  let color: TimeColorsType = "teal";
   if (remainingTime >= group.round_duration) {
-    color = "blue";
+    color = "green";
   } else if (remainingTime <= 0) {
     color = "red";
     remainingTime = 0;
@@ -86,7 +86,7 @@ export const getTimeValues = ({
   } else if (remainingTime <= 30) {
     color = "pink";
   } else {
-    color = "green";
+    color = "teal";
   }
 
   const remainingSeconds = remainingTime % 60;
