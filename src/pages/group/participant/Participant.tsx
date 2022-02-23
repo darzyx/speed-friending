@@ -109,12 +109,14 @@ const Participant = ({
         nPartner={nPartner}
         openDropoutModal={openDropoutModal}
         setOpenDropoutModal={setOpenDropoutModal}
+        dropouts={group.dropouts}
       />
       <NoPartnerModal
         nParticipant={nParticipant}
         nPartner={nPartner}
         openNoPartnerModal={openNoPartnerModal}
         setOpenNoPartnerModal={setOpenNoPartnerModal}
+        dropouts={group.dropouts}
       />
       <ParticipantModal
         nParticipant={nParticipant}
