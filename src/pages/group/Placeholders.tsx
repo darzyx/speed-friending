@@ -15,7 +15,7 @@ export const GroupNotFound = () => (
     <Divider hidden />
     <p>This group does not exist. It may have been deleted</p>
     <ColorfulLink to="/home">
-      Find existing groups on the home page &rarr;
+      &larr; Find existing groups on the home page
     </ColorfulLink>
   </CenterMiddle>
 );

@@ -32,10 +32,11 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
         </StyledListHeader>
         <p style={{ marginTop: "10px" }}>
           Write your participant number in large print on the back of your card.
-          Write your group name in small print too. Write your contact
-          information on the front (lined) side. Use the index card and pen to
-          keep track of which participants you'd like to exchance contact
-          information with. Use badge to give partner conversation prompts
+          Write your group name in small print below that. Write your contact
+          information on the front (ruled) side. Use the rest of the index
+          card's front side to keep track of which participants you'd like to
+          exchance contact information with. Use your badge to give partner
+          conversation prompts
         </p>
       </List.Content>
     </List.Item>
@@ -67,18 +68,18 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
           You can find your participant number in your group page. It will have
           a specific background color during the whole game that corresponds to
           your index card. Your round partner is denoted by the number attached
-          to yours
+          to your number (and color)
         </p>
       </List.Content>
     </List.Item>
     <Divider />
     <List.Item>
       <List.Content>
-        <StyledListHeader>5. HAVE FUN!</StyledListHeader>
+        <StyledListHeader>5. CHAT IT UP</StyledListHeader>
         <p style={{ marginTop: "10px" }}>
           Please put your phone away while chatting to maximize your experience.
           We will let you know when you should come back to the app to find your
-          next round partner
+          next round partner. Have fun!
         </p>
       </List.Content>
     </List.Item>

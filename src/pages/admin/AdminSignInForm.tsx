@@ -13,9 +13,10 @@ import {
 import StyledFormInput from "../../components/blocks/StyledFormInput";
 import theme from "../../styles/theme";
 
+const maxUsernameLength = 15;
+
 // TODO: Add real auth logic, new password(s), and remove this
 const testPassword = "justvibebro";
-
 const maxPasswordLength = 30;
 
 type AdminSignInFormPropsType = {
@@ -23,6 +24,16 @@ type AdminSignInFormPropsType = {
 };
 const AdminSignInForm = ({ setUserIsAdmin }: AdminSignInFormPropsType) => {
   const navigate = useNavigate();
+
+  const [username, setUsername] = useState("");
+  const handleChangeUsername = (
+    e: ChangeEvent<HTMLInputElement>,
+    { value }: InputOnChangeData
+  ) => {
+    if (typeof value === "string" && value.length <= maxUsernameLength) {
+      setUsername(value);
+    }
+  };
 
   const [password, setPassword] = useState("");
   const handleChangePassword = (
@@ -59,6 +70,15 @@ const AdminSignInForm = ({ setUserIsAdmin }: AdminSignInFormPropsType) => {
       }}
     >
       <Form inverted onSubmit={handleSubmit} autoComplete="off">
+        <StyledFormInput
+          name="username"
+          placeholder="Username"
+          label="Username"
+          value={username}
+          onChange={handleChangeUsername}
+          type="text"
+          required
+        />
         <StyledFormInput
           name="password"
           placeholder="Password"
