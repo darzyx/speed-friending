@@ -6,7 +6,7 @@ type HelpfulPromptPropsType = {
 };
 const HelpfulPrompt = ({ timeValues }: HelpfulPromptPropsType) => (
   <div>
-    <ColorfulHeader as="h1" style={{ marginBottom: "0" }}>
+    <ColorfulHeader as="h2" style={{ marginBottom: "0" }}>
       {timeValues.color === "green"
         ? "Find Your Partner!"
         : timeValues.color === "blue"
