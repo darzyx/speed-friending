@@ -68,6 +68,24 @@ const Group = ({
 
   return (
     <div>
+      {userIsAdmin && (
+        <>
+          <CenterMiddle>
+            <Button onClick={() => setOpenAdminModal(true)} primary>
+              <Icon name="settings" /> Manage Group
+            </Button>
+          </CenterMiddle>
+          <AdminModal
+            group={group}
+            timeValues={timeValues}
+            openAdminModal={openAdminModal}
+            setOpenAdminModal={setOpenAdminModal}
+            currentTimeInSeconds={currentTimeInSeconds}
+            activeRound={activeRound}
+          />
+          <Divider hidden />
+        </>
+      )}
       <CenterMiddle textAlign="center">
         <Header
           inverted
@@ -85,24 +103,6 @@ const Group = ({
       </CenterMiddle>
       <Divider hidden />
       <TimeDisplay timeValues={timeValues} group={group} />
-      {userIsAdmin && (
-        <>
-          <Divider hidden />
-          <CenterMiddle>
-            <Button onClick={() => setOpenAdminModal(true)} primary>
-              <Icon name="settings" /> Manage Group
-            </Button>
-          </CenterMiddle>
-          <AdminModal
-            group={group}
-            timeValues={timeValues}
-            openAdminModal={openAdminModal}
-            setOpenAdminModal={setOpenAdminModal}
-            currentTimeInSeconds={currentTimeInSeconds}
-            activeRound={activeRound}
-          />
-        </>
-      )}
       <Divider hidden />
       <Participants round={activeRound} dropouts={group.dropouts} />
       <p style={{ textAlign: "center" }}>
