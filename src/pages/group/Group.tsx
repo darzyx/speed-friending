@@ -13,8 +13,9 @@ import NavButton from "../../components/blocks/NavButton";
 import PastRoundsModal from "./PastRoundsModal";
 import Participants from "./Participants";
 import AdminModal from "../../components/admin/AdminModal";
-import { GroupNotFound, LoadingGroup } from "./Placeholders";
+import { GroupNotFound } from "./Placeholders";
 import HelpfulPrompt from "./HelpfulPrompt";
+import { Loading } from "../../components/blocks/Loading";
 
 type GroupPropsType = {
   groups: GroupWithIdType[];
@@ -68,7 +69,7 @@ const Group = ({
     }
   }, [timeValues.remainingTime, roundIsOver, group]);
 
-  if (isGettingGroups || waitForState) return <LoadingGroup />;
+  if (isGettingGroups || waitForState) return <Loading />;
   if (!group?.id) return <GroupNotFound />;
 
   return (
