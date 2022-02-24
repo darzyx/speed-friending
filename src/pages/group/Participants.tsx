@@ -27,13 +27,7 @@ const Participants = ({
   onToggleDropoutStatus?: (n: number) => void;
   group: GroupWithIdType;
 }) => (
-  <Segment
-    inverted
-    style={{
-      backgroundColor: theme.color.one,
-      margin: "0",
-    }}
-  >
+  <Segment inverted style={{ backgroundColor: theme.color.one, margin: "0" }}>
     <ParticipantsContainer>
       <ParticipantsGrid>
         {round.top.map((nTop, idxTop) => (
