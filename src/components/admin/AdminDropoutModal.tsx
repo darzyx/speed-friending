@@ -86,7 +86,7 @@ const AdminDropoutModal = ({
           />
           <Divider hidden clearing />
           <p style={{ textAlign: "center" }}>
-            Click on a participant to{" "}
+            Click on a participant number to{" "}
             <span style={{ fontWeight: "bold" }}>instantly</span> toggle dropout
             status:
           </p>
