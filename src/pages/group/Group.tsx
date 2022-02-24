@@ -116,7 +116,7 @@ const Group = ({
       />
       <p style={{ textAlign: "center" }}>
         {`${group.participant_count - group.dropouts.length}` +
-          `/${group.participant_count} group participants`}
+          `/${group.participant_count} participants`}
       </p>
       <Divider hidden />
       <CenterMiddle>
