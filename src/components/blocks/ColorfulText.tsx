@@ -4,8 +4,8 @@ import styled, { css, keyframes } from "styled-components";
 
 const colorChange = keyframes`
   0% { color: #648FFF; }
-  33% { color: #604AC5; }
-  66% { color: #604AC5; }
+  33% { color: #785EF0; }
+  66% { color: #785EF0; }
   100% { color: #DC267F; }
 `;
 

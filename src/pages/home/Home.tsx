@@ -42,11 +42,16 @@ const Home = ({
 
   return (
     <CenterMiddle style={{ margin: "0", padding: "0" }}>
-      <Header inverted as="h1" textAlign="center">
+      <Header
+        inverted
+        as="h1"
+        textAlign="center"
+        style={{ fontSize: "2.25rem" }}
+      >
         <Header.Subheader style={{ margin: "7px" }}>Home</Header.Subheader>
         Speed Friending
       </Header>
-      <ColorfulHeader as="h3">{homeTextCTA}</ColorfulHeader>
+      <ColorfulHeader as="h2">{homeTextCTA}</ColorfulHeader>
       <Segment
         inverted
         style={{ backgroundColor: theme.color.two, width: "100%" }}
