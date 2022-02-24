@@ -62,7 +62,7 @@ const AdminDropoutModal = ({
   return (
     <StyledModal
       header={name}
-      subheader="Dropout"
+      subheader="Dropout Participant(s)"
       content={
         <div>
           <p style={{ textAlign: "center" }}>
