@@ -6,7 +6,7 @@ import {
   getRedirectResult,
 } from "firebase/auth";
 import { useEffect } from "react";
-import { Button } from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
 
 const provider = new TwitterAuthProvider();
@@ -53,8 +53,10 @@ const SignIn = () => {
   console.log({ auth });
 
   return (
-    <CenterMiddle>
-      <Button onClick={handleClick}>Sign In With Twitter</Button>
+    <CenterMiddle style={{ minHeight: "50vh" }}>
+      <Button color="blue" onClick={handleClick}>
+        <Icon name="twitter" /> Sign In With Twitter
+      </Button>
     </CenterMiddle>
   );
 };
