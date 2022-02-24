@@ -49,11 +49,9 @@ const App = () => {
         })) as GroupWithIdType[]; // Assumes fetched data is good!
         const resultHasAnyGroups =
           Array.isArray(resultGroups) && resultGroups[0]?.name?.length > 0;
-
         if (resultHasAnyGroups) {
           resultGroups.sort((a, b) => a.name.localeCompare(b.name));
         }
-
         setGroups(resultGroups);
         setIsGettingGroups(false);
         setHasAnyGroups(resultHasAnyGroups);
