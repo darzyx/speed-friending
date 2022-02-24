@@ -1,10 +1,4 @@
-import {
-  Button,
-  Divider,
-  Form,
-  Grid,
-  InputOnChangeData,
-} from "semantic-ui-react";
+import { Button, Divider, Grid, InputOnChangeData } from "semantic-ui-react";
 import { doc, updateDoc } from "firebase/firestore";
 
 import { db } from "../../firebase";
@@ -12,9 +6,8 @@ import Participants from "../../pages/group/Participants";
 import { getIsRoundDropout, RoundType } from "../../pages/group/utils";
 import { GroupWithIdType } from "../../types/group";
 import StyledModal from "../blocks/StyledModal";
-import StyledFormInput from "../blocks/StyledFormInput";
 import { ChangeEvent, useState } from "react";
-import CenterMiddle from "../blocks/CenterMiddle";
+import StyledDropdown from "../blocks/StyledDropdown";
 
 type AdminDropoutModalPropsType = {
   group: GroupWithIdType;
@@ -30,43 +23,22 @@ const AdminDropoutModal = ({
 }: AdminDropoutModalPropsType) => {
   const { id, dropouts, round_active, name } = group;
 
-  const [roundDroppedOut, setRoundDroppedOut] = useState(
-    round_active.toString()
-  );
-  const [roundDroppedOutError, setRoundDroppedOutError] = useState(false);
+  const [roundDroppedOut, setRoundDroppedOut] = useState(round_active);
   const handleChangeRoundDroppedOut = (
     e: ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
   ) => {
-    const numberValue = Number(value);
-    if (
-      typeof value === "string" &&
-      (!Number.isNaN(numberValue) || value === "")
-    ) {
-      setRoundDroppedOut(value);
-
-      // Validate
-      if (
-        Number.isNaN(numberValue) ||
-        numberValue < 1 ||
-        numberValue > round_active ||
-        value.length > 2
-      ) {
-        if (!roundDroppedOutError) setRoundDroppedOutError(true);
-      } else if (roundDroppedOutError) {
-        setRoundDroppedOutError(false);
-      }
-    }
+    setRoundDroppedOut(Number(value));
   };
 
   const handleToggleDropoutStatus = (n: number) => {
-    if (n !== 0 && !roundDroppedOutError) {
+    if (n !== 0) {
       const docRef = doc(db, "groups", id);
       const payload = {
         ...group,
         dropouts: getIsRoundDropout({
           nParticipant: n,
-          roundNumber: group.round_active,
+          roundNumber: round_active,
           group,
         })
           ? dropouts.filter((d) => d.participant_number !== n)
@@ -85,35 +57,42 @@ const AdminDropoutModal = ({
     }
   };
 
+  console.log({ roundDroppedOut });
+
   return (
     <StyledModal
       header={name}
       subheader="Dropout"
       content={
         <div>
-          <Form inverted autoComplete="off">
-            <Form.Group>
-              <StyledFormInput
-                name="round_dropped_out"
-                placeholder="Round Dropped Out"
-                label={
-                  <CenterMiddle>{`Round Dropped Out (current: ${round_active})`}</CenterMiddle>
-                }
-                value={roundDroppedOut}
-                onChange={handleChangeRoundDroppedOut}
-                error={roundDroppedOutError}
-                width={16}
-                required
-              />
-            </Form.Group>
-          </Form>
-          <Divider hidden />
           <p style={{ textAlign: "center" }}>
-            Click on a participant to instantly toggle dropout status
+            During which round did the participant(s) drop out?
+          </p>
+          <StyledDropdown
+            onChange={handleChangeRoundDroppedOut}
+            value={roundDroppedOut}
+            options={(() => {
+              let options = [];
+              for (let i = 1; i <= round_active; i++) {
+                options.push({
+                  key: i,
+                  text: `Round ${i === round_active ? i + " (current)" : i}`,
+                  value: i,
+                });
+              }
+              return options;
+            })()}
+            selection
+          />
+          <Divider hidden clearing />
+          <p style={{ textAlign: "center" }}>
+            Click on a participant to{" "}
+            <span style={{ fontWeight: "bold" }}>instantly</span> toggle dropout
+            status:
           </p>
           <Participants
             round={activeRound}
-            roundNumber={group.round_active}
+            roundNumber={round_active}
             onToggleDropoutStatus={handleToggleDropoutStatus}
             group={group}
           />
