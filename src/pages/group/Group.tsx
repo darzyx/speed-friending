@@ -35,14 +35,18 @@ const Group = ({
 
   const { id } = useParams();
 
+  // Makes sure we don't erroneously show 404 page
+  const [waitForState, setWaitForState] = useState(true);
   const [group, setGroup] = useState(initGroup);
-  const groupExists = group?.name?.length > 0;
   useEffect(() => {
-    const foundGroup = groups.find((s) => s.id === id);
-    if (foundGroup) {
-      setGroup(foundGroup);
+    if (!isGettingGroups) {
+      const foundGroup = groups.find((s) => s.id === id);
+      if (foundGroup) {
+        setGroup(foundGroup);
+      }
+      setWaitForState(false);
     }
-  }, [id, groups]);
+  }, [id, groups, isGettingGroups]);
 
   const [openPastRoundsModal, setOpenPastRoundsModal] = useState(false);
 
@@ -54,7 +58,7 @@ const Group = ({
 
   const [roundIsOver, setRoundIsOver] = useState(false);
   useEffect(() => {
-    if (groupExists && timeValues.remainingTime <= 0 && !roundIsOver) {
+    if (group?.id && timeValues.remainingTime <= 0 && !roundIsOver) {
       setRoundIsOver(true);
       const docRef = doc(db, "groups", group.id);
       const payload = { ...group, round_is_paused: true, round_paused_time: 0 };
@@ -62,10 +66,10 @@ const Group = ({
     } else if (timeValues.remainingTime > 0 && roundIsOver) {
       setRoundIsOver(false);
     }
-  }, [timeValues.remainingTime, roundIsOver, group, groupExists]);
+  }, [timeValues.remainingTime, roundIsOver, group]);
 
-  if (isGettingGroups) return <LoadingGroup />;
-  if (!groupExists) return <GroupNotFound />;
+  if (isGettingGroups || waitForState) return <LoadingGroup />;
+  if (!group?.id) return <GroupNotFound />;
 
   return (
     <div>
