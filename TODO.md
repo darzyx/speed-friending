@@ -17,3 +17,5 @@ LOW PRIORITY
 - Remove hard coded max groups number
 - Consider renaming `round_active` to `num_round_active` or something
 - Only render participant modals when necessary
+- CenterMiddle css should have margin+padding set to zero (so some custom
+  containers are no longer necessary)
