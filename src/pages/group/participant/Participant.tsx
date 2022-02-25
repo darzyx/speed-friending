@@ -73,8 +73,6 @@ const Participant = ({
         onClick={handleClick}
         style={{
           height: "50px",
-          margin: "0",
-          padding: "0",
           fontWeight: "bold",
           fontSize: "22px",
           borderRadius: "0 0 5px 5px",

@@ -35,7 +35,7 @@ const Home = ({
   const [openCreateGroupModal, setOpenCreateGroupModal] = useState(false);
 
   return (
-    <CenterMiddle style={{ margin: "0", padding: "0" }}>
+    <CenterMiddle>
       <Header
         inverted
         as="h1"

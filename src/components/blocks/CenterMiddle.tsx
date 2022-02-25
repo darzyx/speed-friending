@@ -5,6 +5,8 @@ export const centerMiddleCSS = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0;
+  padding: 0;
 `;
 
 type CenterMiddlePropsType = { textAlign?: string };

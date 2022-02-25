@@ -6,24 +6,15 @@ import {
   signOut,
   Auth,
 } from "firebase/auth";
-import styled from "styled-components";
 
 import { provider } from "../../firebase";
-import CenterMiddle, {
-  centerMiddleCSS,
-} from "../../components/blocks/CenterMiddle";
+import CenterMiddle from "../../components/blocks/CenterMiddle";
 import { Divider, Header } from "semantic-ui-react";
 import AdminAccessForm from "./AdminAccessForm";
 import { ColorfulLink } from "../../components/blocks/ColorfulText";
 import AdminSignIn from "./AdminSignIn";
 import AdminSignOut from "./AdminSignOut";
 import AdminSignedOut from "./AdminSignedOut";
-
-const AdminContainer = styled.div`
-  ${centerMiddleCSS}
-  margin: 0;
-  padding: 0;
-`;
 
 type AdminPropsType = {
   auth: Auth;
@@ -81,7 +72,7 @@ const Admin = ({ auth, userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
   };
 
   return (
-    <AdminContainer>
+    <CenterMiddle>
       <Header inverted as="h1" textAlign="center">
         <Header.Subheader style={{ margin: "7px" }}>Admin</Header.Subheader>
         Sign In
@@ -112,7 +103,7 @@ const Admin = ({ auth, userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
           <ColorfulLink to="/">Go home to select group &rarr;</ColorfulLink>
         </CenterMiddle>
       )}
-    </AdminContainer>
+    </CenterMiddle>
   );
 };
 
