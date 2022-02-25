@@ -38,7 +38,7 @@ const PastRoundsModal = ({
                   <Participants
                     round={pastRound}
                     roundNumber={index + 1}
-                    group={group}
+                    dropouts={group.dropouts}
                   />
                   <Divider hidden={index === 0} />
                 </div>

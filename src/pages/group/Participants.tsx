@@ -1,7 +1,8 @@
+import { memo } from "react";
 import { Segment } from "semantic-ui-react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
-import { groupWithIdType } from "../../types/group";
+import { dropoutsType } from "../../types/group";
 
 import Participant from "./participant/Participant";
 import { RoundType } from "./utils";
@@ -20,12 +21,12 @@ const Participants = ({
   round,
   roundNumber,
   onToggleDropoutStatus,
-  group,
+  dropouts,
 }: {
   round: RoundType;
   roundNumber: number;
   onToggleDropoutStatus?: (n: number) => void;
-  group: groupWithIdType;
+  dropouts: dropoutsType;
 }) => (
   <Segment inverted style={{ backgroundColor: theme.color.one, margin: "0" }}>
     <ParticipantsContainer>
@@ -37,7 +38,7 @@ const Participants = ({
               top={true}
               nPartner={round.btm[idxTop]}
               onToggleDropoutStatus={onToggleDropoutStatus}
-              dropouts={group.dropouts}
+              dropouts={dropouts}
               roundNumber={roundNumber}
             />
             <Participant
@@ -45,7 +46,7 @@ const Participants = ({
               top={false}
               nPartner={nTop}
               onToggleDropoutStatus={onToggleDropoutStatus}
-              dropouts={group.dropouts}
+              dropouts={dropouts}
               roundNumber={roundNumber}
             />
           </div>
@@ -55,4 +56,4 @@ const Participants = ({
   </Segment>
 );
 
-export default Participants;
+export default memo(Participants);

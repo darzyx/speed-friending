@@ -6,7 +6,7 @@ import Participants from "../../pages/group/Participants";
 import { getIsRoundDropout, RoundType } from "../../pages/group/utils";
 import { groupWithIdType } from "../../types/group";
 import StyledModal from "../blocks/StyledModal";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, memo, useState } from "react";
 import StyledDropdown from "../blocks/StyledDropdown";
 
 type AdminDropoutModalPropsType = {
@@ -92,7 +92,7 @@ const AdminDropoutModal = ({
             round={activeRound}
             roundNumber={round_active}
             onToggleDropoutStatus={handleToggleDropoutStatus}
-            group={group}
+            dropouts={dropouts}
           />
           <Divider hidden />
         </div>
@@ -112,4 +112,4 @@ const AdminDropoutModal = ({
   );
 };
 
-export default AdminDropoutModal;
+export default memo(AdminDropoutModal);
