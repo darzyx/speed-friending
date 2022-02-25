@@ -54,7 +54,7 @@ const Group = ({
   const [openAdminModal, setOpenAdminModal] = useState(false);
 
   const game = getGame(group.participant_count, group.round_count);
-  const activeRound = Object.values(game)[Number(group.round_active) - 1];
+  const activeRound = Object.values(game)[group.active_round_num - 1];
   const timeValues = getTimeValues({ group, currentTimeInSeconds });
 
   const [roundIsOver, setRoundIsOver] = useState(false);
@@ -112,7 +112,7 @@ const Group = ({
       <HelpfulPrompt timeValues={timeValues} />
       <Participants
         round={activeRound}
-        roundNumber={group.round_active}
+        roundNumber={group.active_round_num}
         dropouts={group.dropouts}
       />
       <p style={{ textAlign: "center" }}>
@@ -128,7 +128,6 @@ const Group = ({
       <PastRoundsModal
         game={game}
         group={group}
-        activeRound={group.round_active}
         openPastRoundsModal={openPastRoundsModal}
         setOpenPastRoundsModal={setOpenPastRoundsModal}
       />

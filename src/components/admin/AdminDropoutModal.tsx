@@ -21,9 +21,9 @@ const AdminDropoutModal = ({
   setOpenDropoutModal,
   activeRound,
 }: AdminDropoutModalPropsType) => {
-  const { id, dropouts, round_active, name } = group;
+  const { id, dropouts, active_round_num, name } = group;
 
-  const [roundDroppedOut, setRoundDroppedOut] = useState(round_active);
+  const [roundDroppedOut, setRoundDroppedOut] = useState(active_round_num);
   const handleChangeRoundDroppedOut = (
     e: ChangeEvent<HTMLInputElement>,
     { value }: InputOnChangeData
@@ -38,7 +38,7 @@ const AdminDropoutModal = ({
         ...group,
         dropouts: getIsRoundDropout({
           nParticipant: n,
-          roundNumber: round_active,
+          roundNumber: active_round_num,
           dropouts,
         })
           ? dropouts.filter((d) => d.participant_number !== n)
@@ -71,10 +71,12 @@ const AdminDropoutModal = ({
             value={roundDroppedOut}
             options={(() => {
               let options = [];
-              for (let i = 1; i <= round_active; i++) {
+              for (let i = 1; i <= active_round_num; i++) {
                 options.push({
                   key: i,
-                  text: `Round ${i === round_active ? i + " (current)" : i}`,
+                  text: `Round ${
+                    i === active_round_num ? i + " (current)" : i
+                  }`,
                   value: i,
                 });
               }
@@ -90,7 +92,7 @@ const AdminDropoutModal = ({
           </p>
           <Participants
             round={activeRound}
-            roundNumber={round_active}
+            roundNumber={active_round_num}
             onToggleDropoutStatus={handleToggleDropoutStatus}
             dropouts={dropouts}
           />

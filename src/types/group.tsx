@@ -6,8 +6,8 @@ export type dropoutsType = {
 export type groupType = {
   name: string;
   participant_count: number;
+  active_round_num: number;
   round_count: number;
-  round_active: number;
   round_duration: number;
   round_end_time: number;
   round_is_paused: boolean;

@@ -102,10 +102,10 @@ const AdminActions = ({
   };
 
   const handleNextRound = () => {
-    if (group.round_active < group.round_count) {
+    if (group.active_round_num < group.round_count) {
       const payload = {
         ...group,
-        round_active: group.round_active + 1,
+        active_round_num: group.active_round_num + 1,
         round_end_time: currentTimeInSeconds + group.round_duration,
         round_is_paused: true,
         round_paused_time: group.round_duration,
@@ -123,10 +123,10 @@ const AdminActions = ({
   };
 
   const handlePrevRound = () => {
-    if (group.round_active > 1) {
+    if (group.active_round_num > 1) {
       const payload = {
         ...group,
-        round_active: group.round_active - 1,
+        active_round_num: group.active_round_num - 1,
         round_end_time: currentTimeInSeconds + group.round_duration,
         round_is_paused: true,
         round_paused_time: group.round_duration,
@@ -232,7 +232,7 @@ const AdminActions = ({
                 setConfirmingAction("prev_round");
                 setOpenConfirmModal(true);
               }}
-              disabled={group.round_active <= 1}
+              disabled={group.active_round_num <= 1}
               primary
               fluid
             >
@@ -247,7 +247,7 @@ const AdminActions = ({
                 setConfirmingAction("next_round");
                 setOpenConfirmModal(true);
               }}
-              disabled={group.round_active >= group.round_count}
+              disabled={group.active_round_num >= group.round_count}
               primary
               fluid
             >

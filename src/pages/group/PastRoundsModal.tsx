@@ -8,18 +8,16 @@ import { groupWithIdType } from "../../types/group";
 type PastRoundsModalPropsType = {
   game: GameType;
   group: groupWithIdType;
-  activeRound: number;
   openPastRoundsModal: boolean;
   setOpenPastRoundsModal: (openPastRoundsModal: boolean) => void;
 };
 const PastRoundsModal = ({
   game,
   group,
-  activeRound,
   openPastRoundsModal,
   setOpenPastRoundsModal,
 }: PastRoundsModalPropsType) => {
-  const pastRounds = Object.values(game).slice(0, Number(activeRound) - 1);
+  const pastRounds = Object.values(game).slice(0, group.active_round_num - 1);
   const hasPastRounds = Array.isArray(pastRounds) && pastRounds.length > 0;
 
   return (

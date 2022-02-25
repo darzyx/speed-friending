@@ -56,7 +56,7 @@ const GroupLink = ({
   };
 
   const game = getGame(group.participant_count, group.round_count);
-  const activeRound = Object.values(game)[Number(group.round_active) - 1];
+  const activeRound = Object.values(game)[Number(group.active_round_num) - 1];
   const timeValues = getTimeValues({ group, currentTimeInSeconds });
 
   const [roundIsOver, setRoundIsOver] = useState(false);

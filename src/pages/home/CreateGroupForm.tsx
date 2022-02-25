@@ -134,8 +134,8 @@ const CreateGroupForm = ({
     const payload: groupType = {
       name,
       participant_count: Number(participantCount),
+      active_round_num: 1,
       round_count: Number(roundCount),
-      round_active: 1,
       round_duration: Number(roundDuration),
       round_end_time: Timestamp.now().seconds + Number(roundDuration),
       round_is_paused: true,
