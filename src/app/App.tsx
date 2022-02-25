@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getAuth } from "firebase/auth";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Container, Divider, Image } from "semantic-ui-react";
 import { ThemeProvider } from "styled-components";
@@ -7,15 +8,14 @@ import Navbar from "../components/navbar/Navbar";
 import Home from "../pages/home/Home";
 import Group from "../pages/group/Group";
 import Admin from "../pages/admin/Admin";
-import { GroupWithIdType } from "../types/group";
 import UserIsAdminAlert from "../components/UserIsAdminAlert";
 import theme from "../styles/theme";
 import imageSVG from "../media/lotus.svg";
 import { groupsQuery, initGroup } from "./utils";
 
-type GroupsUseStateType = [GroupWithIdType[], (arg: GroupWithIdType[]) => void];
-
 const App = () => {
+  const auth = getAuth();
+
   const [userIsAdmin, setUserIsAdmin] = useState(false);
   useEffect(() => {
     // TODO: Logic for setting user as admin
@@ -24,7 +24,7 @@ const App = () => {
 
   const [anyGroupsExist, setAnyGroupsExist] = useState(false);
   const [isGettingGroups, setIsGettingGroups] = useState(true);
-  const [groups, setGroups]: GroupsUseStateType = useState([initGroup]);
+  const [groups, setGroups] = useState([initGroup]);
   // Returns onSnapshot because its return value terminates the listener
   useEffect(
     () => groupsQuery({ setGroups, setAnyGroupsExist, setIsGettingGroups }),
@@ -80,6 +80,7 @@ const App = () => {
                 path="admin"
                 element={
                   <Admin
+                    auth={auth}
                     userIsAdmin={userIsAdmin}
                     setUserIsAdmin={setUserIsAdmin}
                   />

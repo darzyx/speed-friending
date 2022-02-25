@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import {
   TwitterAuthProvider,
-  getAuth,
   signInWithRedirect,
   getRedirectResult,
   signOut,
+  Auth,
 } from "firebase/auth";
 import styled from "styled-components";
 
+import { provider } from "../../firebase";
 import CenterMiddle, {
   centerMiddleCSS,
 } from "../../components/blocks/CenterMiddle";
@@ -17,8 +18,6 @@ import { ColorfulLink } from "../../components/blocks/ColorfulText";
 import AdminSignOut from "./AdminSignOut";
 import AdminSignIn from "./AdminSignIn";
 
-const provider = new TwitterAuthProvider();
-
 const AdminContainer = styled.div`
   ${centerMiddleCSS}
   margin: 0;
@@ -26,12 +25,11 @@ const AdminContainer = styled.div`
 `;
 
 type AdminPropsType = {
+  auth: Auth;
   userIsAdmin: boolean;
   setUserIsAdmin: (userIsAdmin: boolean) => void;
 };
-const Admin = ({ userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
-  const auth = getAuth();
-
+const Admin = ({ auth, userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
   // Reset scroll on component mount
   useEffect(() => {
     window.scrollTo(0, 0);

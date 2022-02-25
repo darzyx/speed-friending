@@ -57,8 +57,6 @@ const AdminDropoutModal = ({
     }
   };
 
-  console.log({ roundDroppedOut });
-
   return (
     <StyledModal
       header={name}
