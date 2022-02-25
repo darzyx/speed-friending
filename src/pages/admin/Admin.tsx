@@ -54,6 +54,8 @@ const Admin = ({ userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
           // The signed-in user info.
           const user = result.user;
 
+          setUserIsAdmin(true);
+
           console.log({ result, credential, token, secret, user });
         }
       })
@@ -69,7 +71,7 @@ const Admin = ({ userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
 
         console.log({ error, errorMessage, errorCode, email, credential });
       });
-  }, [auth]);
+  }, [auth, setUserIsAdmin]);
 
   const handleClickSignIn = () => {
     signInWithRedirect(auth, provider);

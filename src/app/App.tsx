@@ -1,31 +1,17 @@
-import { onSnapshot, collection } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Container, Divider, Image } from "semantic-ui-react";
 import { ThemeProvider } from "styled-components";
 
-import Navbar from "./components/navbar/Navbar";
-import { db } from "./firebase";
-import Home from "./pages/home/Home";
-import Group from "./pages/group/Group";
-import Admin from "./pages/admin/Admin";
-import { GroupWithIdType } from "./types/group";
-import UserIsAdminAlert from "./components/UserIsAdminAlert";
-import theme from "./styles/theme";
-import imageSVG from "./media/lotus.svg";
-
-export const initGroup = {
-  id: "",
-  name: "",
-  participant_count: 0,
-  round_count: 0,
-  round_active: 0,
-  round_duration: 0,
-  round_end_time: 0,
-  round_is_paused: false,
-  round_paused_time: 0,
-  dropouts: [],
-} as GroupWithIdType; // Assumes init data is good!
+import Navbar from "../components/navbar/Navbar";
+import Home from "../pages/home/Home";
+import Group from "../pages/group/Group";
+import Admin from "../pages/admin/Admin";
+import { GroupWithIdType } from "../types/group";
+import UserIsAdminAlert from "../components/UserIsAdminAlert";
+import theme from "../styles/theme";
+import imageSVG from "../media/lotus.svg";
+import { groupsQuery, initGroup } from "./utils";
 
 type GroupsUseStateType = [GroupWithIdType[], (arg: GroupWithIdType[]) => void];
 
@@ -36,26 +22,12 @@ const App = () => {
     setUserIsAdmin(false);
   }, []);
 
-  const [hasAnyGroups, setHasAnyGroups] = useState(false);
+  const [anyGroupsExist, setAnyGroupsExist] = useState(false);
   const [isGettingGroups, setIsGettingGroups] = useState(true);
   const [groups, setGroups]: GroupsUseStateType = useState([initGroup]);
   // Returns onSnapshot because its return value terminates the listener
   useEffect(
-    () =>
-      onSnapshot(collection(db, "groups"), (snapshot) => {
-        let resultGroups = snapshot.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        })) as GroupWithIdType[]; // Assumes fetched data is good!
-        const resultHasAnyGroups =
-          Array.isArray(resultGroups) && resultGroups[0]?.name?.length > 0;
-        if (resultHasAnyGroups) {
-          resultGroups.sort((a, b) => a.name.localeCompare(b.name));
-        }
-        setGroups(resultGroups);
-        setIsGettingGroups(false);
-        setHasAnyGroups(resultHasAnyGroups);
-      }),
+    () => groupsQuery({ setGroups, setAnyGroupsExist, setIsGettingGroups }),
     []
   );
 
@@ -87,7 +59,7 @@ const App = () => {
                   <Home
                     userIsAdmin={userIsAdmin}
                     isGettingGroups={isGettingGroups}
-                    hasAnyGroups={hasAnyGroups}
+                    anyGroupsExist={anyGroupsExist}
                     groups={groups}
                     currentTimeInSeconds={currentTimeInSeconds}
                   />

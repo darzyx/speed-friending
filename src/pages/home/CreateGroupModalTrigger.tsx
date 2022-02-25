@@ -6,13 +6,12 @@ import { GroupWithIdType } from "../../types/group";
 const maxGroups = 50;
 
 type CreateGroupButtonPropsType = {
-  hasAnyGroups: boolean;
+  anyGroupsExist: boolean;
   groups: GroupWithIdType[];
   setOpenCreateGroupModal: (openCreateGroupModal: boolean) => void;
 };
-
 const CreateGroupModalTrigger = ({
-  hasAnyGroups,
+  anyGroupsExist,
   groups,
   setOpenCreateGroupModal,
 }: CreateGroupButtonPropsType) => {
@@ -21,7 +20,7 @@ const CreateGroupModalTrigger = ({
     <Button
       style={{
         width: "100%",
-        margin: `${hasAnyGroups ? "10px" : "0"} 0 0 0`,
+        margin: `${anyGroupsExist ? "10px" : "0"} 0 0 0`,
         paddingTop: "14px",
         paddingBottom: "14px",
         backgroundColor: theme.color.five,

@@ -6,7 +6,6 @@ import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { getGame, getTimeValues } from "./utils";
 import { GroupWithIdType } from "../../types/group";
-import { initGroup } from "../../App";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
 import TimeDisplay from "../../components/time/TimeDisplay";
 import NavButton from "../../components/blocks/NavButton";
@@ -16,6 +15,7 @@ import AdminModal from "../../components/admin/AdminModal";
 import { GroupNotFound } from "./Placeholders";
 import HelpfulPrompt from "./HelpfulPrompt";
 import { Loading } from "../../components/blocks/Loading";
+import { initGroup } from "../../app/utils";
 
 type GroupPropsType = {
   groups: GroupWithIdType[];

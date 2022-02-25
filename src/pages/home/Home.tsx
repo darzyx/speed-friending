@@ -16,14 +16,14 @@ export const homeTextCTA = "Select Group Below";
 type HomePropsType = {
   userIsAdmin: boolean;
   isGettingGroups: boolean;
-  hasAnyGroups: boolean;
+  anyGroupsExist: boolean;
   groups: GroupWithIdType[];
   currentTimeInSeconds: number;
 };
 const Home = ({
   userIsAdmin,
   isGettingGroups,
-  hasAnyGroups,
+  anyGroupsExist,
   groups,
   currentTimeInSeconds,
 }: HomePropsType) => {
@@ -50,7 +50,7 @@ const Home = ({
         inverted
         style={{ backgroundColor: theme.color.two, width: "100%" }}
       >
-        {hasAnyGroups &&
+        {anyGroupsExist &&
           groups.map((group, index) => (
             <GroupLink
               userIsAdmin={userIsAdmin}
@@ -60,17 +60,17 @@ const Home = ({
               index={index}
             />
           ))}
-        {!hasAnyGroups && isGettingGroups && <LoadingGroupsPlaceholder />}
-        {!hasAnyGroups && !isGettingGroups && <NoGroupsPlaceholder />}
+        {!anyGroupsExist && isGettingGroups && <LoadingGroupsPlaceholder />}
+        {!anyGroupsExist && !isGettingGroups && <NoGroupsPlaceholder />}
         {userIsAdmin && !isGettingGroups && (
           <CreateGroupModalTrigger
             groups={groups}
-            hasAnyGroups={hasAnyGroups}
+            anyGroupsExist={anyGroupsExist}
             setOpenCreateGroupModal={setOpenCreateGroupModal}
           />
         )}
       </Segment>
-      {hasAnyGroups && !isGettingGroups && userIsAdmin && (
+      {anyGroupsExist && !isGettingGroups && userIsAdmin && (
         <p>
           {(() => {
             let totalParticipants = 0;
