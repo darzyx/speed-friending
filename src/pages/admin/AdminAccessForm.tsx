@@ -1,5 +1,4 @@
 import { ChangeEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   Button,
   Divider,
@@ -14,17 +13,15 @@ import StyledFormInput from "../../components/blocks/StyledFormInput";
 import theme from "../../styles/theme";
 
 const maxUsernameLength = 15;
-
-// TODO: Add real auth logic, new password(s), and remove this
-const testPassword = "justvibebro";
+const testPassword = "brosquito"; // TODO: add real auth logic
 const maxPasswordLength = 30;
 
-type AdminSignInFormPropsType = {
-  setUserIsAdmin: (userIsAdmin: boolean) => void;
+type AdminAccessFormPropsType = {
+  setShowTwitterSignIn: (showTwitterSignIn: boolean) => void;
 };
-const AdminSignInForm = ({ setUserIsAdmin }: AdminSignInFormPropsType) => {
-  const navigate = useNavigate();
-
+const AdminAccessForm = ({
+  setShowTwitterSignIn,
+}: AdminAccessFormPropsType) => {
   const [username, setUsername] = useState("");
   const handleChangeUsername = (
     e: ChangeEvent<HTMLInputElement>,
@@ -46,14 +43,13 @@ const AdminSignInForm = ({ setUserIsAdmin }: AdminSignInFormPropsType) => {
   };
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const handleSubmit = async () => {
+  const handleSubmitCredentials = async () => {
     if (password === testPassword) {
       setIsSubmitting(true);
       await new Promise(() =>
         setTimeout(() => {
-          setUserIsAdmin(true);
+          setShowTwitterSignIn(true);
           setIsSubmitting(false);
-          navigate("/home");
         }, 1000)
       );
     }
@@ -69,7 +65,7 @@ const AdminSignInForm = ({ setUserIsAdmin }: AdminSignInFormPropsType) => {
         backgroundColor: theme.color.three,
       }}
     >
-      <Form inverted onSubmit={handleSubmit} autoComplete="off">
+      <Form inverted onSubmit={handleSubmitCredentials} autoComplete="off">
         <StyledFormInput
           name="username"
           placeholder="Username"
@@ -111,4 +107,4 @@ const AdminSignInForm = ({ setUserIsAdmin }: AdminSignInFormPropsType) => {
   );
 };
 
-export default AdminSignInForm;
+export default AdminAccessForm;

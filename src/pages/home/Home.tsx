@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import GroupLink from "./GroupLink";
 import LoadingGroupsPlaceholder from "./LoadingGroupsPlaceholder";
@@ -8,16 +7,14 @@ import NoGroupsPlaceholder from "./NoGroupsPlaceholder";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
 import { GroupWithIdType } from "../../types/group";
 import CreateGroupModal from "./CreateGroupModal";
-import { Divider, Header, Icon, Segment } from "semantic-ui-react";
+import { Divider, Header, Segment } from "semantic-ui-react";
 import { ColorfulHeader } from "../../components/blocks/ColorfulText";
 import theme from "../../styles/theme";
-import NavButton from "../../components/blocks/NavButton";
 
 export const homeTextCTA = "Select Group Below";
 
 type HomePropsType = {
   userIsAdmin: boolean;
-  setUserIsAdmin: (userIsAdmin: boolean) => void;
   isGettingGroups: boolean;
   hasAnyGroups: boolean;
   groups: GroupWithIdType[];
@@ -25,7 +22,6 @@ type HomePropsType = {
 };
 const Home = ({
   userIsAdmin,
-  setUserIsAdmin,
   isGettingGroups,
   hasAnyGroups,
   groups,
@@ -35,8 +31,6 @@ const Home = ({
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const navigate = useNavigate();
 
   const [openCreateGroupModal, setOpenCreateGroupModal] = useState(false);
 
@@ -97,11 +91,6 @@ const Home = ({
         </p>
       )}
       <Divider hidden />
-      <CenterMiddle>
-        <NavButton onClick={() => navigate("/admin")}>
-          <Icon name="star" /> Admin
-        </NavButton>
-      </CenterMiddle>
       <CreateGroupModal
         openCreateGroupModal={openCreateGroupModal}
         setOpenCreateGroupModal={setOpenCreateGroupModal}

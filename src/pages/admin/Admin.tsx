@@ -1,14 +1,23 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import {
+  TwitterAuthProvider,
+  getAuth,
+  signInWithRedirect,
+  getRedirectResult,
+  signOut,
+} from "firebase/auth";
 import styled from "styled-components";
 
 import CenterMiddle, {
   centerMiddleCSS,
 } from "../../components/blocks/CenterMiddle";
-import { Divider, Header, Segment } from "semantic-ui-react";
-import AdminSignInForm from "./AdminSignInForm";
+import { Divider, Header } from "semantic-ui-react";
+import AdminAccessForm from "./AdminAccessForm";
 import { ColorfulLink } from "../../components/blocks/ColorfulText";
-import theme from "../../styles/theme";
-import { Link } from "react-router-dom";
+import AdminSignOut from "./AdminSignOut";
+import AdminSignIn from "./AdminSignIn";
+
+const provider = new TwitterAuthProvider();
 
 const AdminContainer = styled.div`
   ${centerMiddleCSS}
@@ -21,10 +30,61 @@ type AdminPropsType = {
   setUserIsAdmin: (userIsAdmin: boolean) => void;
 };
 const Admin = ({ userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
+  const auth = getAuth();
+
   // Reset scroll on component mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const [showTwitterSignIn, setShowTwitterSignIn] = useState(false);
+
+  useEffect(() => {
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result) {
+          // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
+          // You can use these server side with your app's credentials to access the Twitter API.
+          const credential = TwitterAuthProvider.credentialFromResult(result);
+          const token = credential?.accessToken;
+          const secret = credential?.secret;
+
+          // ...
+
+          // The signed-in user info.
+          const user = result.user;
+
+          console.log({ result, credential, token, secret, user });
+        }
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The AuthCredential type that was used.
+        const credential = TwitterAuthProvider.credentialFromError(error);
+        // ...
+
+        console.log({ error, errorMessage, errorCode, email, credential });
+      });
+  }, [auth]);
+
+  const handleClickSignIn = () => {
+    signInWithRedirect(auth, provider);
+  };
+
+  const handleClickSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        setUserIsAdmin(false);
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
 
   return (
     <AdminContainer>
@@ -33,22 +93,17 @@ const Admin = ({ userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
         Sign In
       </Header>
       {userIsAdmin ? (
-        <Segment
-          inverted
-          style={{
-            width: "100%",
-            maxWidth: "500px",
-            color: theme.color.text,
-            backgroundColor: theme.color.three,
-          }}
-        >
-          <CenterMiddle>
-            <p style={{ textAlign: "center" }}>Already signed in as admin</p>
-            <Link to="/home">&larr; Go Home</Link>
-          </CenterMiddle>
-        </Segment>
+        <>
+          <Divider hidden />
+          <AdminSignOut onClickSignOut={handleClickSignOut} />
+        </>
+      ) : showTwitterSignIn ? (
+        <>
+          <Divider hidden />
+          <AdminSignIn onClickSignIn={handleClickSignIn} />
+        </>
       ) : (
-        <AdminSignInForm setUserIsAdmin={setUserIsAdmin} />
+        <AdminAccessForm setShowTwitterSignIn={setShowTwitterSignIn} />
       )}
       <Divider hidden />
       {!userIsAdmin && (

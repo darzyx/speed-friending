@@ -8,7 +8,6 @@ import Navbar from "./components/navbar/Navbar";
 import { db } from "./firebase";
 import Home from "./pages/home/Home";
 import Group from "./pages/group/Group";
-// import SignIn from "./pages/sign-in/SignIn";
 import Admin from "./pages/admin/Admin";
 import { GroupWithIdType } from "./types/group";
 import UserIsAdminAlert from "./components/UserIsAdminAlert";
@@ -87,7 +86,6 @@ const App = () => {
                 element={
                   <Home
                     userIsAdmin={userIsAdmin}
-                    setUserIsAdmin={setUserIsAdmin}
                     isGettingGroups={isGettingGroups}
                     hasAnyGroups={hasAnyGroups}
                     groups={groups}
@@ -106,7 +104,6 @@ const App = () => {
                   />
                 }
               />
-              {/* <Route path="sign-in" element={<SignIn />} /> */}
               <Route
                 path="admin"
                 element={
