@@ -14,6 +14,3 @@ LOW PRIORITY
 - Consider adding light mode (should be easy)
 - Make string values numbers where appropriate on create form
 - Remove hard coded max groups number
-- Only render participant modals when necessary
-- CenterMiddle css should have margin+padding set to zero (so some custom
-  containers are no longer necessary)
