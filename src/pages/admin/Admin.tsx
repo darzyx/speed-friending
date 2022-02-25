@@ -96,6 +96,7 @@ const Admin = ({ auth, userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
         <>
           <Divider hidden />
           <AdminSignedOut />
+          <AdminAccessForm setShowTwitterSignIn={setShowTwitterSignIn} />
         </>
       ) : userIsAdmin ? (
         <>
@@ -111,7 +112,7 @@ const Admin = ({ auth, userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
         <AdminAccessForm setShowTwitterSignIn={setShowTwitterSignIn} />
       )}
       <Divider hidden />
-      {!signedOut && !userIsAdmin && !showTwitterSignIn && (
+      {!userIsAdmin && (
         <CenterMiddle>
           <p style={{ textAlign: "center" }}>Not an administrator?</p>
           <ColorfulLink to="/">Go home to select group &rarr;</ColorfulLink>
