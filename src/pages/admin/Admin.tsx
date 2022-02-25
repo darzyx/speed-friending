@@ -15,8 +15,9 @@ import CenterMiddle, {
 import { Divider, Header } from "semantic-ui-react";
 import AdminAccessForm from "./AdminAccessForm";
 import { ColorfulLink } from "../../components/blocks/ColorfulText";
-import AdminSignOut from "./AdminSignOut";
 import AdminSignIn from "./AdminSignIn";
+import AdminSignOut from "./AdminSignOut";
+import AdminSignedOut from "./AdminSignedOut";
 
 const AdminContainer = styled.div`
   ${centerMiddleCSS}
@@ -52,8 +53,6 @@ const Admin = ({ auth, userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
           // The signed-in user info.
           const user = result.user;
 
-          setUserIsAdmin(true);
-
           console.log({ result, credential, token, secret, user });
         }
       })
@@ -75,11 +74,12 @@ const Admin = ({ auth, userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
     signInWithRedirect(auth, provider);
   };
 
+  const [signedOut, setSignedOut] = useState(false);
   const handleClickSignOut = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        setUserIsAdmin(false);
+        setSignedOut(true);
       })
       .catch((error) => {
         // An error happened.
@@ -92,7 +92,12 @@ const Admin = ({ auth, userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
         <Header.Subheader style={{ margin: "7px" }}>Admin</Header.Subheader>
         Sign In
       </Header>
-      {userIsAdmin ? (
+      {signedOut ? (
+        <>
+          <Divider hidden />
+          <AdminSignedOut />
+        </>
+      ) : userIsAdmin ? (
         <>
           <Divider hidden />
           <AdminSignOut onClickSignOut={handleClickSignOut} />
@@ -106,10 +111,10 @@ const Admin = ({ auth, userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
         <AdminAccessForm setShowTwitterSignIn={setShowTwitterSignIn} />
       )}
       <Divider hidden />
-      {!userIsAdmin && (
+      {!signedOut && !userIsAdmin && !showTwitterSignIn && (
         <CenterMiddle>
           <p style={{ textAlign: "center" }}>Not an administrator?</p>
-          <ColorfulLink to="/"> &larr; Go home to select group</ColorfulLink>
+          <ColorfulLink to="/">Go home to select group &rarr;</ColorfulLink>
         </CenterMiddle>
       )}
     </AdminContainer>

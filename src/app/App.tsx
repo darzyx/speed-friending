@@ -15,12 +15,17 @@ import { groupsQuery, initGroup } from "./utils";
 
 const App = () => {
   const auth = getAuth();
+  const currentUserId = auth?.currentUser?.uid;
+  console.log({ auth });
 
   const [userIsAdmin, setUserIsAdmin] = useState(false);
   useEffect(() => {
-    // TODO: Logic for setting user as admin
-    setUserIsAdmin(false);
-  }, []);
+    if (currentUserId) {
+      setUserIsAdmin(true);
+    } else {
+      setUserIsAdmin(false);
+    }
+  }, [currentUserId]);
 
   const [anyGroupsExist, setAnyGroupsExist] = useState(false);
   const [isGettingGroups, setIsGettingGroups] = useState(true);
