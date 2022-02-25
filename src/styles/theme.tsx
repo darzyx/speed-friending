@@ -6,6 +6,9 @@ const theme = {
     three: "rgb(44, 58, 73)",
     four: "rgb(69, 87, 102)",
     five: "rgb(95, 113, 131)",
+    blue: "#648FFF",
+    purple: "#785EF0",
+    pink: "#DC267F",
   },
 };
 

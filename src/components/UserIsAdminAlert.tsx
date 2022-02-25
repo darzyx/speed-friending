@@ -1,10 +1,11 @@
 import styled, { keyframes } from "styled-components";
+import theme from "../styles/theme";
 
 const backgroundColorChange = keyframes`
-  0% { background-color: #648FFF; }
-  33% { background-color: #785EF0; }
-  66% { background-color: #785EF0; }
-  100% { background-color: #DC267F; }
+  0% { background-color: ${theme.color.blue}; }
+  33% { background-color: ${theme.color.purple}; }
+  66% { background-color: ${theme.color.purple}; }
+  100% { background-color: ${theme.color.pink}; }
 `;
 
 const StyledDiv = styled.div`

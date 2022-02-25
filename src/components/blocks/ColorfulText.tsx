@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { Header } from "semantic-ui-react";
 import styled, { css, keyframes } from "styled-components";
+import theme from "../../styles/theme";
 
 const colorChange = keyframes`
-  0% { color: #648FFF; }
-  33% { color: #785EF0; }
-  66% { color: #785EF0; }
-  100% { color: #DC267F; }
+  0% { color: ${theme.color.blue}; }
+  33% { color: ${theme.color.purple}; }
+  66% { color: ${theme.color.purple}; }
+  100% { color: ${theme.color.pink}; }
 `;
 
 export const colorfulTextAnimationCSS = css`

@@ -6,7 +6,7 @@ import { ColorfulLink } from "../blocks/ColorfulText";
 
 const StyledListHeader = styled(List.Header).attrs({ as: "h3" })`
   &&&& {
-    color: #648fff !important;
+    color: ${({ theme }) => theme.color.blue} !important;
     font-weight: bold;
   }
 `;
