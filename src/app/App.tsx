@@ -16,7 +16,6 @@ import { groupsQuery, initGroup } from "./utils";
 const App = () => {
   const auth = getAuth();
   const currentUserId = auth?.currentUser?.uid;
-  console.log({ auth });
 
   const [userIsAdmin, setUserIsAdmin] = useState(false);
   useEffect(() => {
