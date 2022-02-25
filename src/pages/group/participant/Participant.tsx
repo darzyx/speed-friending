@@ -26,8 +26,6 @@ const Participant = ({
   dropouts,
   roundNumber,
 }: ParticipantPropsType) => {
-  console.log("PARTICIPANT");
-
   const [openPlaceholderModal, setOpenPlaceholderModal] = useState(false);
   const [openDropoutModal, setOpenDropoutModal] = useState(false);
   const [openNoPartnerModal, setOpenNoPartnerModal] = useState(false);
