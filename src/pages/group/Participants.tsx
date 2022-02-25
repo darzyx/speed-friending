@@ -37,7 +37,7 @@ const Participants = ({
               top={true}
               nPartner={round.btm[idxTop]}
               onToggleDropoutStatus={onToggleDropoutStatus}
-              group={group}
+              dropouts={group.dropouts}
               roundNumber={roundNumber}
             />
             <Participant
@@ -45,7 +45,7 @@ const Participants = ({
               top={false}
               nPartner={nTop}
               onToggleDropoutStatus={onToggleDropoutStatus}
-              group={group}
+              dropouts={group.dropouts}
               roundNumber={roundNumber}
             />
           </div>

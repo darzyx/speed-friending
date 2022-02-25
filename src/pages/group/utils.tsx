@@ -1,4 +1,4 @@
-import { groupWithIdType } from "../../types/group";
+import { dropoutsType, groupWithIdType } from "../../types/group";
 
 export const getMaxRounds = (participant_count: number) => {
   if (participant_count === 0 || participant_count === 1) {
@@ -109,16 +109,14 @@ export const getTimeValues = ({
 export const getIsRoundDropout = ({
   nParticipant,
   roundNumber,
-  group,
+  dropouts,
 }: {
   nParticipant: number;
   roundNumber: number;
-  group: groupWithIdType;
+  dropouts: dropoutsType;
 }) => {
   if (nParticipant === 0) return false;
-  const dropout = group.dropouts.find(
-    (d) => d?.participant_number === nParticipant
-  );
+  const dropout = dropouts.find((d) => d?.participant_number === nParticipant);
   if (dropout?.participant_number && dropout.round_dropped_out <= roundNumber) {
     return true;
   } else {

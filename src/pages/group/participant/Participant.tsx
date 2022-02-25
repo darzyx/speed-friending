@@ -8,14 +8,14 @@ import DropoutModal from "./DropoutModal";
 import PlaceholderModal from "./PlaceholderModal";
 import NoPartnerModal from "./NoPartnerModal";
 import ParticipantModal from "./ParticipantModal";
-import { groupWithIdType } from "../../../types/group";
+import { dropoutsType } from "../../../types/group";
 
 type ParticipantPropsType = {
   nParticipant: number;
   top?: boolean;
   nPartner: number;
   onToggleDropoutStatus?: (n: number) => void;
-  group: groupWithIdType;
+  dropouts: dropoutsType;
   roundNumber: number;
 };
 const Participant = ({
@@ -23,7 +23,7 @@ const Participant = ({
   top,
   nPartner,
   onToggleDropoutStatus,
-  group,
+  dropouts,
   roundNumber,
 }: ParticipantPropsType) => {
   const [openPlaceholderModal, setOpenPlaceholderModal] = useState(false);
@@ -31,10 +31,10 @@ const Participant = ({
   const [openNoPartnerModal, setOpenNoPartnerModal] = useState(false);
   const [openParticipantModal, setOpenParticipantModal] = useState(false);
   const [isDropout, setIsDropout] = useState(
-    getIsRoundDropout({ nParticipant, roundNumber, group })
+    getIsRoundDropout({ nParticipant, roundNumber, dropouts })
   );
   const [partnerIsDropout, setPartnerIsDropout] = useState(
-    getIsRoundDropout({ nParticipant: nPartner, roundNumber, group })
+    getIsRoundDropout({ nParticipant: nPartner, roundNumber, dropouts })
   );
   const handleClick = () => {
     if (nParticipant === 0 && !openPlaceholderModal) {
@@ -52,20 +52,20 @@ const Participant = ({
 
   // Keep up to date when admin changes dropout status:
   useEffect(() => {
-    if (getIsRoundDropout({ nParticipant, roundNumber, group })) {
+    if (getIsRoundDropout({ nParticipant, roundNumber, dropouts })) {
       setIsDropout(true);
     } else {
       setIsDropout(false);
     }
-  }, [nParticipant, roundNumber, group]);
+  }, [nParticipant, roundNumber, dropouts]);
 
   useEffect(() => {
-    if (getIsRoundDropout({ nParticipant: nPartner, roundNumber, group })) {
+    if (getIsRoundDropout({ nParticipant: nPartner, roundNumber, dropouts })) {
       setPartnerIsDropout(true);
     } else {
       setPartnerIsDropout(false);
     }
-  }, [nPartner, roundNumber, group]);
+  }, [nPartner, roundNumber, dropouts]);
 
   return (
     <div>
@@ -109,14 +109,14 @@ const Participant = ({
         nPartner={nPartner}
         openDropoutModal={openDropoutModal}
         setOpenDropoutModal={setOpenDropoutModal}
-        dropouts={group.dropouts}
+        dropouts={dropouts}
       />
       <NoPartnerModal
         nParticipant={nParticipant}
         nPartner={nPartner}
         openNoPartnerModal={openNoPartnerModal}
         setOpenNoPartnerModal={setOpenNoPartnerModal}
-        dropouts={group.dropouts}
+        dropouts={dropouts}
       />
       <ParticipantModal
         nParticipant={nParticipant}

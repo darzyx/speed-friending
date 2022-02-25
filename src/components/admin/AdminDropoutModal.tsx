@@ -39,7 +39,7 @@ const AdminDropoutModal = ({
         dropouts: getIsRoundDropout({
           nParticipant: n,
           roundNumber: round_active,
-          group,
+          dropouts,
         })
           ? dropouts.filter((d) => d.participant_number !== n)
           : Array.from(
