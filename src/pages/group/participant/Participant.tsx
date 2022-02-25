@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { Icon } from "semantic-ui-react";
 
 import CenterMiddle from "../../../components/blocks/CenterMiddle";
@@ -26,6 +26,8 @@ const Participant = ({
   dropouts,
   roundNumber,
 }: ParticipantPropsType) => {
+  console.log("PARTICIPANT");
+
   const [openPlaceholderModal, setOpenPlaceholderModal] = useState(false);
   const [openDropoutModal, setOpenDropoutModal] = useState(false);
   const [openNoPartnerModal, setOpenNoPartnerModal] = useState(false);
@@ -128,4 +130,4 @@ const Participant = ({
   );
 };
 
-export default Participant;
+export default memo(Participant);
