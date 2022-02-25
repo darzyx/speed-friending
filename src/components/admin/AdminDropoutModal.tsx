@@ -4,13 +4,13 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import Participants from "../../pages/group/Participants";
 import { getIsRoundDropout, RoundType } from "../../pages/group/utils";
-import { GroupWithIdType } from "../../types/group";
+import { groupWithIdType } from "../../types/group";
 import StyledModal from "../blocks/StyledModal";
 import { ChangeEvent, useState } from "react";
 import StyledDropdown from "../blocks/StyledDropdown";
 
 type AdminDropoutModalPropsType = {
-  group: GroupWithIdType;
+  group: groupWithIdType;
   openDropoutModal: boolean;
   setOpenDropoutModal: (openDropoutModal: boolean) => void;
   activeRound: RoundType;

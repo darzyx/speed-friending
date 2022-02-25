@@ -1,7 +1,7 @@
 import { Segment } from "semantic-ui-react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
-import { GroupWithIdType } from "../../types/group";
+import { groupWithIdType } from "../../types/group";
 
 import Participant from "./participant/Participant";
 import { RoundType } from "./utils";
@@ -25,7 +25,7 @@ const Participants = ({
   round: RoundType;
   roundNumber: number;
   onToggleDropoutStatus?: (n: number) => void;
-  group: GroupWithIdType;
+  group: groupWithIdType;
 }) => (
   <Segment inverted style={{ backgroundColor: theme.color.one, margin: "0" }}>
     <ParticipantsContainer>

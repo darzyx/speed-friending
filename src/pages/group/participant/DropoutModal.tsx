@@ -1,13 +1,14 @@
 import { Button, Grid, Icon } from "semantic-ui-react";
 
 import StyledModal from "../../../components/blocks/StyledModal";
+import { dropoutsType } from "../../../types/group";
 
 type DropoutModalPropsType = {
   nParticipant: number;
   nPartner: number;
   openDropoutModal: boolean;
   setOpenDropoutModal: (openDropoutModal: boolean) => void;
-  dropouts: { participant_number: number; round_dropped_out: number }[];
+  dropouts: dropoutsType;
 };
 const DropoutModal = ({
   nParticipant,

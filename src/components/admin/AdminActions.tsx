@@ -3,14 +3,14 @@ import { Button, Divider, Grid, Header, Icon } from "semantic-ui-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { db } from "../../firebase";
-import { GroupWithIdType } from "../../types/group";
+import { groupWithIdType } from "../../types/group";
 import { RoundType, TimeValuesType } from "../../pages/group/utils";
 import { useState } from "react";
 import AdminConfirmModal from "./AdminConfirmModal";
 import AdminDropoutModal from "./AdminDropoutModal";
 
 type AdminActionsPropsType = {
-  group: GroupWithIdType;
+  group: groupWithIdType;
   timeValues: TimeValuesType;
   setOpenAdminModal: (openAdminModal: boolean) => void;
   currentTimeInSeconds: number;

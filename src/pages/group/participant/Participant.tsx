@@ -8,14 +8,14 @@ import DropoutModal from "./DropoutModal";
 import PlaceholderModal from "./PlaceholderModal";
 import NoPartnerModal from "./NoPartnerModal";
 import ParticipantModal from "./ParticipantModal";
-import { GroupWithIdType } from "../../../types/group";
+import { groupWithIdType } from "../../../types/group";
 
 type ParticipantPropsType = {
   nParticipant: number;
   top?: boolean;
   nPartner: number;
   onToggleDropoutStatus?: (n: number) => void;
-  group: GroupWithIdType;
+  group: groupWithIdType;
   roundNumber: number;
 };
 const Participant = ({

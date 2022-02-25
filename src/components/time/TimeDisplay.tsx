@@ -1,10 +1,10 @@
 import { Statistic } from "semantic-ui-react";
 import { TimeValuesType } from "../../pages/group/utils";
-import { GroupWithIdType } from "../../types/group";
+import { groupWithIdType } from "../../types/group";
 import CenterMiddle from "../blocks/CenterMiddle";
 
 type TimeDisplayPropsType = {
-  group: GroupWithIdType;
+  group: groupWithIdType;
   timeValues: TimeValuesType;
 };
 const TimeDisplay = ({ group, timeValues }: TimeDisplayPropsType) => (

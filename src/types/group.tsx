@@ -1,4 +1,9 @@
-export type GroupType = {
+export type dropoutsType = {
+  participant_number: number;
+  round_dropped_out: number;
+}[];
+
+export type groupType = {
   name: string;
   participant_count: number;
   round_count: number;
@@ -7,7 +12,7 @@ export type GroupType = {
   round_end_time: number;
   round_is_paused: boolean;
   round_paused_time: number; // Time remaining when paused
-  dropouts: { participant_number: number; round_dropped_out: number }[];
+  dropouts: dropoutsType;
 };
 
-export type GroupWithIdType = GroupType & { id: string };
+export type groupWithIdType = groupType & { id: string };

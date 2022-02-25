@@ -5,7 +5,7 @@ import LoadingGroupsPlaceholder from "./LoadingGroupsPlaceholder";
 import CreateGroupModalTrigger from "./CreateGroupModalTrigger";
 import NoGroupsPlaceholder from "./NoGroupsPlaceholder";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
-import { GroupWithIdType } from "../../types/group";
+import { groupWithIdType } from "../../types/group";
 import CreateGroupModal from "./CreateGroupModal";
 import { Divider, Header, Segment } from "semantic-ui-react";
 import { ColorfulHeader } from "../../components/blocks/ColorfulText";
@@ -17,7 +17,7 @@ type HomePropsType = {
   userIsAdmin: boolean;
   isGettingGroups: boolean;
   anyGroupsExist: boolean;
-  groups: GroupWithIdType[];
+  groups: groupWithIdType[];
   currentTimeInSeconds: number;
 };
 const Home = ({

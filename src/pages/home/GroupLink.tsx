@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button, Label } from "semantic-ui-react";
 
 import { getGame, getTimeValues, TimeValuesType } from "../group/utils";
-import { GroupWithIdType } from "../../types/group";
+import { groupWithIdType } from "../../types/group";
 import AdminModal from "../../components/admin/AdminModal";
 import { db } from "../../firebase";
 import theme from "../../styles/theme";
@@ -33,7 +33,7 @@ const TimeLabel = ({
 
 type GroupLinkPropsType = {
   index: number;
-  group: GroupWithIdType;
+  group: groupWithIdType;
   currentTimeInSeconds: number;
   userIsAdmin: boolean;
 };

@@ -1,11 +1,11 @@
 import { RoundType, TimeValuesType } from "../../pages/group/utils";
-import { GroupWithIdType } from "../../types/group";
+import { groupWithIdType } from "../../types/group";
 import StyledModal from "../blocks/StyledModal";
 import TimeDisplay from "../time/TimeDisplay";
 import AdminActions from "./AdminActions";
 
 type AdminModalPropsType = {
-  group: GroupWithIdType;
+  group: groupWithIdType;
   timeValues: TimeValuesType;
   openAdminModal: boolean;
   setOpenAdminModal: (openAdminModal: boolean) => void;

@@ -5,7 +5,7 @@ import { doc, setDoc } from "firebase/firestore";
 
 import { db } from "../../firebase";
 import { getGame, getTimeValues } from "./utils";
-import { GroupWithIdType } from "../../types/group";
+import { groupWithIdType } from "../../types/group";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
 import TimeDisplay from "../../components/time/TimeDisplay";
 import NavButton from "../../components/blocks/NavButton";
@@ -18,7 +18,7 @@ import { Loading } from "../../components/blocks/Loading";
 import { initGroup } from "../../app/utils";
 
 type GroupPropsType = {
-  groups: GroupWithIdType[];
+  groups: groupWithIdType[];
   isGettingGroups: boolean;
   currentTimeInSeconds: number;
   userIsAdmin: boolean;

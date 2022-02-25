@@ -1,13 +1,13 @@
 import { Button, Icon } from "semantic-ui-react";
 import theme from "../../styles/theme";
-import { GroupWithIdType } from "../../types/group";
+import { groupWithIdType } from "../../types/group";
 
 // TODO: remove this and limit creation to auth users
 const maxGroups = 50;
 
 type CreateGroupButtonPropsType = {
   anyGroupsExist: boolean;
-  groups: GroupWithIdType[];
+  groups: groupWithIdType[];
   setOpenCreateGroupModal: (openCreateGroupModal: boolean) => void;
 };
 const CreateGroupModalTrigger = ({

@@ -3,11 +3,11 @@ import { Button, Divider, Grid, Header } from "semantic-ui-react";
 import { GameType } from "./utils";
 import Participants from "./Participants";
 import StyledModal from "../../components/blocks/StyledModal";
-import { GroupWithIdType } from "../../types/group";
+import { groupWithIdType } from "../../types/group";
 
 type PastRoundsModalPropsType = {
   game: GameType;
-  group: GroupWithIdType;
+  group: groupWithIdType;
   activeRound: number;
   openPastRoundsModal: boolean;
   setOpenPastRoundsModal: (openPastRoundsModal: boolean) => void;

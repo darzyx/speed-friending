@@ -1,7 +1,7 @@
 import { onSnapshot, collection } from "firebase/firestore";
 
 import { db } from "../firebase";
-import { GroupWithIdType } from "../types/group";
+import { groupWithIdType } from "../types/group";
 
 export const initGroup = {
   id: "",
@@ -14,10 +14,10 @@ export const initGroup = {
   round_is_paused: false,
   round_paused_time: 0,
   dropouts: [],
-} as GroupWithIdType; // Assumes init data is good!
+} as groupWithIdType; // Assumes init data is good!
 
 type groupsQueryArgsType = {
-  setGroups: (groups: GroupWithIdType[]) => void;
+  setGroups: (groups: groupWithIdType[]) => void;
   setIsGettingGroups: (isGettingGroups: boolean) => void;
   setAnyGroupsExist: (anyGroupsExist: boolean) => void;
 };
@@ -30,7 +30,7 @@ export const groupsQuery = ({
     let resultGroups = snapshot.docs.map((doc) => ({
       ...doc.data(),
       id: doc.id,
-    })) as GroupWithIdType[]; // Assumes fetched data is good!
+    })) as groupWithIdType[]; // Assumes fetched data is good!
     const resultHasAnyGroups =
       Array.isArray(resultGroups) && resultGroups[0]?.name?.length > 0;
     if (resultHasAnyGroups) {

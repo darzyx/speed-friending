@@ -10,7 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import { db } from "../../firebase";
-import { GroupType } from "../../types/group";
+import { groupType } from "../../types/group";
 import { getMaxRounds } from "../group/utils";
 import StyledFormInput from "../../components/blocks/StyledFormInput";
 
@@ -131,7 +131,7 @@ const CreateGroupForm = ({
     setIsSubmitting(true);
 
     // TODO: validate all types before submitting
-    const payload: GroupType = {
+    const payload: groupType = {
       name,
       participant_count: Number(participantCount),
       round_count: Number(roundCount),
