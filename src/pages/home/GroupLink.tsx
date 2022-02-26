@@ -37,7 +37,6 @@ const TimeLabel = ({
 const ButtonLink = styled(Button).attrs((props) => ({
   to: props.to,
   as: Link,
-  fluid: true,
 }))`
   &&&& {
     width: 100%;
