@@ -26,7 +26,7 @@ const SettingsModal = ({
       content={
         <div>
           <p style={{ textAlign: "center", marginBottom: "20px" }}>
-            Click something to toggle it
+            Click an icon to toggle
           </p>
           <Grid>
             <Grid.Row columns={2}>
