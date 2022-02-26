@@ -163,6 +163,7 @@ const CreateGroupForm = ({
     // TODO: validate all types before submitting
     const payload: groupType = {
       ...initGroup,
+      round_end_time: Timestamp.now().seconds + 60,
       private: true,
       private_is_ready: false,
     };
