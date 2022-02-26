@@ -1,13 +1,12 @@
 HIGH PRIORITY
 
-- Admin pg needs fix loading after redirect
+- Add Shareable links feature
 - Make sure Firebase can handle 400 users at once day of
 
 MID PRIORITY
 
 - Update info modal copy
 - Design updates: make it look nice
-- Add Shareable links feature
 
 LOW PRIORITY
 

@@ -58,7 +58,8 @@ const Admin = ({
           setIsSignedIn(true);
           setIsLoading(false);
         } else {
-          setIsSignedIn(userIsAdmin);
+          // TODO: fix this. For now we just wait one second before resolving
+          // to either show form or twitter log out
           await new Promise(() =>
             setTimeout(() => {
               setIsLoading(false);
