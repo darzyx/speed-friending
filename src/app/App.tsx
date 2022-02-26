@@ -13,6 +13,9 @@ import theme from "../styles/theme";
 import imageSVG from "../media/lotus.svg";
 import { groupsQuery, initGroup } from "./utils";
 
+// @ts-ignore 'require' call may be converted to an import.ts(80005)
+const alarmOGG = require("../media/alarm.ogg");
+
 const App = () => {
   const auth = getAuth();
   const currentUserId = auth?.currentUser?.uid;
@@ -46,6 +49,11 @@ const App = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(startTime, []);
 
+  const playAlarmSound = () => {
+    const alarm = new Audio(alarmOGG);
+    alarm.play();
+  };
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
@@ -66,6 +74,7 @@ const App = () => {
                     anyGroupsExist={anyGroupsExist}
                     groups={groups}
                     currentTimeInSeconds={currentTimeInSeconds}
+                    playAlarmSound={playAlarmSound}
                   />
                 }
               />
@@ -77,6 +86,7 @@ const App = () => {
                     isGettingGroups={isGettingGroups}
                     currentTimeInSeconds={currentTimeInSeconds}
                     userIsAdmin={userIsAdmin}
+                    playAlarmSound={playAlarmSound}
                   />
                 }
               />

@@ -19,6 +19,7 @@ type HomePropsType = {
   anyGroupsExist: boolean;
   groups: groupWithIdType[];
   currentTimeInSeconds: number;
+  playAlarmSound: () => void;
 };
 const Home = ({
   userIsAdmin,
@@ -26,6 +27,7 @@ const Home = ({
   anyGroupsExist,
   groups,
   currentTimeInSeconds,
+  playAlarmSound,
 }: HomePropsType) => {
   // Reset scroll on component mount
   useEffect(() => {
@@ -55,6 +57,7 @@ const Home = ({
             <GroupLink
               userIsAdmin={userIsAdmin}
               currentTimeInSeconds={currentTimeInSeconds}
+              playAlarmSound={playAlarmSound}
               group={group}
               key={group.id}
               index={index}

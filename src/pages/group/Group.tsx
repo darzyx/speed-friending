@@ -22,12 +22,14 @@ type GroupPropsType = {
   isGettingGroups: boolean;
   currentTimeInSeconds: number;
   userIsAdmin: boolean;
+  playAlarmSound: () => void;
 };
 const Group = ({
   groups,
   isGettingGroups,
   currentTimeInSeconds,
   userIsAdmin,
+  playAlarmSound,
 }: GroupPropsType) => {
   // Reset scroll on component mount
   useEffect(() => {
@@ -61,13 +63,14 @@ const Group = ({
   useEffect(() => {
     if (group?.id && timeValues.remainingTime <= 0 && !roundIsOver) {
       setRoundIsOver(true);
+      playAlarmSound();
       const docRef = doc(db, "groups", group.id);
       const payload = { ...group, round_is_paused: true, round_paused_time: 0 };
       setDoc(docRef, payload);
     } else if (timeValues.remainingTime > 0 && roundIsOver) {
       setRoundIsOver(false);
     }
-  }, [timeValues.remainingTime, roundIsOver, group]);
+  }, [timeValues.remainingTime, roundIsOver, group, playAlarmSound]);
 
   if (isGettingGroups || waitForState) return <Loading />;
   if (!group?.id) return <GroupNotFound />;

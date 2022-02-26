@@ -36,12 +36,14 @@ type GroupLinkPropsType = {
   group: groupWithIdType;
   currentTimeInSeconds: number;
   userIsAdmin: boolean;
+  playAlarmSound: () => void;
 };
 const GroupLink = ({
   index,
   group,
   currentTimeInSeconds,
   userIsAdmin,
+  playAlarmSound,
 }: GroupLinkPropsType) => {
   const navigate = useNavigate();
 
@@ -63,13 +65,20 @@ const GroupLink = ({
   useEffect(() => {
     if (timeValues.remainingTime <= 0 && !roundIsOver) {
       setRoundIsOver(true);
+      if (userIsAdmin) playAlarmSound();
       const docRef = doc(db, "groups", group.id);
       const payload = { ...group, round_is_paused: true, round_paused_time: 0 };
       setDoc(docRef, payload);
     } else if (timeValues.remainingTime > 0 && roundIsOver) {
       setRoundIsOver(false);
     }
-  }, [timeValues.remainingTime, roundIsOver, group]);
+  }, [
+    timeValues.remainingTime,
+    roundIsOver,
+    group,
+    userIsAdmin,
+    playAlarmSound,
+  ]);
 
   return (
     <Button
