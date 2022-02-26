@@ -10,6 +10,8 @@ const ParticipantsContainer = styled(Segment).attrs((props) => ({
   inverted: props.inverted,
 }))`
   &&&& {
+    border: none;
+    box-shadow: none;
     background-color: ${({ theme }) => theme.color.one};
     margin: 0;
   }

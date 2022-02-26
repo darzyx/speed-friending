@@ -121,9 +121,19 @@ const Participant = ({
         top={top}
       >
         {nParticipant === 0 ? (
-          <Icon name="ban" size="large" style={{ margin: "0" }} />
+          <Icon
+            inverted={inverted}
+            name="ban"
+            size="large"
+            style={{ margin: "0" }}
+          />
         ) : isDropout ? (
-          <Icon name="remove user" size="large" style={{ margin: "0" }} />
+          <Icon
+            inverted={inverted}
+            name="remove user"
+            size="large"
+            style={{ margin: "0" }}
+          />
         ) : (
           nParticipant
         )}
