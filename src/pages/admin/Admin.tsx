@@ -87,10 +87,7 @@ const Admin = ({
         <>
           <Divider hidden />
           <AdminSignedOut />
-          <AdminAccessForm
-            setShowTwitterSignIn={setShowTwitterSignIn}
-            inverted={inverted}
-          />
+          <AdminSignIn onClickSignIn={handleClickSignIn} />
         </>
       ) : userIsAdmin ? (
         <>
