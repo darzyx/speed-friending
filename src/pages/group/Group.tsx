@@ -7,15 +7,11 @@ import { db } from "../../firebase";
 import { getGame, getTimeValues } from "./utils";
 import { groupWithIdType } from "../../types/group";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
-import TimeDisplay from "../../components/time/TimeDisplay";
-import NavButton from "../../components/blocks/NavButton";
-import PastRoundsModal from "./PastRoundsModal";
-import Participants from "./Participants";
 import AdminModal from "../../components/admin/AdminModal";
 import { GroupNotFound } from "./Placeholders";
-import HelpfulPrompt from "./HelpfulPrompt";
 import Loading from "../../components/blocks/Loading";
 import { initGroupWithId } from "../../app/utils";
+import GroupContent from "./GroupContent";
 
 type GroupPropsType = {
   groups: groupWithIdType[];
@@ -79,6 +75,8 @@ const Group = ({
   if (isGettingGroups || waitForState) return <Loading inverted={inverted} />;
   if (!group?.id) return <GroupNotFound />;
 
+  const isPrivateUnfinishedGroup = group.private && !group.private_is_ready;
+
   return (
     <div>
       {userIsAdmin && (
@@ -117,29 +115,19 @@ const Group = ({
           {group.name}
         </Header>
       </CenterMiddle>
-      <TimeDisplay timeValues={timeValues} group={group} inverted={inverted} />
-      <Divider hidden />
-      <HelpfulPrompt timeValues={timeValues} />
-      <Participants
-        round={activeRound}
-        roundNumber={group.active_round_num}
-        dropouts={group.dropouts}
-        inverted={inverted}
-      />
-      <p style={{ textAlign: "center" }}>
-        {`${group.participant_count - group.dropouts.length}` +
-          `/${group.participant_count} participants`}
-      </p>
-      <Divider hidden />
-      <CenterMiddle>
-        <NavButton onClick={() => setOpenPastRoundsModal(true)}>
-          <Icon name="history" /> Past Rounds
-        </NavButton>
-      </CenterMiddle>
-      {openPastRoundsModal && (
-        <PastRoundsModal
+      {isPrivateUnfinishedGroup ? (
+        <CenterMiddle>
+          <Divider hidden />
+          <Button primary icon labelPosition="right">
+            Create Private Group <Icon name="plus" />
+          </Button>
+        </CenterMiddle>
+      ) : (
+        <GroupContent
           game={game}
           group={group}
+          timeValues={timeValues}
+          activeRound={activeRound}
           openPastRoundsModal={openPastRoundsModal}
           setOpenPastRoundsModal={setOpenPastRoundsModal}
           inverted={inverted}
