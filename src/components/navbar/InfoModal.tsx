@@ -28,7 +28,9 @@ const InfoModal = ({
         <Grid>
           <Grid.Row columns={1}>
             <Grid.Column textAlign="center">
-              <Button onClick={handleCloseInfoModal}>Close</Button>
+              <Button active={!inverted} onClick={handleCloseInfoModal}>
+                Close
+              </Button>
             </Grid.Column>
           </Grid.Row>
         </Grid>

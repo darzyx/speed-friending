@@ -49,7 +49,10 @@ const NoPartnerModal = ({
         <Grid>
           <Grid.Row columns={1}>
             <Grid.Column textAlign="center">
-              <Button onClick={() => setOpenNoPartnerModal(false)}>
+              <Button
+                active={!inverted}
+                onClick={() => setOpenNoPartnerModal(false)}
+              >
                 Close
               </Button>
             </Grid.Column>

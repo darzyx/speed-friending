@@ -60,7 +60,10 @@ const PastRoundsModal = ({
         <Grid>
           <Grid.Row columns={1}>
             <Grid.Column textAlign="center">
-              <Button onClick={() => setOpenPastRoundsModal(false)}>
+              <Button
+                active={!inverted}
+                onClick={() => setOpenPastRoundsModal(false)}
+              >
                 Close
               </Button>
             </Grid.Column>

@@ -37,7 +37,9 @@ const AdminConfirmModal = ({
       <Grid>
         <Grid.Row columns={2}>
           <Grid.Column textAlign="right" verticalAlign="middle">
-            <Button onClick={onCancelAction}>Cancel</Button>
+            <Button active={!inverted} onClick={onCancelAction}>
+              Cancel
+            </Button>
           </Grid.Column>
           <Grid.Column textAlign="left" verticalAlign="middle">
             <Button primary onClick={onConfirmAction}>

@@ -310,7 +310,9 @@ const AdminActions = ({
       <Grid>
         <Grid.Row columns={1}>
           <Grid.Column textAlign="center">
-            <Button onClick={() => setOpenAdminModal(false)}>Close</Button>
+            <Button active={!inverted} onClick={() => setOpenAdminModal(false)}>
+              Close
+            </Button>
           </Grid.Column>
         </Grid.Row>
       </Grid>
