@@ -42,7 +42,6 @@ type GroupLinkPropsType = {
   userIsAdmin: boolean;
   playAlarmSound: () => void;
   inverted: boolean;
-  isPrivate?: boolean;
 };
 const GroupLink = ({
   index,
@@ -51,7 +50,6 @@ const GroupLink = ({
   userIsAdmin,
   playAlarmSound,
   inverted,
-  isPrivate,
 }: GroupLinkPropsType) => {
   const navigate = useNavigate();
 

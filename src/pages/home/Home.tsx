@@ -101,22 +101,26 @@ const Home = ({
       )}
       <Divider hidden />
       {userIsAdmin && anyPrivateGroupsExist && (
-        <HomeGroupLinksContainer>
-          {privateGroups.map((group, index) => (
-            <GroupLink
-              userIsAdmin={userIsAdmin}
-              currentTimeInSeconds={currentTimeInSeconds}
-              playAlarmSound={playAlarmSound}
-              inverted={inverted}
-              group={group}
-              key={group.id}
-              index={index}
-              isPrivate
-            />
-          ))}
-        </HomeGroupLinksContainer>
+        <>
+          <Header inverted={inverted} as="h2">
+            Private Groups
+          </Header>
+          <HomeGroupLinksContainer>
+            {privateGroups.map((group, index) => (
+              <GroupLink
+                userIsAdmin={userIsAdmin}
+                currentTimeInSeconds={currentTimeInSeconds}
+                playAlarmSound={playAlarmSound}
+                inverted={inverted}
+                group={group}
+                key={group.id}
+                index={index}
+              />
+            ))}
+          </HomeGroupLinksContainer>
+          <Divider hidden />
+        </>
       )}
-      <Divider hidden />
       {openCreateGroupModal && (
         <CreateGroupModal
           openCreateGroupModal={openCreateGroupModal}
