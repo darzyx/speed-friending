@@ -49,6 +49,8 @@ const App = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(startTime, []);
 
+  const [darkMode, setDarkMode] = useState(true);
+
   const playAlarmSound = () => {
     const alarm = new Audio(alarmOGG);
     alarm.play();
@@ -61,7 +63,7 @@ const App = () => {
           <UserIsAdminAlert userIsAdmin={userIsAdmin} />
           <Container>
             {userIsAdmin && <Divider hidden />}
-            <Navbar />
+            <Navbar darkMode={darkMode} />
             <Divider hidden />
             <Routes>
               <Route index element={<Navigate to="/home" />} />
@@ -75,6 +77,7 @@ const App = () => {
                     groups={groups}
                     currentTimeInSeconds={currentTimeInSeconds}
                     playAlarmSound={playAlarmSound}
+                    darkMode={darkMode}
                   />
                 }
               />
@@ -87,6 +90,7 @@ const App = () => {
                     currentTimeInSeconds={currentTimeInSeconds}
                     userIsAdmin={userIsAdmin}
                     playAlarmSound={playAlarmSound}
+                    darkMode={darkMode}
                   />
                 }
               />
@@ -97,6 +101,7 @@ const App = () => {
                     auth={auth}
                     userIsAdmin={userIsAdmin}
                     setUserIsAdmin={setUserIsAdmin}
+                    darkMode={darkMode}
                   />
                 }
               />

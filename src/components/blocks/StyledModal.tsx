@@ -33,6 +33,7 @@ type StyledModalPropsType = {
   openModal: boolean;
   setOpenModal: (openModal: boolean) => void;
   size?: string;
+  darkMode: boolean;
 };
 const StyledModal = ({
   header,
@@ -42,6 +43,7 @@ const StyledModal = ({
   openModal,
   setOpenModal,
   size,
+  darkMode,
 }: StyledModalPropsType) => (
   <Modal
     open={openModal}
@@ -51,9 +53,9 @@ const StyledModal = ({
   >
     {header && (
       <Header
-        inverted
         as="h1"
         textAlign="center"
+        inverted={darkMode}
         style={{
           marginTop: "7px",
           overflow: "hidden",

@@ -18,9 +18,11 @@ const maxPasswordLength = 30;
 
 type AdminAccessFormPropsType = {
   setShowTwitterSignIn: (showTwitterSignIn: boolean) => void;
+  darkMode: boolean;
 };
 const AdminAccessForm = ({
   setShowTwitterSignIn,
+  darkMode,
 }: AdminAccessFormPropsType) => {
   const [username, setUsername] = useState("");
   const handleChangeUsername = (
@@ -57,7 +59,7 @@ const AdminAccessForm = ({
 
   return (
     <Segment
-      inverted
+      inverted={darkMode}
       style={{
         width: "100%",
         maxWidth: "500px",
@@ -65,7 +67,11 @@ const AdminAccessForm = ({
         backgroundColor: theme.color.three,
       }}
     >
-      <Form inverted onSubmit={handleSubmitCredentials} autoComplete="off">
+      <Form
+        onSubmit={handleSubmitCredentials}
+        inverted={darkMode}
+        autoComplete="off"
+      >
         <StyledFormInput
           name="username"
           placeholder="Username"

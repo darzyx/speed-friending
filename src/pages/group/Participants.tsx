@@ -22,13 +22,18 @@ const Participants = ({
   roundNumber,
   onToggleDropoutStatus,
   dropouts,
+  darkMode,
 }: {
   round: RoundType;
   roundNumber: number;
   onToggleDropoutStatus?: (n: number) => void;
   dropouts: dropoutsType;
+  darkMode: boolean;
 }) => (
-  <Segment inverted style={{ backgroundColor: theme.color.one, margin: "0" }}>
+  <Segment
+    inverted={darkMode}
+    style={{ backgroundColor: theme.color.one, margin: "0" }}
+  >
     <ParticipantsContainer>
       <ParticipantsGrid>
         {round.top.map((nTop, idxTop) => (
@@ -40,6 +45,7 @@ const Participants = ({
               onToggleDropoutStatus={onToggleDropoutStatus}
               dropouts={dropouts}
               roundNumber={roundNumber}
+              darkMode={darkMode}
             />
             <Participant
               nParticipant={round.btm[idxTop]}
@@ -48,6 +54,7 @@ const Participants = ({
               onToggleDropoutStatus={onToggleDropoutStatus}
               dropouts={dropouts}
               roundNumber={roundNumber}
+              darkMode={darkMode}
             />
           </div>
         ))}

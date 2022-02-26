@@ -23,6 +23,7 @@ type GroupPropsType = {
   currentTimeInSeconds: number;
   userIsAdmin: boolean;
   playAlarmSound: () => void;
+  darkMode: boolean;
 };
 const Group = ({
   groups,
@@ -30,6 +31,7 @@ const Group = ({
   currentTimeInSeconds,
   userIsAdmin,
   playAlarmSound,
+  darkMode,
 }: GroupPropsType) => {
   // Reset scroll on component mount
   useEffect(() => {
@@ -72,7 +74,7 @@ const Group = ({
     }
   }, [timeValues.remainingTime, roundIsOver, group, playAlarmSound]);
 
-  if (isGettingGroups || waitForState) return <Loading />;
+  if (isGettingGroups || waitForState) return <Loading darkMode={darkMode} />;
   if (!group?.id) return <GroupNotFound />;
 
   return (
@@ -91,14 +93,15 @@ const Group = ({
             setOpenAdminModal={setOpenAdminModal}
             currentTimeInSeconds={currentTimeInSeconds}
             activeRound={activeRound}
+            darkMode={darkMode}
           />
           <Divider hidden />
         </>
       )}
       <CenterMiddle textAlign="center">
         <Header
-          inverted
           as="h1"
+          inverted={darkMode}
           style={{
             overflow: "hidden",
             textOverflow: "ellipsis",
@@ -110,13 +113,14 @@ const Group = ({
           {group.name}
         </Header>
       </CenterMiddle>
-      <TimeDisplay timeValues={timeValues} group={group} />
+      <TimeDisplay timeValues={timeValues} group={group} darkMode={darkMode} />
       <Divider hidden />
       <HelpfulPrompt timeValues={timeValues} />
       <Participants
         round={activeRound}
         roundNumber={group.active_round_num}
         dropouts={group.dropouts}
+        darkMode={darkMode}
       />
       <p style={{ textAlign: "center" }}>
         {`${group.participant_count - group.dropouts.length}` +
@@ -133,6 +137,7 @@ const Group = ({
         group={group}
         openPastRoundsModal={openPastRoundsModal}
         setOpenPastRoundsModal={setOpenPastRoundsModal}
+        darkMode={darkMode}
       />
     </div>
   );

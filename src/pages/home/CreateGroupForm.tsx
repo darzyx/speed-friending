@@ -20,9 +20,11 @@ const maxParticipants = 30;
 
 type CreateGroupFormPropsType = {
   setOpenCreateGroupModal: (openCreateGroupModal: boolean) => void;
+  darkMode: boolean;
 };
 const CreateGroupForm = ({
   setOpenCreateGroupModal,
+  darkMode,
 }: CreateGroupFormPropsType) => {
   const navigate = useNavigate();
 
@@ -156,7 +158,7 @@ const CreateGroupForm = ({
 
   return (
     <div>
-      <Form inverted onSubmit={handleSubmit} autoComplete="off">
+      <Form inverted={darkMode} onSubmit={handleSubmit} autoComplete="off">
         <Form.Group>
           <StyledFormInput
             name="name"

@@ -9,6 +9,7 @@ type NoPartnerModalModalPropsType = {
   openNoPartnerModal: boolean;
   setOpenNoPartnerModal: (openNoPartnerModal: boolean) => void;
   dropouts: dropoutsType;
+  darkMode: boolean;
 };
 const NoPartnerModal = ({
   nParticipant,
@@ -16,6 +17,7 @@ const NoPartnerModal = ({
   openNoPartnerModal,
   setOpenNoPartnerModal,
   dropouts,
+  darkMode,
 }: NoPartnerModalModalPropsType) => {
   let dropout = null;
   if (nPartner !== 0) {
@@ -56,6 +58,7 @@ const NoPartnerModal = ({
       }
       openModal={openNoPartnerModal}
       setOpenModal={setOpenNoPartnerModal}
+      darkMode={darkMode}
       size="tiny"
     />
   );

@@ -1,7 +1,7 @@
 import { Button, Loader } from "semantic-ui-react";
 import theme from "../../styles/theme";
 
-const LoadingGroupsPlaceholder = () => {
+const LoadingGroupsPlaceholder = ({ darkMode }: { darkMode: boolean }) => {
   return (
     <Button
       style={{
@@ -13,7 +13,7 @@ const LoadingGroupsPlaceholder = () => {
       }}
       size="large"
     >
-      <Loader inverted active inline="centered" size="tiny" />
+      <Loader inverted={darkMode} active inline="centered" size="tiny" />
     </Button>
   );
 };

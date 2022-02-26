@@ -20,8 +20,14 @@ type AdminPropsType = {
   auth: Auth;
   userIsAdmin: boolean;
   setUserIsAdmin: (userIsAdmin: boolean) => void;
+  darkMode: boolean;
 };
-const Admin = ({ auth, userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
+const Admin = ({
+  auth,
+  userIsAdmin,
+  setUserIsAdmin,
+  darkMode,
+}: AdminPropsType) => {
   // Reset scroll on component mount
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -73,7 +79,7 @@ const Admin = ({ auth, userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
 
   return (
     <CenterMiddle>
-      <Header inverted as="h1" textAlign="center">
+      <Header inverted={darkMode} as="h1" textAlign="center">
         <Header.Subheader style={{ margin: "7px" }}>Admin</Header.Subheader>
         Sign In
       </Header>
@@ -81,7 +87,10 @@ const Admin = ({ auth, userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
         <>
           <Divider hidden />
           <AdminSignedOut />
-          <AdminAccessForm setShowTwitterSignIn={setShowTwitterSignIn} />
+          <AdminAccessForm
+            setShowTwitterSignIn={setShowTwitterSignIn}
+            darkMode={darkMode}
+          />
         </>
       ) : userIsAdmin ? (
         <>
@@ -94,7 +103,10 @@ const Admin = ({ auth, userIsAdmin, setUserIsAdmin }: AdminPropsType) => {
           <AdminSignIn onClickSignIn={handleClickSignIn} />
         </>
       ) : (
-        <AdminAccessForm setShowTwitterSignIn={setShowTwitterSignIn} />
+        <AdminAccessForm
+          setShowTwitterSignIn={setShowTwitterSignIn}
+          darkMode={darkMode}
+        />
       )}
       <Divider hidden />
       {!userIsAdmin && (

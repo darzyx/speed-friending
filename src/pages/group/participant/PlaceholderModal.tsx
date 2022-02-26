@@ -6,11 +6,13 @@ type ParticipantPropsType = {
   nPartner: number;
   openPlaceholderModal: boolean;
   setOpenPlaceholderModal: (openPlaceholderModal: boolean) => void;
+  darkMode: boolean;
 };
 const PlaceholderModal = ({
   nPartner,
   openPlaceholderModal,
   setOpenPlaceholderModal,
+  darkMode,
 }: ParticipantPropsType) => (
   <StyledModal
     header="Placeholder"
@@ -36,6 +38,7 @@ const PlaceholderModal = ({
     }
     openModal={openPlaceholderModal}
     setOpenModal={setOpenPlaceholderModal}
+    darkMode={darkMode}
     size="tiny"
   />
 );

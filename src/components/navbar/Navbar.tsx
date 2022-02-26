@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import InfoModal from "./InfoModal";
 import NavButton from "../blocks/NavButton";
 
-const Navbar = () => {
+const Navbar = ({ darkMode }: { darkMode: boolean }) => {
   const navigate = useNavigate();
 
   const [openInfoModal, setOpenInfoModal] = useState(false);
@@ -21,6 +21,7 @@ const Navbar = () => {
       <InfoModal
         openInfoModal={openInfoModal}
         setOpenInfoModal={setOpenInfoModal}
+        darkMode={darkMode}
       />
     </div>
   );

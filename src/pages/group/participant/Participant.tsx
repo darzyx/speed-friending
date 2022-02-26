@@ -17,6 +17,7 @@ type ParticipantPropsType = {
   onToggleDropoutStatus?: (n: number) => void;
   dropouts: dropoutsType;
   roundNumber: number;
+  darkMode: boolean;
 };
 const Participant = ({
   nParticipant,
@@ -25,6 +26,7 @@ const Participant = ({
   onToggleDropoutStatus,
   dropouts,
   roundNumber,
+  darkMode,
 }: ParticipantPropsType) => {
   const [openPlaceholderModal, setOpenPlaceholderModal] = useState(false);
   const [openDropoutModal, setOpenDropoutModal] = useState(false);
@@ -101,6 +103,7 @@ const Participant = ({
         nPartner={nPartner}
         openPlaceholderModal={openPlaceholderModal}
         setOpenPlaceholderModal={setOpenPlaceholderModal}
+        darkMode={darkMode}
       />
       <DropoutModal
         nParticipant={nParticipant}
@@ -108,6 +111,7 @@ const Participant = ({
         openDropoutModal={openDropoutModal}
         setOpenDropoutModal={setOpenDropoutModal}
         dropouts={dropouts}
+        darkMode={darkMode}
       />
       <NoPartnerModal
         nParticipant={nParticipant}
@@ -115,12 +119,14 @@ const Participant = ({
         openNoPartnerModal={openNoPartnerModal}
         setOpenNoPartnerModal={setOpenNoPartnerModal}
         dropouts={dropouts}
+        darkMode={darkMode}
       />
       <ParticipantModal
         nParticipant={nParticipant}
         nPartner={nPartner}
         openParticipantModal={openParticipantModal}
         setOpenParticipantModal={setOpenParticipantModal}
+        darkMode={darkMode}
       />
     </div>
   );

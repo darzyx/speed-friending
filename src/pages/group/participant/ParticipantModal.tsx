@@ -7,12 +7,14 @@ type ParticipantModalModalPropsType = {
   nPartner: number;
   openParticipantModal: boolean;
   setOpenParticipantModal: (openParticipantModal: boolean) => void;
+  darkMode: boolean;
 };
 const ParticipantModal = ({
   nParticipant,
   nPartner,
   openParticipantModal,
   setOpenParticipantModal,
+  darkMode,
 }: ParticipantModalModalPropsType) => (
   <StyledModal
     header={`Participant #${nParticipant}`}
@@ -36,6 +38,7 @@ const ParticipantModal = ({
     }
     openModal={openParticipantModal}
     setOpenModal={setOpenParticipantModal}
+    darkMode={darkMode}
     size="tiny"
   />
 );

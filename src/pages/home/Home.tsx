@@ -20,6 +20,7 @@ type HomePropsType = {
   groups: groupWithIdType[];
   currentTimeInSeconds: number;
   playAlarmSound: () => void;
+  darkMode: boolean;
 };
 const Home = ({
   userIsAdmin,
@@ -28,6 +29,7 @@ const Home = ({
   groups,
   currentTimeInSeconds,
   playAlarmSound,
+  darkMode,
 }: HomePropsType) => {
   // Reset scroll on component mount
   useEffect(() => {
@@ -39,9 +41,9 @@ const Home = ({
   return (
     <CenterMiddle>
       <Header
-        inverted
         as="h1"
         textAlign="center"
+        inverted={darkMode}
         style={{ fontSize: "2.25rem" }}
       >
         <Header.Subheader style={{ margin: "7px" }}>Home</Header.Subheader>
@@ -49,7 +51,7 @@ const Home = ({
       </Header>
       <ColorfulHeader as="h2">{homeTextCTA}</ColorfulHeader>
       <Segment
-        inverted
+        inverted={darkMode}
         style={{ backgroundColor: theme.color.two, width: "100%" }}
       >
         {anyGroupsExist &&
@@ -58,12 +60,15 @@ const Home = ({
               userIsAdmin={userIsAdmin}
               currentTimeInSeconds={currentTimeInSeconds}
               playAlarmSound={playAlarmSound}
+              darkMode={darkMode}
               group={group}
               key={group.id}
               index={index}
             />
           ))}
-        {!anyGroupsExist && isGettingGroups && <LoadingGroupsPlaceholder />}
+        {!anyGroupsExist && isGettingGroups && (
+          <LoadingGroupsPlaceholder darkMode={darkMode} />
+        )}
         {!anyGroupsExist && !isGettingGroups && <NoGroupsPlaceholder />}
         {userIsAdmin && !isGettingGroups && (
           <CreateGroupModalTrigger
@@ -97,6 +102,7 @@ const Home = ({
       <CreateGroupModal
         openCreateGroupModal={openCreateGroupModal}
         setOpenCreateGroupModal={setOpenCreateGroupModal}
+        darkMode={darkMode}
       />
     </CenterMiddle>
   );
