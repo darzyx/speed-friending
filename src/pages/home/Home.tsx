@@ -16,6 +16,7 @@ const GroupLinksContainer = styled(Segment).attrs((props) => ({
 }))`
   &&&& {
     border: none;
+    box-shadow: none;
     background-color: ${({ theme }) => theme.color.two};
     width: 100%;
   }
