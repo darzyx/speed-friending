@@ -2,12 +2,19 @@ import { useEffect, useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Label } from "semantic-ui-react";
+import styled from "styled-components";
 
 import { getGame, getTimeValues, TimeValuesType } from "../group/utils";
 import { groupWithIdType } from "../../types/group";
 import AdminModal from "../../components/admin/AdminModal";
 import { db } from "../../firebase";
-import theme from "../../styles/theme";
+
+const StyledLabel = styled(Label)`
+  &&&& {
+    background-color: ${({ theme }) => theme.color.four};
+    color: ${({ theme }) => theme.color.text};
+  }
+`;
 
 type TimeLabelPropsType = {
   timeValues: TimeValuesType;
@@ -19,17 +26,30 @@ const TimeLabel = ({
   onClickTimeLabel,
   userIsAdmin,
 }: TimeLabelPropsType) => (
-  <Label
+  <StyledLabel
     onClick={() => onClickTimeLabel(true)}
-    style={{
-      backgroundColor: theme.color.four,
-      color: theme.color.text,
-    }}
     {...(userIsAdmin && { color: timeValues.color })}
   >
     {`${timeValues.remainingMinutesDisplay}:${timeValues.remainingSecondsDisplay}`}
-  </Label>
+  </StyledLabel>
 );
+
+const ButtonLink = styled(Button).attrs((props) => ({
+  to: props.to,
+  as: Link,
+  fluid: true,
+}))`
+  &&&& {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    padding: 15px 5px 15px 20px;
+    background-color: ${({ theme }) => theme.color.four};
+    color: ${({ theme }) => theme.color.text};
+  }
+`;
 
 type GroupLinkPropsType = {
   index: number;
@@ -88,22 +108,7 @@ const GroupLink = ({
       style={{ width: "100%", margin: `${index === 0 ? "0" : "10px"} 0 0 0` }}
       labelPosition="right"
     >
-      <Button
-        as={Link}
-        to={`/group/${group.id}`}
-        style={{
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          whiteSpace: "nowrap",
-          textAlign: "left",
-          padding: "15px 5px 15px 20px",
-          backgroundColor: theme.color.four,
-          color: theme.color.text,
-        }}
-        fluid
-      >
-        {group.name}
-      </Button>
+      <ButtonLink to={`/group/${group.id}`}>{group.name}</ButtonLink>
       <TimeLabel
         timeValues={timeValues}
         onClickTimeLabel={handleClickTimeLabel}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 
 import GroupLink from "./GroupLink";
 import LoadingGroupsPlaceholder from "./LoadingGroupsPlaceholder";
@@ -9,7 +10,15 @@ import { groupWithIdType } from "../../types/group";
 import CreateGroupModal from "./CreateGroupModal";
 import { Divider, Header, Segment } from "semantic-ui-react";
 import { ColorfulHeader } from "../../components/blocks/ColorfulText";
-import theme from "../../styles/theme";
+
+const GroupLinksContainer = styled(Segment).attrs((props) => ({
+  inverted: props.inverted,
+}))`
+  &&&& {
+    background-color: ${({ theme }) => theme.color.two};
+    width: 100%;
+  }
+`;
 
 export const homeTextCTA = "Select Group Below";
 
@@ -50,10 +59,7 @@ const Home = ({
         Speed Friending
       </Header>
       <ColorfulHeader as="h2">{homeTextCTA}</ColorfulHeader>
-      <Segment
-        inverted={inverted}
-        style={{ backgroundColor: theme.color.two, width: "100%" }}
-      >
+      <GroupLinksContainer>
         {anyGroupsExist &&
           groups.map((group, index) => (
             <GroupLink
@@ -77,7 +83,7 @@ const Home = ({
             setOpenCreateGroupModal={setOpenCreateGroupModal}
           />
         )}
-      </Segment>
+      </GroupLinksContainer>
       {anyGroupsExist && !isGettingGroups && userIsAdmin && (
         <p>
           {(() => {
