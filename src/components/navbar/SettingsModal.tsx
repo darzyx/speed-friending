@@ -8,7 +8,6 @@ type SettingsModalPropsType = {
   setOpenSettingsModal: (openSettingsModal: boolean) => void;
   setDarkMode: (darkMode: boolean) => void;
   darkMode: boolean;
-  playAlarmSound: () => void;
   setMuted: (muted: boolean) => void;
   muted: boolean;
 };
@@ -17,7 +16,6 @@ const SettingsModal = ({
   setOpenSettingsModal,
   setDarkMode,
   darkMode,
-  playAlarmSound,
   setMuted,
   muted,
 }: SettingsModalPropsType) => {
@@ -31,7 +29,7 @@ const SettingsModal = ({
             <Grid.Column textAlign="center">
               <StyledIcon
                 onClick={() => setMuted(!muted)}
-                name={muted ? "unmute" : "mute"}
+                name={muted ? "mute" : "unmute"}
                 style={{ cursor: "pointer" }}
                 size="huge"
               />
@@ -39,13 +37,13 @@ const SettingsModal = ({
                 style={{ marginTop: "10px", cursor: "pointer" }}
                 onClick={() => setMuted(!muted)}
               >
-                {muted ? "Unmute" : "Mute"}
+                {muted ? "Muted" : "Playing Sound"}
               </p>
             </Grid.Column>
             <Grid.Column textAlign="center">
               <StyledIcon
                 onClick={() => setDarkMode(!darkMode)}
-                name={darkMode ? "lightbulb" : "lightbulb outline"}
+                name={darkMode ? "lightbulb outline" : "lightbulb"}
                 style={{ cursor: "pointer" }}
                 size="huge"
               />
@@ -53,7 +51,7 @@ const SettingsModal = ({
                 style={{ marginTop: "10px", cursor: "pointer" }}
                 onClick={() => setDarkMode(!darkMode)}
               >
-                {darkMode ? "Light Mode" : "Dark Mode"}
+                {darkMode ? "Dark Mode" : "Light Mode"}
               </p>
             </Grid.Column>
           </Grid.Row>
@@ -71,7 +69,7 @@ const SettingsModal = ({
       openModal={openSettingsModal}
       setOpenModal={setOpenSettingsModal}
       darkMode={darkMode}
-      size="small"
+      size="tiny"
     />
   );
 };

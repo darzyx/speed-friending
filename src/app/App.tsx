@@ -69,7 +69,6 @@ const App = () => {
             <Navbar
               darkMode={darkMode}
               setDarkMode={setDarkMode}
-              playAlarmSound={playAlarmSound}
               setMuted={setMuted}
               muted={muted}
             />

@@ -9,13 +9,11 @@ import SettingsModal from "./SettingsModal";
 const Navbar = ({
   darkMode,
   setDarkMode,
-  playAlarmSound,
   setMuted,
   muted,
 }: {
   darkMode: boolean;
   setDarkMode: (darkMode: boolean) => void;
-  playAlarmSound: () => void;
   setMuted: (muted: boolean) => void;
   muted: boolean;
 }) => {
@@ -45,7 +43,6 @@ const Navbar = ({
         setOpenSettingsModal={setOpenSettingsModal}
         setDarkMode={setDarkMode}
         darkMode={darkMode}
-        playAlarmSound={playAlarmSound}
         setMuted={setMuted}
         muted={muted}
       />
