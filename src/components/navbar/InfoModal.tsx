@@ -6,12 +6,12 @@ import InfoList from "./InfoList";
 type InfoModalPropsType = {
   openInfoModal: boolean;
   setOpenInfoModal: (openInfoModal: boolean) => void;
-  darkMode: boolean;
+  inverted: boolean;
 };
 const InfoModal = ({
   openInfoModal,
   setOpenInfoModal,
-  darkMode,
+  inverted,
 }: InfoModalPropsType) => {
   const handleCloseInfoModal = () => setOpenInfoModal(false);
   return (
@@ -35,7 +35,7 @@ const InfoModal = ({
       }
       openModal={openInfoModal}
       setOpenModal={setOpenInfoModal}
-      darkMode={darkMode}
+      inverted={inverted}
       size="small"
     />
   );

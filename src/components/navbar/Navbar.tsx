@@ -7,13 +7,13 @@ import StyledIcon from "../blocks/StyledIcon";
 // import SettingsModal from "./SettingsModal";
 
 const Navbar = ({
-  darkMode,
-}: // setDarkMode,
+  inverted,
+}: // setInverted,
 // setMuted,
 // muted,
 {
-  darkMode: boolean;
-  setDarkMode: (darkMode: boolean) => void;
+  inverted: boolean;
+  setInverted: (inverted: boolean) => void;
   setMuted: (muted: boolean) => void;
   muted: boolean;
 }) => {
@@ -41,15 +41,15 @@ const Navbar = ({
       {/* <SettingsModal
         openSettingsModal={openSettingsModal}
         setOpenSettingsModal={setOpenSettingsModal}
-        setDarkMode={setDarkMode}
-        darkMode={darkMode}
+        setInverted={setInverted}
+        inverted={inverted}
         setMuted={setMuted}
         muted={muted}
       /> */}
       <InfoModal
         openInfoModal={openInfoModal}
         setOpenInfoModal={setOpenInfoModal}
-        darkMode={darkMode}
+        inverted={inverted}
       />
     </div>
   );

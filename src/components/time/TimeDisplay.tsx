@@ -6,11 +6,11 @@ import CenterMiddle from "../blocks/CenterMiddle";
 type TimeDisplayPropsType = {
   group: groupWithIdType;
   timeValues: TimeValuesType;
-  darkMode: boolean;
+  inverted: boolean;
 };
-const TimeDisplay = ({ group, timeValues, darkMode }: TimeDisplayPropsType) => (
+const TimeDisplay = ({ group, timeValues, inverted }: TimeDisplayPropsType) => (
   <CenterMiddle>
-    <Statistic inverted={darkMode} color={timeValues.color}>
+    <Statistic inverted={inverted} color={timeValues.color}>
       <Statistic.Value
         style={{ fontFamily: "'Orbitron', sans-serif", userSelect: "none" }}
       >

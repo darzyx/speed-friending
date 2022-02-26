@@ -7,7 +7,7 @@ type AdminConfirmModalPropsType = {
   onConfirmAction: () => void;
   openConfirmModal: boolean;
   setOpenConfirmModal: (openConfirmModal: boolean) => void;
-  darkMode: boolean;
+  inverted: boolean;
 };
 const AdminConfirmModal = ({
   confirmingAction,
@@ -15,7 +15,7 @@ const AdminConfirmModal = ({
   onConfirmAction,
   openConfirmModal,
   setOpenConfirmModal,
-  darkMode,
+  inverted,
 }: AdminConfirmModalPropsType) => (
   <StyledModal
     header="Are you sure?"
@@ -49,7 +49,7 @@ const AdminConfirmModal = ({
     }
     openModal={openConfirmModal}
     setOpenModal={setOpenConfirmModal}
-    darkMode={darkMode}
+    inverted={inverted}
     size="small"
   />
 );

@@ -9,7 +9,7 @@ type DropoutModalPropsType = {
   openDropoutModal: boolean;
   setOpenDropoutModal: (openDropoutModal: boolean) => void;
   dropouts: dropoutsType;
-  darkMode: boolean;
+  inverted: boolean;
 };
 const DropoutModal = ({
   nParticipant,
@@ -17,7 +17,7 @@ const DropoutModal = ({
   openDropoutModal,
   setOpenDropoutModal,
   dropouts,
-  darkMode,
+  inverted,
 }: DropoutModalPropsType) => {
   const dropout = dropouts.find((d) => d.participant_number === nParticipant);
 
@@ -43,7 +43,7 @@ const DropoutModal = ({
       }
       openModal={openDropoutModal}
       setOpenModal={setOpenDropoutModal}
-      darkMode={darkMode}
+      inverted={inverted}
       size="tiny"
     />
   );

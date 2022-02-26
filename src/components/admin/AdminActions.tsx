@@ -15,7 +15,7 @@ type AdminActionsPropsType = {
   setOpenAdminModal: (openAdminModal: boolean) => void;
   currentTimeInSeconds: number;
   activeRound: RoundType;
-  darkMode: boolean;
+  inverted: boolean;
 };
 const AdminActions = ({
   group,
@@ -23,7 +23,7 @@ const AdminActions = ({
   setOpenAdminModal,
   currentTimeInSeconds,
   activeRound,
-  darkMode,
+  inverted,
 }: AdminActionsPropsType) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -168,7 +168,7 @@ const AdminActions = ({
 
   return (
     <div>
-      <Header inverted={darkMode} as="h3" textAlign="center">
+      <Header inverted={inverted} as="h3" textAlign="center">
         Time
       </Header>
       <Grid>
@@ -226,7 +226,7 @@ const AdminActions = ({
       <Header
         as="h3"
         textAlign="center"
-        inverted={darkMode}
+        inverted={inverted}
         style={{ marginTop: "0" }}
       >
         Round
@@ -269,7 +269,7 @@ const AdminActions = ({
       <Header
         as="h3"
         textAlign="center"
-        inverted={darkMode}
+        inverted={inverted}
         style={{ marginTop: "0" }}
       >
         Advanced
@@ -289,7 +289,7 @@ const AdminActions = ({
               openDropoutModal={openDropoutModal}
               setOpenDropoutModal={setOpenDropoutModal}
               activeRound={activeRound}
-              darkMode={darkMode}
+              inverted={inverted}
             />
           </Grid.Column>
           <Grid.Column>
@@ -320,7 +320,7 @@ const AdminActions = ({
         onConfirmAction={handleConfirmAction}
         openConfirmModal={openConfirmModal}
         setOpenConfirmModal={setOpenConfirmModal}
-        darkMode={darkMode}
+        inverted={inverted}
       />
     </div>
   );

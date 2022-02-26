@@ -6,12 +6,12 @@ import CreateGroupForm from "./CreateGroupForm";
 type CreateGroupModalPropsType = {
   openCreateGroupModal: boolean;
   setOpenCreateGroupModal: (openCreateGroupModal: boolean) => void;
-  darkMode: boolean;
+  inverted: boolean;
 };
 const CreateGroupModal = ({
   openCreateGroupModal,
   setOpenCreateGroupModal,
-  darkMode,
+  inverted,
 }: CreateGroupModalPropsType) => (
   <StyledModal
     header="New Group"
@@ -20,14 +20,14 @@ const CreateGroupModal = ({
       <div>
         <CreateGroupForm
           setOpenCreateGroupModal={setOpenCreateGroupModal}
-          darkMode={darkMode}
+          inverted={inverted}
         />
         <Divider clearing hidden fitted />
       </div>
     }
     openModal={openCreateGroupModal}
     setOpenModal={setOpenCreateGroupModal}
-    darkMode={darkMode}
+    inverted={inverted}
     size="small"
   />
 );

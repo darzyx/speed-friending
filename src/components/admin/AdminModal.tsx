@@ -11,7 +11,7 @@ type AdminModalPropsType = {
   setOpenAdminModal: (openAdminModal: boolean) => void;
   currentTimeInSeconds: number;
   activeRound: RoundType;
-  darkMode: boolean;
+  inverted: boolean;
 };
 const AdminModal = ({
   group,
@@ -20,7 +20,7 @@ const AdminModal = ({
   setOpenAdminModal,
   currentTimeInSeconds,
   activeRound,
-  darkMode,
+  inverted,
 }: AdminModalPropsType) => {
   return (
     <StyledModal
@@ -30,7 +30,7 @@ const AdminModal = ({
         <TimeDisplay
           group={group}
           timeValues={timeValues}
-          darkMode={darkMode}
+          inverted={inverted}
         />
       }
       actions={
@@ -40,12 +40,12 @@ const AdminModal = ({
           setOpenAdminModal={setOpenAdminModal}
           currentTimeInSeconds={currentTimeInSeconds}
           activeRound={activeRound}
-          darkMode={darkMode}
+          inverted={inverted}
         />
       }
       setOpenModal={setOpenAdminModal}
       openModal={openAdminModal}
-      darkMode={darkMode}
+      inverted={inverted}
       size="tiny"
     />
   );

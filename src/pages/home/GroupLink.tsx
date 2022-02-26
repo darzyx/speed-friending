@@ -37,7 +37,7 @@ type GroupLinkPropsType = {
   currentTimeInSeconds: number;
   userIsAdmin: boolean;
   playAlarmSound: () => void;
-  darkMode: boolean;
+  inverted: boolean;
 };
 const GroupLink = ({
   index,
@@ -45,7 +45,7 @@ const GroupLink = ({
   currentTimeInSeconds,
   userIsAdmin,
   playAlarmSound,
-  darkMode,
+  inverted,
 }: GroupLinkPropsType) => {
   const navigate = useNavigate();
 
@@ -116,7 +116,7 @@ const GroupLink = ({
         setOpenAdminModal={setOpenAdminModal}
         currentTimeInSeconds={currentTimeInSeconds}
         activeRound={activeRound}
-        darkMode={darkMode}
+        inverted={inverted}
       />
     </Button>
   );

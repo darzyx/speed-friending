@@ -6,16 +6,16 @@ import StyledModal from "../blocks/StyledModal";
 type SettingsModalPropsType = {
   openSettingsModal: boolean;
   setOpenSettingsModal: (openSettingsModal: boolean) => void;
-  setDarkMode: (darkMode: boolean) => void;
-  darkMode: boolean;
+  setInverted: (inverted: boolean) => void;
+  inverted: boolean;
   setMuted: (muted: boolean) => void;
   muted: boolean;
 };
 const SettingsModal = ({
   openSettingsModal,
   setOpenSettingsModal,
-  setDarkMode,
-  darkMode,
+  setInverted,
+  inverted,
   setMuted,
   muted,
 }: SettingsModalPropsType) => {
@@ -42,16 +42,16 @@ const SettingsModal = ({
             </Grid.Column>
             <Grid.Column textAlign="center">
               <StyledIcon
-                onClick={() => setDarkMode(!darkMode)}
-                name={darkMode ? "lightbulb outline" : "lightbulb"}
+                onClick={() => setInverted(!inverted)}
+                name={inverted ? "lightbulb outline" : "lightbulb"}
                 style={{ cursor: "pointer" }}
                 size="huge"
               />
               <p
                 style={{ marginTop: "10px", cursor: "pointer" }}
-                onClick={() => setDarkMode(!darkMode)}
+                onClick={() => setInverted(!inverted)}
               >
-                {darkMode ? "Dark Mode" : "Light Mode"}
+                {inverted ? "Dark Mode" : "Light Mode"}
               </p>
             </Grid.Column>
           </Grid.Row>
@@ -68,7 +68,7 @@ const SettingsModal = ({
       }
       openModal={openSettingsModal}
       setOpenModal={setOpenSettingsModal}
-      darkMode={darkMode}
+      inverted={inverted}
       size="tiny"
     />
   );

@@ -20,13 +20,13 @@ type AdminPropsType = {
   auth: Auth;
   userIsAdmin: boolean;
   setUserIsAdmin: (userIsAdmin: boolean) => void;
-  darkMode: boolean;
+  inverted: boolean;
 };
 const Admin = ({
   auth,
   userIsAdmin,
   setUserIsAdmin,
-  darkMode,
+  inverted,
 }: AdminPropsType) => {
   // Reset scroll on component mount
   useEffect(() => {
@@ -79,7 +79,7 @@ const Admin = ({
 
   return (
     <CenterMiddle>
-      <Header inverted={darkMode} as="h1" textAlign="center">
+      <Header inverted={inverted} as="h1" textAlign="center">
         <Header.Subheader style={{ margin: "7px" }}>Admin</Header.Subheader>
         Sign In
       </Header>
@@ -89,7 +89,7 @@ const Admin = ({
           <AdminSignedOut />
           <AdminAccessForm
             setShowTwitterSignIn={setShowTwitterSignIn}
-            darkMode={darkMode}
+            inverted={inverted}
           />
         </>
       ) : userIsAdmin ? (
@@ -105,7 +105,7 @@ const Admin = ({
       ) : (
         <AdminAccessForm
           setShowTwitterSignIn={setShowTwitterSignIn}
-          darkMode={darkMode}
+          inverted={inverted}
         />
       )}
       <Divider hidden />

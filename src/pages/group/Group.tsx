@@ -23,7 +23,7 @@ type GroupPropsType = {
   currentTimeInSeconds: number;
   userIsAdmin: boolean;
   playAlarmSound: () => void;
-  darkMode: boolean;
+  inverted: boolean;
 };
 const Group = ({
   groups,
@@ -31,7 +31,7 @@ const Group = ({
   currentTimeInSeconds,
   userIsAdmin,
   playAlarmSound,
-  darkMode,
+  inverted,
 }: GroupPropsType) => {
   // Reset scroll on component mount
   useEffect(() => {
@@ -74,7 +74,7 @@ const Group = ({
     }
   }, [timeValues.remainingTime, roundIsOver, group, playAlarmSound]);
 
-  if (isGettingGroups || waitForState) return <Loading darkMode={darkMode} />;
+  if (isGettingGroups || waitForState) return <Loading inverted={inverted} />;
   if (!group?.id) return <GroupNotFound />;
 
   return (
@@ -93,7 +93,7 @@ const Group = ({
             setOpenAdminModal={setOpenAdminModal}
             currentTimeInSeconds={currentTimeInSeconds}
             activeRound={activeRound}
-            darkMode={darkMode}
+            inverted={inverted}
           />
           <Divider hidden />
         </>
@@ -101,7 +101,7 @@ const Group = ({
       <CenterMiddle textAlign="center">
         <Header
           as="h1"
-          inverted={darkMode}
+          inverted={inverted}
           style={{
             overflow: "hidden",
             textOverflow: "ellipsis",
@@ -113,14 +113,14 @@ const Group = ({
           {group.name}
         </Header>
       </CenterMiddle>
-      <TimeDisplay timeValues={timeValues} group={group} darkMode={darkMode} />
+      <TimeDisplay timeValues={timeValues} group={group} inverted={inverted} />
       <Divider hidden />
       <HelpfulPrompt timeValues={timeValues} />
       <Participants
         round={activeRound}
         roundNumber={group.active_round_num}
         dropouts={group.dropouts}
-        darkMode={darkMode}
+        inverted={inverted}
       />
       <p style={{ textAlign: "center" }}>
         {`${group.participant_count - group.dropouts.length}` +
@@ -137,7 +137,7 @@ const Group = ({
         group={group}
         openPastRoundsModal={openPastRoundsModal}
         setOpenPastRoundsModal={setOpenPastRoundsModal}
-        darkMode={darkMode}
+        inverted={inverted}
       />
     </div>
   );

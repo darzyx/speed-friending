@@ -10,14 +10,14 @@ type PastRoundsModalPropsType = {
   group: groupWithIdType;
   openPastRoundsModal: boolean;
   setOpenPastRoundsModal: (openPastRoundsModal: boolean) => void;
-  darkMode: boolean;
+  inverted: boolean;
 };
 const PastRoundsModal = ({
   game,
   group,
   openPastRoundsModal,
   setOpenPastRoundsModal,
-  darkMode,
+  inverted,
 }: PastRoundsModalPropsType) => {
   const pastRounds = Object.values(game).slice(0, group.active_round_num - 1);
   const hasPastRounds = Array.isArray(pastRounds) && pastRounds.length > 0;
@@ -32,14 +32,14 @@ const PastRoundsModal = ({
             pastRounds
               .map((pastRound, index) => (
                 <div key={index}>
-                  <Header inverted={darkMode} as="h3" textAlign="center">
+                  <Header inverted={inverted} as="h3" textAlign="center">
                     {`Round ${index + 1}`}
                   </Header>
                   <Participants
                     round={pastRound}
                     roundNumber={index + 1}
                     dropouts={group.dropouts}
-                    darkMode={darkMode}
+                    inverted={inverted}
                   />
                   <Divider hidden={index === 0} />
                 </div>
@@ -69,7 +69,7 @@ const PastRoundsModal = ({
       }
       openModal={openPastRoundsModal}
       setOpenModal={setOpenPastRoundsModal}
-      darkMode={darkMode}
+      inverted={inverted}
     />
   );
 };

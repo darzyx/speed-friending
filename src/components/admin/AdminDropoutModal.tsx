@@ -14,14 +14,14 @@ type AdminDropoutModalPropsType = {
   openDropoutModal: boolean;
   setOpenDropoutModal: (openDropoutModal: boolean) => void;
   activeRound: RoundType;
-  darkMode: boolean;
+  inverted: boolean;
 };
 const AdminDropoutModal = ({
   group,
   openDropoutModal,
   setOpenDropoutModal,
   activeRound,
-  darkMode,
+  inverted,
 }: AdminDropoutModalPropsType) => {
   const { id, dropouts, active_round_num, name } = group;
 
@@ -97,7 +97,7 @@ const AdminDropoutModal = ({
             roundNumber={active_round_num}
             onToggleDropoutStatus={handleToggleDropoutStatus}
             dropouts={dropouts}
-            darkMode={darkMode}
+            inverted={inverted}
           />
           <Divider hidden />
         </div>
@@ -113,7 +113,7 @@ const AdminDropoutModal = ({
       }
       setOpenModal={setOpenDropoutModal}
       openModal={openDropoutModal}
-      darkMode={darkMode}
+      inverted={inverted}
     />
   );
 };

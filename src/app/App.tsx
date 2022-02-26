@@ -50,7 +50,7 @@ const App = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(startTime, []);
 
-  const [darkMode, setDarkMode] = useState(true);
+  const [inverted, setInverted] = useState(true);
 
   const [muted, setMuted] = useState(true);
   const playAlarmSound = () => {
@@ -63,14 +63,14 @@ const App = () => {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <GlobalStyles darkMode={darkMode} />
+        <GlobalStyles inverted={inverted} />
         <BrowserRouter>
           <UserIsAdminAlert userIsAdmin={userIsAdmin} />
           <Container>
             {userIsAdmin && <Divider hidden />}
             <Navbar
-              darkMode={darkMode}
-              setDarkMode={setDarkMode}
+              inverted={inverted}
+              setInverted={setInverted}
               setMuted={setMuted}
               muted={muted}
             />
@@ -87,7 +87,7 @@ const App = () => {
                     groups={groups}
                     currentTimeInSeconds={currentTimeInSeconds}
                     playAlarmSound={playAlarmSound}
-                    darkMode={darkMode}
+                    inverted={inverted}
                   />
                 }
               />
@@ -100,7 +100,7 @@ const App = () => {
                     currentTimeInSeconds={currentTimeInSeconds}
                     userIsAdmin={userIsAdmin}
                     playAlarmSound={playAlarmSound}
-                    darkMode={darkMode}
+                    inverted={inverted}
                   />
                 }
               />
@@ -111,7 +111,7 @@ const App = () => {
                     auth={auth}
                     userIsAdmin={userIsAdmin}
                     setUserIsAdmin={setUserIsAdmin}
-                    darkMode={darkMode}
+                    inverted={inverted}
                   />
                 }
               />
