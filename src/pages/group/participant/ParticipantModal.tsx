@@ -29,10 +29,7 @@ const ParticipantModal = ({
       <Grid>
         <Grid.Row columns={1}>
           <Grid.Column textAlign="center">
-            <Button
-              active={!inverted}
-              onClick={() => setOpenParticipantModal(false)}
-            >
+            <Button secondary onClick={() => setOpenParticipantModal(false)}>
               Close
             </Button>
           </Grid.Column>

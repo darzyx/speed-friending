@@ -206,7 +206,7 @@ const CreateGroupForm = ({
         <Divider hidden />
         <div>
           <Button
-            active={!inverted}
+            secondary
             content="Cancel"
             onClick={() => setOpenCreateGroupModal(false)}
             floated="left"

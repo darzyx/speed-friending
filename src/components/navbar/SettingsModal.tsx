@@ -68,10 +68,7 @@ const SettingsModal = ({
         <Grid>
           <Grid.Row columns={1}>
             <Grid.Column textAlign="center">
-              <Button
-                active={!inverted}
-                onClick={() => setOpenSettingsModal(false)}
-              >
+              <Button secondary onClick={() => setOpenSettingsModal(false)}>
                 Close
               </Button>
             </Grid.Column>

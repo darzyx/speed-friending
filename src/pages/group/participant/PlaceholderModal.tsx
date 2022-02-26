@@ -29,10 +29,7 @@ const PlaceholderModal = ({
       <Grid>
         <Grid.Row columns={1}>
           <Grid.Column textAlign="center">
-            <Button
-              active={!inverted}
-              onClick={() => setOpenPlaceholderModal(false)}
-            >
+            <Button secondary onClick={() => setOpenPlaceholderModal(false)}>
               Close
             </Button>
           </Grid.Column>

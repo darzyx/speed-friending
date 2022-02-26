@@ -106,10 +106,7 @@ const AdminDropoutModal = ({
         <Grid>
           <Grid.Row columns={1}>
             <Grid.Column textAlign="center">
-              <Button
-                active={!inverted}
-                onClick={() => setOpenDropoutModal(false)}
-              >
+              <Button secondary onClick={() => setOpenDropoutModal(false)}>
                 Close
               </Button>
             </Grid.Column>
