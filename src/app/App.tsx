@@ -12,6 +12,7 @@ import UserIsAdminAlert from "../components/UserIsAdminAlert";
 import theme from "../styles/theme";
 import imageSVG from "../media/lotus.svg";
 import { groupsQuery, initGroup } from "./utils";
+import GlobalStyles from "../styles/GlobalStyles";
 
 // @ts-ignore 'require' call may be converted to an import.ts(80005)
 const alarmOGG = require("../media/alarm.ogg");
@@ -62,6 +63,7 @@ const App = () => {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
+        <GlobalStyles darkMode={darkMode} />
         <BrowserRouter>
           <UserIsAdminAlert userIsAdmin={userIsAdmin} />
           <Container>

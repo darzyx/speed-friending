@@ -1,3 +1,8 @@
+import { createGlobalStyle } from "styled-components";
+import theme from "./theme";
+
+type GlobalStylesPropsTyle = { darkMode: boolean };
+const GlobalStyles = createGlobalStyle<GlobalStylesPropsTyle>`
 html,
 body,
 #root,
@@ -9,10 +14,9 @@ body,
 }
 
 body {
-  /* theme.color.one: */
-  background-color: rgb(9, 17, 24);
-  /* theme.color.text */
-  color: rgb(255, 255, 255);
+  color: ${(props) => (props.darkMode ? theme.color.text : theme.color.one)};
+  background-color: ${(props) =>
+    props.darkMode ? theme.color.one : theme.color.text};
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -30,3 +34,6 @@ code {
 .ui.popup::before {
   background-color: rgb(69, 87, 102) !important;
 }
+`;
+
+export default GlobalStyles;

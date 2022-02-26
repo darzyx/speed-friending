@@ -1,7 +1,6 @@
 import { StrictMode } from "react";
 import { render } from "react-dom";
 import "./semantic-ui-css/semantic.min.css";
-import "./styles/index.css";
 import App from "./app/App";
 import reportWebVitals from "./reportWebVitals";
 
