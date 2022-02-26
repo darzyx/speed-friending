@@ -7,6 +7,7 @@ HIGH PRIORITY
 
 MID PRIORITY
 
+- Dropout round select not updating correctly
 - Limit amount of groups on backend to maxGroups const
 - Update info modal copy
 - Design updates: make it look nice

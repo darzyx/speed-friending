@@ -11,7 +11,7 @@ const StyledDropdown = styled(Dropdown)`
     div {
       background-color: ${({ theme }) => theme.color.two} !important;
       color: ${({ theme }) => theme.color.text} !important;
-      border-color: ${({ theme }) => theme.color.four} !important;
+      border-color: ${({ theme }) => theme.color.muted_text} !important;
       text-align: center !important;
     }
     i {

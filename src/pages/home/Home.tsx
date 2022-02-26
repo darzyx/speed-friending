@@ -15,6 +15,7 @@ const GroupLinksContainer = styled(Segment).attrs((props) => ({
   inverted: props.inverted,
 }))`
   &&&& {
+    border: none;
     background-color: ${({ theme }) => theme.color.two};
     width: 100%;
   }
