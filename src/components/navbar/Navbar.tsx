@@ -6,7 +6,13 @@ import NavButton from "../blocks/NavButton";
 import StyledIcon from "../blocks/StyledIcon";
 import SettingsModal from "./SettingsModal";
 
-const Navbar = ({ darkMode }: { darkMode: boolean }) => {
+const Navbar = ({
+  darkMode,
+  setDarkMode,
+}: {
+  darkMode: boolean;
+  setDarkMode: (darkMode: boolean) => void;
+}) => {
   const navigate = useNavigate();
 
   const [openSettingsModal, setOpenSettingsModal] = useState(false);
@@ -31,6 +37,7 @@ const Navbar = ({ darkMode }: { darkMode: boolean }) => {
       <SettingsModal
         openSettingsModal={openSettingsModal}
         setOpenSettingsModal={setOpenSettingsModal}
+        setDarkMode={setDarkMode}
         darkMode={darkMode}
       />
       <InfoModal

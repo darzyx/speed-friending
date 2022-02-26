@@ -63,7 +63,7 @@ const App = () => {
           <UserIsAdminAlert userIsAdmin={userIsAdmin} />
           <Container>
             {userIsAdmin && <Divider hidden />}
-            <Navbar darkMode={darkMode} />
+            <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
             <Divider hidden />
             <Routes>
               <Route index element={<Navigate to="/home" />} />
