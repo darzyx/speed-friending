@@ -15,6 +15,7 @@ import { ColorfulLink } from "../../components/blocks/ColorfulText";
 import AdminSignIn from "./AdminSignIn";
 import AdminSignOut from "./AdminSignOut";
 import AdminSignedOut from "./AdminSignedOut";
+import Loading from "../../components/blocks/Loading";
 
 type AdminPropsType = {
   auth: Auth;
@@ -33,11 +34,18 @@ const Admin = ({
     window.scrollTo(0, 0);
   }, []);
 
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [isSignedIn, setIsSignedIn] = useState(userIsAdmin);
+  useEffect(() => {
+    setIsSignedIn(userIsAdmin);
+  }, [userIsAdmin]);
+
   const [showTwitterSignIn, setShowTwitterSignIn] = useState(false);
 
   useEffect(() => {
     getRedirectResult(auth)
-      .then((result) => {
+      .then(async (result) => {
         if (result) {
           // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
           // You can use these server side with your app's credentials to access the Twitter API.
@@ -47,6 +55,15 @@ const Admin = ({
           // ...
           // The signed-in user info.
           // const user = result.user;
+          setIsSignedIn(true);
+          setIsLoading(false);
+        } else {
+          setIsSignedIn(userIsAdmin);
+          await new Promise(() =>
+            setTimeout(() => {
+              setIsLoading(false);
+            }, 1000)
+          );
         }
       })
       .catch((error) => {
@@ -58,8 +75,9 @@ const Admin = ({
         // The AuthCredential type that was used.
         // const credential = TwitterAuthProvider.credentialFromError(error);
         // ...
+        setIsLoading(false);
       });
-  }, [auth, setUserIsAdmin]);
+  }, [auth, setUserIsAdmin, userIsAdmin]);
 
   const handleClickSignIn = () => {
     signInWithRedirect(auth, provider);
@@ -71,11 +89,14 @@ const Admin = ({
       .then(() => {
         // Sign-out successful.
         setSignedOut(true);
+        setIsSignedIn(false);
       })
       .catch((error) => {
         // An error happened.
       });
   };
+
+  if (isLoading) return <Loading inverted={inverted} />;
 
   return (
     <CenterMiddle>
@@ -83,16 +104,16 @@ const Admin = ({
         <Header.Subheader style={{ margin: "7px" }}>Admin</Header.Subheader>
         Sign In
       </Header>
-      {signedOut ? (
+      {isSignedIn ? (
+        <>
+          <Divider hidden />
+          <AdminSignOut onClickSignOut={handleClickSignOut} />
+        </>
+      ) : signedOut ? (
         <>
           <Divider hidden />
           <AdminSignedOut />
           <AdminSignIn onClickSignIn={handleClickSignIn} />
-        </>
-      ) : userIsAdmin ? (
-        <>
-          <Divider hidden />
-          <AdminSignOut onClickSignOut={handleClickSignOut} />
         </>
       ) : showTwitterSignIn ? (
         <>
@@ -106,7 +127,7 @@ const Admin = ({
         />
       )}
       <Divider hidden />
-      {!userIsAdmin && (
+      {!isSignedIn && (
         <CenterMiddle>
           <p style={{ textAlign: "center" }}>Not an administrator?</p>
           <ColorfulLink to="/">Go home to select group &rarr;</ColorfulLink>

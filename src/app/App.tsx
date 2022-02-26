@@ -20,7 +20,7 @@ const App = () => {
   const auth = getAuth();
   const currentUserId = auth?.currentUser?.uid;
 
-  const [userIsAdmin, setUserIsAdmin] = useState(false);
+  const [userIsAdmin, setUserIsAdmin] = useState(Boolean(currentUserId));
   useEffect(() => {
     if (currentUserId) {
       setUserIsAdmin(true);

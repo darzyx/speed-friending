@@ -14,7 +14,7 @@ import Participants from "./Participants";
 import AdminModal from "../../components/admin/AdminModal";
 import { GroupNotFound } from "./Placeholders";
 import HelpfulPrompt from "./HelpfulPrompt";
-import { Loading } from "../../components/blocks/Loading";
+import Loading from "../../components/blocks/Loading";
 import { initGroup } from "../../app/utils";
 
 type GroupPropsType = {
