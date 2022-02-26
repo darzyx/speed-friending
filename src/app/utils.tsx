@@ -1,15 +1,15 @@
-import { onSnapshot, collection } from "firebase/firestore";
+import { onSnapshot, collection, Timestamp } from "firebase/firestore";
 
 import { db } from "../firebase";
 import { groupType, groupWithIdType } from "../types/group";
 
 export const initGroup = {
   name: "New Group",
-  participant_count: 0,
-  active_round_num: 0,
-  round_count: 0,
-  round_duration: 0,
-  round_end_time: 0,
+  participant_count: 10,
+  active_round_num: 1,
+  round_count: 5,
+  round_duration: 60,
+  round_end_time: Timestamp.now().seconds + 60,
   round_is_paused: false,
   round_paused_time: 0,
   dropouts: [],
