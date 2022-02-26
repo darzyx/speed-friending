@@ -1,20 +1,23 @@
 import { Button, Loader } from "semantic-ui-react";
-import theme from "../../styles/theme";
+import styled from "styled-components";
+
+const LoadingGroupsPlaceholderContainer = styled(Button).attrs({
+  size: "large",
+})`
+  &&&& {
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: ${({ theme }) => theme.color.four};
+    color: ${({ theme }) => theme.color.text};
+  }
+`;
 
 const LoadingGroupsPlaceholder = ({ inverted }: { inverted: boolean }) => {
   return (
-    <Button
-      style={{
-        width: "100%",
-        paddingTop: "15px",
-        paddingBottom: "15px",
-        backgroundColor: theme.color.four,
-        color: theme.color.text,
-      }}
-      size="large"
-    >
+    <LoadingGroupsPlaceholderContainer>
       <Loader inverted={inverted} active inline="centered" size="tiny" />
-    </Button>
+    </LoadingGroupsPlaceholderContainer>
   );
 };
 

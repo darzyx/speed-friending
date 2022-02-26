@@ -8,9 +8,20 @@ import {
   InputOnChangeData,
   Segment,
 } from "semantic-ui-react";
+import styled from "styled-components";
 
 import StyledFormInput from "../../components/blocks/StyledFormInput";
-import theme from "../../styles/theme";
+
+const AdminAccessFormContainer = styled(Segment).attrs((props) => ({
+  inverted: props.inverted,
+}))`
+  &&&& {
+    width: 100%;
+    max-width: 500px;
+    color: ${({ theme }) => theme.color.text};
+    background-color: ${({ theme }) => theme.color.three};
+  }
+`;
 
 const maxUsernameLength = 15;
 const testPassword = "brosquito"; // TODO: add real auth logic
@@ -58,15 +69,7 @@ const AdminAccessForm = ({
   };
 
   return (
-    <Segment
-      inverted={inverted}
-      style={{
-        width: "100%",
-        maxWidth: "500px",
-        color: theme.color.text,
-        backgroundColor: theme.color.three,
-      }}
-    >
+    <AdminAccessFormContainer>
       <Form
         onSubmit={handleSubmitCredentials}
         inverted={inverted}
@@ -109,7 +112,7 @@ const AdminAccessForm = ({
           </Grid.Row>
         </Grid>
       </Form>
-    </Segment>
+    </AdminAccessFormContainer>
   );
 };
 

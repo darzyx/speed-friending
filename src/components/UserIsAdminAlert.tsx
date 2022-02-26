@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
-import theme from "../styles/theme";
+import { themeType } from "../styles/theme";
 
-const backgroundColorChange = keyframes`
+const backgroundColorChange = ({ theme }: { theme: themeType }) => keyframes`
   0% { background-color: ${theme.color.blue}; }
   33% { background-color: ${theme.color.purple}; }
   66% { background-color: ${theme.color.purple}; }

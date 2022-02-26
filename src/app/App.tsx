@@ -9,10 +9,10 @@ import Home from "../pages/home/Home";
 import Group from "../pages/group/Group";
 import Admin from "../pages/admin/Admin";
 import UserIsAdminAlert from "../components/UserIsAdminAlert";
-import theme from "../styles/theme";
 import imageSVG from "../media/lotus.svg";
 import { groupsQuery, initGroup } from "./utils";
 import GlobalStyles from "../styles/GlobalStyles";
+import { darkTheme, lightTheme } from "../styles/theme";
 
 // @ts-ignore 'require' call may be converted to an import.ts(80005)
 const alarmOGG = require("../media/alarm.ogg");
@@ -62,8 +62,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
+      <ThemeProvider theme={inverted ? darkTheme : lightTheme}>
+        <GlobalStyles themeStyles={inverted ? darkTheme : lightTheme} />
         <BrowserRouter>
           <UserIsAdminAlert userIsAdmin={userIsAdmin} />
           <Container>

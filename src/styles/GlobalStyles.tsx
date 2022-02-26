@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import theme from "./theme";
+import { themeType } from "./theme";
 
 const GlobalStyles = createGlobalStyle`
 html,
@@ -13,8 +13,10 @@ body,
 }
 
 body {
-  color: ${theme.color.text};
-  background-color: ${theme.color.one};
+  color: ${({ themeStyles }: { themeStyles: themeType }) =>
+    themeStyles.color.text};
+  background-color: ${({ themeStyles }: { themeStyles: themeType }) =>
+    themeStyles.color.one};
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;

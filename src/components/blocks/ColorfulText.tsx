@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { Header } from "semantic-ui-react";
 import styled, { css, keyframes } from "styled-components";
-import theme from "../../styles/theme";
+import { themeType } from "../../styles/theme";
 
-const colorChange = keyframes`
+const colorChange = ({ theme }: { theme: themeType }) => keyframes`
   0% { color: ${theme.color.blue}; }
   33% { color: ${theme.color.purple}; }
   66% { color: ${theme.color.purple}; }

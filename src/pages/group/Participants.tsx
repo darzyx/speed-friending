@@ -1,13 +1,21 @@
 import { memo } from "react";
 import { Segment } from "semantic-ui-react";
 import styled from "styled-components";
-import theme from "../../styles/theme";
-import { dropoutsType } from "../../types/group";
 
+import { dropoutsType } from "../../types/group";
 import Participant from "./participant/Participant";
 import { RoundType } from "./utils";
 
-const ParticipantsContainer = styled.div`
+const ParticipantsContainer = styled(Segment).attrs((props) => ({
+  inverted: props.inverted,
+}))`
+  &&&& {
+    background-color: ${({ theme }) => theme.color.one};
+    margin: 0;
+  }
+`;
+
+const ParticipantsInnerContainer = styled.div`
   margin: auto;
   max-width: 100%;
 `;
@@ -30,11 +38,8 @@ const Participants = ({
   dropouts: dropoutsType;
   inverted: boolean;
 }) => (
-  <Segment
-    inverted={inverted}
-    style={{ backgroundColor: theme.color.one, margin: "0" }}
-  >
-    <ParticipantsContainer>
+  <ParticipantsContainer>
+    <ParticipantsInnerContainer>
       <ParticipantsGrid>
         {round.top.map((nTop, idxTop) => (
           <div key={idxTop}>
@@ -59,8 +64,8 @@ const Participants = ({
           </div>
         ))}
       </ParticipantsGrid>
-    </ParticipantsContainer>
-  </Segment>
+    </ParticipantsInnerContainer>
+  </ParticipantsContainer>
 );
 
 export default memo(Participants);

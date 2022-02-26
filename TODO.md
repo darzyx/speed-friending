@@ -1,5 +1,6 @@
 HIGH PRIORITY
 
+- Admin pg needs two fixes: cant re-log in, loading after redirect
 - Make sure Firebase can handle 400 users at once day of
 - Add admin auth login feature (or change password)
 - Check all components for infinite rerender issues
