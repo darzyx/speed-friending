@@ -13,6 +13,8 @@ export type groupType = {
   round_is_paused: boolean;
   round_paused_time: number; // Time remaining when paused
   dropouts: dropoutsType;
+  private: boolean;
+  private_is_ready: boolean;
 };
 
 export type groupWithIdType = groupType & { id: string };

@@ -15,7 +15,7 @@ import AdminModal from "../../components/admin/AdminModal";
 import { GroupNotFound } from "./Placeholders";
 import HelpfulPrompt from "./HelpfulPrompt";
 import Loading from "../../components/blocks/Loading";
-import { initGroup } from "../../app/utils";
+import { initGroupWithId } from "../../app/utils";
 
 type GroupPropsType = {
   groups: groupWithIdType[];
@@ -42,7 +42,7 @@ const Group = ({
 
   // Makes sure we don't erroneously show 404 page
   const [waitForState, setWaitForState] = useState(true);
-  const [group, setGroup] = useState(initGroup);
+  const [group, setGroup] = useState(initGroupWithId);
   useEffect(() => {
     if (!isGettingGroups) {
       const foundGroup = groups.find((s) => s.id === id);

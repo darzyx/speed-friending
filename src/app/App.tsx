@@ -9,7 +9,7 @@ import Home from "../pages/home/Home";
 import Group from "../pages/group/Group";
 import Admin from "../pages/admin/Admin";
 import UserIsAdminAlert from "../components/UserIsAdminAlert";
-import { groupsQuery, initGroup } from "./utils";
+import { groupsQuery, initGroupWithId } from "./utils";
 import GlobalStyles from "../styles/GlobalStyles";
 import { darkTheme, lightTheme } from "../styles/theme";
 
@@ -31,10 +31,17 @@ const App = () => {
 
   const [anyGroupsExist, setAnyGroupsExist] = useState(false);
   const [isGettingGroups, setIsGettingGroups] = useState(true);
-  const [groups, setGroups] = useState([initGroup]);
+  const [groups, setGroups] = useState([initGroupWithId]);
+  const [privateGroups, setPrivateGroups] = useState([initGroupWithId]);
   // Returns onSnapshot because its return value terminates the listener
   useEffect(
-    () => groupsQuery({ setGroups, setAnyGroupsExist, setIsGettingGroups }),
+    () =>
+      groupsQuery({
+        setGroups,
+        setPrivateGroups,
+        setAnyGroupsExist,
+        setIsGettingGroups,
+      }),
     []
   );
 

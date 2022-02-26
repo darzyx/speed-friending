@@ -6,6 +6,7 @@ import {
   Icon,
   InputOnChangeData,
   Divider,
+  Grid,
 } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 
@@ -13,6 +14,7 @@ import { db } from "../../firebase";
 import { groupType } from "../../types/group";
 import { getMaxRounds } from "../group/utils";
 import StyledFormInput from "../../components/blocks/StyledFormInput";
+import { initGroup } from "../../app/utils";
 
 const maxNameLength = 30;
 const maxRoundDuration = 60 * 10;
@@ -143,6 +145,26 @@ const CreateGroupForm = ({
       round_is_paused: true,
       round_paused_time: Number(roundDuration), // Time remaining when paused
       dropouts: [],
+      private: false,
+      private_is_ready: false,
+    };
+
+    const collectionRef = collection(db, "groups");
+    const docRef = await addDoc(collectionRef, payload);
+
+    setOpenCreateGroupModal(false);
+    setIsSubmitting(false);
+    navigate(`/group/${docRef.id}`);
+  };
+
+  const handleCreatePrivateGroupLink = async () => {
+    setIsSubmitting(true);
+
+    // TODO: validate all types before submitting
+    const payload: groupType = {
+      ...initGroup,
+      private: true,
+      private_is_ready: false,
     };
 
     const collectionRef = collection(db, "groups");
@@ -226,6 +248,19 @@ const CreateGroupForm = ({
           </Button>
         </div>
       </Form>
+      <Divider clearing hidden fitted />
+      <Divider horizontal inverted={inverted}>
+        OR
+      </Divider>
+      <Grid>
+        <Grid.Row columns={1}>
+          <Grid.Column textAlign="center">
+            <Button onClick={handleCreatePrivateGroupLink} color="teal">
+              Create Private Group Link
+            </Button>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     </div>
   );
 };

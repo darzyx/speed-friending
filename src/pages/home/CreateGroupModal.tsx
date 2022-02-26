@@ -1,5 +1,3 @@
-import { Divider } from "semantic-ui-react";
-
 import StyledModal from "../../components/blocks/StyledModal";
 import CreateGroupForm from "./CreateGroupForm";
 
@@ -17,13 +15,10 @@ const CreateGroupModal = ({
     header="New Group"
     subheader="Create"
     content={
-      <div>
-        <CreateGroupForm
-          setOpenCreateGroupModal={setOpenCreateGroupModal}
-          inverted={inverted}
-        />
-        <Divider clearing hidden fitted />
-      </div>
+      <CreateGroupForm
+        setOpenCreateGroupModal={setOpenCreateGroupModal}
+        inverted={inverted}
+      />
     }
     openModal={openCreateGroupModal}
     setOpenModal={setOpenCreateGroupModal}
