@@ -26,12 +26,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-/* Semantic UI Popup component overwrite */
-.ui.popup,
-.ui.popup::before {
-  background-color: rgb(69, 87, 102) !important;
-}
 `;
 
 export default GlobalStyles;
