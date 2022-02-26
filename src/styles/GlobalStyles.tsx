@@ -1,8 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import theme from "./theme";
 
-type GlobalStylesPropsTyle = { inverted: boolean };
-const GlobalStyles = createGlobalStyle<GlobalStylesPropsTyle>`
+const GlobalStyles = createGlobalStyle`
 html,
 body,
 #root,
@@ -14,9 +13,8 @@ body,
 }
 
 body {
-  color: ${(props) => (props.inverted ? theme.color.text : theme.color.one)};
-  background-color: ${(props) =>
-    props.inverted ? theme.color.one : theme.color.text};
+  color: ${theme.color.text};
+  background-color: ${theme.color.one};
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;

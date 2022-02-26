@@ -63,7 +63,7 @@ const App = () => {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <GlobalStyles inverted={inverted} />
+        <GlobalStyles />
         <BrowserRouter>
           <UserIsAdminAlert userIsAdmin={userIsAdmin} />
           <Container>
