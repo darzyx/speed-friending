@@ -23,6 +23,7 @@ const participantDisplayCSS = css`
 type ParticipantDisplayPropsType = {
   top: boolean;
   dark: boolean;
+  inverted: boolean;
   nParticipant: number;
 };
 const ParticipantDisplay = styled.div<ParticipantDisplayPropsType>`
@@ -36,8 +37,8 @@ const ParticipantDisplay = styled.div<ParticipantDisplayPropsType>`
         return "0 0 5px 5px";
       }
     }};
-    color: ${({ dark, theme }) => {
-      if (dark) {
+    color: ${({ dark, inverted, theme }) => {
+      if (dark || !inverted) {
         return `${theme.color.text}`;
       } else {
         return `${theme.color.one}`;
@@ -117,6 +118,7 @@ const Participant = ({
       <ParticipantDisplay
         onClick={handleClick}
         dark={isDropout || nParticipant === 0}
+        inverted={inverted}
         nParticipant={nParticipant}
         top={top}
       >
