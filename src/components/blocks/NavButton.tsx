@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const NavButton = styled(Button)`
   &&&& {
-    margin: 0;
+    margin: ${({ margin }) => (margin ? margin : "0")};
     background-color: ${({ theme }) => theme.color.two};
     color: ${({ theme }) => theme.color.text};
   }

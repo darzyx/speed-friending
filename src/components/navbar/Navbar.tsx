@@ -1,23 +1,38 @@
 import { useState } from "react";
-import { Icon } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 
 import InfoModal from "./InfoModal";
 import NavButton from "../blocks/NavButton";
+import StyledIcon from "../blocks/StyledIcon";
+import SettingsModal from "./SettingsModal";
 
 const Navbar = ({ darkMode }: { darkMode: boolean }) => {
   const navigate = useNavigate();
 
+  const [openSettingsModal, setOpenSettingsModal] = useState(false);
   const [openInfoModal, setOpenInfoModal] = useState(false);
 
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>
       <NavButton onClick={() => navigate("/home")}>
-        <Icon name="home" /> Home
+        <StyledIcon name="home" />
       </NavButton>
-      <NavButton onClick={() => setOpenInfoModal(true)}>
-        <Icon name="info circle" /> Info
-      </NavButton>
+      <div>
+        <NavButton
+          margin="0 10px 0 0"
+          onClick={() => setOpenSettingsModal(true)}
+        >
+          <StyledIcon name="setting" />
+        </NavButton>
+        <NavButton onClick={() => setOpenInfoModal(true)}>
+          <StyledIcon name="question circle" />
+        </NavButton>
+      </div>
+      <SettingsModal
+        openSettingsModal={openSettingsModal}
+        setOpenSettingsModal={setOpenSettingsModal}
+        darkMode={darkMode}
+      />
       <InfoModal
         openInfoModal={openInfoModal}
         setOpenInfoModal={setOpenInfoModal}
