@@ -1,14 +1,57 @@
 import { memo, useEffect, useState } from "react";
 import { Icon } from "semantic-ui-react";
+import styled, { css } from "styled-components";
 
-import CenterMiddle from "../../../components/blocks/CenterMiddle";
-import theme from "../../../styles/theme";
+import { centerMiddleCSS } from "../../../components/blocks/CenterMiddle";
 import { getIsRoundDropout, getParticipantColor } from "../utils";
 import DropoutModal from "./DropoutModal";
 import PlaceholderModal from "./PlaceholderModal";
 import NoPartnerModal from "./NoPartnerModal";
 import ParticipantModal from "./ParticipantModal";
 import { dropoutsType } from "../../../types/group";
+
+const participantDisplayCSS = css`
+  ${centerMiddleCSS};
+  height: 50px;
+  font-weight: bold;
+  font-size: 22px;
+  box-sizing: border-box;
+  user-select: none;
+  cursor: pointer;
+`;
+
+type ParticipantDisplayPropsType = {
+  top: boolean;
+  dark: boolean;
+  nParticipant: number;
+};
+const ParticipantDisplay = styled.div<ParticipantDisplayPropsType>`
+  &&&& {
+    ${participantDisplayCSS}
+    border: 1px solid ${({ theme }) => theme.color.two};
+    border-radius: ${({ top }) => {
+      if (top) {
+        return "5px 5px 0 0";
+      } else {
+        return "0 0 5px 5px";
+      }
+    }};
+    color: ${({ dark, theme }) => {
+      if (dark) {
+        return `${theme.color.text}`;
+      } else {
+        return `${theme.color.one}`;
+      }
+    }};
+    background-color: ${({ dark, nParticipant, theme }) => {
+      if (dark) {
+        return `${theme.color.two}`;
+      } else {
+        return getParticipantColor(nParticipant);
+      }
+    }};
+  }
+`;
 
 type ParticipantPropsType = {
   nParticipant: number;
@@ -21,7 +64,7 @@ type ParticipantPropsType = {
 };
 const Participant = ({
   nParticipant,
-  top,
+  top = false,
   nPartner,
   onToggleDropoutStatus,
   dropouts,
@@ -71,25 +114,11 @@ const Participant = ({
 
   return (
     <div>
-      <CenterMiddle
+      <ParticipantDisplay
         onClick={handleClick}
-        style={{
-          height: "50px",
-          fontWeight: "bold",
-          fontSize: "22px",
-          borderRadius: "0 0 5px 5px",
-          boxSizing: "border-box",
-          userSelect: "none",
-          cursor: "pointer",
-          color: theme.color.one,
-          backgroundColor: getParticipantColor(nParticipant),
-          border: `1px solid ${theme.color.two}`,
-          ...((isDropout || nParticipant === 0) && {
-            color: theme.color.text,
-            backgroundColor: theme.color.three,
-          }),
-          ...(top && { borderRadius: "5px 5px 0 0" }),
-        }}
+        dark={isDropout || nParticipant === 0}
+        nParticipant={nParticipant}
+        top={top}
       >
         {nParticipant === 0 ? (
           <Icon name="ban" size="large" style={{ margin: "0" }} />
@@ -98,7 +127,7 @@ const Participant = ({
         ) : (
           nParticipant
         )}
-      </CenterMiddle>
+      </ParticipantDisplay>
       <PlaceholderModal
         nPartner={nPartner}
         openPlaceholderModal={openPlaceholderModal}

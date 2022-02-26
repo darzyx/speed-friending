@@ -7,6 +7,7 @@ HIGH PRIORITY
 
 MID PRIORITY
 
+- Limit amount of groups on backend to maxGroups const
 - Update info modal copy
 - Design updates: make it look nice
 - Fix mobile audio

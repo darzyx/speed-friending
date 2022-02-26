@@ -1,9 +1,23 @@
 import { Button, Icon } from "semantic-ui-react";
-import theme from "../../styles/theme";
+import styled from "styled-components";
+
 import { groupWithIdType } from "../../types/group";
 
-// TODO: remove this and limit creation to auth users
 const maxGroups = 50;
+
+const CreateGroupModalTriggerContainer = styled(Button).attrs((props) => ({
+  size: "large",
+  disabled: props.disabled,
+}))`
+  &&&& {
+    width: 100%;
+    margin: ${({ anyGroupsExist }) => (anyGroupsExist ? "10px" : "0")} 0 0 0;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    background-color: ${({ theme }) => theme.color.five};
+    color: ${({ theme }) => theme.color.text};
+  }
+`;
 
 type CreateGroupButtonPropsType = {
   anyGroupsExist: boolean;
@@ -17,25 +31,17 @@ const CreateGroupModalTrigger = ({
 }: CreateGroupButtonPropsType) => {
   const disabled = groups.length >= maxGroups;
   return (
-    <Button
-      style={{
-        width: "100%",
-        margin: `${anyGroupsExist ? "10px" : "0"} 0 0 0`,
-        paddingTop: "14px",
-        paddingBottom: "14px",
-        backgroundColor: theme.color.five,
-        color: theme.color.text,
-      }}
+    <CreateGroupModalTriggerContainer
       onClick={disabled ? () => {} : () => setOpenCreateGroupModal(true)}
+      anyGroupsExist={anyGroupsExist}
       disabled={disabled}
-      size="large"
     >
       {groups.length >= maxGroups ? (
         <Icon name="remove" />
       ) : (
         <Icon name="plus" />
       )}
-    </Button>
+    </CreateGroupModalTriggerContainer>
   );
 };
 
