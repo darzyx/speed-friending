@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Container, Divider, Image } from "semantic-ui-react";
+import { Container, Divider } from "semantic-ui-react";
 import { ThemeProvider } from "styled-components";
 
 import Navbar from "../components/navbar/Navbar";
@@ -9,7 +9,6 @@ import Home from "../pages/home/Home";
 import Group from "../pages/group/Group";
 import Admin from "../pages/admin/Admin";
 import UserIsAdminAlert from "../components/UserIsAdminAlert";
-import imageSVG from "../media/lotus.svg";
 import { groupsQuery, initGroup } from "./utils";
 import GlobalStyles from "../styles/GlobalStyles";
 import { darkTheme, lightTheme } from "../styles/theme";
@@ -116,10 +115,6 @@ const App = () => {
                 }
               />
             </Routes>
-            <Divider hidden />
-            <Divider hidden />
-            <Divider hidden />
-            <Image src={imageSVG} size="tiny" centered />
             <Divider hidden />
           </Container>
         </BrowserRouter>

@@ -7,9 +7,9 @@ const StyledFormInput = styled(Form.Input)`
     input {
       background-color: ${({ theme }) => theme.color.two} !important;
       color: ${({ theme }) => theme.color.text};
-      border-color: ${({ theme }) => theme.color.muted_text} !important;
+      border-color: ${({ theme }) => theme.color.border} !important;
       &::placeholder {
-        color: ${({ theme }) => theme.color.muted_text} !important;
+        color: ${({ theme }) => theme.color.text_muted} !important;
       }
     }
   }

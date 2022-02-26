@@ -24,38 +24,45 @@ const SettingsModal = ({
       header="Settings"
       subheader={<StyledIcon name="setting" />}
       content={
-        <Grid>
-          <Grid.Row columns={2}>
-            <Grid.Column textAlign="center">
-              <StyledIcon
-                onClick={() => setMuted(!muted)}
-                name={muted ? "mute" : "unmute"}
-                style={{ cursor: "pointer" }}
-                size="huge"
-              />
-              <p
-                style={{ marginTop: "10px", cursor: "pointer" }}
-                onClick={() => setMuted(!muted)}
-              >
-                {muted ? "Muted" : "Playing Sound"}
-              </p>
-            </Grid.Column>
-            <Grid.Column textAlign="center">
-              <StyledIcon
-                onClick={() => setInverted(!inverted)}
-                name={inverted ? "lightbulb outline" : "lightbulb"}
-                style={{ cursor: "pointer" }}
-                size="huge"
-              />
-              <p
-                style={{ marginTop: "10px", cursor: "pointer" }}
-                onClick={() => setInverted(!inverted)}
-              >
-                {inverted ? "Dark Mode" : "Light Mode"}
-              </p>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+        <div>
+          <p style={{ textAlign: "center", marginBottom: "20px" }}>
+            Click something to toggle it
+          </p>
+          <Grid>
+            <Grid.Row columns={2}>
+              <Grid.Column textAlign="center">
+                <StyledIcon
+                  onClick={() => setMuted(!muted)}
+                  name={muted ? "mute" : "unmute"}
+                  style={{ cursor: "pointer" }}
+                  size="huge"
+                />
+                <p
+                  style={{ marginTop: "10px", cursor: "pointer" }}
+                  onClick={() => setMuted(!muted)}
+                >
+                  {muted ? "Now Muted" : "Now Playing Sound"}
+                  <br />
+                  {"(Desktop Only)"}
+                </p>
+              </Grid.Column>
+              <Grid.Column textAlign="center">
+                <StyledIcon
+                  onClick={() => setInverted(!inverted)}
+                  name={inverted ? "lightbulb outline" : "lightbulb"}
+                  style={{ cursor: "pointer" }}
+                  size="huge"
+                />
+                <p
+                  style={{ marginTop: "10px", cursor: "pointer" }}
+                  onClick={() => setInverted(!inverted)}
+                >
+                  {inverted ? "Using Dark Mode" : "Using Light Mode"}
+                </p>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </div>
       }
       actions={
         <Grid>

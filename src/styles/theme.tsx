@@ -3,7 +3,8 @@ export type themeType = { color: { [name: string]: string } };
 export const darkTheme: themeType = {
   color: {
     text: "rgb(255, 255, 255)",
-    muted_text: "rgb(95, 113, 131)",
+    text_muted: "rgb(95, 113, 131)",
+    border: "rgb(69, 87, 102)",
     one: "rgb(9, 17, 24)",
     two: "rgb(21, 30, 39)",
     three: "rgb(44, 58, 73)",
@@ -18,7 +19,8 @@ export const darkTheme: themeType = {
 export const lightTheme: themeType = {
   color: {
     text: "rgb(9, 17, 24)",
-    muted_text: "rgb(95, 113, 131)",
+    text_muted: "rgb(95, 113, 131)",
+    border: "rgb(95, 113, 131)",
     one: "rgb(255, 255, 255)",
     two: "rgb(216, 228, 241)",
     three: "rgb(218, 224, 236)",
