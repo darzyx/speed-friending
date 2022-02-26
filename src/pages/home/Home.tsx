@@ -107,11 +107,13 @@ const Home = ({
         </p>
       )}
       <Divider hidden />
-      <CreateGroupModal
-        openCreateGroupModal={openCreateGroupModal}
-        setOpenCreateGroupModal={setOpenCreateGroupModal}
-        inverted={inverted}
-      />
+      {openCreateGroupModal && (
+        <CreateGroupModal
+          openCreateGroupModal={openCreateGroupModal}
+          setOpenCreateGroupModal={setOpenCreateGroupModal}
+          inverted={inverted}
+        />
+      )}
     </CenterMiddle>
   );
 };

@@ -86,15 +86,17 @@ const Group = ({
               <Icon name="settings" /> Manage Group
             </Button>
           </CenterMiddle>
-          <AdminModal
-            group={group}
-            timeValues={timeValues}
-            openAdminModal={openAdminModal}
-            setOpenAdminModal={setOpenAdminModal}
-            currentTimeInSeconds={currentTimeInSeconds}
-            activeRound={activeRound}
-            inverted={inverted}
-          />
+          {openAdminModal && (
+            <AdminModal
+              group={group}
+              timeValues={timeValues}
+              openAdminModal={openAdminModal}
+              setOpenAdminModal={setOpenAdminModal}
+              currentTimeInSeconds={currentTimeInSeconds}
+              activeRound={activeRound}
+              inverted={inverted}
+            />
+          )}
           <Divider hidden />
         </>
       )}
@@ -132,13 +134,15 @@ const Group = ({
           <Icon name="history" /> Past Rounds
         </NavButton>
       </CenterMiddle>
-      <PastRoundsModal
-        game={game}
-        group={group}
-        openPastRoundsModal={openPastRoundsModal}
-        setOpenPastRoundsModal={setOpenPastRoundsModal}
-        inverted={inverted}
-      />
+      {openPastRoundsModal && (
+        <PastRoundsModal
+          game={game}
+          group={group}
+          openPastRoundsModal={openPastRoundsModal}
+          setOpenPastRoundsModal={setOpenPastRoundsModal}
+          inverted={inverted}
+        />
+      )}
     </div>
   );
 };

@@ -140,35 +140,43 @@ const Participant = ({
           nParticipant
         )}
       </ParticipantDisplay>
-      <PlaceholderModal
-        nPartner={nPartner}
-        openPlaceholderModal={openPlaceholderModal}
-        setOpenPlaceholderModal={setOpenPlaceholderModal}
-        inverted={inverted}
-      />
-      <DropoutModal
-        nParticipant={nParticipant}
-        nPartner={nPartner}
-        openDropoutModal={openDropoutModal}
-        setOpenDropoutModal={setOpenDropoutModal}
-        dropouts={dropouts}
-        inverted={inverted}
-      />
-      <NoPartnerModal
-        nParticipant={nParticipant}
-        nPartner={nPartner}
-        openNoPartnerModal={openNoPartnerModal}
-        setOpenNoPartnerModal={setOpenNoPartnerModal}
-        dropouts={dropouts}
-        inverted={inverted}
-      />
-      <ParticipantModal
-        nParticipant={nParticipant}
-        nPartner={nPartner}
-        openParticipantModal={openParticipantModal}
-        setOpenParticipantModal={setOpenParticipantModal}
-        inverted={inverted}
-      />
+      {openPlaceholderModal && (
+        <PlaceholderModal
+          nPartner={nPartner}
+          openPlaceholderModal={openPlaceholderModal}
+          setOpenPlaceholderModal={setOpenPlaceholderModal}
+          inverted={inverted}
+        />
+      )}
+      {openDropoutModal && (
+        <DropoutModal
+          nParticipant={nParticipant}
+          nPartner={nPartner}
+          openDropoutModal={openDropoutModal}
+          setOpenDropoutModal={setOpenDropoutModal}
+          dropouts={dropouts}
+          inverted={inverted}
+        />
+      )}
+      {openNoPartnerModal && (
+        <NoPartnerModal
+          nParticipant={nParticipant}
+          nPartner={nPartner}
+          openNoPartnerModal={openNoPartnerModal}
+          setOpenNoPartnerModal={setOpenNoPartnerModal}
+          dropouts={dropouts}
+          inverted={inverted}
+        />
+      )}
+      {openParticipantModal && (
+        <ParticipantModal
+          nParticipant={nParticipant}
+          nPartner={nPartner}
+          openParticipantModal={openParticipantModal}
+          setOpenParticipantModal={setOpenParticipantModal}
+          inverted={inverted}
+        />
+      )}
     </div>
   );
 };

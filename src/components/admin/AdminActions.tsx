@@ -284,13 +284,15 @@ const AdminActions = ({
             >
               <Icon name="remove user" /> Dropout
             </Button>
-            <AdminDropoutModal
-              group={group}
-              openDropoutModal={openDropoutModal}
-              setOpenDropoutModal={setOpenDropoutModal}
-              activeRound={activeRound}
-              inverted={inverted}
-            />
+            {openDropoutModal && (
+              <AdminDropoutModal
+                group={group}
+                openDropoutModal={openDropoutModal}
+                setOpenDropoutModal={setOpenDropoutModal}
+                activeRound={activeRound}
+                inverted={inverted}
+              />
+            )}
           </Grid.Column>
           <Grid.Column>
             <Button
@@ -316,14 +318,16 @@ const AdminActions = ({
           </Grid.Column>
         </Grid.Row>
       </Grid>
-      <AdminConfirmModal
-        confirmingAction={confirmingAction}
-        onCancelAction={handleCancelAction}
-        onConfirmAction={handleConfirmAction}
-        openConfirmModal={openConfirmModal}
-        setOpenConfirmModal={setOpenConfirmModal}
-        inverted={inverted}
-      />
+      {openConfirmModal && (
+        <AdminConfirmModal
+          confirmingAction={confirmingAction}
+          onCancelAction={handleCancelAction}
+          onConfirmAction={handleConfirmAction}
+          openConfirmModal={openConfirmModal}
+          setOpenConfirmModal={setOpenConfirmModal}
+          inverted={inverted}
+        />
+      )}
     </div>
   );
 };

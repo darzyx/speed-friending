@@ -38,19 +38,23 @@ const Navbar = ({
           <StyledIcon name="question circle" />
         </NavButton>
       </div>
-      <SettingsModal
-        openSettingsModal={openSettingsModal}
-        setOpenSettingsModal={setOpenSettingsModal}
-        setInverted={setInverted}
-        inverted={inverted}
-        setMuted={setMuted}
-        muted={muted}
-      />
-      <InfoModal
-        openInfoModal={openInfoModal}
-        setOpenInfoModal={setOpenInfoModal}
-        inverted={inverted}
-      />
+      {openSettingsModal && (
+        <SettingsModal
+          openSettingsModal={openSettingsModal}
+          setOpenSettingsModal={setOpenSettingsModal}
+          setInverted={setInverted}
+          inverted={inverted}
+          setMuted={setMuted}
+          muted={muted}
+        />
+      )}
+      {openInfoModal && (
+        <InfoModal
+          openInfoModal={openInfoModal}
+          setOpenInfoModal={setOpenInfoModal}
+          inverted={inverted}
+        />
+      )}
     </div>
   );
 };

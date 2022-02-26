@@ -114,15 +114,17 @@ const GroupLink = ({
         onClickTimeLabel={handleClickTimeLabel}
         userIsAdmin={userIsAdmin}
       />
-      <AdminModal
-        group={group}
-        timeValues={timeValues}
-        openAdminModal={openAdminModal}
-        setOpenAdminModal={setOpenAdminModal}
-        currentTimeInSeconds={currentTimeInSeconds}
-        activeRound={activeRound}
-        inverted={inverted}
-      />
+      {openAdminModal && (
+        <AdminModal
+          group={group}
+          timeValues={timeValues}
+          openAdminModal={openAdminModal}
+          setOpenAdminModal={setOpenAdminModal}
+          currentTimeInSeconds={currentTimeInSeconds}
+          activeRound={activeRound}
+          inverted={inverted}
+        />
+      )}
     </Button>
   );
 };
