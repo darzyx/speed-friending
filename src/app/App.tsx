@@ -32,6 +32,7 @@ const App = () => {
   const [anyGroupsExist, setAnyGroupsExist] = useState(false);
   const [isGettingGroups, setIsGettingGroups] = useState(true);
   const [groups, setGroups] = useState([initGroupWithId]);
+  const [anyPrivateGroupsExist, setAnyPrivateGroupsExist] = useState(false);
   const [privateGroups, setPrivateGroups] = useState([initGroupWithId]);
   // Returns onSnapshot because its return value terminates the listener
   useEffect(
@@ -40,6 +41,7 @@ const App = () => {
         setGroups,
         setPrivateGroups,
         setAnyGroupsExist,
+        setAnyPrivateGroupsExist,
         setIsGettingGroups,
       }),
     []
@@ -91,6 +93,8 @@ const App = () => {
                     isGettingGroups={isGettingGroups}
                     anyGroupsExist={anyGroupsExist}
                     groups={groups}
+                    anyPrivateGroupsExist={anyPrivateGroupsExist}
+                    privateGroups={privateGroups}
                     currentTimeInSeconds={currentTimeInSeconds}
                     playAlarmSound={playAlarmSound}
                     inverted={inverted}

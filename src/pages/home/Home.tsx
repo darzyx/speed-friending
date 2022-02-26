@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 
 import GroupLink from "./GroupLink";
 import LoadingGroupsPlaceholder from "./LoadingGroupsPlaceholder";
@@ -8,19 +7,9 @@ import NoGroupsPlaceholder from "./NoGroupsPlaceholder";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
 import { groupWithIdType } from "../../types/group";
 import CreateGroupModal from "./CreateGroupModal";
-import { Divider, Header, Segment } from "semantic-ui-react";
+import { Divider, Header } from "semantic-ui-react";
 import { ColorfulHeader } from "../../components/blocks/ColorfulText";
-
-const GroupLinksContainer = styled(Segment).attrs((props) => ({
-  inverted: props.inverted,
-}))`
-  &&&& {
-    border: none;
-    box-shadow: none;
-    background-color: ${({ theme }) => theme.color.two};
-    width: 100%;
-  }
-`;
+import HomeGroupLinksContainer from "./HomeGroupLinksContainer";
 
 export const homeTextCTA = "Select Group Below";
 
@@ -29,6 +18,8 @@ type HomePropsType = {
   isGettingGroups: boolean;
   anyGroupsExist: boolean;
   groups: groupWithIdType[];
+  anyPrivateGroupsExist: boolean;
+  privateGroups: groupWithIdType[];
   currentTimeInSeconds: number;
   playAlarmSound: () => void;
   inverted: boolean;
@@ -38,6 +29,8 @@ const Home = ({
   isGettingGroups,
   anyGroupsExist,
   groups,
+  anyPrivateGroupsExist,
+  privateGroups,
   currentTimeInSeconds,
   playAlarmSound,
   inverted,
@@ -61,7 +54,7 @@ const Home = ({
         Speed Friending
       </Header>
       <ColorfulHeader as="h2">{homeTextCTA}</ColorfulHeader>
-      <GroupLinksContainer>
+      <HomeGroupLinksContainer>
         {anyGroupsExist &&
           groups.map((group, index) => (
             <GroupLink
@@ -85,7 +78,7 @@ const Home = ({
             setOpenCreateGroupModal={setOpenCreateGroupModal}
           />
         )}
-      </GroupLinksContainer>
+      </HomeGroupLinksContainer>
       {anyGroupsExist && !isGettingGroups && userIsAdmin && (
         <p>
           {(() => {
@@ -105,6 +98,23 @@ const Home = ({
             );
           })()}
         </p>
+      )}
+      <Divider hidden />
+      {userIsAdmin && anyPrivateGroupsExist && (
+        <HomeGroupLinksContainer>
+          {privateGroups.map((group, index) => (
+            <GroupLink
+              userIsAdmin={userIsAdmin}
+              currentTimeInSeconds={currentTimeInSeconds}
+              playAlarmSound={playAlarmSound}
+              inverted={inverted}
+              group={group}
+              key={group.id}
+              index={index}
+              isPrivate
+            />
+          ))}
+        </HomeGroupLinksContainer>
       )}
       <Divider hidden />
       {openCreateGroupModal && (

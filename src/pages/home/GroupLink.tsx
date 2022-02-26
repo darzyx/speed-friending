@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button, Label } from "semantic-ui-react";
 import styled from "styled-components";
 
@@ -8,6 +8,7 @@ import { getGame, getTimeValues, TimeValuesType } from "../group/utils";
 import { groupWithIdType } from "../../types/group";
 import AdminModal from "../../components/admin/AdminModal";
 import { db } from "../../firebase";
+import GroupButtonLink from "./GroupButtonLink";
 
 const StyledLabel = styled(Label)`
   &&&& {
@@ -34,22 +35,6 @@ const TimeLabel = ({
   </StyledLabel>
 );
 
-const ButtonLink = styled(Button).attrs((props) => ({
-  to: props.to,
-  as: Link,
-}))`
-  &&&& {
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    text-align: left;
-    padding: 15px 5px 15px 20px;
-    background-color: ${({ theme }) => theme.color.four};
-    color: ${({ theme }) => theme.color.text};
-  }
-`;
-
 type GroupLinkPropsType = {
   index: number;
   group: groupWithIdType;
@@ -57,6 +42,7 @@ type GroupLinkPropsType = {
   userIsAdmin: boolean;
   playAlarmSound: () => void;
   inverted: boolean;
+  isPrivate?: boolean;
 };
 const GroupLink = ({
   index,
@@ -65,6 +51,7 @@ const GroupLink = ({
   userIsAdmin,
   playAlarmSound,
   inverted,
+  isPrivate,
 }: GroupLinkPropsType) => {
   const navigate = useNavigate();
 
@@ -107,7 +94,7 @@ const GroupLink = ({
       style={{ width: "100%", margin: `${index === 0 ? "0" : "10px"} 0 0 0` }}
       labelPosition="right"
     >
-      <ButtonLink to={`/group/${group.id}`}>{group.name}</ButtonLink>
+      <GroupButtonLink to={`/group/${group.id}`}>{group.name}</GroupButtonLink>
       <TimeLabel
         timeValues={timeValues}
         onClickTimeLabel={handleClickTimeLabel}

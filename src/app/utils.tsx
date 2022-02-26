@@ -27,12 +27,14 @@ type groupsQueryArgsType = {
   setPrivateGroups: (privateGroups: groupWithIdType[]) => void;
   setIsGettingGroups: (isGettingGroups: boolean) => void;
   setAnyGroupsExist: (anyGroupsExist: boolean) => void;
+  setAnyPrivateGroupsExist: (anyPrivateGroupsExist: boolean) => void;
 };
 export const groupsQuery = ({
   setGroups,
   setPrivateGroups,
   setIsGettingGroups,
   setAnyGroupsExist,
+  setAnyPrivateGroupsExist,
 }: groupsQueryArgsType) =>
   onSnapshot(collection(db, "groups"), (snapshot) => {
     let result = snapshot.docs.map((doc) => ({
@@ -59,4 +61,5 @@ export const groupsQuery = ({
     setPrivateGroups(privateGroups);
     setIsGettingGroups(false);
     setAnyGroupsExist(didReturnPublicGroups);
+    setAnyPrivateGroupsExist(didReturnPrivateGroups);
   });
