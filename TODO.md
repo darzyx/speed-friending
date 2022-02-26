@@ -8,6 +8,7 @@ MID PRIORITY
 
 - Update info modal copy
 - Design updates: make it look nice
+- Fix mobile audio
 
 LOW PRIORITY
 
