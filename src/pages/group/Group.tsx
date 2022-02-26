@@ -111,15 +111,17 @@ const Group = ({
             maxWidth: "100%",
           }}
         >
-          <Header.Subheader style={{ margin: "7px" }}>Group</Header.Subheader>
-          {group.name}
+          <Header.Subheader style={{ margin: "7px" }}>
+            {isPrivateUnfinishedGroup ? "Create" : "Group"}
+          </Header.Subheader>
+          {isPrivateUnfinishedGroup ? "New Private Group" : group.name}
         </Header>
       </CenterMiddle>
       {isPrivateUnfinishedGroup ? (
         <CenterMiddle>
           <Divider hidden />
           <Button primary icon labelPosition="right">
-            Create Private Group <Icon name="plus" />
+            Click Here to Start <Icon name="plus" />
           </Button>
         </CenterMiddle>
       ) : (
