@@ -51,9 +51,12 @@ const App = () => {
 
   const [darkMode, setDarkMode] = useState(true);
 
+  const [muted, setMuted] = useState(true);
   const playAlarmSound = () => {
-    const alarm = new Audio(alarmOGG);
-    alarm.play();
+    if (!muted) {
+      const alarm = new Audio(alarmOGG);
+      alarm.play();
+    }
   };
 
   return (
@@ -63,7 +66,13 @@ const App = () => {
           <UserIsAdminAlert userIsAdmin={userIsAdmin} />
           <Container>
             {userIsAdmin && <Divider hidden />}
-            <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+            <Navbar
+              darkMode={darkMode}
+              setDarkMode={setDarkMode}
+              playAlarmSound={playAlarmSound}
+              setMuted={setMuted}
+              muted={muted}
+            />
             <Divider hidden />
             <Routes>
               <Route index element={<Navigate to="/home" />} />
