@@ -19,6 +19,7 @@ import { initGroupWithId } from "../../app/utils";
 
 type GroupPropsType = {
   groups: groupWithIdType[];
+  privateGroups: groupWithIdType[];
   isGettingGroups: boolean;
   currentTimeInSeconds: number;
   userIsAdmin: boolean;
@@ -27,6 +28,7 @@ type GroupPropsType = {
 };
 const Group = ({
   groups,
+  privateGroups,
   isGettingGroups,
   currentTimeInSeconds,
   userIsAdmin,
@@ -45,13 +47,13 @@ const Group = ({
   const [group, setGroup] = useState(initGroupWithId);
   useEffect(() => {
     if (!isGettingGroups) {
-      const foundGroup = groups.find((s) => s.id === id);
+      const foundGroup = groups.concat(privateGroups).find((s) => s.id === id);
       if (foundGroup) {
         setGroup(foundGroup);
       }
       setWaitForState(false);
     }
-  }, [id, groups, isGettingGroups]);
+  }, [id, groups, privateGroups, isGettingGroups]);
 
   const [openPastRoundsModal, setOpenPastRoundsModal] = useState(false);
 

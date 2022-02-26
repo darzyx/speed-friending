@@ -106,6 +106,7 @@ const App = () => {
                 element={
                   <Group
                     groups={groups}
+                    privateGroups={privateGroups}
                     isGettingGroups={isGettingGroups}
                     currentTimeInSeconds={currentTimeInSeconds}
                     userIsAdmin={userIsAdmin}
