@@ -1,3 +1,7 @@
+HIGH PRIORITY
+
+- Check that firebase will allow many connections from same IP address
+
 LOW PRIORITY
 
 - Audio on mobile stops working when leave app
