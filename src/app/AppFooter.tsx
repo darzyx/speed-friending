@@ -15,6 +15,9 @@ const Heart = styled(Icon).attrs({ name: "heart" })`
 `;
 
 const StyledDiv = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   padding: 5px 8px;
   color: ${({ theme }) => theme.color.text};
   background-color: ${({ theme }) => theme.color.two};

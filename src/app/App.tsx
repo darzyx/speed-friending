@@ -70,7 +70,7 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <div className="App" style={{ position: "relative" }}>
       <ThemeProvider theme={inverted ? darkTheme : lightTheme}>
         <GlobalStyles themeStyles={inverted ? darkTheme : lightTheme} />
         <BrowserRouter>
