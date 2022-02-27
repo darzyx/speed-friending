@@ -79,7 +79,6 @@ const App = () => {
             <Navbar
               inverted={inverted}
               setInverted={setInverted}
-              playAlarmSfx={playAlarmSfx}
               setMute={setMute}
               mute={mute}
             />
