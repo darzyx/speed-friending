@@ -66,7 +66,7 @@ const App = () => {
 
   const [mute, setMute] = useState(true);
 
-  const [startReady, setStartReady] = useState(!mute);
+  const [startReady, setStartReady] = useState(true);
   const [playStartSfx] = useSound(startSfx);
   const playStartSfxIfUnmute = () => {
     if (!mute && startReady) {
@@ -77,7 +77,7 @@ const App = () => {
     }
   };
 
-  const [finishReady, setFinishReady] = useState(!mute);
+  const [finishReady, setFinishReady] = useState(true);
   const [playFinishSfx] = useSound(finishSfx);
   const playFinishSfxIfUnmute = () => {
     if (!mute && finishReady) {
