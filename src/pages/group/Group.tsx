@@ -138,12 +138,11 @@ const Group = ({
               <p>Welcome to your private speed friending group!</p>
               <p>
                 Click below to create your group. Be aware that you will not be
-                able to change some parameters after your group is created.
+                able to change some parameters after your group is created. If
+                you messed up and need a new link, just contact vrai on Twitter
+                or Discord.
               </p>
-              <p>
-                If you messed up and need a new link, just contact vrai on
-                Twitter or Discord.
-              </p>
+              <p>Have fun!</p>
               <Button
                 onClick={() => setOpenCreatePrivateGroupModal(true)}
                 labelPosition="right"
