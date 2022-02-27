@@ -14,6 +14,7 @@ import Loading from "../../components/blocks/Loading";
 import { initGroupWithId } from "../../app/utils";
 import GroupContent from "./GroupContent";
 import CopyURLButton from "./private-group/CopyURLButton";
+import StyledSegment from "../../components/blocks/StyledSegment";
 
 type GroupPropsType = {
   groups: groupWithIdType[];
@@ -129,27 +130,35 @@ const Group = ({
         </Header>
       </CenterMiddle>
       {isPrivateUnfinishedGroup ? (
-        <>
-          <CenterMiddle>
-            <Divider hidden />
-            <Button
-              onClick={() => setOpenCreatePrivateGroupModal(true)}
-              labelPosition="right"
-              primary
-              icon
-            >
-              Click Here to Start <Icon name="plus" />
-            </Button>
-          </CenterMiddle>
-          {openCreatePrivateGroupModal && (
-            <CreatePrivateGroupModal
-              group={group}
-              openCreatePrivateGroupModal={openCreatePrivateGroupModal}
-              setOpenCreatePrivateGroupModal={setOpenCreatePrivateGroupModal}
-              inverted={inverted}
-            />
-          )}
-        </>
+        <CenterMiddle>
+          <Divider hidden />
+          <StyledSegment>
+            <CenterMiddle textAlign="center">
+              <p>
+                Welcome to your private speed friending group! Click below to
+                create your group. Be warned that you will not be able to change
+                some parameters after your group is created. If you messed up
+                and need another link, just contact vrai on twitter or discord
+              </p>
+              <Button
+                onClick={() => setOpenCreatePrivateGroupModal(true)}
+                labelPosition="right"
+                primary
+                icon
+              >
+                Click Here to Start <Icon name="plus" />
+              </Button>
+            </CenterMiddle>
+            {openCreatePrivateGroupModal && (
+              <CreatePrivateGroupModal
+                group={group}
+                openCreatePrivateGroupModal={openCreatePrivateGroupModal}
+                setOpenCreatePrivateGroupModal={setOpenCreatePrivateGroupModal}
+                inverted={inverted}
+              />
+            )}
+          </StyledSegment>
+        </CenterMiddle>
       ) : (
         <GroupContent
           game={game}
