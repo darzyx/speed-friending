@@ -194,7 +194,7 @@ const AdminActions = ({
       setDebounceName(true);
       const payload = { ...group, name };
       setDoc(docRef, payload);
-      setTimeout(() => setDebounceName(false), 1000);
+      setTimeout(() => setDebounceName(false), 2000);
     }
   };
 
