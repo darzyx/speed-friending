@@ -168,8 +168,8 @@ const Group = ({
             </p>
             <p>
               b.) It is recommended that you skip the optional contact info
-              exchange portion of this game, unless you have someone who will
-              not be participating and who can keep a secret
+              exchange portion of this, unless you have someone who will not be
+              participating that can keep a secret
             </p>
             <p>c.) Reach out if you have any trouble. Have fun!</p>
             {openCreatePrivateGroupModal && (
