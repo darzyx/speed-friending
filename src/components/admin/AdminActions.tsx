@@ -188,10 +188,14 @@ const AdminActions = ({
       }
     }
   };
+  const [debounceName, setDebounceName] = useState(false);
   const handleSubmitChangeName = () => {
-    console.log("SUBMIT CHANGE NAME");
-    const payload = { ...group, name };
-    setDoc(docRef, payload);
+    if (!nameError && !debounceName && name !== group.name) {
+      setDebounceName(true);
+      const payload = { ...group, name };
+      setDoc(docRef, payload);
+      setTimeout(() => setDebounceName(false), 1000);
+    }
   };
 
   const [openDropoutModal, setOpenDropoutModal] = useState(false);
@@ -326,7 +330,13 @@ const AdminActions = ({
             width={6}
             style={{ marginLeft: "0", paddingLeft: "5px" }}
           >
-            <Button onClick={handleSubmitChangeName} type="submit" fluid>
+            <Button
+              onClick={handleSubmitChangeName}
+              disabled={debounceName}
+              loading={debounceName}
+              secondary
+              fluid
+            >
               Change
             </Button>
           </Grid.Column>
