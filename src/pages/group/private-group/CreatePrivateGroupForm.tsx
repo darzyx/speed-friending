@@ -145,8 +145,8 @@ const CreatePrivateGroupForm = ({
       round_is_paused: true,
       round_paused_time: Number(roundDuration), // Time remaining when paused
       dropouts: [],
-      private: false,
-      private_is_ready: false,
+      private: true,
+      private_is_ready: true,
     };
 
     const docRef = doc(db, "groups", group.id);
