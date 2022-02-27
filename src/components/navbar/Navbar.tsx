@@ -22,6 +22,11 @@ const Navbar = ({
 
   const [openInfoModal, setOpenInfoModal] = useState(false);
 
+  const handleToggleMute = () => {
+    if (mute) playAlarmSfx();
+    setMute(!mute);
+  };
+
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>
       <div>
@@ -33,17 +38,11 @@ const Navbar = ({
         </NavButton>
       </div>
       <div>
-        <NavButton
-          onClick={() => {
-            if (mute) playAlarmSfx();
-            setMute(!mute);
-          }}
-          margin="0 10px 0 0"
-        >
+        <NavButton onClick={handleToggleMute} margin="0 10px 0 0">
           <StyledIcon name={mute ? "mute" : "unmute"} />
         </NavButton>
         <NavButton onClick={() => setInverted(!inverted)}>
-          <StyledIcon name={inverted ? "lightbulb outline" : "lightbulb"} />
+          <StyledIcon name={inverted ? "moon" : "sun"} />
         </NavButton>
       </div>
       {openInfoModal && (
