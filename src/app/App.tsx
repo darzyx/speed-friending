@@ -66,6 +66,7 @@ const App = () => {
   const [mute, setMute] = useState(true);
   const playAlarmSfxIfUnmute = () => {
     if (!mute) playAlarmSfx();
+    navigator.vibrate(200);
   };
 
   return (
