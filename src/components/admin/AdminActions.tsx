@@ -334,7 +334,7 @@ const AdminActions = ({
               onClick={handleSubmitChangeName}
               disabled={debounceName}
               loading={debounceName}
-              color="violet"
+              color="purple"
               fluid
             >
               Change
@@ -357,7 +357,7 @@ const AdminActions = ({
           <Grid.Column>
             <Button
               onClick={() => setOpenDropoutModal(true)}
-              color="purple"
+              color="violet"
               fluid
             >
               <Icon name="remove user" /> Dropout
