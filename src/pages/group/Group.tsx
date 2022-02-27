@@ -172,6 +172,7 @@ const Group = ({
               exchange portion of this game, unless you have someone who is a
               non-participant that can keep a secret
             </p>
+            <p>d.) Reach out if you have any trouble. Have fun!</p>
             {openCreatePrivateGroupModal && (
               <CreatePrivateGroupModal
                 group={group}
