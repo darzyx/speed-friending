@@ -7,7 +7,6 @@ import {
   InputOnChangeData,
   Divider,
 } from "semantic-ui-react";
-import { useNavigate } from "react-router-dom";
 
 import { getMaxRounds } from "../utils";
 import { groupWithIdType } from "../../../types/group";
@@ -30,8 +29,6 @@ const CreatePrivateGroupForm = ({
   setOpenCreatePrivateGroupModal,
   inverted,
 }: CreatePrivateGroupFormPropsType) => {
-  const navigate = useNavigate();
-
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState(false);
   const handleChangeName = (
@@ -157,7 +154,6 @@ const CreatePrivateGroupForm = ({
 
     setOpenCreatePrivateGroupModal(false);
     setIsSubmitting(false);
-    navigate(`/group/${docRef.id}`);
   };
 
   const hasError =
