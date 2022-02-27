@@ -8,6 +8,7 @@ import { getGame, getTimeValues } from "./utils";
 import { groupWithIdType } from "../../types/group";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
 import AdminModal from "../../components/admin/AdminModal";
+import CreatePrivateGroupModal from "./CreatePrivateGroupModal";
 import { GroupNotFound } from "./Placeholders";
 import Loading from "../../components/blocks/Loading";
 import { initGroupWithId } from "../../app/utils";
@@ -54,6 +55,9 @@ const Group = ({
   const [openPastRoundsModal, setOpenPastRoundsModal] = useState(false);
 
   const [openAdminModal, setOpenAdminModal] = useState(false);
+
+  const [openCreatePrivateGroupModal, setOpenCreatePrivateGroupModal] =
+    useState(false);
 
   const game = getGame(group.participant_count, group.round_count);
   const activeRound = Object.values(game)[group.active_round_num - 1];
@@ -118,12 +122,26 @@ const Group = ({
         </Header>
       </CenterMiddle>
       {isPrivateUnfinishedGroup ? (
-        <CenterMiddle>
-          <Divider hidden />
-          <Button primary icon labelPosition="right">
-            Click Here to Start <Icon name="plus" />
-          </Button>
-        </CenterMiddle>
+        <>
+          <CenterMiddle>
+            <Divider hidden />
+            <Button
+              onClick={() => setOpenCreatePrivateGroupModal(true)}
+              labelPosition="right"
+              primary
+              icon
+            >
+              Click Here to Start <Icon name="plus" />
+            </Button>
+          </CenterMiddle>
+          {openCreatePrivateGroupModal && (
+            <CreatePrivateGroupModal
+              openCreatePrivateGroupModal={openCreatePrivateGroupModal}
+              setOpenCreatePrivateGroupModal={setOpenCreatePrivateGroupModal}
+              inverted={inverted}
+            />
+          )}
+        </>
       ) : (
         <GroupContent
           game={game}
