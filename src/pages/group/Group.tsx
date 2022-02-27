@@ -156,23 +156,22 @@ const Group = ({
               </Button>
             </CenterMiddle>
             <Divider />
-            <p>Some things to keep in mind:</p>
+            <Header inverted={inverted} as="h4">
+              Things to keep in mind:
+            </Header>
             <p>
-              a.) You will not be able to change your group name after it is
-              set. But not to worry, it's not important to the game anyway.
-            </p>
-            <p>
-              b.) Make sure you get the initial number of participants right so
-              the game doesn't make you take any unnecesary breaks. If someone
+              a.) Make sure you get the initial number of participants right so
+              the site doesn't make you take any unnecesary breaks. If someone
               drops out in a later round, that's fine. You'll be able to mark
-              them as dropped out in the manage modal
+              them as dropped out in the manage modal, and their future partners
+              will take breaks.
             </p>
             <p>
-              c.) It is recommended that you skip the optional contact info
-              exchange portion of this game, unless you have someone who is a
-              non-participant that can keep a secret
+              b.) It is recommended that you skip the optional contact info
+              exchange portion of this game, unless you have someone who will
+              not be participating and who can keep a secret
             </p>
-            <p>d.) Reach out if you have any trouble. Have fun!</p>
+            <p>c.) Reach out if you have any trouble. Have fun!</p>
             {openCreatePrivateGroupModal && (
               <CreatePrivateGroupModal
                 group={group}
