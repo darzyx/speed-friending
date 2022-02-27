@@ -106,13 +106,6 @@ const Group = ({
           <Divider hidden />
         </>
       )}
-      {group.private && (
-        <CenterMiddle textAlign="center">
-          <CopyURLButton inverted={inverted} />
-          <p style={{ margin: "0" }}>Only share this link with participants</p>
-          <Divider hidden />
-        </CenterMiddle>
-      )}
       <CenterMiddle textAlign="center">
         <Header
           as="h1"
@@ -149,7 +142,7 @@ const Group = ({
                 primary
                 icon
               >
-                Click Here to Start <Icon name="plus" />
+                Create Group <Icon name="plus" />
               </Button>
             </CenterMiddle>
             {openCreatePrivateGroupModal && (
@@ -172,6 +165,13 @@ const Group = ({
           setOpenPastRoundsModal={setOpenPastRoundsModal}
           inverted={inverted}
         />
+      )}
+      {group.private && (
+        <CenterMiddle textAlign="center">
+          <Divider hidden />
+          <CopyURLButton inverted={inverted} />
+          <p style={{ margin: "0" }}>^Only share link with participants</p>
+        </CenterMiddle>
       )}
     </div>
   );
