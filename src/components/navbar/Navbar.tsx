@@ -39,7 +39,7 @@ const Navbar = ({
       </div>
       <div>
         <NavButton onClick={handleToggleMute} margin="0 10px 0 0">
-          <StyledIcon name={mute ? "mute" : "unmute"} />
+          <StyledIcon name={mute ? "volume off" : "volume up"} />
         </NavButton>
         <NavButton onClick={() => setInverted(!inverted)}>
           <StyledIcon name={inverted ? "moon" : "sun"} />
