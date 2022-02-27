@@ -215,7 +215,7 @@ const AdminActions = ({
                 setConfirmingAction("reset");
                 setOpenConfirmModal(true);
               }}
-              color="grey"
+              secondary
               fluid
             >
               <Icon name="repeat" /> Reset
@@ -308,7 +308,7 @@ const AdminActions = ({
         inverted={inverted}
         style={{ marginTop: "0" }}
       >
-        Advanced
+        Group Name
       </Header>
       <Grid>
         <Grid.Row columns={2}>
@@ -334,13 +334,25 @@ const AdminActions = ({
               onClick={handleSubmitChangeName}
               disabled={debounceName}
               loading={debounceName}
-              secondary
+              color="violet"
               fluid
             >
               Change
             </Button>
           </Grid.Column>
         </Grid.Row>
+      </Grid>
+      <p style={{ textAlign: "center" }}>Max {maxNameLength} characters</p>
+      <Divider />
+      <Header
+        as="h3"
+        textAlign="center"
+        inverted={inverted}
+        style={{ marginTop: "0" }}
+      >
+        Advanced
+      </Header>
+      <Grid>
         <Grid.Row columns={2}>
           <Grid.Column>
             <Button
