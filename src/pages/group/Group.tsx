@@ -175,10 +175,10 @@ const Group = ({
             </Header>
             <p>
               a.) Make sure you get the initial number of participants right so
-              the site doesn't make you take any unnecesary breaks. If someone
-              drops out in a later round, that's fine. You'll be able to mark
-              them as dropped out in the manage modal, and their future partners
-              will take breaks.
+              the site doesn't make you take any unnecesary breaks. However, if
+              someone drops out in a later round, that's fine. You'll be able to
+              mark them as dropped out in the manage modal, and their future
+              partners will take breaks.
             </p>
             <p>
               b.) It is recommended that you skip the optional contact info
