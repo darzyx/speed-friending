@@ -22,7 +22,7 @@ type GroupPropsType = {
   isGettingGroups: boolean;
   currentTimeInSeconds: number;
   userIsAdmin: boolean;
-  playAlarmSound: () => void;
+  playAlarmSfxIfUnmute: () => void;
   inverted: boolean;
 };
 const Group = ({
@@ -31,7 +31,7 @@ const Group = ({
   isGettingGroups,
   currentTimeInSeconds,
   userIsAdmin,
-  playAlarmSound,
+  playAlarmSfxIfUnmute,
   inverted,
 }: GroupPropsType) => {
   // Reset scroll on component mount
@@ -69,14 +69,14 @@ const Group = ({
   useEffect(() => {
     if (group?.id && timeValues.remainingTime <= 0 && !roundIsOver) {
       setRoundIsOver(true);
-      playAlarmSound();
+      playAlarmSfxIfUnmute();
       const docRef = doc(db, "groups", group.id);
       const payload = { ...group, round_is_paused: true, round_paused_time: 0 };
       setDoc(docRef, payload);
     } else if (timeValues.remainingTime > 0 && roundIsOver) {
       setRoundIsOver(false);
     }
-  }, [timeValues.remainingTime, roundIsOver, group, playAlarmSound]);
+  }, [timeValues.remainingTime, roundIsOver, group, playAlarmSfxIfUnmute]);
 
   if (isGettingGroups || waitForState) return <Loading inverted={inverted} />;
   if (!group?.id) return <GroupNotFound />;

@@ -3,6 +3,7 @@ import { getAuth } from "firebase/auth";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Container, Divider } from "semantic-ui-react";
 import { ThemeProvider } from "styled-components";
+import useSound from "use-sound";
 
 import Navbar from "../components/navbar/Navbar";
 import Home from "../pages/home/Home";
@@ -14,8 +15,8 @@ import GlobalStyles from "../styles/GlobalStyles";
 import { darkTheme, lightTheme } from "../styles/theme";
 // import AppFooter from "./AppFooter";
 
-// @ts-ignore 'require' call may be converted to an import.ts(80005)
-const alarmOGG = require("../media/alarm.ogg");
+// @ts-ignore Cannot find module or its corresponding type declarations.ts(2307)
+import alarmSfx from "../media/alarm.mp3";
 
 const App = () => {
   const auth = getAuth();
@@ -61,12 +62,10 @@ const App = () => {
 
   const [inverted, setInverted] = useState(true);
 
-  const [muted, setMuted] = useState(true);
-  const playAlarmSound = () => {
-    if (!muted) {
-      const alarm = new Audio(alarmOGG);
-      alarm.play();
-    }
+  const [playAlarmSfx] = useSound(alarmSfx);
+  const [mute, setMute] = useState(true);
+  const playAlarmSfxIfUnmute = () => {
+    if (!mute) playAlarmSfx();
   };
 
   return (
@@ -80,8 +79,9 @@ const App = () => {
             <Navbar
               inverted={inverted}
               setInverted={setInverted}
-              setMuted={setMuted}
-              muted={muted}
+              playAlarmSfx={playAlarmSfx}
+              setMute={setMute}
+              mute={mute}
             />
             <Divider hidden />
             <Routes>
@@ -97,7 +97,7 @@ const App = () => {
                     anyPrivateGroupsExist={anyPrivateGroupsExist}
                     privateGroups={privateGroups}
                     currentTimeInSeconds={currentTimeInSeconds}
-                    playAlarmSound={playAlarmSound}
+                    playAlarmSfxIfUnmute={playAlarmSfxIfUnmute}
                     inverted={inverted}
                   />
                 }
@@ -111,7 +111,7 @@ const App = () => {
                     isGettingGroups={isGettingGroups}
                     currentTimeInSeconds={currentTimeInSeconds}
                     userIsAdmin={userIsAdmin}
-                    playAlarmSound={playAlarmSound}
+                    playAlarmSfxIfUnmute={playAlarmSfxIfUnmute}
                     inverted={inverted}
                   />
                 }
