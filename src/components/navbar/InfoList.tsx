@@ -56,7 +56,7 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
           <StyledListItem>b.)</StyledListItem> Optional: On the front (ruled)
           side, write your name/alias/etc at the top left corner. Use the two
           lines below this to enter contact info. Nothing too personal - just
-          Twitter handle and/or email address are perfect
+          Twitter handle and/or email address are perfect.
         </p>
         <p>
           <StyledListItem>c.)</StyledListItem> Optional: You will use the rest
