@@ -107,8 +107,9 @@ const Group = ({
         </>
       )}
       {group.private && (
-        <CenterMiddle>
+        <CenterMiddle textAlign="center">
           <CopyURLButton inverted={inverted} />
+          <p style={{ margin: "0" }}>Only share this link with participants</p>
           <Divider hidden />
         </CenterMiddle>
       )}
@@ -134,11 +135,14 @@ const Group = ({
           <Divider hidden />
           <StyledSegment>
             <CenterMiddle textAlign="center">
+              <p>Welcome to your private speed friending group!</p>
               <p>
-                Welcome to your private speed friending group! Click below to
-                create your group. Be warned that you will not be able to change
-                some parameters after your group is created. If you messed up
-                and need another link, just contact vrai on twitter or discord
+                Click below to create your group. Be aware that you will not be
+                able to change some parameters after your group is created.
+              </p>
+              <p>
+                If you messed up and need a new link, just contact vrai on
+                Twitter or Discord.
               </p>
               <Button
                 onClick={() => setOpenCreatePrivateGroupModal(true)}
