@@ -21,15 +21,15 @@ const HelpfulPrompt = ({ timeValues }: HelpfulPromptPropsType) => (
     </ColorfulHeader>
     <p style={{ textAlign: "center", margin: "0 12px" }}>
       {timeValues.color === "green"
-        ? "Your partner's number and card color are attached to yours below"
+        ? "Your partner's number and color are attached to yours below"
         : timeValues.color === "blue"
         ? "Please put your phone away"
         : timeValues.color === "yellow"
-        ? "Please turn to an organizer for guidance"
+        ? "Please turn to an organizer for more information"
         : timeValues.color === "pink"
-        ? "You should not be looking at your phone right now"
+        ? "Please put your phone away"
         : timeValues.color === "red"
-        ? "Please record your partner's assigned number and " +
+        ? "Please write down your partner's assigned number and " +
           "whether you'd like to keep in touch (yes/no)"
         : ""}
     </p>
