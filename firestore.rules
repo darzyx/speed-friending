@@ -1,8 +1,8 @@
-rules_version = '2';
 service cloud.firestore {
-  match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write;
+  match /databases/{database}/documents {  
+    match /groups/{groupID} {
+      allow read, update;
+      allow create, delete: if request.auth.uid == "kxHyGEeuDHSktlwkX0yd3V0GYlZ2";
     }
   }
 }
