@@ -1,10 +1,10 @@
 HIGH PRIORITY
 
-- Add Shareable links feature
 - Make sure Firebase can handle 400 users at once day of
 
 MID PRIORITY
 
+- Audio on mobile (or phone vibrate if possible?)
 - Update info modal copy
 - Design updates: make it look nice
 
@@ -15,4 +15,3 @@ LOW PRIORITY
   so this is low priority)
   - Add admin auth login feature (or change password)
 - Check all components for infinite rerender issues
-- Fix mobile audio

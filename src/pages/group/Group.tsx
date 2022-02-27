@@ -81,11 +81,12 @@ const Group = ({
   if (isGettingGroups || waitForState) return <Loading inverted={inverted} />;
   if (!group?.id) return <GroupNotFound />;
 
-  const isPrivateUnfinishedGroup = group.private && !group.private_is_ready;
+  const isPrivateNotReadyGroup = group.private && !group.private_is_ready;
+  const isPrivateReadyGroup = group.private && group.private_is_ready;
 
   return (
     <div>
-      {userIsAdmin && (
+      {(userIsAdmin || isPrivateReadyGroup) && (
         <>
           <CenterMiddle>
             <Button onClick={() => setOpenAdminModal(true)} primary>
@@ -118,12 +119,12 @@ const Group = ({
           }}
         >
           <Header.Subheader style={{ margin: "7px" }}>
-            {isPrivateUnfinishedGroup ? "Create" : "Group"}
+            {isPrivateNotReadyGroup ? "Create" : "Group"}
           </Header.Subheader>
-          {isPrivateUnfinishedGroup ? "New Private Group" : group.name}
+          {isPrivateNotReadyGroup ? "New Private Group" : group.name}
         </Header>
       </CenterMiddle>
-      {isPrivateUnfinishedGroup ? (
+      {isPrivateNotReadyGroup ? (
         <CenterMiddle>
           <Divider hidden />
           <StyledSegment>
