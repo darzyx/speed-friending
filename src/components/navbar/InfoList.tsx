@@ -17,10 +17,12 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
     <List.Item>
       <List.Content>
         <StyledListHeader>
-          1. GET ASSIGNED GROUP NAME AND PARTICIPANT NUMBER
+          1. OPTIONAL: BRING BADGE (OR MAKE ONE)
         </StyledListHeader>
         <p style={{ marginTop: "10px" }}>
-          You will be provided this information by an organizer
+          You can use your badge for conversation. If you don't have it, an
+          organizer can provide you with materials to quickly make one, if you
+          wish.
         </p>
       </List.Content>
     </List.Item>
@@ -28,29 +30,40 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
     <List.Item>
       <List.Content>
         <StyledListHeader>
-          2. GET INDEX CARD, PEN, AND BADGE (IF YOU NEED ONE)
+          2. GET GROUP NAME AND PARTICIPANT NUMBER
         </StyledListHeader>
         <p style={{ marginTop: "10px" }}>
-          Write your participant number in very large print on the back
-          (non-ruled) side of your card. Write your group name in small print
-          below that
-        </p>
-        <p>
-          Write your contact information in small print on the bottom front
-          (ruled) side. Use the rest of the index card's front side to keep
-          track of which participants you'd like to keep in touch with (e.g.
-          "3:YES")
-        </p>
-        <p>
-          If you do not have a badge, please ask for materials to make one from
-          an organizer
+          You will be provided these by an organizer.
         </p>
       </List.Content>
     </List.Item>
     <Divider />
     <List.Item>
       <List.Content>
-        <StyledListHeader>3. FIND YOUR GROUP ON THIS APP</StyledListHeader>
+        <StyledListHeader>3. GET INDEX CARD AND PEN</StyledListHeader>
+        <p style={{ marginTop: "10px" }}>
+          a.) Write your participant number in very large print in the middle of
+          the back (non-ruled) side of your card. Write your group name in small
+          print on the bottom left corner of the same side.
+        </p>
+        <p>
+          b.) Optional: On the front (ruled) side, write your name/alias/etc at
+          the top left corner. Use the two lines below this to enter contact
+          info. Nothing too personal - just Twitter handle and/or email address
+          are perfect
+        </p>
+        <p>
+          c.) Optional: You will use the rest of the front (ruled) side of the
+          card to keep track of each participant number for each person you pair
+          with and whether you'd like to keep in touch. (Example: "8:YES, 0:NO,
+          13:YES")
+        </p>
+      </List.Content>
+    </List.Item>
+    <Divider />
+    <List.Item>
+      <List.Content>
+        <StyledListHeader>4. FIND YOUR GROUP ON THIS APP</StyledListHeader>
         <p style={{ marginTop: "10px" }}>
           You can find your assigned group name in the "{homeTextCTA}" list on
           the{" "}
@@ -61,7 +74,7 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
           >
             Home
           </ColorfulLink>{" "}
-          page. Click on your group name to go to your group page
+          page. Click on your group name to go to your group's page.
         </p>
       </List.Content>
     </List.Item>
@@ -69,28 +82,27 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
     <List.Item>
       <List.Content>
         <StyledListHeader>
-          4. FIND YOUR PARTICIPANT NUMBER AND ROUND PARTNER
+          5. FIND YOUR PARTICIPANT NUMBER AND ROUND PARTNER
         </StyledListHeader>
         <p style={{ marginTop: "10px" }}>
-          You can find your participant number in your group page. It will have
-          a specific background color during the whole game that corresponds to
-          your index card. Your round partner is denoted by the other number
-          attached to your number
+          You can find your participant number in your group page. It should
+          have the same color as your index card. Your round partner's number
+          and index card color are attached to yours.
         </p>
       </List.Content>
     </List.Item>
     <Divider />
     <List.Item>
       <List.Content>
-        <StyledListHeader>5. CHAT IT UP</StyledListHeader>
+        <StyledListHeader>6. CHAT IT UP AND HAVE FUN</StyledListHeader>
         <p style={{ marginTop: "10px" }}>
-          You may use your partner's badge to help you with conversation
-          prompts, but this is optional
+          a.) Please put your phone away while chatting to maximize your
+          experience. An organizer will let you know when it's time to switch
+          and find your next partner on this app.
         </p>
         <p>
-          Please put your phone away while chatting to maximize your experience.
-          We will let you know when you should come back to the app to find your
-          next round partner
+          b.) Optional: use your partner's badge to help you keep the
+          conversation going.
         </p>
       </List.Content>
     </List.Item>
