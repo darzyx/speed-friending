@@ -25,7 +25,7 @@ const AdminModal = ({
   return (
     <StyledModal
       header={group.name}
-      subheader="Manage Group"
+      subheader="Manage"
       content={
         <TimeDisplay
           group={group}
