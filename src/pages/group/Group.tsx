@@ -71,7 +71,7 @@ const Group = ({
   useEffect(() => {
     if (
       group?.id &&
-      timeValues.remainingTime === group.round_duration &&
+      timeValues.remainingTime >= group.round_duration &&
       !group.round_is_paused
     ) {
       playStartSfxIfUnmute();
