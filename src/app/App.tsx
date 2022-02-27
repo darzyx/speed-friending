@@ -66,21 +66,26 @@ const App = () => {
 
   const [mute, setMute] = useState(true);
 
-  // Prevent from playing multiple times in quick succession
   const [startReady, setStartReady] = useState(true);
   const [playStartSfx] = useSound(startSfx);
   const playStartSfxIfUnmute = () => {
-    if (!mute && startReady) playStartSfx();
-    setStartReady(false);
-    setTimeout(() => setStartReady(true), 3000);
+    if (!mute && startReady) {
+      setStartReady(false);
+      playStartSfx();
+      // Prevent from playing multiple times in quick succession:
+      setTimeout(() => setStartReady(true), 5000);
+    }
   };
 
   const [finishReady, setFinishReady] = useState(true);
   const [playFinishSfx] = useSound(finishSfx);
   const playFinishSfxIfUnmute = () => {
-    if (!mute && finishReady) playFinishSfx();
-    setFinishReady(false);
-    setTimeout(() => setFinishReady(true), 3000);
+    if (!mute && finishReady) {
+      setFinishReady(false);
+      playFinishSfx();
+      // Prevent from playing multiple times in quick succession:
+      setTimeout(() => setFinishReady(true), 5000);
+    }
   };
 
   return (
