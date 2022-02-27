@@ -1,13 +1,22 @@
 import { deleteDoc, doc, setDoc } from "firebase/firestore";
-import { Button, Divider, Grid, Header, Icon } from "semantic-ui-react";
+import {
+  Button,
+  Divider,
+  Grid,
+  Header,
+  Icon,
+  InputOnChangeData,
+} from "semantic-ui-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { db } from "../../firebase";
 import { groupWithIdType } from "../../types/group";
 import { RoundType, TimeValuesType } from "../../pages/group/utils";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import AdminConfirmModal from "./AdminConfirmModal";
 import AdminDropoutModal from "./AdminDropoutModal";
+import StyledFormInput from "../blocks/StyledFormInput";
+import { maxNameLength } from "./values";
 
 type AdminActionsPropsType = {
   group: groupWithIdType;
@@ -162,6 +171,29 @@ const AdminActions = ({
     setOpenConfirmModal(false);
   };
 
+  const [name, setName] = useState(group.name);
+  const [nameError, setNameError] = useState(false);
+  const handleChangeName = (
+    e: ChangeEvent<HTMLInputElement>,
+    { value }: InputOnChangeData
+  ) => {
+    if (typeof value === "string") {
+      setName(value);
+
+      // Validate
+      if (value.length < 1 || value.length > maxNameLength) {
+        if (!nameError) setNameError(true);
+      } else if (nameError) {
+        setNameError(false);
+      }
+    }
+  };
+  const handleSubmitChangeName = () => {
+    console.log("SUBMIT CHANGE NAME");
+    const payload = { ...group, name };
+    setDoc(docRef, payload);
+  };
+
   const [openDropoutModal, setOpenDropoutModal] = useState(false);
 
   const outOfTime = timeValues.remainingTime <= 0;
@@ -275,6 +307,30 @@ const AdminActions = ({
         Advanced
       </Header>
       <Grid>
+        <Grid.Row columns={2}>
+          <Grid.Column
+            width={10}
+            style={{ marginRight: "0", paddingRight: "5px" }}
+          >
+            <StyledFormInput
+              name="name"
+              placeholder="Group Name"
+              value={name}
+              onChange={handleChangeName}
+              required
+              error={nameError}
+              style={{ width: "100%" }}
+            />
+          </Grid.Column>
+          <Grid.Column
+            width={6}
+            style={{ marginLeft: "0", paddingLeft: "5px" }}
+          >
+            <Button onClick={handleSubmitChangeName} type="submit" fluid>
+              Change
+            </Button>
+          </Grid.Column>
+        </Grid.Row>
         <Grid.Row columns={2}>
           <Grid.Column>
             <Button

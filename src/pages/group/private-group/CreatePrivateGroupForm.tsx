@@ -12,10 +12,11 @@ import { getMaxRounds } from "../utils";
 import { groupWithIdType } from "../../../types/group";
 import { db } from "../../../firebase";
 import StyledFormInput from "../../../components/blocks/StyledFormInput";
-
-const maxNameLength = 30;
-const maxRoundDuration = 60 * 10;
-const maxParticipants = 30;
+import {
+  maxNameLength,
+  maxParticipants,
+  maxRoundDuration,
+} from "../../../components/admin/values";
 
 type CreatePrivateGroupFormPropsType = {
   group: groupWithIdType;
