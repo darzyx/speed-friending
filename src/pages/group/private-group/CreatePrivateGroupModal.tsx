@@ -1,7 +1,9 @@
 import StyledModal from "../../../components/blocks/StyledModal";
+import { groupWithIdType } from "../../../types/group";
 import CreatePrivateGroupForm from "./CreatePrivateGroupForm";
 
 type CreatePrivateGroupModalPropsType = {
+  group: groupWithIdType;
   openCreatePrivateGroupModal: boolean;
   setOpenCreatePrivateGroupModal: (
     openCreatePrivateGroupModal: boolean
@@ -9,6 +11,7 @@ type CreatePrivateGroupModalPropsType = {
   inverted: boolean;
 };
 const CreatePrivateGroupModal = ({
+  group,
   openCreatePrivateGroupModal,
   setOpenCreatePrivateGroupModal,
   inverted,
@@ -18,6 +21,7 @@ const CreatePrivateGroupModal = ({
     subheader="Create"
     content={
       <CreatePrivateGroupForm
+        group={group}
         setOpenCreatePrivateGroupModal={setOpenCreatePrivateGroupModal}
         inverted={inverted}
       />

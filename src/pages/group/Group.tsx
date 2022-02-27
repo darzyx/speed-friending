@@ -136,6 +136,7 @@ const Group = ({
           </CenterMiddle>
           {openCreatePrivateGroupModal && (
             <CreatePrivateGroupModal
+              group={group}
               openCreatePrivateGroupModal={openCreatePrivateGroupModal}
               setOpenCreatePrivateGroupModal={setOpenCreatePrivateGroupModal}
               inverted={inverted}

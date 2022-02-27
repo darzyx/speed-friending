@@ -1,5 +1,5 @@
 import { useState, ChangeEvent } from "react";
-import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { doc, setDoc, Timestamp } from "firebase/firestore";
 import {
   Form,
   Button,
@@ -10,7 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import { getMaxRounds } from "../utils";
-import { groupType } from "../../../types/group";
+import { groupWithIdType } from "../../../types/group";
 import { db } from "../../../firebase";
 import StyledFormInput from "../../../components/blocks/StyledFormInput";
 
@@ -19,12 +19,14 @@ const maxRoundDuration = 60 * 10;
 const maxParticipants = 30;
 
 type CreatePrivateGroupFormPropsType = {
+  group: groupWithIdType;
   setOpenCreatePrivateGroupModal: (
     openCreatePrivateGroupModal: boolean
   ) => void;
   inverted: boolean;
 };
 const CreatePrivateGroupForm = ({
+  group,
   setOpenCreatePrivateGroupModal,
   inverted,
 }: CreatePrivateGroupFormPropsType) => {
@@ -135,7 +137,8 @@ const CreatePrivateGroupForm = ({
     setIsSubmitting(true);
 
     // TODO: validate all types before submitting
-    const payload: groupType = {
+    const payload: groupWithIdType = {
+      id: group.id,
       name,
       participant_count: Number(participantCount),
       active_round_num: 1,
@@ -149,8 +152,8 @@ const CreatePrivateGroupForm = ({
       private_is_ready: false,
     };
 
-    const collectionRef = collection(db, "groups");
-    const docRef = await addDoc(collectionRef, payload);
+    const docRef = doc(db, "groups", group.id);
+    await setDoc(docRef, payload);
 
     setOpenCreatePrivateGroupModal(false);
     setIsSubmitting(false);
