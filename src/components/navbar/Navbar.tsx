@@ -8,7 +8,7 @@ import StyledIcon from "../blocks/StyledIcon";
 import SettingsModal from "./SettingsModal";
 
 // @ts-ignore Cannot find module or its corresponding type declarations.ts(2307)
-import alarmSfx from "../../media/alarm.ogg";
+import alarmSfx from "../../media/alarm.mp3";
 
 const Navbar = ({
   inverted,
