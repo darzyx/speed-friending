@@ -182,10 +182,16 @@ const Group = ({
             </p>
             <p>
               b.) It is recommended that you skip the optional contact info
-              exchange portion of this, unless you have someone who will not be
-              participating that can keep a secret
+              exchange portion of this. But if you insist, it's best if the
+              person performing the exchange doesn't participate and can keep a
+              secret.
             </p>
-            <p>c.) Reach out if you have any trouble. Have fun!</p>
+            <p>
+              c.) Only one person should have their audio on. Be sure to test it
+              with the navigation button above. Note that it resets if you
+              refresh or turn off your phone!
+            </p>
+            <p>d.) Reach out if you have any trouble. Have fun!</p>
             {openCreatePrivateGroupModal && (
               <CreatePrivateGroupModal
                 group={group}
