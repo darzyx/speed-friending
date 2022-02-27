@@ -11,6 +11,11 @@ const StyledListHeader = styled(List.Header).attrs({ as: "h3" })`
   }
 `;
 
+const StyledListItem = styled.span`
+  color: ${({ theme }) => theme.color.purple};
+  font-weight: bold;
+`;
+
 type InfoListPropsType = { onCloseInfoModal: () => void };
 const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
   <List relaxed>
@@ -42,21 +47,22 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
       <List.Content>
         <StyledListHeader>3. GET INDEX CARD AND PEN</StyledListHeader>
         <p style={{ marginTop: "10px" }}>
-          a.) Write your participant number in very large print in the middle of
-          the back (non-ruled) side of your card. Write your group name in small
-          print on the bottom left corner of the same side.
+          <StyledListItem>a.)</StyledListItem> Write your participant number in
+          very large print in the middle of the back (non-ruled) side of your
+          card. Write your group name in small print on the bottom left corner
+          of the same side.
         </p>
         <p>
-          b.) Optional: On the front (ruled) side, write your name/alias/etc at
-          the top left corner. Use the two lines below this to enter contact
-          info. Nothing too personal - just Twitter handle and/or email address
-          are perfect
+          <StyledListItem>b.)</StyledListItem> Optional: On the front (ruled)
+          side, write your name/alias/etc at the top left corner. Use the two
+          lines below this to enter contact info. Nothing too personal - just
+          Twitter handle and/or email address are perfect
         </p>
         <p>
-          c.) Optional: You will use the rest of the front (ruled) side of the
-          card to keep track of each participant number for each person you pair
-          with and whether you'd like to keep in touch. (Example: "8:YES, 0:NO,
-          13:YES")
+          <StyledListItem>c.)</StyledListItem> Optional: You will use the rest
+          of the front (ruled) side of the card to keep track of each
+          participant number for each person you pair with and whether you'd
+          like to keep in touch. (Example: "8:YES, 0:NO, 13:YES")
         </p>
       </List.Content>
     </List.Item>
@@ -96,13 +102,13 @@ const InfoList = ({ onCloseInfoModal }: InfoListPropsType) => (
       <List.Content>
         <StyledListHeader>6. CHAT IT UP AND HAVE FUN</StyledListHeader>
         <p style={{ marginTop: "10px" }}>
-          a.) Please put your phone away while chatting to maximize your
-          experience. An organizer will let you know when it's time to switch
-          and find your next partner on this app.
+          <StyledListItem>a.)</StyledListItem> Please put your phone away while
+          chatting to maximize your experience. An organizer will let you know
+          when it's time to switch and find your next partner on this app.
         </p>
         <p>
-          b.) Optional: use your partner's badge to help you keep the
-          conversation going.
+          <StyledListItem>b.)</StyledListItem> Optional: use your partner's
+          badge to help you keep the conversation going.
         </p>
       </List.Content>
     </List.Item>
