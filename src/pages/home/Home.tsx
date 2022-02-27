@@ -21,7 +21,8 @@ type HomePropsType = {
   anyPrivateGroupsExist: boolean;
   privateGroups: groupWithIdType[];
   currentTimeInSeconds: number;
-  playAlarmSfxIfUnmute: () => void;
+  playStartSfxIfUnmute: () => void;
+  playFinishSfxIfUnmute: () => void;
   inverted: boolean;
 };
 const Home = ({
@@ -32,7 +33,8 @@ const Home = ({
   anyPrivateGroupsExist,
   privateGroups,
   currentTimeInSeconds,
-  playAlarmSfxIfUnmute,
+  playStartSfxIfUnmute,
+  playFinishSfxIfUnmute,
   inverted,
 }: HomePropsType) => {
   // Reset scroll on component mount
@@ -60,7 +62,8 @@ const Home = ({
             <GroupLink
               userIsAdmin={userIsAdmin}
               currentTimeInSeconds={currentTimeInSeconds}
-              playAlarmSfxIfUnmute={playAlarmSfxIfUnmute}
+              playStartSfxIfUnmute={playStartSfxIfUnmute}
+              playFinishSfxIfUnmute={playFinishSfxIfUnmute}
               inverted={inverted}
               group={group}
               key={group.id}
@@ -110,7 +113,8 @@ const Home = ({
               <GroupLink
                 userIsAdmin={userIsAdmin}
                 currentTimeInSeconds={currentTimeInSeconds}
-                playAlarmSfxIfUnmute={playAlarmSfxIfUnmute}
+                playStartSfxIfUnmute={playStartSfxIfUnmute}
+                playFinishSfxIfUnmute={playFinishSfxIfUnmute}
                 inverted={inverted}
                 group={group}
                 key={group.id}

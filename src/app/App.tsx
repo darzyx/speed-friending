@@ -16,7 +16,9 @@ import { darkTheme, lightTheme } from "../styles/theme";
 // import AppFooter from "./AppFooter";
 
 // @ts-ignore Cannot find module or its corresponding type declarations.ts(2307)
-import alarmSfx from "../media/alarm.mp3";
+import finishSfx from "../media/finish.mp3";
+// @ts-ignore Cannot find module or its corresponding type declarations.ts(2307)
+import startSfx from "../media/start.mp3";
 
 const App = () => {
   const auth = getAuth();
@@ -62,10 +64,14 @@ const App = () => {
 
   const [inverted, setInverted] = useState(true);
 
-  const [playAlarmSfx] = useSound(alarmSfx);
   const [mute, setMute] = useState(true);
-  const playAlarmSfxIfUnmute = () => {
-    if (!mute) playAlarmSfx();
+  const [playStartSfx] = useSound(startSfx);
+  const playStartSfxIfUnmute = () => {
+    if (!mute) playStartSfx();
+  };
+  const [playFinishSfx] = useSound(finishSfx);
+  const playFinishSfxIfUnmute = () => {
+    if (!mute) playFinishSfx();
   };
 
   return (
@@ -96,7 +102,8 @@ const App = () => {
                     anyPrivateGroupsExist={anyPrivateGroupsExist}
                     privateGroups={privateGroups}
                     currentTimeInSeconds={currentTimeInSeconds}
-                    playAlarmSfxIfUnmute={playAlarmSfxIfUnmute}
+                    playStartSfxIfUnmute={playStartSfxIfUnmute}
+                    playFinishSfxIfUnmute={playFinishSfxIfUnmute}
                     inverted={inverted}
                   />
                 }
@@ -110,7 +117,8 @@ const App = () => {
                     isGettingGroups={isGettingGroups}
                     currentTimeInSeconds={currentTimeInSeconds}
                     userIsAdmin={userIsAdmin}
-                    playAlarmSfxIfUnmute={playAlarmSfxIfUnmute}
+                    playStartSfxIfUnmute={playStartSfxIfUnmute}
+                    playFinishSfxIfUnmute={playFinishSfxIfUnmute}
                     inverted={inverted}
                   />
                 }

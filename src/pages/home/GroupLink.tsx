@@ -40,7 +40,8 @@ type GroupLinkPropsType = {
   group: groupWithIdType;
   currentTimeInSeconds: number;
   userIsAdmin: boolean;
-  playAlarmSfxIfUnmute: () => void;
+  playStartSfxIfUnmute: () => void;
+  playFinishSfxIfUnmute: () => void;
   inverted: boolean;
 };
 const GroupLink = ({
@@ -48,7 +49,8 @@ const GroupLink = ({
   group,
   currentTimeInSeconds,
   userIsAdmin,
-  playAlarmSfxIfUnmute,
+  playStartSfxIfUnmute,
+  playFinishSfxIfUnmute,
   inverted,
 }: GroupLinkPropsType) => {
   const navigate = useNavigate();
@@ -69,9 +71,15 @@ const GroupLink = ({
 
   const [roundIsOver, setRoundIsOver] = useState(false);
   useEffect(() => {
-    if (timeValues.remainingTime <= 0 && !roundIsOver) {
+    if (
+      group?.id &&
+      timeValues.remainingTime === group.round_duration &&
+      !group.round_is_paused
+    ) {
+      playStartSfxIfUnmute();
+    } else if (timeValues.remainingTime <= 0 && !roundIsOver) {
       setRoundIsOver(true);
-      if (userIsAdmin) playAlarmSfxIfUnmute();
+      if (userIsAdmin) playFinishSfxIfUnmute();
       const docRef = doc(db, "groups", group.id);
       const payload = { ...group, round_is_paused: true, round_paused_time: 0 };
       setDoc(docRef, payload);
@@ -83,7 +91,8 @@ const GroupLink = ({
     roundIsOver,
     group,
     userIsAdmin,
-    playAlarmSfxIfUnmute,
+    playStartSfxIfUnmute,
+    playFinishSfxIfUnmute,
   ]);
 
   return (
