@@ -62,7 +62,14 @@ const App = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(startTime, []);
 
-  const [inverted, setInverted] = useState(true);
+  const [inverted, setInverted] = useState(
+    localStorage.getItem("inverted") === "false" ? false : true
+  );
+  const handleToggleInverted = () => {
+    const newInverted = !inverted;
+    localStorage.setItem("inverted", newInverted.toString());
+    setInverted(newInverted);
+  };
 
   const [mute, setMute] = useState(true);
 
@@ -98,7 +105,7 @@ const App = () => {
             {userIsAdmin && <Divider hidden />}
             <Navbar
               inverted={inverted}
-              setInverted={setInverted}
+              handleToggleInverted={handleToggleInverted}
               setMute={setMute}
               mute={mute}
             />

@@ -13,12 +13,12 @@ import unmuteSfx from "../../media/unmute.mp3";
 
 const Navbar = ({
   inverted,
-  setInverted,
+  handleToggleInverted,
   setMute,
   mute,
 }: {
   inverted: boolean;
-  setInverted: (inverted: boolean) => void;
+  handleToggleInverted: () => void;
   setMute: (muted: boolean) => void;
   mute: boolean;
 }) => {
@@ -48,7 +48,7 @@ const Navbar = ({
         <NavButton onClick={handleToggleMute} margin="0 10px 0 0">
           <StyledIcon name={mute ? "volume off" : "volume up"} />
         </NavButton>
-        <NavButton onClick={() => setInverted(!inverted)}>
+        <NavButton onClick={handleToggleInverted}>
           <StyledIcon name={inverted ? "moon" : "sun"} />
         </NavButton>
       </div>
