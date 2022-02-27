@@ -28,7 +28,7 @@ const StyledDiv = styled.div`
 
 const AppFooter = () => (
   <StyledDiv>
-    created with <Heart />
+    <Heart />
   </StyledDiv>
 );
 

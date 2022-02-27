@@ -12,7 +12,7 @@ import UserIsAdminAlert from "../components/admin/UserIsAdminAlert";
 import { groupsQuery, initGroupWithId } from "./utils";
 import GlobalStyles from "../styles/GlobalStyles";
 import { darkTheme, lightTheme } from "../styles/theme";
-import AppFooter from "./AppFooter";
+// import AppFooter from "./AppFooter";
 
 // @ts-ignore 'require' call may be converted to an import.ts(80005)
 const alarmOGG = require("../media/alarm.ogg");
@@ -134,7 +134,7 @@ const App = () => {
             <Divider hidden />
             <Divider hidden />
           </Container>
-          <AppFooter />
+          {/* <AppFooter /> */}
         </BrowserRouter>
       </ThemeProvider>
     </div>
