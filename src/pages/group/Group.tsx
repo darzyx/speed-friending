@@ -142,15 +142,10 @@ const Group = ({
         <CenterMiddle>
           <Divider hidden />
           <StyledSegment>
+            <Header inverted={inverted} as="h3" textAlign="center">
+              Welcome!
+            </Header>
             <CenterMiddle textAlign="center">
-              <p>Welcome to your private speed friending group!</p>
-              <p>
-                Click below to create your group. Be aware that you will not be
-                able to change some parameters after your group is created. If
-                you messed up and need a new link, just contact vrai on Twitter
-                or Discord.
-              </p>
-              <p>Have fun!</p>
               <Button
                 onClick={() => setOpenCreatePrivateGroupModal(true)}
                 labelPosition="right"
@@ -160,6 +155,23 @@ const Group = ({
                 Create Group <Icon name="plus" />
               </Button>
             </CenterMiddle>
+            <Divider />
+            <p>Some things to keep in mind:</p>
+            <p>
+              a.) You will not be able to change your group name after it is
+              set. But not to worry, it's not important to the game anyway.
+            </p>
+            <p>
+              b.) Make sure you get the initial number of participants right so
+              the game doesn't make you take any unnecesary breaks. If someone
+              drops out in a later round, that's fine. You'll be able to mark
+              them as dropped out in the manage modal
+            </p>
+            <p>
+              c.) It is recommended that you skip the optional contact info
+              exchange portion of this game, unless you have someone who is a
+              non-participant that can keep a secret
+            </p>
             {openCreatePrivateGroupModal && (
               <CreatePrivateGroupModal
                 group={group}
@@ -185,7 +197,7 @@ const Group = ({
         <CenterMiddle textAlign="center">
           <Divider hidden />
           <CopyURLButton inverted={inverted} />
-          <p style={{ margin: "0" }}>^Only share link with participants</p>
+          <p style={{ margin: "0" }}>Only share with participants</p>
         </CenterMiddle>
       )}
     </div>
