@@ -1,10 +1,6 @@
-HIGH PRIORITY
-
-- Make sure Firebase can handle 400 users at once day of
-
 MID PRIORITY
 
-- Audio on mobile (or phone vibrate if possible?)
+- Audio on mobile stops working when leave app
 - Update info modal copy
 - Design updates: make it look nice
 
