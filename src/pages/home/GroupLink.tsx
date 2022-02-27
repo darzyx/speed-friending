@@ -74,6 +74,7 @@ const GroupLink = ({
   const [roundIsOver, setRoundIsOver] = useState(false);
   useEffect(() => {
     if (
+      userIsAdmin &&
       group?.id &&
       timeValues.remainingTime < 31 &&
       timeValues.remainingTime > 28 &&
