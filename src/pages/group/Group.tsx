@@ -13,6 +13,7 @@ import { GroupNotFound } from "./Placeholders";
 import Loading from "../../components/blocks/Loading";
 import { initGroupWithId } from "../../app/utils";
 import GroupContent from "./GroupContent";
+import CopyURLButton from "./private-group/CopyURLButton";
 
 type GroupPropsType = {
   groups: groupWithIdType[];
@@ -103,6 +104,12 @@ const Group = ({
           )}
           <Divider hidden />
         </>
+      )}
+      {group.private && (
+        <CenterMiddle>
+          <CopyURLButton inverted={inverted} />
+          <Divider hidden />
+        </CenterMiddle>
       )}
       <CenterMiddle textAlign="center">
         <Header

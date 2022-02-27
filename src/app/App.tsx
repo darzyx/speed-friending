@@ -8,10 +8,11 @@ import Navbar from "../components/navbar/Navbar";
 import Home from "../pages/home/Home";
 import Group from "../pages/group/Group";
 import Admin from "../pages/admin/Admin";
-import UserIsAdminAlert from "../components/UserIsAdminAlert";
+import UserIsAdminAlert from "../components/admin/UserIsAdminAlert";
 import { groupsQuery, initGroupWithId } from "./utils";
 import GlobalStyles from "../styles/GlobalStyles";
 import { darkTheme, lightTheme } from "../styles/theme";
+import AppFooter from "./AppFooter";
 
 // @ts-ignore 'require' call may be converted to an import.ts(80005)
 const alarmOGG = require("../media/alarm.ogg");
@@ -128,7 +129,12 @@ const App = () => {
               />
             </Routes>
             <Divider hidden />
+            <Divider hidden />
+            <Divider hidden />
+            <Divider hidden />
+            <Divider hidden />
           </Container>
+          <AppFooter />
         </BrowserRouter>
       </ThemeProvider>
     </div>
