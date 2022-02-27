@@ -8,7 +8,7 @@ import { getGame, getTimeValues } from "./utils";
 import { groupWithIdType } from "../../types/group";
 import CenterMiddle from "../../components/blocks/CenterMiddle";
 import AdminModal from "../../components/admin/AdminModal";
-import CreatePrivateGroupModal from "./CreatePrivateGroupModal";
+import CreatePrivateGroupModal from "./private-group/CreatePrivateGroupModal";
 import { GroupNotFound } from "./Placeholders";
 import Loading from "../../components/blocks/Loading";
 import { initGroupWithId } from "../../app/utils";
