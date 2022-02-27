@@ -23,7 +23,6 @@ const participantDisplayCSS = css`
 type ParticipantDisplayPropsType = {
   top: boolean;
   dark: boolean;
-  inverted: boolean;
   nParticipant: number;
 };
 const ParticipantDisplay = styled.div<ParticipantDisplayPropsType>`
@@ -37,16 +36,16 @@ const ParticipantDisplay = styled.div<ParticipantDisplayPropsType>`
         return "0 0 5px 5px";
       }
     }};
-    color: ${({ dark, inverted, theme }) => {
-      if (dark || !inverted) {
-        return `${theme.color.text}`;
+    color: ${({ dark }) => {
+      if (dark) {
+        return "rgb(255, 255, 255)";
       } else {
-        return `${theme.color.one}`;
+        return "rgb(9, 17, 24)";
       }
     }};
-    background-color: ${({ dark, nParticipant, theme }) => {
+    background-color: ${({ dark, nParticipant }) => {
       if (dark) {
-        return `${theme.color.two}`;
+        return "rgb(44, 58, 73)";
       } else {
         return getParticipantColor(nParticipant);
       }
@@ -118,7 +117,6 @@ const Participant = ({
       <ParticipantDisplay
         onClick={handleClick}
         dark={isDropout || nParticipant === 0}
-        inverted={inverted}
         nParticipant={nParticipant}
         top={top}
       >
