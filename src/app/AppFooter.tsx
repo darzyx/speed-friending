@@ -1,14 +1,7 @@
 import { Icon } from "semantic-ui-react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
-import { themeType } from "../styles/theme";
-
-const colorChange = ({ theme }: { theme: themeType }) => keyframes`
-  0% { color: ${theme.color.blue}; }
-  33% { color: ${theme.color.purple}; }
-  66% { color: ${theme.color.purple}; }
-  100% { color: ${theme.color.pink}; }
-`;
+import { colorChange } from "../styles/keyframes";
 
 const Heart = styled(Icon).attrs({ name: "heart" })`
   &&&& {
