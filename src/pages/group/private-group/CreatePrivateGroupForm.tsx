@@ -6,13 +6,11 @@ import {
   Icon,
   InputOnChangeData,
   Divider,
-  Grid,
 } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 
 import { getMaxRounds } from "../utils";
 import { groupType } from "../../../types/group";
-import { initGroup } from "../../../app/utils";
 import { db } from "../../../firebase";
 import StyledFormInput from "../../../components/blocks/StyledFormInput";
 
@@ -159,25 +157,6 @@ const CreatePrivateGroupForm = ({
     navigate(`/group/${docRef.id}`);
   };
 
-  const handleCreatePrivateGroupLink = async () => {
-    setIsSubmitting(true);
-
-    // TODO: validate all types before submitting
-    const payload: groupType = {
-      ...initGroup,
-      round_end_time: Timestamp.now().seconds + 60,
-      private: true,
-      private_is_ready: false,
-    };
-
-    const collectionRef = collection(db, "groups");
-    const docRef = await addDoc(collectionRef, payload);
-
-    setOpenCreatePrivateGroupModal(false);
-    setIsSubmitting(false);
-    navigate(`/group/${docRef.id}`);
-  };
-
   const hasError =
     nameError || participantCountError || roundDurationError || roundCountError;
 
@@ -252,18 +231,6 @@ const CreatePrivateGroupForm = ({
         </div>
       </Form>
       <Divider clearing hidden fitted />
-      <Divider horizontal inverted={inverted}>
-        OR
-      </Divider>
-      <Grid>
-        <Grid.Row columns={1}>
-          <Grid.Column textAlign="center">
-            <Button onClick={handleCreatePrivateGroupLink} color="teal">
-              Create Private Group Link
-            </Button>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
     </div>
   );
 };
