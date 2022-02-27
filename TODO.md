@@ -1,7 +1,6 @@
 MID PRIORITY
 
 - Audio on mobile stops working when leave app
-- Update info modal copy
 - Design updates: make it look nice
 
 LOW PRIORITY
