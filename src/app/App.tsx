@@ -16,9 +16,11 @@ import { darkTheme, lightTheme } from "../styles/theme";
 // import AppFooter from "./AppFooter";
 
 // @ts-ignore Cannot find module or its corresponding type declarations.ts(2307)
-import finishSfx from "../media/finish.mp3";
-// @ts-ignore Cannot find module or its corresponding type declarations.ts(2307)
 import startSfx from "../media/start.mp3";
+// @ts-ignore Cannot find module or its corresponding type declarations.ts(2307)
+import almostSfx from "../media/almost.mp3";
+// @ts-ignore Cannot find module or its corresponding type declarations.ts(2307)
+import finishSfx from "../media/finish.mp3";
 
 const App = () => {
   const auth = getAuth();
@@ -84,6 +86,17 @@ const App = () => {
     }
   };
 
+  const [almostReady, setAlmostReady] = useState(true);
+  const [playAlmostSfx] = useSound(almostSfx);
+  const playAlmostSfxIfUnmute = () => {
+    if (!mute && almostReady) {
+      setAlmostReady(false);
+      playAlmostSfx();
+      // Prevent from playing multiple times in quick succession:
+      setTimeout(() => setAlmostReady(true), 5000);
+    }
+  };
+
   const [finishReady, setFinishReady] = useState(true);
   const [playFinishSfx] = useSound(finishSfx);
   const playFinishSfxIfUnmute = () => {
@@ -124,6 +137,7 @@ const App = () => {
                     privateGroups={privateGroups}
                     currentTimeInSeconds={currentTimeInSeconds}
                     playStartSfxIfUnmute={playStartSfxIfUnmute}
+                    playAlmostSfxIfUnmute={playAlmostSfxIfUnmute}
                     playFinishSfxIfUnmute={playFinishSfxIfUnmute}
                     inverted={inverted}
                   />
@@ -139,6 +153,7 @@ const App = () => {
                     currentTimeInSeconds={currentTimeInSeconds}
                     userIsAdmin={userIsAdmin}
                     playStartSfxIfUnmute={playStartSfxIfUnmute}
+                    playAlmostSfxIfUnmute={playAlmostSfxIfUnmute}
                     playFinishSfxIfUnmute={playFinishSfxIfUnmute}
                     inverted={inverted}
                   />

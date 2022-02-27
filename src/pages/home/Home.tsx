@@ -22,6 +22,7 @@ type HomePropsType = {
   privateGroups: groupWithIdType[];
   currentTimeInSeconds: number;
   playStartSfxIfUnmute: () => void;
+  playAlmostSfxIfUnmute: () => void;
   playFinishSfxIfUnmute: () => void;
   inverted: boolean;
 };
@@ -34,6 +35,7 @@ const Home = ({
   privateGroups,
   currentTimeInSeconds,
   playStartSfxIfUnmute,
+  playAlmostSfxIfUnmute,
   playFinishSfxIfUnmute,
   inverted,
 }: HomePropsType) => {
@@ -63,6 +65,7 @@ const Home = ({
               userIsAdmin={userIsAdmin}
               currentTimeInSeconds={currentTimeInSeconds}
               playStartSfxIfUnmute={playStartSfxIfUnmute}
+              playAlmostSfxIfUnmute={playAlmostSfxIfUnmute}
               playFinishSfxIfUnmute={playFinishSfxIfUnmute}
               inverted={inverted}
               group={group}
@@ -114,6 +117,7 @@ const Home = ({
                 userIsAdmin={userIsAdmin}
                 currentTimeInSeconds={currentTimeInSeconds}
                 playStartSfxIfUnmute={playStartSfxIfUnmute}
+                playAlmostSfxIfUnmute={playAlmostSfxIfUnmute}
                 playFinishSfxIfUnmute={playFinishSfxIfUnmute}
                 inverted={inverted}
                 group={group}

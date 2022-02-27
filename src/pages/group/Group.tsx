@@ -23,6 +23,7 @@ type GroupPropsType = {
   currentTimeInSeconds: number;
   userIsAdmin: boolean;
   playStartSfxIfUnmute: () => void;
+  playAlmostSfxIfUnmute: () => void;
   playFinishSfxIfUnmute: () => void;
   inverted: boolean;
 };
@@ -33,6 +34,7 @@ const Group = ({
   currentTimeInSeconds,
   userIsAdmin,
   playStartSfxIfUnmute,
+  playAlmostSfxIfUnmute,
   playFinishSfxIfUnmute,
   inverted,
 }: GroupPropsType) => {
@@ -71,6 +73,13 @@ const Group = ({
   useEffect(() => {
     if (
       group?.id &&
+      timeValues.remainingTime < 31 &&
+      timeValues.remainingTime > 28 &&
+      !group.round_is_paused
+    ) {
+      playAlmostSfxIfUnmute();
+    } else if (
+      group?.id &&
       timeValues.remainingTime >= group.round_duration - 2 &&
       !group.round_is_paused
     ) {
@@ -79,7 +88,11 @@ const Group = ({
       setRoundIsOver(true);
       playFinishSfxIfUnmute();
       const docRef = doc(db, "groups", group.id);
-      const payload = { ...group, round_is_paused: true, round_paused_time: 0 };
+      const payload = {
+        ...group,
+        round_is_paused: true,
+        round_paused_time: 0,
+      };
       setDoc(docRef, payload);
     } else if (timeValues.remainingTime > 0 && roundIsOver) {
       setRoundIsOver(false);
@@ -89,6 +102,7 @@ const Group = ({
     roundIsOver,
     group,
     playStartSfxIfUnmute,
+    playAlmostSfxIfUnmute,
     playFinishSfxIfUnmute,
   ]);
 

@@ -41,6 +41,7 @@ type GroupLinkPropsType = {
   currentTimeInSeconds: number;
   userIsAdmin: boolean;
   playStartSfxIfUnmute: () => void;
+  playAlmostSfxIfUnmute: () => void;
   playFinishSfxIfUnmute: () => void;
   inverted: boolean;
 };
@@ -50,6 +51,7 @@ const GroupLink = ({
   currentTimeInSeconds,
   userIsAdmin,
   playStartSfxIfUnmute,
+  playAlmostSfxIfUnmute,
   playFinishSfxIfUnmute,
   inverted,
 }: GroupLinkPropsType) => {
@@ -73,6 +75,13 @@ const GroupLink = ({
   useEffect(() => {
     if (
       group?.id &&
+      timeValues.remainingTime < 31 &&
+      timeValues.remainingTime > 28 &&
+      !group.round_is_paused
+    ) {
+      playAlmostSfxIfUnmute();
+    } else if (
+      group?.id &&
       timeValues.remainingTime >= group.round_duration - 2 &&
       !group.round_is_paused
     ) {
@@ -92,6 +101,7 @@ const GroupLink = ({
     group,
     userIsAdmin,
     playStartSfxIfUnmute,
+    playAlmostSfxIfUnmute,
     playFinishSfxIfUnmute,
   ]);
 
