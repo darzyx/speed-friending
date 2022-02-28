@@ -12,6 +12,7 @@ type AdminModalPropsType = {
   currentTimeInSeconds: number;
   activeRound: RoundType;
   inverted: boolean;
+  userIsAdmin: boolean;
 };
 const AdminModal = ({
   group,
@@ -21,6 +22,7 @@ const AdminModal = ({
   currentTimeInSeconds,
   activeRound,
   inverted,
+  userIsAdmin,
 }: AdminModalPropsType) => {
   return (
     <StyledModal
@@ -41,6 +43,7 @@ const AdminModal = ({
           currentTimeInSeconds={currentTimeInSeconds}
           activeRound={activeRound}
           inverted={inverted}
+          userIsAdmin={userIsAdmin}
         />
       }
       setOpenModal={setOpenAdminModal}

@@ -25,6 +25,7 @@ type AdminActionsPropsType = {
   currentTimeInSeconds: number;
   activeRound: RoundType;
   inverted: boolean;
+  userIsAdmin: boolean;
 };
 const AdminActions = ({
   group,
@@ -33,6 +34,7 @@ const AdminActions = ({
   currentTimeInSeconds,
   activeRound,
   inverted,
+  userIsAdmin,
 }: AdminActionsPropsType) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -353,14 +355,14 @@ const AdminActions = ({
         Advanced
       </Header>
       <Grid>
-        <Grid.Row columns={2}>
+        <Grid.Row columns={userIsAdmin ? 2 : 1}>
           <Grid.Column>
             <Button
               onClick={() => setOpenDropoutModal(true)}
               color="violet"
               fluid
             >
-              <Icon name="remove user" /> Dropout
+              <Icon name="remove user" /> Dropouts
             </Button>
             {openDropoutModal && (
               <AdminDropoutModal
@@ -372,18 +374,20 @@ const AdminActions = ({
               />
             )}
           </Grid.Column>
-          <Grid.Column>
-            <Button
-              onClick={() => {
-                setConfirmingAction("delete");
-                setOpenConfirmModal(true);
-              }}
-              color="red"
-              fluid
-            >
-              <Icon name="remove" /> Delete
-            </Button>
-          </Grid.Column>
+          {userIsAdmin && (
+            <Grid.Column>
+              <Button
+                onClick={() => {
+                  setConfirmingAction("delete");
+                  setOpenConfirmModal(true);
+                }}
+                color="red"
+                fluid
+              >
+                <Icon name="remove" /> Delete
+              </Button>
+            </Grid.Column>
+          )}
         </Grid.Row>
       </Grid>
       <Divider />

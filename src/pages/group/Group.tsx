@@ -130,6 +130,7 @@ const Group = ({
               currentTimeInSeconds={currentTimeInSeconds}
               activeRound={activeRound}
               inverted={inverted}
+              userIsAdmin={userIsAdmin}
             />
           )}
           <Divider hidden />

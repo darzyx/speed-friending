@@ -127,6 +127,7 @@ const GroupLink = ({
           currentTimeInSeconds={currentTimeInSeconds}
           activeRound={activeRound}
           inverted={inverted}
+          userIsAdmin={userIsAdmin}
         />
       )}
     </Button>
