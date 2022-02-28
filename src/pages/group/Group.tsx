@@ -187,9 +187,9 @@ const Group = ({
               secret.
             </p>
             <p>
-              c.) Only one person should have their audio on. Be sure to test it
-              with the audio button above. Note that it resets if you refresh or
-              turn off your phone!
+              c.) Only one person should have their phone out and with their
+              audio on. Be sure to test it with the audio button above. Note
+              that it resets to muted if you refresh or turn off your phone!
             </p>
             <p>d.) Reach out if you have any trouble. Have fun!</p>
             {openCreatePrivateGroupModal && (
