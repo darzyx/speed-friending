@@ -1,6 +1,8 @@
 HIGH PRIORITY
 
 - Check that firebase will allow many connections from same IP address
+- Hide delete button if userIsAdmin is false. Or allow delete with
+  separate database?
 
 LOW PRIORITY
 
