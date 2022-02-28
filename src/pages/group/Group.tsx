@@ -189,9 +189,9 @@ const Group = ({
             </p>
             <p>
               c.) Only one person should have a phone/computer out and audio on
-              to minimize distractions. Be sure to test it with the audio button
-              above. Note that it resets to muted if you refresh the page or
-              turn off your phone/computer!
+              *during conversations* to minimize distractions. Be sure to test
+              it with the audio button above. Note that it resets to muted if
+              you refresh the page or turn off your phone/computer!
             </p>
             <p>d.) Reach out if you need a new link. Have fun!</p>
             {openCreatePrivateGroupModal && (
