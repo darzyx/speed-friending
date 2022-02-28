@@ -176,10 +176,10 @@ const Group = ({
             </Header>
             <p>
               a.) Make sure you get the initial number of participants right so
-              the site doesn't make you take any unnecesary breaks. However, if
+              the site doesn't make anyone take unnecesary breaks. However, if
               someone drops out in a later round, that's fine. You'll be able to
-              mark them as dropped out in the manage modal, and their future
-              partners will take breaks.
+              mark that participant as dropped out in the manage modal, and
+              future partners will take breaks.
             </p>
             <p>
               b.) It is recommended that you skip the optional contact info
@@ -189,11 +189,11 @@ const Group = ({
             </p>
             <p>
               c.) Only one person should have their phone/computer out and audio
-              on. Be sure to test it with the audio button above. Note that it
-              resets to muted if you refresh the page or turn off your
-              phone/computer!
+              on to minimize distractions. Be sure to test it with the audio
+              button above. Note that it resets to muted if you refresh the page
+              or turn off your phone/computer!
             </p>
-            <p>d.) Reach out if you have any trouble. Have fun!</p>
+            <p>d.) Reach out if you need a new link. Have fun!</p>
             {openCreatePrivateGroupModal && (
               <CreatePrivateGroupModal
                 group={group}
