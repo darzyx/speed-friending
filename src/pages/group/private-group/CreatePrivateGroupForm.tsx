@@ -163,50 +163,49 @@ const CreatePrivateGroupForm = ({
   return (
     <div>
       <Form inverted={inverted} onSubmit={handleSubmit} autoComplete="off">
-        <Form.Group>
-          <StyledFormInput
-            name="name"
-            placeholder="Group Name"
-            label={`Group Name (max ${maxNameLength})`}
-            value={name}
-            onChange={handleChangeName}
-            required
-            width={10}
-            error={nameError}
-          />
-          <StyledFormInput
-            name="participant_count"
-            placeholder="Participants"
-            label={`Participants (max ${maxParticipants})`}
-            value={participantCount}
-            onChange={handleChangeParticipantCount}
-            required
-            width={6}
-            error={participantCountError}
-          />
-        </Form.Group>
-        <Form.Group>
-          <StyledFormInput
-            name="round_duration"
-            placeholder="Round Duration"
-            label={`Round Duration (max ${maxRoundDuration})`}
-            value={roundDuration}
-            onChange={handleChangeRoundDuration}
-            required
-            width={8}
-            error={roundDurationError}
-          />
-          <StyledFormInput
-            name="round_count"
-            placeholder="Round Count"
-            label={`Round Count (max ${maxRounds})`}
-            value={roundCount}
-            onChange={handleChangeRoundCount}
-            required
-            width={8}
-            error={roundCountError}
-          />
-        </Form.Group>
+        <StyledFormInput
+          name="name"
+          placeholder="Group Name"
+          label={`Group Name (max ${maxNameLength} chars)`}
+          value={name}
+          onChange={handleChangeName}
+          required
+          error={nameError}
+          style={{ width: "100%" }}
+        />
+        <StyledFormInput
+          name="participant_count"
+          placeholder="Participants"
+          label={`Participants (max ${maxParticipants})`}
+          value={participantCount}
+          onChange={handleChangeParticipantCount}
+          required
+          error={participantCountError}
+          style={{ width: "100%" }}
+        />
+        <StyledFormInput
+          name="round_duration"
+          placeholder="Round Duration"
+          label={`Round Duration (max ${maxRoundDuration} seconds)`}
+          value={roundDuration}
+          onChange={handleChangeRoundDuration}
+          required
+          error={roundDurationError}
+          style={{ width: "100%" }}
+        />
+        <StyledFormInput
+          name="round_count"
+          placeholder="Round Count"
+          label={`Round Count (max ${maxRounds})`}
+          value={roundCount}
+          onChange={handleChangeRoundCount}
+          required
+          error={roundCountError}
+          style={{ width: "100%" }}
+        />
+        <p>
+          Note: the max round count is determined by the number of participants
+        </p>
         <Divider hidden />
         <div>
           <Button

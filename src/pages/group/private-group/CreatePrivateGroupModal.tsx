@@ -29,7 +29,7 @@ const CreatePrivateGroupModal = ({
     openModal={openCreatePrivateGroupModal}
     setOpenModal={setOpenCreatePrivateGroupModal}
     inverted={inverted}
-    size="small"
+    size="tiny"
   />
 );
 
